@@ -1,0 +1,9 @@
+node_modules
+.next
+.git
+.env*
+!.env.example
+temporary screenshots
+*.md
+files.zip
+scaffold-tmp

@@ -1,0 +1,122 @@
+/*
+ * Scoped slide styling. Slides are stored as clean HTML fragments; ALL of
+ * their presentation lives here so the content stays portable.
+ *
+ * Sizing is in cqw (container-query units) so one stylesheet is legible on
+ * a phone thumbnail, an embedded viewer, and a 1080p projector alike.
+ * At 1920px wide: 1cqw = 19.2px → body text ≈ 2.6cqw ≈ 50px (min 32px rule).
+ */
+
+.slide-frame {
+  container-type: inline-size;
+  position: relative;
+  aspect-ratio: 16 / 9;
+  overflow: hidden;
+  background-color: var(--color-pitch);
+  color: var(--color-cream);
+  font-family: var(--font-sans);
+}
+
+.slide-frame .slide-body {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  text-align: left;
+  gap: 2.2cqw;
+  padding: 7cqw 8cqw;
+}
+
+/* Cross-fade on slide change — opacity only, respects reduced motion. */
+@media (prefers-reduced-motion: no-preference) {
+  .slide-body {
+    opacity: 1;
+    transition: opacity 200ms ease-out;
+    @starting-style {
+      opacity: 0;
+    }
+  }
+}
+
+.slide-frame h1 {
+  font-family: var(--font-display);
+  font-optical-sizing: auto;
+  font-size: 7cqw;
+  line-height: 1.05;
+  letter-spacing: -0.02em;
+  text-wrap: balance;
+}
+
+.slide-frame h1 em,
+.slide-frame h2 em {
+  font-style: italic;
+  color: var(--color-lamplight);
+}
+
+.slide-frame h2 {
+  font-family: var(--font-display);
+  font-optical-sizing: auto;
+  font-size: 5.6cqw;
+  line-height: 1.08;
+  letter-spacing: -0.02em;
+  text-wrap: balance;
+}
+
+.slide-frame p {
+  font-size: 2.6cqw;
+  line-height: 1.5;
+  font-weight: 500;
+  max-width: 62cqw;
+  text-wrap: pretty;
+}
+
+.slide-frame p strong {
+  color: var(--color-lamplight);
+  font-weight: 700;
+}
+
+.slide-frame blockquote {
+  font-family: var(--font-display);
+  font-style: italic;
+  font-size: 3.7cqw;
+  line-height: 1.35;
+  max-width: 72cqw;
+  text-wrap: pretty;
+}
+
+.slide-frame .kicker {
+  font-size: 1.7cqw;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--color-lamplight);
+  max-width: none;
+}
+
+.slide-frame .ref {
+  font-size: 1.9cqw;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--color-lamplight);
+  max-width: none;
+}
+
+.slide-frame ul,
+.slide-frame ol {
+  font-size: 2.6cqw;
+  line-height: 1.6;
+  font-weight: 500;
+  padding-left: 3cqw;
+  max-width: 62cqw;
+}
+
+.slide-frame ul {
+  list-style: disc;
+}
+
+.slide-frame ol {
+  list-style: decimal;
+}

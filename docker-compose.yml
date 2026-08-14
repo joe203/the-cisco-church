@@ -1,0 +1,17 @@
+services:
+  cisco-church:
+    build:
+      context: .
+      args:
+        NEXT_PUBLIC_SUPABASE_URL: ${NEXT_PUBLIC_SUPABASE_URL}
+        NEXT_PUBLIC_SUPABASE_ANON_KEY: ${NEXT_PUBLIC_SUPABASE_ANON_KEY}
+    image: cisco-church
+    container_name: cisco-church
+    restart: unless-stopped
+    env_file: .env
+    networks:
+      - n8n_default
+
+networks:
+  n8n_default:
+    external: true

@@ -1,0 +1,231 @@
+@import "tailwindcss";
+
+@theme {
+  /* ---- Palette: derived from Joe's hand-built sermon pages ---- */
+  --color-espresso: #17110d;
+  --color-pitch: #0d0906;
+  --color-parchment: #ede6da;
+  --color-bone: #f7f2e9;
+  --color-lamplight: #c9a063;
+  --color-burnish: #8a6a32;
+  --color-cream: #f4ede2;
+  --color-ash: #a2937f;
+  --color-umber: #3d3128;
+
+  /* ---- Type ---- */
+  --font-display: var(--font-bodoni), "Bodoni Moda", "Didot", serif;
+  --font-sans: var(--font-figtree), "Figtree", system-ui, sans-serif;
+
+  /* Fluid display sizes — no breakpoints needed */
+  --text-hero: clamp(2.9rem, 7.5vw + 0.5rem, 6.75rem);
+  --text-hero--line-height: 1.02;
+  --text-display: clamp(2.25rem, 4.5vw + 0.5rem, 4.25rem);
+  --text-display--line-height: 1.06;
+  --text-passage: clamp(1.5rem, 2.2vw + 0.8rem, 2.5rem);
+  --text-passage--line-height: 1.35;
+
+  --tracking-utility: 0.14em;
+
+  /* Layered, tinted shadows — never flat shadow-md */
+  --shadow-card:
+    0 1px 2px rgb(13 9 6 / 0.3),
+    0 8px 20px -6px rgb(13 9 6 / 0.35),
+    0 20px 44px -16px rgb(201 160 99 / 0.1);
+  --shadow-card-lift:
+    0 2px 4px rgb(13 9 6 / 0.3),
+    0 14px 30px -8px rgb(13 9 6 / 0.45),
+    0 28px 60px -18px rgb(201 160 99 / 0.18);
+  --shadow-panel-light:
+    0 1px 2px rgb(61 49 40 / 0.08),
+    0 10px 28px -10px rgb(61 49 40 / 0.18),
+    0 24px 48px -20px rgb(201 160 99 / 0.14);
+
+  --ease-spring: cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+/* ---------------------------------------------------------------- */
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+  @media (prefers-reduced-motion: reduce) {
+    html {
+      scroll-behavior: auto;
+    }
+  }
+
+  body {
+    background-color: var(--color-pitch);
+    color: var(--color-cream);
+    font-family: var(--font-sans);
+    line-height: 1.7;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4 {
+    text-wrap: balance;
+  }
+
+  p,
+  li,
+  blockquote {
+    text-wrap: pretty;
+  }
+
+  ::selection {
+    background-color: var(--color-lamplight);
+    color: var(--color-pitch);
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--color-lamplight);
+    outline-offset: 3px;
+    border-radius: 2px;
+  }
+}
+
+/* ---------------------------------------------------------------- */
+@utility eyebrow {
+  font-family: var(--font-sans);
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: var(--tracking-utility);
+  text-transform: uppercase;
+}
+
+@utility font-display {
+  font-family: var(--font-display);
+  font-optical-sizing: auto;
+}
+
+/* Gold hairline used between bands */
+@utility rule-gold {
+  border-color: color-mix(in oklch, var(--color-lamplight), transparent 65%);
+}
+
+@layer components {
+  .btn-gold {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.6rem;
+    background-color: var(--color-lamplight);
+    color: var(--color-pitch);
+    font-weight: 600;
+    font-size: 0.95rem;
+    padding: 0.85rem 1.6rem;
+    transition:
+      transform 0.3s var(--ease-spring),
+      opacity 0.3s var(--ease-spring);
+  }
+  .btn-gold:hover {
+    transform: translateY(-2px);
+  }
+  .btn-gold:active {
+    transform: translateY(0);
+    opacity: 0.85;
+  }
+
+  .btn-ghost {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.6rem;
+    color: var(--color-lamplight);
+    font-weight: 600;
+    font-size: 0.95rem;
+    padding: 0.85rem 0;
+    transition:
+      transform 0.3s var(--ease-spring),
+      opacity 0.3s var(--ease-spring);
+  }
+  .btn-ghost:hover {
+    transform: translateX(3px);
+  }
+  .btn-ghost:active {
+    opacity: 0.8;
+  }
+
+  /* Card hover: lift on transform, deepen shadow via ::after opacity —
+     keeps every animation on transform/opacity only. */
+  .card-lift {
+    position: relative;
+    isolation: isolate;
+    transition: transform 0.35s var(--ease-spring);
+  }
+  .card-lift::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    box-shadow: var(--shadow-card-lift);
+    opacity: 0;
+    transition: opacity 0.35s var(--ease-spring);
+    pointer-events: none;
+  }
+  .card-lift:hover {
+    transform: translateY(-4px);
+  }
+  .card-lift:hover::after {
+    opacity: 1;
+  }
+  .card-lift:active {
+    transform: translateY(-1px);
+  }
+
+  /* Text link with gold underline reveal */
+  .link-gold {
+    color: inherit;
+    background-image: linear-gradient(
+      currentColor,
+      currentColor
+    );
+    background-repeat: no-repeat;
+    background-size: 0% 1px;
+    background-position: 0 100%;
+    transition: background-size 0.35s var(--ease-spring);
+  }
+  .link-gold:hover {
+    background-size: 100% 1px;
+  }
+}
+
+/* ---------------------------------------------------------------- */
+/* Hero entry — @starting-style, no JS mount hooks                   */
+@media (prefers-reduced-motion: no-preference) {
+  .hero-enter {
+    opacity: 1;
+    transform: translateY(0);
+    transition:
+      opacity 0.8s var(--ease-spring),
+      transform 0.8s var(--ease-spring);
+    transition-delay: var(--enter-delay, 0s);
+    @starting-style {
+      opacity: 0;
+      transform: translateY(1.1rem);
+    }
+  }
+}
+
+/* Scroll-driven reveals below the fold — CSS only, graceful no-op   */
+@media (prefers-reduced-motion: no-preference) {
+  @supports (animation-timeline: view()) {
+    .reveal {
+      animation: reveal-rise linear both;
+      animation-timeline: view();
+      animation-range: entry 0% entry 32%;
+    }
+  }
+}
+
+@keyframes reveal-rise {
+  from {
+    opacity: 0;
+    transform: translateY(1.4rem);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
