@@ -219,20 +219,25 @@ unreachable.
   `prefers-reduced-motion`.
 
 ### Infrastructure
-- **Host:** DigitalOcean Droplet running Docker. **Reverse proxy:** Caddy (host).
-- **Container network:** `n8n_default` — required, no exceptions.
-- No host port publishing — Caddy reaches the container by name.
+- **Host:** main FiveSixteen droplet `67.207.83.48` (`ssh droplet`), app dir `/root/the-cisco-church`.
+- **Reverse proxy:** Caddy as a host systemd service — proxies to `localhost:<host-port>`.
+- **Container network:** `web` (external). This droplet has **no `n8n_default`** —
+  the old rule referencing it is obsolete here.
+- **Host port:** `3060` → container `3000` (3000–3050 are taken by other apps).
 
 ```bash
-docker build -t cisco-church . \
-  && docker stop cisco-church 2>/dev/null; docker rm cisco-church 2>/dev/null \
-  ; docker run -d --name cisco-church --network n8n_default --env-file .env cisco-church
+# Deploy / rebuild on the droplet
+cd /root/the-cisco-church && git pull \
+  && docker compose --env-file .env up -d --build
 ```
 
-Caddyfile (note: domain is **theciscochurch.org** — one "c" in "cisco"):
+Caddyfile block (note: domain is **theciscochurch.org** — one "c" in "cisco"):
 ```
-theciscochurch.org, www.theciscochurch.org {
-    reverse_proxy cisco-church:3000
+theciscochurch.org {
+    reverse_proxy localhost:3060
+}
+www.theciscochurch.org {
+    redir https://theciscochurch.org{uri} permanent
 }
 ```
 
@@ -376,7 +381,7 @@ Derived from Joe's existing hand-built sermon pages. Use these tokens exactly.
 - Service role key never reachable by a browser. No anon writes, ever.
 - Never render stored slide HTML without sanitizing.
 - No `transition-all`. No default Tailwind blue/indigo.
-- Containers always on `--network n8n_default`.
+- Containers always on the external `web` network (this droplet has no `n8n_default`).
 - Never commit `.env`. No `console.log`/`console.error` in production paths.
 - Never invent church details — `TODO` in `lib/site.ts` and tell Joe.
 - Domain is **theciscochurch.org** everywhere.

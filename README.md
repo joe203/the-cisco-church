@@ -84,17 +84,22 @@ alter table cisco_deck_state replica identity full;
 
 ## Deployment (DigitalOcean + Caddy)
 
+Runs on the main FiveSixteen droplet in `/root/the-cisco-church`, on the
+external `web` docker network, publishing host port `3060`.
+
 ```bash
-docker build -t cisco-church . \
-  && docker stop cisco-church 2>/dev/null; docker rm cisco-church 2>/dev/null \
-  ; docker run -d --name cisco-church --network n8n_default --env-file .env cisco-church
+cd /root/the-cisco-church && git pull \
+  && docker compose --env-file .env up -d --build
 ```
 
-Caddyfile:
+Caddyfile (host systemd Caddy):
 
 ```
-theciscochurch.org, www.theciscochurch.org {
-    reverse_proxy cisco-church:3000
+theciscochurch.org {
+    reverse_proxy localhost:3060
+}
+www.theciscochurch.org {
+    redir https://theciscochurch.org{uri} permanent
 }
 ```
 
