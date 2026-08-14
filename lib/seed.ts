@@ -115,7 +115,7 @@ export const seedSermons: SermonDetail[] = [hardTruth, shepherd, saltLight];
 export const seedSlides: SlideWithNotes[] = [
   {
     position: 1,
-    html: `<p class="kicker">Cisco Church of Christ</p><h1>The Hard Truth <em>About the Kingdom</em></h1><p class="ref">Matthew 25:14–30</p>`,
+    html: `<p class="kicker">Cisco Church</p><h1>The Hard Truth <em>About the Kingdom</em></h1><p class="ref">Matthew 25:14–30</p>`,
     notes: "Welcome everyone. Read the parable in full before advancing.",
   },
   {

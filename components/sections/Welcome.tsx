@@ -27,19 +27,23 @@ export function Welcome() {
           <div className="reveal">
             <p className="eyebrow text-burnish">What to expect</p>
             <h2 className="font-display mt-5 text-display tracking-[-0.02em] text-espresso">
-              Sunday morning,
+              Come
               <br />
-              plainly.
+              expecting.
             </h2>
             <p className="mt-7 max-w-[46ch] text-[1.05rem] leading-[1.7]">
-              We open our Bibles, we sing together, and we take the Lord&rsquo;s
-              Supper every week — simple worship, the way this congregation has
-              done it for a long time. No stage lights, no production. Just a
-              room full of people who are glad you came.
+              We open our Bibles, we sing together, and we share the
+              Lord&rsquo;s Supper every week. Worship here is alive — voices
+              filling the room, prayers that mean something, teaching that
+              meets your Monday. And it doesn&rsquo;t stop at Sunday: Bible
+              studies, church events, tables full of food and laughter.{" "}
+              <strong className="font-semibold text-espresso">
+                This is the place to be part of it.
+              </strong>
             </p>
             <PhotoSlot
               file="bible-class.jpg"
-              alt="Children and teachers seated in the pews during Bible class"
+              alt="Kids and teachers together in the pews"
               caption="A photo of teaching or Bible class goes here — shot 3 in PHOTO_GUIDE.md."
               className="mt-10 aspect-[4/3] shadow-(--shadow-panel-light)"
             />

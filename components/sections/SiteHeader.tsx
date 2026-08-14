@@ -9,7 +9,7 @@ export function SiteHeader() {
           href="/"
           className="font-display text-[1.15rem] leading-tight text-cream transition-opacity duration-300 hover:opacity-80 sm:text-[1.3rem]"
         >
-          {site.name}
+          {site.shortName}
         </Link>
         <nav className="flex items-baseline gap-6 sm:gap-9" aria-label="Main">
           <Link href="/sermons" className="eyebrow link-gold text-ash hover:text-cream">

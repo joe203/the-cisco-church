@@ -1,80 +1,76 @@
 import Link from "next/link";
 import { mapLabel, site } from "@/lib/site";
 import type { Sermon } from "@/lib/types";
-import { PhotoSlot } from "./PhotoSlot";
 
+/**
+ * Hero v2 — energy-forward: a diagonal gold field with oversized italic
+ * caps, the last line rendered in outline as it crosses onto the dark
+ * field. Photo slot intentionally omitted for now; the dark right field
+ * is where a worship photo lands later.
+ */
 export function Hero({ featured }: { featured: Sermon | null }) {
   return (
-    <section className="overflow-hidden bg-pitch">
-      <div className="px-5 sm:px-8 lg:pr-0 lg:pl-[max(2rem,calc((100vw-72rem)/2+2rem))]">
-        <div className="lg:grid lg:grid-cols-[minmax(0,1fr)_minmax(0,42%)]">
-          {/* Type stacked hard left */}
-          <div className="relative z-10 pt-14 pb-14 lg:pt-24 lg:pb-28 lg:-mr-14">
-            <p className="eyebrow hero-enter text-lamplight">
-              A Church of Christ &middot; Cisco, Texas
-            </p>
-            <h1
-              className="font-display hero-enter mt-6 text-hero tracking-[-0.02em] text-cream"
-              style={{ "--enter-delay": "0.08s" } as React.CSSProperties}
+    <section className="relative overflow-hidden bg-pitch">
+      {/* Diagonal gold field */}
+      <div
+        aria-hidden
+        className="absolute inset-y-0 left-0 w-full bg-[linear-gradient(130deg,#dbb87c_0%,var(--color-lamplight)_45%,var(--color-burnish)_115%)] [clip-path:polygon(0_0,100%_0,100%_88%,0_100%)] lg:w-[64%] lg:[clip-path:polygon(0_0,100%_0,72%_100%,0_100%)]"
+      />
+
+      <div className="relative mx-auto max-w-6xl px-5 pt-14 pb-16 sm:px-8 lg:pt-20 lg:pb-24">
+        <h1 className="hero-enter font-sans text-[clamp(3rem,9.5vw,7.25rem)] leading-[0.95] font-black tracking-[-0.02em] uppercase italic">
+          <span className="block text-pitch">Something</span>
+          <span className="block text-pitch">new is</span>
+          <span className="block text-pitch">happening</span>
+          <span className="block text-pitch lg:ml-[22%] lg:text-transparent lg:[-webkit-text-stroke:2.5px_var(--color-cream)]">
+            in Cisco.
+          </span>
+        </h1>
+
+        <div className="mt-10 max-w-xl lg:mt-12">
+          <p
+            className="hero-enter text-[1.08rem] leading-[1.65] font-medium text-pitch/85 lg:max-w-[44ch]"
+            style={{ "--enter-delay": "0.12s" } as React.CSSProperties}
+          >
+            Worship that lifts, teaching that meets your week, and a church
+            family that&rsquo;s genuinely glad you walked in.{" "}
+            <strong className="font-bold text-pitch">Come see for yourself.</strong>
+          </p>
+
+          <div
+            className="hero-enter mt-8 flex flex-wrap items-center gap-x-7 gap-y-4"
+            style={{ "--enter-delay": "0.22s" } as React.CSSProperties}
+          >
+            <a
+              href="#visit"
+              className="inline-flex items-center gap-2.5 bg-pitch px-7 py-3.5 text-[0.95rem] font-bold text-cream transition-transform duration-300 ease-(--ease-spring) hover:-translate-y-0.5 active:translate-y-0"
             >
-              Good morning,
-              <br />
-              <em>Cisco.</em>
-            </h1>
-            <p
-              className="hero-enter mt-8 max-w-[52ch] text-[1.05rem] leading-[1.7] text-ash"
-              style={{ "--enter-delay": "0.16s" } as React.CSSProperties}
-            >
-              We&rsquo;re a small congregation of neighbors — teachers, farmers,
-              retirees, kids — who meet on Sundays to sing, pray, and share the
-              Lord&rsquo;s Supper, the way churches in this corner of Texas have
-              for generations. If you&rsquo;re new to town, or it&rsquo;s been a
-              while since you&rsquo;ve been inside a church building,{" "}
-              <strong className="font-semibold text-cream">
-                there&rsquo;s a seat here for you.
-              </strong>
-            </p>
-            <div
-              className="hero-enter mt-10 flex flex-wrap items-center gap-x-8 gap-y-4"
-              style={{ "--enter-delay": "0.24s" } as React.CSSProperties}
-            >
-              <a href="#visit" className="btn-gold">
-                Plan your Sunday visit
-              </a>
-              {featured && (
-                <Link href={`/sermons/${featured.slug}`} className="btn-ghost">
-                  This week&rsquo;s sermon <span aria-hidden>&rarr;</span>
-                </Link>
-              )}
-            </div>
-            <p
-              className="eyebrow hero-enter mt-10 text-ash"
-              style={{ "--enter-delay": "0.3s" } as React.CSSProperties}
-            >
-              {site.serviceLine} &middot;{" "}
-              <a
-                href={site.mapUrl}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="link-gold text-lamplight"
+              Plan your visit
+            </a>
+            {featured && (
+              <Link
+                href={`/sermons/${featured.slug}`}
+                className="link-gold text-[0.95rem] font-bold text-pitch"
               >
-                {mapLabel()}
-              </a>
-            </p>
+                This week&rsquo;s sermon <span aria-hidden>&rarr;</span>
+              </Link>
+            )}
           </div>
 
-          {/* Congregation photo bleeding off the right edge */}
-          <div
-            className="hero-enter pb-14 lg:pb-0"
-            style={{ "--enter-delay": "0.2s" } as React.CSSProperties}
+          <p
+            className="eyebrow hero-enter mt-10 text-pitch/70"
+            style={{ "--enter-delay": "0.3s" } as React.CSSProperties}
           >
-            <PhotoSlot
-              file="fellowship-ladies.jpg"
-              alt="Two longtime members laughing together at a church fellowship meal"
-              caption="A wide, warm photo of the congregation goes here — shot 1 in PHOTO_GUIDE.md."
-              className="aspect-[4/3] lg:aspect-auto lg:h-full lg:min-h-[480px]"
-            />
-          </div>
+            {site.serviceLine} &middot;{" "}
+            <a
+              href={site.mapUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="link-gold text-pitch"
+            >
+              {mapLabel()}
+            </a>
+          </p>
         </div>
       </div>
     </section>

@@ -6,10 +6,10 @@ export function SiteFooter() {
     <footer className="border-t rule-gold bg-pitch">
       <div className="mx-auto grid max-w-6xl gap-10 px-5 py-14 sm:px-8 md:grid-cols-[1.4fr_1fr_1fr]">
         <div>
-          <p className="font-display text-[1.6rem] text-cream">{site.name}</p>
+          <p className="font-display text-[1.6rem] text-cream">{site.shortName}</p>
           <p className="mt-3 max-w-[36ch] text-[0.95rem] leading-relaxed text-ash">
-            A congregation of the churches of Christ, meeting in {site.town}.
-            You are welcome here — this Sunday, any Sunday.
+            A Church of Christ in {site.town}, and a place where good things
+            are happening. You&rsquo;re welcome here — this Sunday, any Sunday.
           </p>
         </div>
 
@@ -75,7 +75,7 @@ export function SiteFooter() {
       <div className="border-t border-cream/10">
         <div className="mx-auto flex max-w-6xl flex-wrap items-baseline justify-between gap-2 px-5 py-5 sm:px-8">
           <p className="text-[0.8rem] text-ash">
-            © {new Date().getFullYear()} {site.name}
+            © {new Date().getFullYear()} {site.shortName}
           </p>
           <p className="text-[0.8rem] text-ash">{site.domain}</p>
         </div>

@@ -11,6 +11,7 @@ const bodoni = Bodoni_Moda({
 
 const figtree = Figtree({
   subsets: ["latin"],
+  style: ["normal", "italic"],
   variable: "--font-figtree",
   display: "swap",
 });
@@ -18,11 +19,11 @@ const figtree = Figtree({
 export const metadata: Metadata = {
   metadataBase: new URL("https://theciscochurch.org"),
   title: {
-    default: "Cisco Church of Christ — Cisco, Texas",
-    template: "%s — Cisco Church of Christ",
+    default: "Cisco Church — Cisco, Texas",
+    template: "%s — Cisco Church",
   },
   description:
-    "A church family in Cisco, Texas. Service times, directions, and this week's sermon.",
+    "Something new is happening in Cisco. Worship with the Cisco Church of Christ — Sundays at 10:30, 1701 Avenue N. Service times, directions, and this week's sermon.",
 };
 
 export default function RootLayout({

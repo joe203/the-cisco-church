@@ -29,7 +29,7 @@ export default async function SermonsPage() {
         </h1>
         <p className="mt-5 max-w-[52ch] text-[1.02rem] text-ash">
           Every lesson preached here, newest first — with the slides, guide,
-          and recording wherever they exist. Missed a Sunday? It kept.
+          and recording wherever they exist. Missed a Sunday? Catch up here.
         </p>
 
         {years.map((year) => (

@@ -84,7 +84,7 @@ on conflict (slug) do nothing;
 insert into cisco.cisco_slides (deck_id, position, html, notes)
 values
   ('c1000000-0000-4000-8000-000000000001', 1,
-   '<p class="kicker">Cisco Church of Christ</p><h1>The Hard Truth <em>About the Kingdom</em></h1><p class="ref">Matthew 25:14–30</p>',
+   '<p class="kicker">Cisco Church</p><h1>The Hard Truth <em>About the Kingdom</em></h1><p class="ref">Matthew 25:14–30</p>',
    'Welcome everyone. Read the parable in full before advancing.'),
   ('c1000000-0000-4000-8000-000000000001', 2,
    '<blockquote>“For it will be like a man going on a journey, who called his servants and entrusted to them his property.”</blockquote><p class="ref">Matthew 25:14</p>',
