@@ -10,7 +10,7 @@
 
 export const site = {
   name: "Cisco Church of Christ",
-  shortName: "Cisco Church",
+  shortName: "The Cisco Church",
   town: "Cisco, Texas",
   domain: "theciscochurch.org",
 

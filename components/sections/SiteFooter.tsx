@@ -8,7 +8,7 @@ export function SiteFooter() {
         <div>
           <p className="font-display text-[1.6rem] text-cream">{site.shortName}</p>
           <p className="mt-3 max-w-[36ch] text-[0.95rem] leading-relaxed text-ash">
-            A Church of Christ in {site.town}, and a place where good things
+            The Church of Christ in {site.town} is a place where good things
             are happening. You&rsquo;re welcome here — this Sunday, any Sunday.
           </p>
         </div>
