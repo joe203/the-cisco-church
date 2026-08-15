@@ -5,6 +5,8 @@
 ---
 
 ## Always Do First
+- **Read `CURRENT_STATUS.md`** — live-site state, direction, and gotchas. It is
+  updated at the end of each working session and is more current than this file.
 - **Invoke the `frontend-design` skill** before writing any frontend code, every session, no exceptions.
 - **Invoke the `fivesixteen-supabase-tenancy` skill** before writing any database code, migration, or RLS policy.
 - **Read `lib/site.ts`** before touching any page. Church details live there.
@@ -79,9 +81,10 @@ If a request seems to need one of these, **stop and ask Joe**.
 
 ## Homepage section order
 
-1. **Hero** — the Cisco Church of Christ as a congregation: people, place,
-   belonging. Not a sermon, not a passage. A congregation photo becomes the
-   primary visual once supplied.
+1. **Hero** — energy-forward: "SOMETHING NEW IS HAPPENING IN CISCO." in heavy
+   italic caps on a diagonal gold field (see `photos/hero_sample.png` for the
+   inspiration). Not a sermon, not a passage. A worship photo lands in the
+   dark right-hand field once supplied.
 2. **Service times + location** — day, time, street address, map link. Visible
    without hunting.
 3. **Welcome / What to Expect** — what a Sunday morning here is actually like.
@@ -288,7 +291,17 @@ project-root/
 
 ---
 
-## Visual Identity (final — supersedes the old "Lamp & Limestone" proposal)
+## Visual Identity (UNDER REVISION — see CURRENT_STATUS.md)
+
+**2026-08-14:** Joe likes this palette but finds it **too dark for this site**
+— the look must communicate **life and adventure**. He is supplying
+inspiration images; expect a lighter, more energetic rework. Until that lands,
+the tokens below remain in force.
+
+**Naming:** the site brands as **"The Cisco Church"**. "Church of Christ"
+appears **sparingly** — one footer mention on the homepage, no more. Voice:
+energy, momentum, things happening. Never "small church / country church /
+simple worship / the way we've always done it."
 
 Derived from Joe's existing hand-built sermon pages. Use these tokens exactly.
 

@@ -1,12 +1,14 @@
 # TheCiscoChurch.org — Temporary Sermon Site
 
-A deliberately small site for the **Cisco Church of Christ** in Cisco, Texas.
+A deliberately small site for **The Cisco Church** in Cisco, Texas.
 Built with **Next.js 16 (App Router) + TypeScript + Tailwind CSS v4 + Supabase**,
 containerized for the self-hosted DigitalOcean + Caddy stack.
 
-> **This is a temporary site.** Its job is a warm first impression, service
-> times, sermon pages with materials, and live HTML slides. A full build comes
-> later. `CLAUDE.md` is the authoritative spec.
+> **Status: LIVE at https://theciscochurch.org.** See `CURRENT_STATUS.md` for
+> current state, direction, and next steps; `CLAUDE.md` is the authoritative
+> spec. This is a temporary site — its job is a strong first impression,
+> service times, sermon pages with materials, and live HTML slides. A full
+> build comes later.
 
 ## Getting started
 
