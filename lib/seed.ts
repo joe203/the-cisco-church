@@ -5,9 +5,8 @@ import type { Deck, DeckState, Sermon, SermonDetail, SlideWithNotes, Speaker } f
  * Used whenever Supabase env vars are absent or a query fails — the site
  * must never render empty because the database is unreachable.
  *
- * The two older sermons are PLACEHOLDER content so the card grid and
- * archive can be judged with more than one item. TODO(Joe): replace with
- * real past sermons.
+ * Both sermons are REAL (assets supplied by Joe in past_sermons/, served
+ * from public/sermons/[slug]/). Dates confirmed by Joe 2026-08-15.
  */
 
 const joe: Speaker = {
@@ -24,138 +23,747 @@ const hardTruth: SermonDetail = {
   id: "seed-sermon-1",
   slug: "the-hard-truth-about-the-kingdom",
   title: "The Hard Truth About the Kingdom",
-  thesis: "God celebrates results.",
+  thesis: "God celebrates faithfulness.",
   scripture_ref: "Matthew 25:14–30",
   scripture_text:
     "“Well done, good and faithful servant. You have been faithful over a little; I will set you over much. Enter into the joy of your master.”",
-  sermon_date: "2026-08-17",
-  artwork_url: null,
+  sermon_date: "2026-07-19",
+  artwork_url: "/sermons/the-hard-truth-about-the-kingdom/artwork.jpg",
   summary:
     "Jesus told a story about a master, three servants, and a long absence — and it does not end the way we would write it. The parable of the talents is warm to the workers and unsparing to the fearful, and it asks a question most of us would rather not sit with: what did you do with what you were given? This lesson walks through each servant and lands on five hard truths about how the Kingdom actually works.",
-  youtube_url: null,
+  youtube_url: "https://youtu.be/BrBm6-QasUo",
   podcast_url: null,
-  guide_url: null,
+  guide_url: "/sermons/the-hard-truth-about-the-kingdom/reflection-guide.pdf",
   pdf_url: null,
-  is_featured: true,
+  is_featured: false,
   deck_slug: "the-hard-truth",
   speaker: joe,
+  // Points drawn from Joe's sermon outline (past_sermons/the_hard_truth/).
   points: [
     {
       position: 1,
-      title: "The Ready Servant",
-      label: "Five Talents",
-      body: "Given the most, he went at once and put it to work. Readiness is not a personality trait — it is a decision made before the opportunity arrives.",
+      title: "The Kingdom Comes First",
+      label: "Matthew 6:33",
+      body: "If you don't get the Kingdom right, you don't get Jesus right. The Kingdom wasn't a side topic for Jesus — it was His central message, the thread that tied all of His teaching together. That's why He said it must come first: \"Seek first the Kingdom of God.\"",
     },
     {
       position: 2,
-      title: "The Faithful Servant",
-      label: "Two Talents",
-      body: "He received less and was praised identically. The master measures faithfulness against what was entrusted, never against what someone else was given.",
+      title: "The Five-Talented Servant",
+      label: "Five Talents",
+      body: "When he received the five talents, he knew the expectation — a huge problem to solve, no experience, new things to learn. However he learned, the knowledge became a process, the process became a habit, and when it came time to take action, he did. God celebrates trust.",
     },
     {
       position: 3,
-      title: "The Fearful Servant",
-      label: "One Talent",
-      body: "He buried the gift and called it prudence. Fear dressed up as caution still leaves the master's property in a hole in the ground.",
+      title: "The Two-Talented Servant",
+      label: "Two Talents",
+      body: "He could have complained — \"Why did he get five and I only got two?\" Instead, he put his talents to work. The Kingdom is not built on comparison. It is built on faithfulness with what you have been uniquely given.",
     },
     {
       position: 4,
+      title: "The One-Talented Servant",
+      label: "One Talent",
+      body: "The Bible tells us exactly what he was thinking: he was afraid. He buried the talent, protected it, and completely failed to use it. Fear stops the flow of faith — and it kept him from ever discovering what faith could have accomplished.",
+    },
+    {
+      position: 5,
       title: "Five Hard Truths",
       label: "The Reckoning",
-      body: "The master comes back. Accounts get settled. And the parable closes with truths about reward, risk, and responsibility that are hard precisely because they are clear.",
+      body: "Everyone has talent. Time is an opportunity — you're on the clock. Talent is meant to be used, not admired. Results matter, because accountability is real. And talents increase only when you use them.",
     },
   ],
 };
 
-/* PLACEHOLDER past sermons — replace with real ones. */
-const shepherd: SermonDetail = {
+const bagOfSeeds: SermonDetail = {
   id: "seed-sermon-2",
-  slug: "the-lord-is-my-shepherd",
-  title: "The Lord Is My Shepherd",
-  thesis: "Provision begins with belonging.",
-  scripture_ref: "Psalm 23:1–6",
-  scripture_text: "“The Lord is my shepherd; I shall not want.”",
-  sermon_date: "2026-08-10",
-  artwork_url: null,
+  slug: "the-bag-of-seeds",
+  title: "The Bag of Seeds",
+  thesis: "What are you carrying — and what will you plant?",
+  scripture_ref: "Matthew 13:1–23",
+  scripture_text: "“A sower went out to sow… He who has ears, let him hear.”",
+  sermon_date: "2026-07-26",
+  artwork_url: "/sermons/the-bag-of-seeds/artwork.jpg",
   summary:
-    "PLACEHOLDER — a sample past sermon so the archive has depth. David's most familiar psalm, read slowly enough to notice what it actually promises.",
-  youtube_url: null,
+    "Jesus sat down by the sea and told a story about a sower who scattered seed everywhere he went — on the path, in the rocks, among the thorns, and into good soil. The seed is God's Word. The soil is our heart. The harvest is changed lives. And the question the parable keeps asking is the one this lesson sits with: what's still in your bag, what keeps it closed, and who is ready for what you're carrying? Growing the seed is God's work. Emptying the bag is ours.",
+  youtube_url: "https://youtu.be/q1ILOtr_yAM",
   podcast_url: null,
-  guide_url: null,
+  guide_url: "/sermons/the-bag-of-seeds/reflection-guide.pdf",
   pdf_url: null,
-  is_featured: false,
-  deck_slug: null,
+  is_featured: true,
+  deck_slug: "the-bag-of-seeds",
   speaker: joe,
-  points: [],
+  // Points drawn from Joe's sermon outline (past_sermons/the_bag_of_seeds/).
+  points: [
+    {
+      position: 1,
+      title: "Every Believer Carries a Bag",
+      label: "On Purpose",
+      body: "The farmer in Jesus' parable scatters his seed everywhere — he never sends soil samples to the lab. God has been filling your bag your whole life. He doesn't consult your past to determine your future; He gives your past a new purpose. God doesn't measure the bag. He watches what leaves it.",
+    },
+    {
+      position: 2,
+      title: "The Bag Was Never Meant to Stay Full",
+      label: "Empty the Bag",
+      body: "Seed has one purpose: to leave the bag and be planted. A farmer is measured by what he plants, not by what he owns — and sowing is intentional; no field was ever planted by accident. The rich fool built a bigger barn. Barnabas kept emptying his hands.",
+    },
+    {
+      position: 3,
+      title: "Every Generation Has a Bag",
+      label: "One Courageous Yes",
+      body: "\"I don't know enough.\" \"I'm too busy.\" \"My time has passed.\" Every generation has its own excuse — and every excuse keeps the seed in the bag. Every Kingdom conversation begins with one courageous yes.",
+    },
+    {
+      position: 4,
+      title: "Emptying Is Our Job. Growing Is God's.",
+      label: "We Plant. God Grows.",
+      body: "The sower never makes a single seed grow — that was never his job. Paul plants, Apollos waters, God gives the increase. Our assignment isn't to change hearts. Our job is to scatter the seed. We have the easy job.",
+    },
+    {
+      position: 5,
+      title: "Some Seeds Won't Grow Until After You're Gone",
+      label: "Sow Today. Change Tomorrow.",
+      body: "That's not failure — that's seed growing when it's ready. Who sowed into you? Someone whose seed is still growing, who may never have seen the harvest. The most powerful seeds you sow will yield their harvest in your absence. Your legacy is in the seed you sow.",
+    },
+  ],
 };
 
-const saltLight: SermonDetail = {
-  id: "seed-sermon-3",
-  slug: "salt-and-light",
-  title: "Salt and Light",
-  thesis: "A hidden disciple is a contradiction.",
-  scripture_ref: "Matthew 5:13–16",
-  scripture_text: "“You are the light of the world. A city set on a hill cannot be hidden.”",
-  sermon_date: "2026-08-03",
-  artwork_url: null,
-  summary:
-    "PLACEHOLDER — a sample past sermon so the card grid can be judged with more than one item in it.",
-  youtube_url: null,
-  podcast_url: null,
-  guide_url: null,
-  pdf_url: null,
-  is_featured: false,
-  deck_slug: null,
-  speaker: joe,
-  points: [],
+export const seedSermons: SermonDetail[] = [hardTruth, bagOfSeeds];
+
+/**
+ * Slide decks — Joe's real image slides, served from
+ * public/sermons/[slug]/slides/NN.jpg. Each deck's HTML is a single
+ * full-bleed <img> per slide (styled by app/slides/slides.css).
+ */
+
+function imageSlide(dir: string, n: number, alt: string): string {
+  const file = String(n).padStart(2, "0");
+  return `<img class="slide-image" src="/sermons/${dir}/slides/${file}.jpg" alt="${alt}">`;
+}
+
+/** Authoring shape — outline_html and bg default to null in buildDeck. */
+type SeedSlideInput = {
+  position: number;
+  html: string;
+  notes: string | null;
+  outline_html?: string;
+  bg?: string;
 };
 
-export const seedSermons: SermonDetail[] = [hardTruth, shepherd, saltLight];
-
-export const seedSlides: SlideWithNotes[] = [
+const hardTruthSlides: SeedSlideInput[] = [
   {
     position: 1,
-    html: `<p class="kicker">Cisco Church</p><h1>The Hard Truth <em>About the Kingdom</em></h1><p class="ref">Matthew 25:14–30</p>`,
-    notes: "Welcome everyone. Read the parable in full before advancing.",
+    html: imageSlide("the-hard-truth-about-the-kingdom", 1, "The Hard Truth About the Kingdom — Matthew 25:14–30"),
+    notes: "Welcome everyone. Read Matthew 25:14–30 in full. It sounds like a story about money — it isn't.",
   },
   {
     position: 2,
-    html: `<blockquote>“For it will be like a man going on a journey, who called his servants and entrusted to them his property.”</blockquote><p class="ref">Matthew 25:14</p>`,
-    notes: "Set the scene — a long absence, real money, real trust.",
+    html: imageSlide("the-hard-truth-about-the-kingdom", 2, "Introduction — The Kingdom Comes First. Seek first the Kingdom of God, Matthew 6:33"),
+    notes: "If you don't get the Kingdom right, you don't get Jesus right. The Kingdom was Jesus' central message — Matthew 6:33.",
   },
   {
     position: 3,
-    html: `<p class="kicker">One</p><h2>The Ready Servant</h2><p>Five talents. He went <strong>at once</strong> and traded with them.</p>`,
-    notes: "Readiness is decided before the opportunity arrives.",
+    html: imageSlide("the-hard-truth-about-the-kingdom", 3, "The Five-Talented Servant — Prepared. Faithful. Fruitful. God celebrates trust."),
+    notes: "He knew the expectation. He learned, built a process, made it a habit — and when it came time to act, he did. God celebrates trust.",
   },
   {
     position: 4,
-    html: `<p class="kicker">Two</p><h2>The Faithful Servant</h2><p>Two talents — and the <strong>same praise</strong> as five.</p>`,
-    notes: "Faithfulness is measured against what was entrusted.",
+    html: imageSlide("the-hard-truth-about-the-kingdom", 4, "Faithfulness, Not Comparison — be faithful with what you have"),
+    notes: "He could have complained — 'Why did he get five and I only got two?' Instead he put his talents to work. Faithfulness, not comparison.",
   },
   {
     position: 5,
-    html: `<p class="kicker">Three</p><h2>The Fearful Servant</h2><p>“I was afraid, and I hid your talent in the ground.”</p>`,
-    notes: "Fear dressed up as prudence. Slow down here.",
+    html: imageSlide("the-hard-truth-about-the-kingdom", 5, "Fear Buries Potential — don't bury what God has entrusted to you"),
+    notes: "He was afraid. He protected the talent and completely failed to use it. Fear stops the flow of faith — slow down here.",
   },
   {
     position: 6,
-    html: `<p class="kicker">The Reckoning</p><h2>Five Hard Truths</h2><p>The master returns. Accounts get settled. The Kingdom celebrates <strong>results</strong>.</p>`,
-    notes: "Land the five truths, then invitation.",
+    html: imageSlide("the-hard-truth-about-the-kingdom", 6, "Five Hard Truths About the Kingdom — wake up, step up, get to work"),
+    notes: "Everyone has talent. You're on the clock. Talent is meant to be used, not admired. Accountability is real. Talents increase only when you use them.",
+  },
+  {
+    position: 7,
+    html: imageSlide("the-hard-truth-about-the-kingdom", 7, "Faithful Today. Impact Tomorrow. The Kingdom Forever. — Well done, good and faithful servant, Matthew 25:21"),
+    notes: "Final challenges: What talent have you buried? What step of faith have you been afraid to take? Land Matthew 25:21 — 'Well done.'",
   },
 ];
 
-export const seedDeck: Deck = {
-  id: "seed-deck-1",
-  slug: "the-hard-truth",
-  title: "The Hard Truth About the Kingdom",
-  sermon_slug: "the-hard-truth-about-the-kingdom",
-  slides: seedSlides.map(({ position, html }) => ({ position, html })),
-};
+const bagOfSeedsSlides: SeedSlideInput[] = [
+  {
+    position: 1,
+    html: imageSlide("the-bag-of-seeds", 1, "The Bag of Seeds — Full Bags vs Empty Bags, Matthew 13:1–23"),
+    notes: "Welcome. Read Matthew 13:1–23. This time, you're not the soil — you're the sower.",
+  },
+  {
+    position: 2,
+    html: imageSlide("the-bag-of-seeds", 2, "Point one — Every believer carries a bag. Your bag is not random; it's on purpose."),
+    notes: "The farmer scatters everywhere — he never sends soil samples to the lab. God doesn't consult your past to determine your future.",
+  },
+  {
+    position: 3,
+    html: imageSlide("the-bag-of-seeds", 3, "Point two — The bag was never meant to stay full. Empty the bag, multiply the seed."),
+    notes: "Seed has one purpose: to leave the bag. Rich fool vs Barnabas — one built a bigger barn, the other kept emptying his hands.",
+  },
+  {
+    position: 4,
+    html: imageSlide("the-bag-of-seeds", 4, "Point three — Every generation has a bag. Don't let fear or 'not yet' keep your bag full."),
+    notes: "Young: 'I don't know enough.' Busy: 'I'm too busy.' Seasoned: 'My time has passed.' Every Kingdom conversation begins with one courageous yes.",
+  },
+  {
+    position: 5,
+    html: imageSlide("the-bag-of-seeds", 5, "Point four — Emptying is our job. Growing is God's. We plant, we water, God gives the increase."),
+    notes: "The sower never makes a single seed grow. Jonah vs Ananias. Our job is to scatter the seed — we have the easy job.",
+  },
+  {
+    position: 6,
+    html: imageSlide("the-bag-of-seeds", 6, "Point five — Some seeds won't grow until after you're gone. Sow today, change tomorrow."),
+    notes: "That's not failure — that's seed growing when it's ready. Joseph's bones. The most powerful seeds yield their harvest in your absence.",
+  },
+  {
+    position: 7,
+    html: imageSlide("the-bag-of-seeds", 7, "Closing — God never asked us to become the harvest. He simply asked us to empty the bag."),
+    notes: "Empty the bag. Trust God with the harvest. Jesus sowed every seed He had — He poured it all out on the cross. Invitation.",
+  },
+];
+
+/**
+ * Open Water Faith — converted from Joe's hand-built presentation module.
+ * Video-loop backgrounds: "shore" (beached boat) until "Cut the Rope",
+ * then "open" (open water) to the end. Split quotes are single slides
+ * with staged reveals — one click, the second line lands on its own.
+ * Empty html = background only (story beats live in the outline).
+ */
+const openWaterFaithSlides: SeedSlideInput[] = [
+  {
+    position: 1,
+    bg: "shore",
+    html: `<p class="kicker">The Cisco Church</p><div class="rule-line"></div><h1>Open Water Faith</h1><p class="sub">Don't miss the adventure because you never left the shore.</p>`,
+    outline_html: `<p><strong>Open Water Faith</strong> — title up. Hold through the welcome.</p>`,
+    notes: "Hold through the welcome.",
+  },
+  {
+    position: 2,
+    bg: "shore",
+    html: "",
+    outline_html: `<p><strong>Noah and the ark.</strong> We can do a lot of things with boats. In Genesis, God had Noah build an ark — built on dry ground, but it wasn't designed for dry ground. Its purpose could only be realized when the water came.</p>`,
+    notes: "Background only.",
+  },
+  {
+    position: 3,
+    bg: "shore",
+    html: `<h2 class="stage" data-stage="1">It's easy to be satisfied with what a boat can do&hellip;</h2><h2 class="stage" data-stage="2">&hellip;without ever experiencing what it was designed to do.</h2>`,
+    outline_html: `<p>It's easy to be satisfied with what a boat can do&hellip; &hellip;without ever experiencing what it was designed to do.</p>`,
+    notes: "One click — the second line lands by itself after a beat.",
+  },
+  {
+    position: 4,
+    bg: "shore",
+    html: `<blockquote>What if we spend our lives trying to keep the boat where it feels safest instead of discovering what it was built for?</blockquote>`,
+    outline_html: `<p>What if we spend our lives trying to keep the boat where it feels safest instead of discovering what it was built for?</p>`,
+    notes: "Ask the room. Let it sit.",
+  },
+  {
+    position: 5,
+    bg: "shore",
+    html: "",
+    outline_html: `<p><strong>Story — the glass-bottom boat.</strong> Grade school field trip: Aquarena Springs, San Marcos. We could see straight through — the fish, the ground of the river. As the boat moved into deeper water the bottom drifted further away, but you began to see different fish, different things swimming around.</p>`,
+    notes: "Background only.",
+  },
+  {
+    position: 6,
+    bg: "shore",
+    html: `<h2 class="sm">And I wonder sometimes if we settle for seeing only what can be seen from shallow water.</h2>`,
+    outline_html: `<p>And I wonder sometimes if we settle for seeing only what can be seen from shallow water.</p>`,
+    notes: null,
+  },
+  {
+    position: 7,
+    bg: "shore",
+    html: "",
+    outline_html: `<p><strong>Story — our family boat.</strong> There is a lot you can do with a boat. My wife loves to fish — we used to go out on the lake.</p>`,
+    notes: "Background only.",
+  },
+  {
+    position: 8,
+    bg: "shore",
+    html: `<h2>Luke 5:4</h2><p class="sub">We could have used Jesus</p>`,
+    outline_html: `<p><strong>Read Luke 5:4.</strong> Jesus instructs to go deeper — cast your nets again. Peter didn't want to, but he did. Net full — almost sank his boat and the boat that came to help him.</p>`,
+    notes: "Read the passage before advancing.",
+  },
+  {
+    position: 9,
+    bg: "shore",
+    html: `<h2 class="stage" data-stage="1">There may be more to our faith than what we have experienced so far&hellip;</h2><h2 class="stage" data-stage="2">&hellip;but experiencing it requires us to move beyond where we are.</h2>`,
+    outline_html: `<p>There may be more to our faith than what we have experienced so far&hellip; &hellip;but experiencing it requires us to move beyond where we are.</p>`,
+    notes: "One click — second line lands on its own.",
+  },
+  {
+    position: 10,
+    bg: "shore",
+    html: "",
+    outline_html: `<p><strong>Callback — glass-bottom boat.</strong> The boat ride taught me something I didn't understand until much later: the farther we moved from the shoreline, the more there was to see. Maybe that's true of many things. And on the other hand — it's possible to spend years around the water and never discover what's farther out.</p>`,
+    notes: "Background only.",
+  },
+  {
+    position: 11,
+    bg: "shore",
+    html: `<h2>Matthew 4:19</h2><p class="sub">A new meaning of fishing</p>`,
+    outline_html: `<p><strong>Matthew 4:19.</strong> They left their fishing careers to become fishers of people. Maybe they weren't great fishermen — Jesus gave them a promotion. He elevated the concept of fishing: no longer fishers of fish, but fishers of men.</p>`,
+    notes: null,
+  },
+  {
+    position: 12,
+    bg: "shore",
+    html: `<h2>Jesus didn't just change their occupation. He changed their purpose.</h2>`,
+    outline_html: `<p>Jesus didn't just change their occupation. He changed their purpose. Fishing became more than making a living — it became changing the world.</p>`,
+    notes: null,
+  },
+  {
+    position: 13,
+    bg: "shore",
+    html: `<h2>So &mdash; how do you catch a boatload of fish?</h2><p class="sub">Three answers</p>`,
+    outline_html: `<p><strong>The question: how do you catch a boatload of fish?</strong> Three answers follow — cut the rope &middot; stop talking trash &middot; experience open water.</p>`,
+    notes: null,
+  },
+  {
+    position: 14,
+    bg: "open",
+    html: `<p class="kicker">Answer 1 of 3</p><div class="rule-line"></div><h2>Cut the Rope</h2><p class="sub">Stop fishing at the shore</p>`,
+    outline_html: `<p><strong>Answer 1 — Cut the Rope.</strong> Stop fishing at the shore. You can't discover open water while tied to the dock.</p>`,
+    notes: "THE BACKGROUND LAUNCHES HERE — beached boat becomes open water. Give it a beat before you speak.",
+  },
+  {
+    position: 15,
+    bg: "open",
+    html: `<h2>Comfort has never launched a mission.</h2>`,
+    outline_html: `<p>Comfort has never launched a mission. If comfort launched something, it would stop being comfortable. There has never been a great step of faith that didn't create some conflict. If there's no tension — you're probably still standing on the shore.</p>`,
+    notes: null,
+  },
+  {
+    position: 16,
+    bg: "open",
+    html: `<h2 class="sm">Most people don't fail because they don't care. They fail because they've never left the shoreline.</h2>`,
+    outline_html: `<p>Most people don't fail because they don't care. They fail because they've never left the shoreline.</p><p>Then ask: what does someone's faith look like that has never left shallow water?</p>`,
+    notes: null,
+  },
+  {
+    position: 17,
+    bg: "open",
+    html: "",
+    outline_html: `<p><strong>Story — my first fish.</strong> A perch, about the size of a crunchy taco. I wanted to grill it and invite all my friends over. First-fish excitement can be over-lived.</p>`,
+    notes: "Background only.",
+  },
+  {
+    position: 18,
+    bg: "open",
+    html: "",
+    outline_html: `<p><strong>The fish were in deeper water.</strong> The miracle wasn't at the shore — it was waiting where Peter didn't want to go. Obedience often feels unreasonable until you see the catch. Peter wasn't lacking skill; he was lacking expectation. He'd proven he knew how to fish. Jesus wanted to teach him how to trust.</p>`,
+    notes: "Background only.",
+  },
+  {
+    position: 19,
+    bg: "open",
+    html: `<h2 class="sm">Faith goes deeper when we have something to learn instead of something to prove.</h2>`,
+    outline_html: `<p>Faith goes deeper when we have something to learn instead of something to prove.</p>`,
+    notes: null,
+  },
+  {
+    position: 20,
+    bg: "open",
+    html: `<p class="kicker">Answer 2 of 3</p><div class="rule-line"></div><h2 class="sm">Stop Talking Trash About Deep Water Fishermen</h2><p class="sub">Learn from the people whose nets are already full</p>`,
+    outline_html: `<p><strong>Answer 2 — Stop talking trash about deep water fishermen.</strong> Learn from the people whose nets are already full.</p>`,
+    notes: null,
+  },
+  {
+    position: 21,
+    bg: "open",
+    html: `<h2 class="sm">Criticism is often the language of people who never left the shore.</h2>`,
+    outline_html: `<p>Criticism is often the language of people who never left the shore. Don't mock what you haven't experienced. God's calling is usually much clearer than our excuses — and clarity demands a decision.</p>`,
+    notes: null,
+  },
+  {
+    position: 22,
+    bg: "open",
+    html: `<h2 class="sm">The people that have been there are the ones that can take you there.</h2>`,
+    outline_html: `<p>The people that have been there are the ones that can take you there. You can't take others to a place you've never been.</p><p>Learn from experienced fishermen: people want immediate results, the spotlight without the sacrifices, the miracle without leaving the shoreline, the catch without rowing into deep water.</p>`,
+    notes: null,
+  },
+  {
+    position: 23,
+    bg: "open",
+    html: `<h2 class="sm">The things no one sees bring about the results everyone wants.</h2>`,
+    outline_html: `<p>The things no one sees bring about the results everyone wants.</p>`,
+    notes: null,
+  },
+  {
+    position: 24,
+    bg: "open",
+    html: `<div class="pairs"><div><div class="lab">Nobody sees</div><ul><li>the rowing</li><li>the preparation</li><li>the bait</li><li>the repairing of nets</li><li>the courage</li></ul></div><div class="arw">&rarr;</div><div class="out">They only see the fish.</div></div>`,
+    outline_html: `<p><strong>Nobody sees</strong> the rowing, the preparation, the bait, the repairing of nets, the courage &rarr; they only see the fish.</p>`,
+    notes: null,
+  },
+  {
+    position: 25,
+    bg: "open",
+    html: `<div class="pairs"><div><div class="lab">Nobody sees</div><ul><li>prayers</li><li>Bible study</li><li>mentoring</li><li>inviting</li><li>teaching</li><li>serving</li></ul></div><div class="arw">&rarr;</div><div class="out">They only see the baptisms.</div></div>`,
+    outline_html: `<p><strong>Nobody sees</strong> prayers, Bible study, mentoring, inviting, teaching, serving &rarr; they only see the baptisms.</p><p>Everybody wants the catch. Few people want the deep water.</p>`,
+    notes: null,
+  },
+  {
+    position: 26,
+    bg: "open",
+    html: `<h2>Everybody celebrates the fish. Nobody celebrates the rowing.</h2>`,
+    outline_html: `<p>Everybody celebrates the fish. Nobody celebrates the rowing.</p>`,
+    notes: null,
+  },
+  {
+    position: 27,
+    bg: "open",
+    html: `<p class="kicker">Answer 3 of 3</p><div class="rule-line"></div><h2>Experience Open Water Fishing</h2><p class="sub">Learn the deep things</p>`,
+    outline_html: `<p><strong>Answer 3 — Experience open water fishing.</strong> Learn the deep things.</p>`,
+    notes: null,
+  },
+  {
+    position: 28,
+    bg: "open",
+    html: "",
+    outline_html: `<p><strong>Story — the pet lobster.</strong></p>`,
+    notes: "Background only.",
+  },
+  {
+    position: 29,
+    bg: "open",
+    html: `<h2 class="sm">Going out into the deep doesn't make you stronger. It reveals whether you trust the Captain.</h2>`,
+    outline_html: `<p>Going out into the deep doesn't make you stronger. It reveals whether you trust the Captain. Faith grows where the shore disappears. An anchored boat by the shore is a very different experience than the open ocean.</p>`,
+    notes: null,
+  },
+  {
+    position: 30,
+    bg: "open",
+    html: `<h2>Boats tied to the same dock eventually bump into each other.</h2>`,
+    outline_html: `<p>Boats tied to the same dock eventually bump into each other. Boats on a mission in open water have the space to grow and experience greater things.</p>`,
+    notes: null,
+  },
+  {
+    position: 31,
+    bg: "open",
+    html: `<p class="kicker">Closing</p><div class="rule-line"></div><ul><li>Dust off your tacklebox &mdash; Matt. 25:29</li><li>Use what God has made available &mdash; Deut. 6:4&ndash;9</li><li>Try new things &mdash; John 21:6</li></ul>`,
+    outline_html: `<p><strong>Closing.</strong> Dust off your tacklebox (Matt. 25:29) &middot; use what God has made available (Deut. 6:4&ndash;9) &middot; try new things (John 21:6).</p>`,
+    notes: null,
+  },
+  {
+    position: 32,
+    bg: "open",
+    html: "",
+    outline_html: `<p><strong>Callback — the ark.</strong> A boat can look perfectly safe sitting on dry ground — but that's not what it was built for.</p>`,
+    notes: "Background only.",
+  },
+  {
+    position: 33,
+    bg: "open",
+    html: `<h2>The tragedy is not ignorance. The tragedy is unused knowledge.</h2>`,
+    outline_html: `<p>The tragedy is not ignorance. The tragedy is unused knowledge.</p>`,
+    notes: null,
+  },
+  {
+    position: 34,
+    bg: "open",
+    html: `<h2 class="stage" data-stage="1">The goal isn't simply to get people into the boat.</h2><h2 class="stage" data-stage="2">The goal is to get the boat into the water.</h2>`,
+    outline_html: `<p>The goal isn't simply to get people into the boat. The goal is to get the boat into the water.</p><p>That's where you trust God.</p>`,
+    notes: "One click — the punch line lands on its own. Then: that's where you trust God.",
+  },
+  {
+    position: 35,
+    bg: "open",
+    html: `<h2>The church was never built to be a marina.</h2>`,
+    outline_html: `<p>The church was never built to be a marina. A church can have a boat, maintain it, repair it, admire it, sit together in it — and still never launch.</p>`,
+    notes: null,
+  },
+  {
+    position: 36,
+    bg: "open",
+    html: "",
+    outline_html: `<p><strong>Callback — glass-bottom boat, bring it home.</strong> When I got on that boat as a kid, I didn't know what was waiting farther out. I was already impressed by what I could see when we first got on. But the boat didn't stay there. It moved. And the farther we went, the more there was to see. Maybe that's the invitation Jesus is giving us.</p><p>Peter had already been fishing. Already worked. Already used his nets. But Jesus was about to show him something he had never experienced. The difference: Peter had to be willing to go where Jesus told him. Further. Deeper.</p>`,
+    notes: "Background only.",
+  },
+  {
+    position: 37,
+    bg: "open",
+    html: `<blockquote>What is Jesus waiting to show you that you will never experience from the shoreline?</blockquote>`,
+    outline_html: `<p>What is Jesus waiting to show you that you will never experience from the shoreline?</p>`,
+    notes: "Ask the room. Then: God didn't call us to admire the water. He called us to launch into it.",
+  },
+  {
+    position: 38,
+    bg: "open",
+    html: `<h2>Deep water isn't a place. It's a decision.</h2>`,
+    outline_html: `<p>Deep water isn't a place. It's a decision.</p>`,
+    notes: null,
+  },
+  {
+    position: 39,
+    bg: "open",
+    html: `<h2 class="sm">And maybe the greatest thing God still wants to do through your life is something you can't see from the shoreline.</h2>`,
+    outline_html: `<p>And maybe the greatest thing God still wants to do through your life is something you can't see from the shoreline.</p>`,
+    notes: "Final slide. Leave it up.",
+  },
+  {
+    position: 40,
+    bg: "open",
+    html: "",
+    outline_html: `<p><strong>Background only</strong> — invitation / closing prayer.</p>`,
+    notes: null,
+  },
+];
+
+/**
+ * The Obvious — Deuteronomy 6:4–9, 20. Joe's parchment-and-doorway artwork
+ * IS the slide background (title baked in), so every slide carries it and
+ * text lands in the open parchment right of the doorway (.panel). Empty
+ * panel = title screen. Deliberately lean: statements only where they land.
+ */
+const OBVIOUS_BG = `<img class="slide-image drift" src="/sermons/the-obvious/bg.jpg" alt="The Obvious — Deuteronomy 6:4–9, 20">`;
+
+function obviousSlide(panelHtml?: string): string {
+  return panelHtml ? `${OBVIOUS_BG}<div class="panel">${panelHtml}</div>` : OBVIOUS_BG;
+}
+
+const theObviousSlides: SeedSlideInput[] = [
+  {
+    position: 1,
+    html: obviousSlide(),
+    outline_html: `<p><strong>The Obvious</strong> — the key to transformation is right under our nose. Title up; hold through the welcome.</p>`,
+    notes: "Title is on the background. Hold through the welcome.",
+  },
+  {
+    position: 2,
+    html: obviousSlide(
+      `<h2 class="sm stage" data-stage="1">Sometimes the most difficult things to see are not the things that are hidden.</h2><h2 class="sm stage" data-stage="2">They're the things that become all too familiar.</h2>`,
+    ),
+    outline_html: `<p>It's strange how easily we can overlook the events of transformation simply because we stare at them every day. Sometimes the most difficult things to see are not the things that are hidden — they're the things that become all too familiar.</p>`,
+    notes: "One click — second line lands on its own.",
+  },
+  {
+    position: 3,
+    html: obviousSlide(
+      `<h2 class="sm stage" data-stage="1">What if one of our biggest problems isn't what we don't have?</h2><h2 class="sm stage" data-stage="2">What if we're overlooking what God has already put right in front of us?</h2>`,
+    ),
+    outline_html: `<p>We spend a lot of time thinking about what we need but don't have. The hidden belief: transformation is expensive — more money, more people, more talent, more opportunities, more resources.</p><p><strong>What if one of our biggest problems isn't what we don't have? What if we're overlooking what God has already put right in front of us?</strong> How can something be right in front of us every day — and we never see what it could become?</p>`,
+    notes: "One click — the second question lands on its own.",
+  },
+  {
+    position: 4,
+    html: obviousSlide(
+      `<p class="kicker">The question we rarely ask</p><div class="rule-line"></div><blockquote>How could God use this for His purpose?</blockquote>`,
+    ),
+    outline_html: `<p><strong>How do we miss what's right in front of us?</strong> We buy technology and immediately learn how it can entertain us. We discover a new restaurant and think about eating there. We get a new vehicle and think about where we can go. We meet somebody new and look for what we have in common. Nothing wrong with any of that — but there's another question we rarely ask: <strong>how could God use this for His purpose?</strong> Is it possible the place to start is just using what we already have?</p>`,
+    notes: null,
+  },
+  {
+    position: 5,
+    html: obviousSlide(
+      `<h2 class="sm">Moses told the Israelites: &ldquo;Look around, people.&rdquo;</h2><p class="sub">Deuteronomy 6:4&ndash;9</p>`,
+    ),
+    outline_html: `<p><strong>Read Deuteronomy 6:4–9.</strong> Background to Deuteronomy — Moses wasn't merely giving them information. He's teaching them to build a new perspective.</p>`,
+    notes: "Read the passage before advancing.",
+  },
+  {
+    position: 6,
+    html: obviousSlide(
+      `<blockquote>&ldquo;These commandments that I give you today are to be on your hearts.&rdquo;</blockquote><p class="ref">Deuteronomy 6:6</p>`,
+    ),
+    outline_html: `<p><strong>Destination — the heart. The means</strong> — doorpost, hand, forehead, conversations, morning, evening, and roadway. Don't confine God's Word to one religious moment. Surround yourself with reminders of it. Build it into your day, your house, your relationships, the raising of your children.</p>`,
+    notes: null,
+  },
+  {
+    position: 7,
+    html: obviousSlide(
+      `<h2 class="sm">Make the Word of God part of the architecture of your life.</h2>`,
+    ),
+    outline_html: `<p>This wasn't "remember to have a Bible lesson occasionally." It was much bigger: <strong>make the Word of God part of the architecture of your life.</strong> Israel now possessed God's revealed instruction in a form that could be remembered, taught, repeated, written, displayed, and deliberately passed from one generation to another.</p>`,
+    notes: null,
+  },
+  {
+    position: 8,
+    html: obviousSlide(
+      `<p class="kicker">Look around</p><div class="rule-line"></div><ul><li>Your house? <strong>Use it.</strong></li><li>Your doorway? <strong>Use it.</strong></li><li>Your conversations with your children? <strong>Use them.</strong></li><li>Walking down the road? <strong>Use that.</strong></li><li>Waking up? Going to bed? <strong>Use that.</strong></li></ul>`,
+    ),
+    outline_html: `<p><strong>Moses isn't pointing them toward some extraordinary resource.</strong> He's saying: look around. There's a door — write it there. You have children — talk to them. You're going somewhere — talk about it while you're walking. Sitting around the house — talk about it there. Getting ready for bed — there's another opportunity. Waking up — there's another one.</p>`,
+    notes: null,
+  },
+  {
+    position: 9,
+    html: obviousSlide(
+      `<h2 class="sm">Turn ordinary events into a delivery system for the Word of God.</h2>`,
+    ),
+    outline_html: `<p><strong>Moses is calling on us to turn ordinary events into a DELIVERY SYSTEM for the Word of God.</strong></p>`,
+    notes: null,
+  },
+  {
+    position: 10,
+    html: obviousSlide(
+      `<h2 class="sm stage" data-stage="1">None of those events were new.</h2><h2 class="sm stage" data-stage="2">What Moses changed was the purpose attached to them.</h2>`,
+    ),
+    outline_html: `<p><strong>The question nobody is asking: why would Moses have to tell them this?</strong> He's commanding something that apparently wasn't happening automatically. They had doors before Moses mentioned doorposts. They had homes. Children. Conversations. They walked the roads, woke up, went to sleep. None of those events were new — <strong>what Moses changed was the purpose attached to them.</strong></p>`,
+    notes: "One click — second line lands on its own.",
+  },
+  {
+    position: 11,
+    html: obviousSlide(
+      `<h2 class="sm stage" data-stage="1">Maybe our greatest Kingdom problem isn't that we don't have enough resources.</h2><h2 class="sm stage" data-stage="2">Maybe we haven't learned to see the Kingdom possibilities in the resources we already have.</h2>`,
+    ),
+    outline_html: `<p>Maybe our greatest Kingdom problem isn't that we don't have enough resources. Maybe we just haven't learned how to see the Kingdom possibilities in the resources we already have.</p>`,
+    notes: "One click — second line lands on its own.",
+  },
+  {
+    position: 12,
+    html: obviousSlide(
+      `<p class="kicker">Obvious questions</p><div class="rule-line"></div><ul><li>What do I already have?</li><li>Who do I already know?</li><li>Where do I already go?</li><li>What am I already good at?</li><li>What conversations am I already having?</li></ul>`,
+    ),
+    outline_html: `<p><strong>Obvious questions:</strong> What do I already have? Who do I already know? Where do I already go? What am I already good at? What technology am I already using? What conversations am I already having? At what places am I already hanging out?</p><p>Moses wanted Israel to build habits that would keep them seeing it over and over — because whatever isn't deliberately built into our lives eventually gets crowded out by everything that is. God didn't give Israel new things to do. He gave them new reasons.</p>`,
+    notes: null,
+  },
+  {
+    position: 13,
+    html: obviousSlide(
+      `<h2 class="sm">The danger was walking into abundance and going blind.</h2>`,
+    ),
+    outline_html: `<p>The danger wasn't scarcity. The danger wasn't the enemy. The danger wasn't the wilderness. <strong>The danger was walking into abundance and going blind.</strong> The solution: create new habits.</p><p><strong>Our habits reveal what gets our best</strong> — and they explain why we overlook the obvious. Nobody reminds us to check our phones. We don't need a discipleship class to teach us to open Facebook. Nobody calls me Thursday afternoon: "Joe, remember, you're supposed to eat supper tonight."</p>`,
+    notes: "The supper line is the laugh — let it land.",
+  },
+  {
+    position: 14,
+    html: obviousSlide(
+      `<h2 class="sm">Has the Kingdom become something we believe in without becoming something we build our lives around?</h2>`,
+    ),
+    outline_html: `<p>Our lives naturally organize themselves around things we have decided matter. And that's where the uncomfortable question creeps in: <strong>has the Kingdom become something we believe in without it becoming something we build our lives around?</strong> Present in belief but absent in life.</p><p>Moses is saying: build habits that keep God from becoming peripheral. There's an idea in leadership called a <strong>keystone habit</strong> — one small habit that begins influencing other areas of your life (floss → "I'm disciplined" → kiss the wife → wake up ready). Moses understood that long ago: not "once a year, have a big spiritual event" — when you get up, talk about it; around the house, talk about it; traveling, going to bed, talk about it. <strong>Attach the things of God to things you're already doing.</strong> One small, repeated habit can change the environment of an entire life — transformation.</p>`,
+    notes: null,
+  },
+  {
+    position: 15,
+    html: obviousSlide(
+      `<blockquote>&ldquo;Don't live the way this world lives. Let your way of thinking be completely changed.&rdquo;</blockquote><p class="ref">Romans 12:2 (NIrV)</p>`,
+    ),
+    outline_html: `<p><strong>Romans 12:2 (NIrV):</strong> "Don't live the way this world lives. Let your way of thinking be completely changed. Then you will be able to test what God wants for you. And you will agree that what he wants is right. His plan is good and pleasing and perfect." Paul taught that true transformation comes from God by changing how you think.</p>`,
+    notes: null,
+  },
+  {
+    position: 16,
+    html: obviousSlide(
+      `<p class="kicker">One question</p><div class="rule-line"></div><blockquote>How can I use this moment for the Kingdom?</blockquote>`,
+    ),
+    outline_html: `<p><strong>Imagine if we started asking one question.</strong> What if for the next week you developed one new keystone habit — every time you pick up something, walk into some place, meet somebody: <strong>"How can I use this moment for the Kingdom?"</strong></p><p>Bought a car? New computer? Love drinking coffee somewhere every morning? Good at woodworking? Have a home? Know how to make videos? An awesome cook — who could sit around your table? Maybe that's the event that makes a difference for God's Kingdom.</p>`,
+    notes: null,
+  },
+  {
+    position: 17,
+    html: obviousSlide(
+      `<h2 class="sm">Don't miss what God can do through something you've stopped noticing.</h2>`,
+    ),
+    outline_html: `<p><strong>Don't miss what God can do through something you've stopped noticing.</strong> Some of our greatest Kingdom opportunities may be hiding in plain sight.</p><p>One last thought&hellip;</p>`,
+    notes: null,
+  },
+  {
+    position: 18,
+    html: obviousSlide(
+      `<h2 class="sm">Don't miss the handoff.</h2><p class="sub">Deuteronomy 6:20</p>`,
+    ),
+    outline_html: `<p><strong>Don't miss the handoff.</strong> Immediately after the teaching instructions, Moses starts talking about children and future generations. "In the future, when your son asks you, 'What is the meaning of the stipulations, decrees and laws…?'" (Deut. 6:20) — you tell them what God did in Egypt.</p><p>Every generation inherits something from the generation before it. Every generation is teaching the generation behind it — even when it doesn't realize it's teaching. <strong>How are we helping the next generation know, discover, and appreciate who God is?</strong></p><p>In 2026 we have phones, tablets, computers, social media, video, podcasts, coffee shops, vehicles, homes, workplaces, friendships, hobbies&hellip; The problem isn't opportunity. We may have more ways to communicate than any generation in history — and still fail to communicate the thing that matters most.</p>`,
+    notes: null,
+  },
+  {
+    position: 19,
+    html: obviousSlide(
+      `<h2 class="sm stage" data-stage="1">The last time God told Israel to put something on a doorframe, it was blood.</h2><h2 class="sm stage" data-stage="2">And it was the difference between life and death.</h2>`,
+    ),
+    outline_html: `<p>Imagine where the Israelites stood&hellip; <strong>The last time God told Israel to put something on a doorframe, it was blood</strong> (Egypt). And it was the difference between life and death.</p>`,
+    notes: "One click — second line lands on its own. Slow down here.",
+  },
+  {
+    position: 20,
+    html: obviousSlide(
+      `<h2 class="sm">God has always done His most important work on ordinary doorways.</h2><p class="sub">Claim your doorway for the Kingdom.</p>`,
+    ),
+    outline_html: `<p><strong>God has always done His most important work on ordinary doorways.</strong> Claim your doorway for the Kingdom.</p>`,
+    notes: null,
+  },
+  {
+    position: 21,
+    html: obviousSlide(
+      `<blockquote>&ldquo;As for me and my house, we will serve the Lord.&rdquo;</blockquote><p class="ref">Joshua 24:15</p>`,
+    ),
+    outline_html: `<p>Near the end of his life, Joshua gathers Israel at Shechem and challenges them to give up foreign idols and choose whom they will follow: <strong>"As for me and my house, we will serve the Lord."</strong> (Joshua 24:15)</p><p>Are you ready to reclaim your doorpost for the Kingdom? Walks, restaurants, cars, mornings, nights&hellip;</p>`,
+    notes: null,
+  },
+  {
+    position: 22,
+    html: obviousSlide(
+      `<p class="kicker">The challenge</p><div class="rule-line"></div><ol><li>Start noticing the daily events where transformation is hidden.</li><li>Build one keystone habit for the Kingdom &mdash; and start seeing God appear in your life.</li></ol>`,
+    ),
+    outline_html: `<p><strong>Final challenge:</strong> 1) Start taking notice of the daily events where transformation is hidden. 2) Build one "keystone" habit for the Kingdom and start seeing God appear in your life.</p>`,
+    notes: null,
+  },
+  {
+    position: 23,
+    html: obviousSlide(),
+    outline_html: `<p><strong>Title screen</strong> — invitation / closing prayer.</p>`,
+    notes: "Background only for the invitation.",
+  },
+];
+
+type SeedDeckWithNotes = Deck & { slidesWithNotes: SlideWithNotes[] };
+
+function buildDeck(
+  id: string,
+  slug: string,
+  title: string,
+  sermonSlug: string | null,
+  slides: SeedSlideInput[],
+  backgrounds: Deck["backgrounds"] = {},
+): SeedDeckWithNotes {
+  const normalized: SlideWithNotes[] = slides.map((s) => ({
+    position: s.position,
+    html: s.html,
+    outline_html: s.outline_html ?? null,
+    bg: s.bg ?? null,
+    notes: s.notes,
+  }));
+  return {
+    id,
+    slug,
+    title,
+    sermon_slug: sermonSlug,
+    backgrounds,
+    slides: normalized.map(({ notes: _n, ...slide }) => slide),
+    slidesWithNotes: normalized,
+  };
+}
+
+export const seedDecks: SeedDeckWithNotes[] = [
+  buildDeck("seed-deck-1", "the-hard-truth", "The Hard Truth About the Kingdom", "the-hard-truth-about-the-kingdom", hardTruthSlides),
+  buildDeck("seed-deck-2", "the-bag-of-seeds", "The Bag of Seeds", "the-bag-of-seeds", bagOfSeedsSlides),
+  buildDeck("seed-deck-3", "open-water-faith", "Open Water Faith", null, openWaterFaithSlides, {
+    shore: { video: "/sermons/open-water-faith/bg/shore.mp4" },
+    open: { video: "/sermons/open-water-faith/bg/open.mp4" },
+  }),
+  buildDeck("seed-deck-4", "the-obvious", "The Obvious", null, theObviousSlides),
+];
+
+export function findSeedDeck(slug: string): Deck | null {
+  const found = seedDecks.find((d) => d.slug === slug);
+  if (!found) return null;
+  const { slidesWithNotes: _n, ...deck } = found;
+  return deck;
+}
+
+export function seedDeckNotes(slug: string): { position: number; notes: string | null }[] | null {
+  const found = seedDecks.find((d) => d.slug === slug);
+  if (!found) return null;
+  return found.slidesWithNotes.map((s) => ({ position: s.position, notes: s.notes }));
+}
 
 export const seedDeckState: DeckState = {
   current_slide: 1,
   is_live: false,
+  is_blank: false,
 };
 
 export function seedSermonList(): Sermon[] {

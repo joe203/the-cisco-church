@@ -138,9 +138,10 @@ cisco_sermons        slug, title, thesis, scripture_ref, scripture_text,
                      sermon_date, artwork_url, summary, youtube_url,
                      podcast_url, guide_url, pdf_url, speaker_id, is_featured
 cisco_sermon_points  sermon_id, position, title, label, body
-cisco_decks          slug, title, sermon_id
-cisco_slides         deck_id, position, html, notes   ← notes never reach anon
-cisco_deck_state     deck_id, current_slide, is_live  ← the realtime row
+cisco_decks          slug, title, sermon_id, metadata->backgrounds
+cisco_slides         deck_id, position, html, outline_html, bg,
+                     notes                            ← notes never reach anon
+cisco_deck_state     deck_id, current_slide, is_live, is_blank ← realtime row
 ```
 
 The homepage features `is_featured`, falling back to the newest `sermon_date`.
@@ -179,23 +180,39 @@ unreachable.
 
 ## Slide System
 
-### Presenter (`/slides/[deck]/present`)
+### Controller (`/slides/[deck]/present`) — Joe's outline + clicker
 - Gated by `PRESENTER_KEY` (entered once, held in `sessionStorage`).
-- Advance: right arrow, spacebar, tap right half. Back: left arrow, tap left half.
-- Shows current slide, next-slide preview, presenter notes, slide count, live toggle.
-- Every advance POSTs to the Route Handler; optimistic local advance so the
-  presenter never waits on the network.
+- Layout: locked centered slide preview + controls on top; the **full sermon
+  outline** scrolls in its own region beneath. Each slide's `outline_html`
+  is a clickable segment — tap it and that slide goes to the screen. The
+  current segment stays highlighted (Joe uses this to keep his place).
+- Advance: tap preview (left quarter = back), Next/Back buttons, arrows,
+  space, PageUp/PageDown (presentation clickers). `b` toggles Blank.
+- Optimistic local advance; every change POSTs to the Route Handler.
 
-### Viewer (`/slides/[deck]`)
-- Fullscreen, dark, no site chrome.
-- Follows the realtime cursor when `is_live`; self-paced otherwise.
-- Cross-fade between slides — `opacity` only, ~200ms, respects `prefers-reduced-motion`.
+### Screen (`/slides/[deck]`)
+- Fullscreen (F key), dark, no site chrome.
+- Follows the presenter when `is_live` (Realtime + 2s poll); self-paced otherwise.
+- **Background layers**: decks may define looping videos/images in
+  `cisco_decks.metadata->backgrounds`, keyed per slide via `cisco_slides.bg`;
+  the active layer cross-fades on key change. Blank hides content, keeps the
+  background running.
 - Projector-legible: minimum body text 32px at 1080p, high contrast, no thin weights.
 
 ### Slide HTML
 - HTML fragments in `cisco_slides.html`. **Sanitize on render**
   (`isomorphic-dompurify`) — always, even though only Joe authors slides.
 - Styling comes from `app/slides/slides.css`, not inline styles in stored HTML.
+- **Staged reveals**: elements with `class="stage"` + `data-stage="2|3"` fade
+  in ~2.8s/5.6s after slide entry — long quotes land in one click, never two.
+- Empty `html` = background-only slide (story beats live in the outline).
+
+### Authoring + sync model
+- Decks live in `lib/seed.ts` until Supabase is connected; export any deck to
+  SQL with `node scripts/export-deck-sql.mjs <slug> <uuid>`.
+- Without Supabase, deck state lives in the state route's process memory —
+  cross-device sync works via the 2s poll. With Supabase, the DB is the store
+  and Realtime pushes instantly (poll stays as fallback).
 
 ---
 
@@ -291,39 +308,43 @@ project-root/
 
 ---
 
-## Visual Identity (UNDER REVISION — see CURRENT_STATUS.md)
+## Visual Identity — "Texas morning" (adopted 2026-08-15)
 
-**2026-08-14:** Joe likes this palette but finds it **too dark for this site**
-— the look must communicate **life and adventure**. He is supplying
-inspiration images; expect a lighter, more energetic rework. Until that lands,
-the tokens below remain in force.
+**Light, sunlit, celebrative.** The 2026-08-15 design refresh replaced the
+dark espresso/gold site look (Joe: "too dark — must communicate life and
+adventure") with a light palette inspired by the Oak Hills samples in
+`photos/sample_*.png`. **The slide system keeps the old dark gold-on-espresso
+identity** — slides are built for projectors in dark rooms.
 
 **Naming:** the site brands as **"The Cisco Church"**. "Church of Christ"
 appears **sparingly** — one footer mention on the homepage, no more. Voice:
 energy, momentum, things happening. Never "small church / country church /
 simple worship / the way we've always done it."
 
-Derived from Joe's existing hand-built sermon pages. Use these tokens exactly.
-
 | Token | Hex | Use |
 |-------|-----|-----|
-| Espresso | `#17110D` | Dominant dark field |
-| Pitch | `#0D0906` | Hero, footer, deepest layer |
-| Parchment | `#EDE6DA` | Light bands |
-| Bone | `#F7F2E9` | Cards on parchment |
-| Lamplight | `#C9A063` | Accent — eyebrows, references, borders, CTAs |
-| Burnish | `#8A6A32` | Accent hover/pressed |
-| Cream | `#F4EDE2` | Text on dark |
-| Ash | `#A2937F` | Muted text on dark |
-| Umber | `#3D3128` | Muted text on light |
+| Cloud | `#FDFBF6` | Base page background |
+| Sand | `#F5EEE1` | Warm alternate band |
+| Ink | `#14333C` | Text on light; dark footer/resources field |
+| Teal | `#12838D` | Primary — hero field, headings accents, links |
+| Deepsea | `#0B545D` | Deep teal band (service times, scripture), hovers |
+| Coral | `#E4573D` | Energy — solid CTAs, arrows, "read" links |
+| Clay | `#BF3F28` | Coral pressed/hover |
+| Marigold | `#F2AE3F` | Celebration accent **on dark fields only** (fails contrast on light) |
 
-- **Display:** Bodoni Moda — large sizes only (~2.5rem+); never small UI text.
+Dark-room tokens (Espresso `#17110D`, Pitch `#0D0906`, Lamplight `#C9A063`,
+Cream `#F4EDE2`, Ash `#A2937F`, etc.) remain defined in `globals.css` for the
+slide viewer/presenter only.
+
+- **Display:** Bricolage Grotesque (bold/extrabold) — headings, card titles.
+- **Hero voice:** Figtree 900 italic uppercase — the diagonal-field headline.
+- **Serif:** Bodoni Moda italic — scripture passages and theses only.
 - **Body:** Figtree. **Utility:** Figtree uppercase, `0.14em` tracking.
-- Script belongs on sermon artwork only. Never in the UI.
-- The site alternates dark and light bands; **dark is the home key**. Parchment
-  sections read as breaths between dark movements.
-- Slides: dark field, Cream text, Lamplight scripture references. Built for a
-  dark room.
+- Geometry is **rounded and friendly**: pill buttons, `rounded-2xl` cards,
+  "snapshot" photos with slight rotation and tinted shadows.
+- Signature device: **momentum diagonals** — the hero's clipped teal field
+  and the mobile photo's slanted top edge. Don't spread diagonals everywhere.
+- Shadows are ink/teal-tinted and layered — never flat `shadow-md`.
 
 ### Anti-generic guardrails (unchanged, non-negotiable)
 - Never the default Tailwind palette; tokens above only.

@@ -21,13 +21,13 @@ export default async function SermonsPage() {
   const years = [...byYear.keys()].sort((a, b) => b - a);
 
   return (
-    <div className="bg-espresso">
+    <div className="bg-cloud">
       <div className="mx-auto max-w-6xl px-5 py-16 sm:px-8 lg:py-20">
-        <p className="eyebrow text-lamplight">The archive</p>
-        <h1 className="font-display mt-4 text-display tracking-[-0.02em] text-cream">
+        <p className="eyebrow text-teal">The archive</p>
+        <h1 className="font-display mt-4 text-display font-extrabold tracking-[-0.02em] text-ink">
           Sermons
         </h1>
-        <p className="mt-5 max-w-[52ch] text-[1.02rem] text-ash">
+        <p className="mt-5 max-w-[52ch] text-[1.02rem] text-ink/70">
           Every lesson preached here, newest first — with the slides, guide,
           and recording wherever they exist. Missed a Sunday? Catch up here.
         </p>
@@ -35,8 +35,8 @@ export default async function SermonsPage() {
         {years.map((year) => (
           <section key={year} className="mt-14">
             <div className="flex items-baseline gap-5">
-              <h2 className="font-display text-[1.9rem] text-lamplight">{year}</h2>
-              <div className="h-px flex-1 rule-gold border-t" aria-hidden />
+              <h2 className="font-display text-[1.9rem] font-bold text-teal">{year}</h2>
+              <div className="h-px flex-1 rule-tint border-t" aria-hidden />
             </div>
             <div className="mt-7 grid gap-6 md:grid-cols-2">
               {byYear.get(year)!.map((sermon) => (

@@ -21,67 +21,67 @@ const expectations = [
 
 export function Welcome() {
   return (
-    <section className="bg-parchment text-umber">
+    <section className="bg-cloud text-ink">
       <div className="mx-auto max-w-6xl px-5 py-20 sm:px-8 lg:py-28">
         <div className="lg:grid lg:grid-cols-[1fr_1.35fr] lg:gap-16">
           <div className="reveal">
-            <p className="eyebrow text-burnish">What to expect</p>
-            <h2 className="font-display mt-5 text-display tracking-[-0.02em] text-espresso">
+            <p className="eyebrow text-teal">What to expect</p>
+            <h2 className="font-display mt-5 text-display font-extrabold tracking-[-0.02em] text-ink">
               Come
               <br />
               expecting.
             </h2>
-            <p className="mt-7 max-w-[46ch] text-[1.05rem] leading-[1.7]">
+            <p className="mt-7 max-w-[46ch] text-[1.05rem] leading-[1.7] text-ink/85">
               We open our Bibles, we sing together, and we share the
               Lord&rsquo;s Supper every week. Worship here is alive — voices
               filling the room, prayers that mean something, teaching that
               meets your Monday. And it doesn&rsquo;t stop at Sunday: Bible
               studies, church events, tables full of food and laughter.{" "}
-              <strong className="font-semibold text-espresso">
+              <strong className="font-bold text-ink">
                 This is the place to be part of it.
               </strong>
             </p>
             <PhotoSlot
-              file="bible-class.jpg"
-              alt="Kids and teachers together in the pews"
-              caption="A photo of teaching or Bible class goes here — shot 3 in PHOTO_GUIDE.md."
-              className="mt-10 aspect-[4/3] shadow-(--shadow-panel-light)"
+              file="fellowship-ladies.jpg"
+              alt="Two friends laughing together over dinner in the fellowship hall"
+              caption="A photo of fellowship joy goes here."
+              className="snapshot mt-10 aspect-[4/3] -rotate-1"
             />
           </div>
 
           <div className="mt-12 lg:mt-2">
-            <dl className="reveal divide-y divide-umber/15 border-y border-umber/15">
+            <dl className="reveal divide-y divide-ink/10 border-y border-ink/10">
               {expectations.map((item) => (
                 <div
                   key={item.term}
                   className="grid gap-1 py-5 sm:grid-cols-[minmax(11rem,0.6fr)_1fr] sm:gap-6"
                 >
-                  <dt className="font-semibold text-espresso">{item.term}</dt>
-                  <dd className="text-[0.98rem] leading-relaxed text-umber/90">
+                  <dt className="font-semibold text-ink">{item.term}</dt>
+                  <dd className="text-[0.98rem] leading-relaxed text-ink/75">
                     {item.detail}
                   </dd>
                 </div>
               ))}
             </dl>
 
-            <div className="reveal mt-10 grid grid-cols-2 gap-3">
+            <div className="reveal mt-10 grid grid-cols-2 gap-4">
               <PhotoSlot
                 file="congregation.jpg"
                 alt="The whole church family sharing a meal in the fellowship hall"
-                caption="The fellowship candid goes here — shot 2 in PHOTO_GUIDE.md."
-                className="col-span-2 aspect-[16/8] shadow-(--shadow-panel-light)"
+                caption="The fellowship candid goes here."
+                className="snapshot col-span-2 aspect-[16/8] rotate-1"
               />
               <PhotoSlot
-                file="fellowship-men.jpg"
-                alt="Three men visiting together in the fellowship hall"
-                caption="Fellowship photo"
-                className="aspect-[4/3] shadow-(--shadow-panel-light)"
+                file="kids-outside.jpg"
+                alt="A bunch of kids grinning outside on a summer morning"
+                caption="Kids outside"
+                className="snapshot aspect-[4/3] -rotate-1"
               />
               <PhotoSlot
                 file="youth.jpg"
                 alt="A young member and kids of the congregation grinning for a selfie"
                 caption="Fellowship photo"
-                className="aspect-[4/3] shadow-(--shadow-panel-light)"
+                className="snapshot aspect-[4/3] rotate-2"
               />
             </div>
           </div>

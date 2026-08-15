@@ -11,22 +11,30 @@ type LiveViewerProps = {
 };
 
 /**
- * Fullscreen viewer. While the deck is live it follows the presenter's
- * cursor over Supabase Realtime, with a 5s poll as belt-and-suspenders —
- * a dropped socket mid-service must never strand a projected screen.
- * When not live, it becomes self-paced.
+ * The screen. While the deck is live it follows the presenter's cursor —
+ * Supabase Realtime when configured, with a 2s poll as belt-and-suspenders;
+ * a dropped socket mid-service must never strand a projected screen. When
+ * not live, it becomes self-paced.
+ *
+ * Decks may define looping background layers (video or image), keyed per
+ * slide; the active layer cross-fades when a slide switches keys. Blank
+ * drops the slide content and leaves the background running.
  */
 export function LiveViewer({ deck, initialState }: LiveViewerProps) {
   const [state, setState] = useState<DeckState>(initialState);
   const [selfIndex, setSelfIndex] = useState(initialState.current_slide - 1);
   const stateRef = useRef(state);
   stateRef.current = state;
+  const rootRef = useRef<HTMLDivElement>(null);
 
   const count = deck.slides.length;
   const isLive = state.is_live;
   const index = isLive
     ? Math.min(count - 1, Math.max(0, state.current_slide - 1))
     : Math.min(count - 1, Math.max(0, selfIndex));
+
+  const bgKeys = Object.keys(deck.backgrounds);
+  const hasMedia = bgKeys.length > 0;
 
   // Realtime subscription
   useEffect(() => {
@@ -48,6 +56,7 @@ export function LiveViewer({ deck, initialState }: LiveViewerProps) {
             setState({
               current_slide: next.current_slide,
               is_live: Boolean(next.is_live),
+              is_blank: Boolean(next.is_blank),
             });
           }
         },
@@ -58,7 +67,7 @@ export function LiveViewer({ deck, initialState }: LiveViewerProps) {
     };
   }, [deck.id]);
 
-  // 5-second poll fallback
+  // 2-second poll fallback — also the primary sync path pre-Supabase.
   useEffect(() => {
     const timer = setInterval(async () => {
       try {
@@ -66,13 +75,21 @@ export function LiveViewer({ deck, initialState }: LiveViewerProps) {
         if (!res.ok) return;
         const next = (await res.json()) as DeckState;
         const prev = stateRef.current;
-        if (next.current_slide !== prev.current_slide || next.is_live !== prev.is_live) {
-          setState({ current_slide: next.current_slide, is_live: next.is_live });
+        if (
+          next.current_slide !== prev.current_slide ||
+          next.is_live !== prev.is_live ||
+          next.is_blank !== prev.is_blank
+        ) {
+          setState({
+            current_slide: next.current_slide,
+            is_live: next.is_live,
+            is_blank: Boolean(next.is_blank),
+          });
         }
       } catch {
         // Network hiccup — realtime or the next poll will catch up.
       }
-    }, 5000);
+    }, 2000);
     return () => clearInterval(timer);
   }, [deck.slug]);
 
@@ -84,15 +101,28 @@ export function LiveViewer({ deck, initialState }: LiveViewerProps) {
     [count],
   );
 
+  const toggleFullscreen = useCallback(() => {
+    if (document.fullscreenElement) {
+      void document.exitFullscreen();
+    } else {
+      void rootRef.current?.requestFullscreen?.();
+    }
+  }, []);
+
   useEffect(() => {
-    if (isLive) return;
     function onKey(e: KeyboardEvent) {
-      if (e.key === "ArrowRight" || e.key === " ") go(1);
-      if (e.key === "ArrowLeft") go(-1);
+      if (e.key === "f" || e.key === "F") {
+        e.preventDefault();
+        toggleFullscreen();
+        return;
+      }
+      if (isLive) return;
+      if (e.key === "ArrowRight" || e.key === " " || e.key === "PageDown") go(1);
+      if (e.key === "ArrowLeft" || e.key === "PageUp") go(-1);
     }
     document.addEventListener("keydown", onKey);
     return () => document.removeEventListener("keydown", onKey);
-  }, [isLive, go]);
+  }, [isLive, go, toggleFullscreen]);
 
   // Entering live mode: hand the cursor to the presenter.
   useEffect(() => {
@@ -102,10 +132,50 @@ export function LiveViewer({ deck, initialState }: LiveViewerProps) {
   const slide = deck.slides[index];
   if (!slide) return null;
 
+  const activeBg = slide.bg && deck.backgrounds[slide.bg] ? slide.bg : bgKeys[0];
+  const blanked = isLive && state.is_blank;
+
   return (
-    <div className="flex min-h-dvh flex-col items-center justify-center bg-pitch">
+    <div
+      ref={rootRef}
+      className="relative flex min-h-dvh flex-col items-center justify-center overflow-hidden bg-pitch"
+    >
+      {/* Background layers — all mounted, active one faded in. */}
+      {bgKeys.map((bgKey) => {
+        const layer = deck.backgrounds[bgKey];
+        const on = bgKey === activeBg;
+        const cls = `absolute inset-0 h-full w-full object-cover transition-opacity duration-1000 ${
+          on ? "opacity-100" : "opacity-0"
+        }`;
+        return layer.video ? (
+          <video
+            key={bgKey}
+            className={cls}
+            src={layer.video}
+            autoPlay
+            loop
+            muted
+            playsInline
+            preload="auto"
+            aria-hidden
+          />
+        ) : layer.image ? (
+          // eslint-disable-next-line @next/next/no-img-element -- decorative full-bleed layer
+          <img key={bgKey} className={cls} src={layer.image} alt="" aria-hidden />
+        ) : null;
+      })}
+      {hasMedia && (
+        <div
+          aria-hidden
+          className="absolute inset-0 bg-[linear-gradient(rgb(13_9_6/0.45),rgb(13_9_6/0.45))] [box-shadow:inset_0_0_30vh_12vh_rgb(13_9_6/0.55)]"
+        />
+      )}
+
+      {/* Slide content */}
       <div
-        className="relative w-full max-w-[calc(100dvh*16/9)]"
+        className={`relative z-10 w-full max-w-[calc(100dvh*16/9)] transition-opacity duration-500 ${
+          blanked ? "opacity-0" : "opacity-100"
+        }`}
         onClick={
           isLive
             ? undefined
@@ -115,10 +185,14 @@ export function LiveViewer({ deck, initialState }: LiveViewerProps) {
               }
         }
       >
-        <SlideFrame key={slide.position} html={slide.html} />
+        <SlideFrame
+          key={slide.position}
+          html={slide.html}
+          className={hasMedia ? "on-media" : ""}
+        />
       </div>
 
-      <div className="pointer-events-none fixed inset-x-0 bottom-0 flex items-center justify-between px-5 py-4">
+      <div className="pointer-events-none fixed inset-x-0 bottom-0 z-10 flex items-center justify-between px-5 py-4">
         <p className="text-[0.8rem] tabular-nums text-ash/70">
           {index + 1} / {count}
         </p>
@@ -129,7 +203,7 @@ export function LiveViewer({ deck, initialState }: LiveViewerProps) {
           </p>
         ) : (
           <p className="text-[0.8rem] text-ash/70">
-            Self-paced — tap or use arrow keys
+            Self-paced — tap or use arrow keys · F fullscreen
           </p>
         )}
       </div>

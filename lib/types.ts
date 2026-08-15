@@ -41,10 +41,20 @@ export type SermonDetail = Sermon & {
 export type Slide = {
   position: number;
   html: string;
+  /** Segment of the sermon outline shown on the controller; clickable. */
+  outline_html: string | null;
+  /** Background key into Deck.backgrounds (e.g. "shore"); null = default. */
+  bg: string | null;
 };
 
 export type SlideWithNotes = Slide & {
   notes: string | null;
+};
+
+/** A deck background layer: a looping video or a still image. */
+export type DeckBackground = {
+  video?: string;
+  image?: string;
 };
 
 export type Deck = {
@@ -52,10 +62,13 @@ export type Deck = {
   slug: string;
   title: string;
   sermon_slug: string | null;
+  /** Keyed background layers, from cisco_decks.metadata -> backgrounds. */
+  backgrounds: Record<string, DeckBackground>;
   slides: Slide[];
 };
 
 export type DeckState = {
   current_slide: number;
   is_live: boolean;
+  is_blank: boolean;
 };

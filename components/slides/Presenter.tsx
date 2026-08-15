@@ -1,6 +1,7 @@
 "use client";
 
-import { useCallback, useEffect, useRef, useState } from "react";
+import DOMPurify from "isomorphic-dompurify";
+import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import type { Deck, DeckState } from "@/lib/types";
 import { SlideFrame } from "./SlideFrame";
 
@@ -13,21 +14,44 @@ type PresenterProps = {
 
 type NotesByPosition = Record<number, string | null>;
 
+/** Clicker + keyboard bindings. Presentation clickers send PageUp/PageDown. */
+const NEXT_KEYS = ["ArrowRight", "ArrowDown", "PageDown", " ", "Enter"];
+const PREV_KEYS = ["ArrowLeft", "ArrowUp", "PageUp", "Backspace"];
+
+function OutlineHtml({ html, className = "" }: { html: string; className?: string }) {
+  const clean = useMemo(
+    () =>
+      DOMPurify.sanitize(html, {
+        FORBID_TAGS: ["script", "style", "iframe", "form", "input", "img"],
+        FORBID_ATTR: ["onerror", "onclick", "onload", "style"],
+      }),
+    [html],
+  );
+  return (
+    <div
+      className={`text-[0.95rem] leading-[1.7] [&_em]:italic [&_p+p]:mt-2 [&_strong]:font-semibold [&_strong]:text-lamplight ${className}`}
+      dangerouslySetInnerHTML={{ __html: clean }}
+    />
+  );
+}
+
 /**
- * Presenter controls. The key is entered once and held in sessionStorage.
- * Slide advances are optimistic — the presenter never waits on the network —
- * and every change POSTs to the state route, which writes with the service
- * role key after verifying the presenter secret.
+ * The controller: a locked slide preview centered on top, the full sermon
+ * outline scrolling beneath it. Tap any outline segment to put that slide
+ * on the screen; the current segment stays highlighted so you never lose
+ * your place. Key is entered once and held in sessionStorage. Advances are
+ * optimistic — the presenter never waits on the network.
  */
 export function Presenter({ deck, initialState }: PresenterProps) {
-  const [key, setKey] = useState<string | null>(null);
   const [keyInput, setKeyInput] = useState("");
   const [authState, setAuthState] = useState<"unknown" | "checking" | "ok" | "bad">("unknown");
   const [notes, setNotes] = useState<NotesByPosition>({});
   const [index, setIndex] = useState(initialState.current_slide - 1);
   const [isLive, setIsLive] = useState(initialState.is_live);
+  const [isBlank, setIsBlank] = useState(initialState.is_blank);
   const [syncError, setSyncError] = useState(false);
   const keyRef = useRef<string | null>(null);
+  const itemRefs = useRef<(HTMLDivElement | null)[]>([]);
 
   const count = deck.slides.length;
 
@@ -43,14 +67,15 @@ export function Presenter({ deck, initialState }: PresenterProps) {
           notes?: { position: number; notes: string | null }[];
           current_slide?: number;
           is_live?: boolean;
+          is_blank?: boolean;
         };
         if (res.ok && data.notes) {
           keyRef.current = candidate;
-          setKey(candidate);
           sessionStorage.setItem(KEY_STORAGE, candidate);
           setNotes(Object.fromEntries(data.notes.map((n) => [n.position, n.notes])));
           if (typeof data.current_slide === "number") setIndex(data.current_slide - 1);
           if (typeof data.is_live === "boolean") setIsLive(data.is_live);
+          if (typeof data.is_blank === "boolean") setIsBlank(data.is_blank);
           setAuthState("ok");
         } else {
           setAuthState("bad");
@@ -85,7 +110,6 @@ export function Presenter({ deck, initialState }: PresenterProps) {
     [deck.slug],
   );
 
-  // Optimistic navigation — update locally first, then tell the server.
   const goTo = useCallback(
     (nextIndex: number) => {
       const clamped = Math.min(count - 1, Math.max(0, nextIndex));
@@ -94,6 +118,11 @@ export function Presenter({ deck, initialState }: PresenterProps) {
     },
     [count, post],
   );
+
+  const toggleBlank = useCallback(() => {
+    setIsBlank((b) => !b);
+    void post({ action: "blank" });
+  }, [post]);
 
   const toggleLive = useCallback(() => {
     setIsLive((live) => {
@@ -108,18 +137,29 @@ export function Presenter({ deck, initialState }: PresenterProps) {
   useEffect(() => {
     if (authState !== "ok") return;
     function onKey(e: KeyboardEvent) {
-      if (e.key === "ArrowRight" || e.key === " ") {
+      if (NEXT_KEYS.includes(e.key)) {
         e.preventDefault();
         goTo(indexRef.current + 1);
-      }
-      if (e.key === "ArrowLeft") {
+      } else if (PREV_KEYS.includes(e.key)) {
         e.preventDefault();
         goTo(indexRef.current - 1);
+      } else if (e.key === "b" || e.key === "B" || e.key === ".") {
+        e.preventDefault();
+        toggleBlank();
+      } else if (e.key === "Home") {
+        e.preventDefault();
+        goTo(0);
       }
     }
     document.addEventListener("keydown", onKey);
     return () => document.removeEventListener("keydown", onKey);
-  }, [authState, goTo]);
+  }, [authState, goTo, toggleBlank]);
+
+  // Keep the highlighted outline segment in view as the sermon advances.
+  useEffect(() => {
+    if (authState !== "ok") return;
+    itemRefs.current[index]?.scrollIntoView({ block: "center", behavior: "smooth" });
+  }, [authState, index]);
 
   /* ---------------- key gate ---------------- */
   if (authState !== "ok") {
@@ -162,70 +202,48 @@ export function Presenter({ deck, initialState }: PresenterProps) {
     );
   }
 
-  /* ---------------- presenter ---------------- */
+  /* ---------------- controller ---------------- */
   const slide = deck.slides[index];
-  const next = deck.slides[index + 1] ?? null;
+  const isBackgroundOnly = slide.html.trim() === "";
 
   return (
-    <div className="min-h-dvh bg-pitch px-4 py-4 sm:px-6">
-      <header className="flex flex-wrap items-center justify-between gap-3">
-        <p className="text-[0.9rem] font-semibold text-cream">{deck.title}</p>
-        <div className="flex items-center gap-4">
-          {syncError && (
-            <p className="text-[0.8rem] text-lamplight">
-              Sync failed — viewers may lag. Retrying on next advance.
+    <div className="flex h-dvh flex-col bg-pitch">
+      {/* Locked header: centered preview + controls. The outline scrolls
+          in its own region beneath, so this never leaves the screen. */}
+      <header className="border-b border-cream/10 px-4 pt-3 pb-3">
+        <div className="mx-auto w-full max-w-md">
+          <div className="flex items-baseline justify-between gap-3 pb-2">
+            <p className="truncate text-[0.85rem] font-semibold text-cream">{deck.title}</p>
+            <p className="text-[0.85rem] tabular-nums text-ash">
+              {index + 1} / {count}
+              {slide.bg && <span className="ml-2 text-lamplight">{slide.bg}</span>}
             </p>
-          )}
-          <p className="text-[0.9rem] tabular-nums text-ash">
-            {index + 1} / {count}
-          </p>
-          <button
-            type="button"
-            onClick={toggleLive}
-            className={
-              isLive
-                ? "border border-lamplight bg-lamplight px-4 py-2 text-[0.8rem] font-semibold tracking-[0.14em] text-pitch uppercase transition-opacity duration-300 hover:opacity-85"
-                : "border border-cream/30 px-4 py-2 text-[0.8rem] font-semibold tracking-[0.14em] text-cream uppercase transition-opacity duration-300 hover:opacity-85"
-            }
+          </div>
+
+          <div
+            className="relative cursor-pointer select-none"
+            onClick={(e) => {
+              const { left, width } = e.currentTarget.getBoundingClientRect();
+              goTo(e.clientX - left < width * 0.25 ? index - 1 : index + 1);
+            }}
           >
-            {isLive ? "● Live — tap to end" : "Go live"}
-          </button>
-        </div>
-      </header>
+            <SlideFrame key={slide.position} html={slide.html} className="preview" />
+            {(isBackgroundOnly || isBlank) && (
+              <p className="eyebrow absolute inset-0 flex items-center justify-center text-[0.6rem] text-ash">
+                {isBlank ? "Screen blanked" : "Background only"}
+              </p>
+            )}
+            <p className="eyebrow absolute top-2 right-2 rounded-sm border border-cream/20 bg-pitch/70 px-1.5 py-1 text-[0.55rem] text-cream/80">
+              tap = next
+            </p>
+          </div>
 
-      <div className="mt-4 lg:grid lg:grid-cols-[2fr_1fr] lg:gap-5">
-        {/* Current slide — tap left/right half to navigate */}
-        <div
-          className="relative cursor-pointer select-none"
-          onClick={(e) => {
-            const { left, width } = e.currentTarget.getBoundingClientRect();
-            goTo(e.clientX - left < width / 2 ? index - 1 : index + 1);
-          }}
-        >
-          <SlideFrame key={slide.position} html={slide.html} />
-        </div>
-
-        <div className="mt-5 lg:mt-0">
-          {next ? (
-            <>
-              <p className="eyebrow text-ash">Next</p>
-              <SlideFrame html={next.html} className="mt-2 opacity-70" />
-            </>
-          ) : (
-            <p className="eyebrow text-ash">Last slide</p>
-          )}
-
-          <p className="eyebrow mt-6 text-lamplight">Notes</p>
-          <p className="mt-2 min-h-16 text-[1.05rem] leading-relaxed text-cream">
-            {notes[slide.position] ?? <span className="text-ash">No notes for this slide.</span>}
-          </p>
-
-          <div className="mt-6 flex gap-2">
+          <div className="mt-2.5 flex gap-2">
             <button
               type="button"
               onClick={() => goTo(index - 1)}
               disabled={index === 0}
-              className="flex-1 border border-cream/25 py-3 text-cream disabled:opacity-30"
+              className="flex-1 border border-cream/25 py-3 text-[0.95rem] text-cream transition-opacity duration-300 active:opacity-70 disabled:opacity-30"
             >
               ← Back
             </button>
@@ -233,11 +251,82 @@ export function Presenter({ deck, initialState }: PresenterProps) {
               type="button"
               onClick={() => goTo(index + 1)}
               disabled={index === count - 1}
-              className="flex-1 bg-lamplight py-3 font-semibold text-pitch disabled:opacity-30"
+              className="flex-[1.6] bg-lamplight py-3 text-[0.95rem] font-semibold text-pitch transition-opacity duration-300 active:opacity-80 disabled:opacity-30"
             >
               Next →
             </button>
+            <button
+              type="button"
+              onClick={toggleBlank}
+              className={
+                isBlank
+                  ? "flex-1 border border-lamplight bg-lamplight py-3 text-[0.9rem] font-semibold text-pitch"
+                  : "flex-1 border border-cream/25 py-3 text-[0.9rem] text-cream transition-opacity duration-300 active:opacity-70"
+              }
+            >
+              Blank
+            </button>
+            <button
+              type="button"
+              onClick={toggleLive}
+              className={
+                isLive
+                  ? "flex-1 border border-lamplight bg-lamplight py-3 text-[0.9rem] font-semibold text-pitch"
+                  : "flex-1 border border-cream/25 py-3 text-[0.9rem] text-cream transition-opacity duration-300 active:opacity-70"
+              }
+            >
+              {isLive ? "● Live" : "Go live"}
+            </button>
           </div>
+
+          {syncError && (
+            <p className="mt-2 text-[0.8rem] text-lamplight">
+              Sync failed — the screen may lag. Retrying on the next tap.
+            </p>
+          )}
+        </div>
+      </header>
+
+      {/* The outline — scrolls behind the locked header. */}
+      <div className="min-h-0 flex-1 overflow-y-auto overscroll-contain px-4 pt-4 pb-[45vh]">
+        <div className="mx-auto w-full max-w-2xl">
+          <h2 className="eyebrow pb-3 text-lamplight">Outline — tap a segment to show its slide</h2>
+          {deck.slides.map((s, k) => {
+            const noteText = notes[s.position];
+            const isCurrent = k === index;
+            return (
+              <div
+                key={s.position}
+                ref={(el) => {
+                  itemRefs.current[k] = el;
+                }}
+                onClick={() => goTo(k)}
+                className={`mb-1 cursor-pointer rounded-r-sm border-l-2 py-3 pr-2 pl-4 transition-colors duration-150 ${
+                  isCurrent
+                    ? "border-lamplight bg-lamplight/10"
+                    : "border-cream/15 hover:bg-cream/5"
+                }`}
+              >
+                <p className={`eyebrow pb-1.5 text-[0.6rem] ${isCurrent ? "text-lamplight" : "text-ash/70"}`}>
+                  {k + 1}
+                  {s.bg && <span className="ml-2">{s.bg}</span>}
+                  {s.html.trim() === "" && <span className="ml-2">background only</span>}
+                </p>
+                {s.outline_html ? (
+                  <OutlineHtml html={s.outline_html} className="text-cream/90" />
+                ) : (
+                  <p className="text-[0.95rem] leading-[1.7] whitespace-pre-wrap text-cream/90">
+                    {noteText || `Slide ${k + 1}`}
+                  </p>
+                )}
+                {s.outline_html && noteText && (
+                  <p className="mt-2 text-[0.8rem] leading-relaxed whitespace-pre-wrap text-ash italic">
+                    {noteText}
+                  </p>
+                )}
+              </div>
+            );
+          })}
         </div>
       </div>
     </div>

@@ -1,7 +1,20 @@
 @import "tailwindcss";
 
 @theme {
-  /* ---- Palette: derived from Joe's hand-built sermon pages ---- */
+  /* ---- Palette: "Texas morning" — light, sunlit, celebrative ---- */
+  /* Light ground */
+  --color-cloud: #fdfbf6; /* base page background */
+  --color-sand: #f5eee1; /* warm alternate band */
+  --color-ink: #14333c; /* deep teal-slate text + dark footer field */
+
+  /* Brand color fields */
+  --color-teal: #12838d; /* primary — hero field, links, headings accents */
+  --color-deepsea: #0b545d; /* deep teal band, hovers */
+  --color-coral: #e4573d; /* energy — CTAs, arrows */
+  --color-clay: #bf3f28; /* coral pressed/hover */
+  --color-marigold: #f2ae3f; /* celebration accent, on dark fields */
+
+  /* ---- Dark-room palette (slides + decks keep the dark identity) ---- */
   --color-espresso: #17110d;
   --color-pitch: #0d0906;
   --color-parchment: #ede6da;
@@ -13,13 +26,14 @@
   --color-umber: #3d3128;
 
   /* ---- Type ---- */
-  --font-display: var(--font-bodoni), "Bodoni Moda", "Didot", serif;
+  --font-display: var(--font-bricolage), "Bricolage Grotesque", system-ui, sans-serif;
+  --font-serif: var(--font-bodoni), "Bodoni Moda", "Didot", serif;
   --font-sans: var(--font-figtree), "Figtree", system-ui, sans-serif;
 
   /* Fluid display sizes — no breakpoints needed */
   --text-hero: clamp(2.9rem, 7.5vw + 0.5rem, 6.75rem);
   --text-hero--line-height: 1.02;
-  --text-display: clamp(2.25rem, 4.5vw + 0.5rem, 4.25rem);
+  --text-display: clamp(2.25rem, 4.5vw + 0.5rem, 4rem);
   --text-display--line-height: 1.06;
   --text-passage: clamp(1.5rem, 2.2vw + 0.8rem, 2.5rem);
   --text-passage--line-height: 1.35;
@@ -28,17 +42,20 @@
 
   /* Layered, tinted shadows — never flat shadow-md */
   --shadow-card:
-    0 1px 2px rgb(13 9 6 / 0.3),
-    0 8px 20px -6px rgb(13 9 6 / 0.35),
-    0 20px 44px -16px rgb(201 160 99 / 0.1);
+    0 1px 2px rgb(20 51 60 / 0.08),
+    0 8px 20px -6px rgb(20 51 60 / 0.14),
+    0 20px 44px -16px rgb(18 131 141 / 0.12);
   --shadow-card-lift:
-    0 2px 4px rgb(13 9 6 / 0.3),
-    0 14px 30px -8px rgb(13 9 6 / 0.45),
-    0 28px 60px -18px rgb(201 160 99 / 0.18);
+    0 2px 4px rgb(20 51 60 / 0.1),
+    0 14px 30px -8px rgb(20 51 60 / 0.2),
+    0 28px 60px -18px rgb(18 131 141 / 0.2);
   --shadow-panel-light:
-    0 1px 2px rgb(61 49 40 / 0.08),
-    0 10px 28px -10px rgb(61 49 40 / 0.18),
-    0 24px 48px -20px rgb(201 160 99 / 0.14);
+    0 1px 2px rgb(20 51 60 / 0.07),
+    0 10px 28px -10px rgb(20 51 60 / 0.16),
+    0 24px 48px -20px rgb(228 87 61 / 0.1);
+  --shadow-photo:
+    0 2px 4px rgb(20 51 60 / 0.1),
+    0 12px 28px -10px rgb(20 51 60 / 0.22);
 
   --ease-spring: cubic-bezier(0.22, 1, 0.36, 1);
 }
@@ -55,8 +72,8 @@
   }
 
   body {
-    background-color: var(--color-pitch);
-    color: var(--color-cream);
+    background-color: var(--color-cloud);
+    color: var(--color-ink);
     font-family: var(--font-sans);
     line-height: 1.7;
     -webkit-font-smoothing: antialiased;
@@ -76,14 +93,18 @@
   }
 
   ::selection {
-    background-color: var(--color-lamplight);
-    color: var(--color-pitch);
+    background-color: var(--color-teal);
+    color: var(--color-cloud);
   }
 
   :focus-visible {
-    outline: 2px solid var(--color-lamplight);
+    outline: 2.5px solid var(--color-coral);
     outline-offset: 3px;
-    border-radius: 2px;
+    border-radius: 4px;
+  }
+  /* Coral vanishes on coral — swap to marigold there */
+  .btn-coral:focus-visible {
+    outline-color: var(--color-marigold);
   }
 }
 
@@ -91,7 +112,7 @@
 @utility eyebrow {
   font-family: var(--font-sans);
   font-size: 0.72rem;
-  font-weight: 600;
+  font-weight: 700;
   letter-spacing: var(--tracking-utility);
   text-transform: uppercase;
 }
@@ -101,12 +122,68 @@
   font-optical-sizing: auto;
 }
 
-/* Gold hairline used between bands */
-@utility rule-gold {
-  border-color: color-mix(in oklch, var(--color-lamplight), transparent 65%);
+@utility font-serif {
+  font-family: var(--font-serif);
+  font-optical-sizing: auto;
+}
+
+/* Tinted hairline used between light bands */
+@utility rule-tint {
+  border-color: color-mix(in oklch, var(--color-teal), transparent 78%);
 }
 
 @layer components {
+  .btn-coral {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.6rem;
+    background-color: var(--color-coral);
+    color: #fff;
+    font-weight: 700;
+    font-size: 0.95rem;
+    padding: 0.85rem 1.7rem;
+    border-radius: 999px;
+    box-shadow:
+      0 2px 4px rgb(191 63 40 / 0.25),
+      0 10px 24px -8px rgb(191 63 40 / 0.45);
+    transition:
+      transform 0.3s var(--ease-spring),
+      opacity 0.3s var(--ease-spring);
+  }
+  .btn-coral:hover {
+    transform: translateY(-2px);
+  }
+  .btn-coral:active {
+    transform: translateY(0);
+    opacity: 0.85;
+  }
+
+  .btn-teal {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.6rem;
+    background-color: var(--color-teal);
+    color: #fff;
+    font-weight: 700;
+    font-size: 0.95rem;
+    padding: 0.85rem 1.7rem;
+    border-radius: 999px;
+    box-shadow:
+      0 2px 4px rgb(11 84 93 / 0.22),
+      0 10px 24px -8px rgb(11 84 93 / 0.4);
+    transition:
+      transform 0.3s var(--ease-spring),
+      opacity 0.3s var(--ease-spring);
+  }
+  .btn-teal:hover {
+    transform: translateY(-2px);
+  }
+  .btn-teal:active {
+    transform: translateY(0);
+    opacity: 0.85;
+  }
+
+  /* Dark-room (slides/presenter) UI keeps the gold-on-dark identity */
   .btn-gold {
     display: inline-flex;
     align-items: center;
@@ -132,8 +209,8 @@
     display: inline-flex;
     align-items: center;
     gap: 0.6rem;
-    color: var(--color-lamplight);
-    font-weight: 600;
+    color: var(--color-coral);
+    font-weight: 700;
     font-size: 0.95rem;
     padding: 0.85rem 0;
     transition:
@@ -159,6 +236,7 @@
     position: absolute;
     inset: 0;
     z-index: -1;
+    border-radius: inherit;
     box-shadow: var(--shadow-card-lift);
     opacity: 0;
     transition: opacity 0.35s var(--ease-spring);
@@ -174,20 +252,28 @@
     transform: translateY(-1px);
   }
 
-  /* Text link with gold underline reveal */
-  .link-gold {
+  /* Text link with underline reveal */
+  .link-under {
     color: inherit;
-    background-image: linear-gradient(
-      currentColor,
-      currentColor
-    );
+    background-image: linear-gradient(currentColor, currentColor);
     background-repeat: no-repeat;
-    background-size: 0% 1px;
+    background-size: 0% 2px;
     background-position: 0 100%;
     transition: background-size 0.35s var(--ease-spring);
   }
-  .link-gold:hover {
-    background-size: 100% 1px;
+  .link-under:hover {
+    background-size: 100% 2px;
+  }
+
+  /* Snapshot: a real photo pinned up — rounded, tinted shadow, slight tilt */
+  .snapshot {
+    border-radius: 0.9rem;
+    overflow: hidden;
+    box-shadow: var(--shadow-photo);
+    transition: transform 0.35s var(--ease-spring);
+  }
+  .snapshot:hover {
+    transform: scale(1.02);
   }
 }
 

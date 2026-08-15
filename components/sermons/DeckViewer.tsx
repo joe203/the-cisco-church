@@ -38,7 +38,7 @@ export function DeckViewer({ slides, deckSlug }: DeckViewerProps) {
   const slide = slides[index];
 
   return (
-    <section aria-label="Sermon slides" className="bg-pitch">
+    <section aria-label="Sermon slides" className="bg-ink">
       <div className="mx-auto max-w-5xl px-5 pt-10 pb-8 sm:px-8">
         <SlideFrame
           key={slide.position}
@@ -70,7 +70,7 @@ export function DeckViewer({ slides, deckSlug }: DeckViewerProps) {
               {index + 1} <span className="text-ash/60">of</span> {count}
             </p>
           </div>
-          <Link href={`/slides/${deckSlug}`} className="eyebrow link-gold text-lamplight">
+          <Link href={`/slides/${deckSlug}`} className="eyebrow link-under text-lamplight">
             Open full screen <span aria-hidden>&rarr;</span>
           </Link>
         </div>

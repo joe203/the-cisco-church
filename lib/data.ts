@@ -1,5 +1,5 @@
 import { createClient, type SupabaseClient } from "@supabase/supabase-js";
-import { seedDeck, seedDeckState, seedSermonList, seedSermons } from "./seed";
+import { findSeedDeck, seedDeckState, seedSermonList, seedSermons } from "./seed";
 import type { Deck, DeckState, Sermon, SermonDetail } from "./types";
 
 /**
@@ -91,24 +91,26 @@ export async function getDeck(slug: string): Promise<Deck | null> {
     const { data, error } = await client
       .from("cisco_decks")
       .select(
-        `id, slug, title,
+        `id, slug, title, metadata,
          sermon:cisco_sermons(slug),
-         slides:cisco_slides(position, html)`,
+         slides:cisco_slides(position, html, outline_html, bg)`,
       )
       .eq("slug", slug)
       .maybeSingle();
     if (!error && data) {
-      const { slides, sermon, ...deck } = data as Record<string, unknown>;
+      const { slides, sermon, metadata, ...deck } = data as Record<string, unknown>;
       const slideList = (slides as Deck["slides"] | null) ?? [];
       const sermonRow = sermon as { slug: string } | { slug: string }[] | null;
+      const meta = (metadata as { backgrounds?: Deck["backgrounds"] } | null) ?? {};
       return {
-        ...(deck as Omit<Deck, "slides" | "sermon_slug">),
+        ...(deck as Omit<Deck, "slides" | "sermon_slug" | "backgrounds">),
         sermon_slug: Array.isArray(sermonRow) ? (sermonRow[0]?.slug ?? null) : (sermonRow?.slug ?? null),
+        backgrounds: meta.backgrounds ?? {},
         slides: [...slideList].sort((a, b) => a.position - b.position),
       };
     }
   }
-  return seedDeck.slug === slug ? seedDeck : null;
+  return findSeedDeck(slug);
 }
 
 export async function getDeckState(deckId: string): Promise<DeckState> {
@@ -116,7 +118,7 @@ export async function getDeckState(deckId: string): Promise<DeckState> {
   if (client) {
     const { data, error } = await client
       .from("cisco_deck_state")
-      .select("current_slide, is_live")
+      .select("current_slide, is_live, is_blank")
       .eq("deck_id", deckId)
       .maybeSingle();
     if (!error && data) return data as DeckState;

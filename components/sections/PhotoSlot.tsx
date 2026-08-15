@@ -34,10 +34,10 @@ export function PhotoSlot({ file, alt, caption, className = "" }: PhotoSlotProps
   }
 
   return (
-    <div className={`relative overflow-hidden bg-espresso ${className}`} role="img" aria-label={alt}>
-      <div className="absolute inset-3 flex flex-col items-center justify-center gap-3 border border-lamplight/25 px-6 text-center sm:inset-4">
-        <p className="eyebrow text-lamplight/80">Photograph to come</p>
-        <p className="max-w-[34ch] text-[0.85rem] leading-relaxed text-ash">{caption}</p>
+    <div className={`relative overflow-hidden bg-sand ${className}`} role="img" aria-label={alt}>
+      <div className="absolute inset-3 flex flex-col items-center justify-center gap-3 rounded-lg border border-teal/30 px-6 text-center sm:inset-4">
+        <p className="eyebrow text-teal">Photograph to come</p>
+        <p className="max-w-[34ch] text-[0.85rem] leading-relaxed text-ink/60">{caption}</p>
       </div>
     </div>
   );

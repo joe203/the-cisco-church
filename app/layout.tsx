@@ -1,6 +1,12 @@
 import type { Metadata } from "next";
-import { Bodoni_Moda, Figtree } from "next/font/google";
+import { Bodoni_Moda, Bricolage_Grotesque, Figtree } from "next/font/google";
 import "./globals.css";
+
+const bricolage = Bricolage_Grotesque({
+  subsets: ["latin"],
+  variable: "--font-bricolage",
+  display: "swap",
+});
 
 const bodoni = Bodoni_Moda({
   subsets: ["latin"],
@@ -32,7 +38,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className={`${bodoni.variable} ${figtree.variable}`}>
+    <html lang="en" className={`${bricolage.variable} ${bodoni.variable} ${figtree.variable}`}>
       <body>{children}</body>
     </html>
   );

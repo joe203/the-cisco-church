@@ -28,7 +28,7 @@ export function SermonArtwork({ sermon, className = "", transition = true }: Ser
 
   if (sermon.artwork_url) {
     return (
-      <div className={`relative overflow-hidden bg-espresso ${className}`} style={style}>
+      <div className={`relative overflow-hidden bg-deepsea ${className}`} style={style}>
         {/* eslint-disable-next-line @next/next/no-img-element -- remote artwork host unknown until real assets arrive */}
         <img
           src={sermon.artwork_url}
@@ -41,19 +41,19 @@ export function SermonArtwork({ sermon, className = "", transition = true }: Ser
 
   return (
     <div
-      className={`relative overflow-hidden bg-[color-mix(in_oklch,var(--color-espresso),black_25%)] ${className}`}
+      className={`relative overflow-hidden bg-[linear-gradient(135deg,var(--color-teal),var(--color-deepsea))] ${className}`}
       style={style}
       aria-hidden
     >
-      <div className="absolute inset-3 flex flex-col justify-between border border-lamplight/30 p-5 @sm:p-6">
-        <p className="eyebrow text-[0.6rem] text-ash">{site.shortName}</p>
+      <div className="absolute inset-3 flex flex-col justify-between rounded-lg border border-white/30 p-5 @sm:p-6">
+        <p className="eyebrow text-[0.6rem] text-white/65">{site.shortName}</p>
         <div>
-          <p className="font-display text-[clamp(1.7rem,11cqw,2.9rem)] leading-[1.05] text-cream italic">
+          <p className="font-display text-[clamp(1.7rem,11cqw,2.9rem)] leading-[1.05] font-bold text-white">
             {book}
           </p>
-          {verses && <p className="eyebrow mt-2.5 text-lamplight">{verses}</p>}
+          {verses && <p className="eyebrow mt-2.5 text-marigold">{verses}</p>}
         </div>
-        <p className="eyebrow text-[0.6rem] text-ash">
+        <p className="eyebrow text-[0.6rem] text-white/65">
           {new Date(sermon.sermon_date).getFullYear()}
         </p>
       </div>
