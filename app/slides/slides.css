@@ -83,7 +83,7 @@
    right of the doorway, in dark ink instead of cream. */
 .slide-frame .panel {
   position: absolute;
-  top: 9cqw;
+  top: 10.5cqw;
   bottom: 8cqw;
   left: 40cqw;
   right: 5cqw;
@@ -129,6 +129,174 @@
   font-size: 2.3cqw;
   line-height: 1.55;
   max-width: 100%;
+}
+
+/* ---- Parchment typographic system — matches the letterpress title art.
+   One dominant idea per slide: a small lead, a huge punch, an accent. ---- */
+.slide-frame .panel em {
+  font-family: var(--font-serif);
+  font-style: italic;
+}
+.slide-frame .panel strong {
+  color: #5c6b35;
+  font-weight: 700;
+}
+
+/* Small quiet lead line — sets up the punch */
+.slide-frame .panel .soft {
+  font-size: 2.1cqw;
+  font-weight: 500;
+  line-height: 1.45;
+  color: #6d5c42;
+  max-width: 100%;
+}
+
+/* Statement line */
+.slide-frame .panel .mid {
+  font-size: 3cqw;
+  font-weight: 650;
+  line-height: 1.3;
+  color: #3a2817;
+  max-width: 100%;
+  text-wrap: balance;
+}
+
+/* The letterpress punch — huge Bodoni caps like the title art */
+.slide-frame .panel .mega {
+  font-family: var(--font-serif);
+  font-weight: 800;
+  font-size: 6.4cqw;
+  line-height: 1.02;
+  letter-spacing: 0.01em;
+  text-transform: uppercase;
+  color: #3a2817;
+  max-width: 100%;
+  text-wrap: balance;
+  text-shadow: 0.08cqw 0.12cqw 0 rgb(58 40 23 / 0.12);
+}
+.slide-frame .panel .mega.oxblood {
+  color: #6e2a1c;
+}
+
+/* Thesis — the olive italic serif from the title art */
+.slide-frame .panel .thesis {
+  font-family: var(--font-serif);
+  font-style: italic;
+  font-weight: 500;
+  font-size: 3.6cqw;
+  line-height: 1.3;
+  color: #4a5629;
+  max-width: 100%;
+  text-wrap: balance;
+}
+
+.slide-frame .panel .thesis.xl {
+  font-size: 4.4cqw;
+}
+
+/* Oversized decorative quote mark above a question/quote */
+.slide-frame .panel .qmark {
+  font-family: var(--font-serif);
+  font-size: 8cqw;
+  line-height: 0.5;
+  color: #5c6b35;
+  opacity: 0.55;
+}
+
+/* Badge — bordered caps pill flanked by rules, like DEUTERONOMY 6:4-9 */
+.slide-frame .panel .badge-row {
+  display: flex;
+  align-items: center;
+  gap: 1.4cqw;
+  width: 100%;
+  justify-content: center;
+}
+.slide-frame .panel .badge-row::before,
+.slide-frame .panel .badge-row::after {
+  content: "";
+  height: 0.14cqw;
+  min-height: 1.5px;
+  width: 5cqw;
+  background: #5c6b35;
+  opacity: 0.7;
+}
+.slide-frame .panel .badge {
+  font-size: 1.5cqw;
+  font-weight: 700;
+  letter-spacing: 0.24em;
+  text-transform: uppercase;
+  color: #4a3826;
+  border: 0.16cqw solid rgb(90 80 60 / 0.5);
+  padding: 0.7cqw 1.6cqw;
+  white-space: nowrap;
+}
+
+/* Litany rows — serif italic question, bold olive answer */
+.slide-frame .panel .rows {
+  width: 100%;
+  max-width: 46cqw;
+}
+.slide-frame .panel .rows > div {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 2cqw;
+  padding: 1.15cqw 0;
+  border-bottom: 0.1cqw solid rgb(90 80 60 / 0.3);
+}
+.slide-frame .panel .rows > div:last-child {
+  border-bottom: none;
+}
+.slide-frame .panel .rows .q {
+  font-family: var(--font-serif);
+  font-style: italic;
+  font-size: 2.5cqw;
+  color: #3a2817;
+  text-align: left;
+}
+.slide-frame .panel .rows .a {
+  font-size: 1.9cqw;
+  font-weight: 800;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: #5c6b35;
+  white-space: nowrap;
+}
+
+/* Challenge numerals */
+.slide-frame .panel .nums {
+  display: flex;
+  flex-direction: column;
+  gap: 2.4cqw;
+  width: 100%;
+  max-width: 44cqw;
+}
+.slide-frame .panel .nums > div {
+  display: flex;
+  align-items: center;
+  gap: 2.2cqw;
+  text-align: left;
+}
+.slide-frame .panel .nums .n {
+  font-family: var(--font-serif);
+  font-weight: 800;
+  font-size: 6.5cqw;
+  line-height: 1;
+  color: #5c6b35;
+  flex: none;
+}
+.slide-frame .panel .nums .t {
+  font-size: 2.5cqw;
+  font-weight: 600;
+  line-height: 1.35;
+  color: #3a2817;
+}
+
+/* Olive sprig ornament */
+.slide-frame .panel .sprig {
+  width: 9cqw;
+  height: auto;
+  color: #5c6b35;
 }
 
 /* Gold sub-line under a headline */

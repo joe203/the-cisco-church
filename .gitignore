@@ -49,3 +49,4 @@ next-env.d.ts
 # sermon source material — heavy, not app assets
 /past_sermons/
 /presentation_module/
+/slide_review/
