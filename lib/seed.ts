@@ -725,6 +725,63 @@ const theObviousSlides: SeedSlideInput[] = [
   },
 ];
 
+/**
+ * Knowledge — Joe supplied eight finished slide images; they ARE the deck.
+ * Nothing is composed here. Each slide's outline_html is the text read off
+ * that image, so the controller carries the lesson while the screen shows
+ * the artwork exactly as designed.
+ */
+const theKnowledgeSlides: SeedSlideInput[] = [
+  {
+    position: 1,
+    html: imageSlide("knowledge", 1, "Knowledge Begins with Simple Truths — Hebrews 6:1"),
+    outline_html: `<p><strong>Knowledge Begins with Simple Truths</strong></p><p>Hebrews 6:1</p>`,
+    notes: "Title. Let it hold through the introduction.",
+  },
+  {
+    position: 2,
+    html: imageSlide("knowledge", 2, "Knowledge Deepens Through Experience — James 1:2-4, I Corinthians 2:9-10"),
+    outline_html: `<p><strong>Knowledge Deepens Through Experience</strong></p><p>James 1:2&ndash;4</p><p>I Corinthians 2:9&ndash;10</p>`,
+    notes: "Read both passages before advancing.",
+  },
+  {
+    position: 3,
+    html: imageSlide("knowledge", 3, "Wisdom Keys For Bible Knowledge — Lesson 1: Knowledge Is Timeless. Lesson 2: Knowledge Is Transferrable."),
+    outline_html: `<p><strong>Wisdom Keys For Bible Knowledge</strong></p><p><strong>Lesson 1 — Knowledge Is Timeless.</strong> Everything we learn is foundational. It has tremendous value for today. However, if we build on it, its value for the future is priceless. Bible knowledge is not static by design; what God teaches us is meant to keep unfolding.</p><p><strong>Lesson 2 — Knowledge Is Transferrable.</strong> Jesus taught us truths that invariably carry countless principles. While Jesus' teachings may each focus on a specific point, the wisdom in His teachings have many applications.</p>`,
+    notes: "Two lessons on one slide — take them one at a time.",
+  },
+  {
+    position: 4,
+    html: imageSlide("knowledge", 4, "Bible Truths Do Not Stand Alone"),
+    outline_html: `<p><strong>Bible Truths Do Not Stand Alone</strong></p><p>&middot; It's not about being right.</p><p>&middot; Bible knowledge is intended to be broad in application.</p><p>&middot; If you miss the principle, then you'll miss the truth.</p>`,
+    notes: null,
+  },
+  {
+    position: 5,
+    html: imageSlide("knowledge", 5, "Five tips for knowledge and principles."),
+    outline_html: `<p><strong>Five tips for knowledge and principles.</strong></p><p>1. Bible knowledge is not meant to stay private.</p><p>2. Principles outlast specific situations.</p><p>3. Application multiplies understanding.</p><p>4. Strength comes through shared knowledge.</p><p>5. Knowledge always points to the Greater Teacher.</p>`,
+    notes: "Five tips — this slide holds through all of them.",
+  },
+  {
+    position: 6,
+    html: imageSlide("knowledge", 6, "Learning where and how to apply principles is the key to peace."),
+    outline_html: `<p><strong>Learning where and how to apply principles is the key to peace.</strong></p>`,
+    notes: null,
+  },
+  {
+    position: 7,
+    html: imageSlide("knowledge", 7, "Learning Principles Is Like Learning A Thousand Lessons"),
+    outline_html: `<p><strong>Learning Principles Is Like Learning A Thousand Lessons</strong></p>`,
+    notes: null,
+  },
+  {
+    position: 8,
+    html: imageSlide("knowledge", 8, "Reflections"),
+    outline_html: `<p><strong>Reflections:</strong></p><p>&middot; What God teaches you is not just for you.</p><p>&middot; Principles are stronger than particulars.</p><p>&middot; Shared knowledge multiplies its impact.</p><p>&middot; Christ is the ultimate model for transferrable knowledge.</p>`,
+    notes: "Closing reflections. Leave it up through the invitation.",
+  },
+];
+
 type SeedDeckWithNotes = Deck & { slidesWithNotes: SlideWithNotes[] };
 
 function buildDeck(
@@ -761,6 +818,7 @@ export const seedDecks: SeedDeckWithNotes[] = [
     open: { video: "/sermons/open-water-faith/bg/open.mp4" },
   }),
   buildDeck("seed-deck-4", "the-obvious", "The Obvious", null, theObviousSlides),
+  buildDeck("seed-deck-5", "knowledge", "Knowledge", null, theKnowledgeSlides),
 ];
 
 export function findSeedDeck(slug: string): Deck | null {

@@ -50,3 +50,6 @@ next-env.d.ts
 /past_sermons/
 /presentation_module/
 /slide_review/
+
+/knowledge_slides/
+/sample_slides/
