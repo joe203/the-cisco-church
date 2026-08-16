@@ -1,6 +1,7 @@
 "use client";
 
 import { useCallback, useEffect, useRef, useState } from "react";
+import { flushSync } from "react-dom";
 import { getBrowserClient } from "@/lib/supabase/client";
 import type { Deck, DeckState } from "@/lib/types";
 import { SlideFrame } from "./SlideFrame";
@@ -129,7 +130,37 @@ export function LiveViewer({ deck, initialState }: LiveViewerProps) {
     if (isLive) setSelfIndex(state.current_slide - 1);
   }, [isLive, state.current_slide]);
 
-  const slide = deck.slides[index];
+  // Cross-fade between slides via the View Transitions API. Skipped for
+  // video-background decks (the snapshot would freeze the loop) and for
+  // reduced-motion users; both fall back to an instant swap.
+  const [shownIndex, setShownIndex] = useState(index);
+  useEffect(() => {
+    if (shownIndex === index) return;
+    const doc = document as Document & {
+      startViewTransition?: (cb: () => void) => {
+        finished: Promise<void>;
+        ready: Promise<void>;
+        updateCallbackDone: Promise<void>;
+      };
+    };
+    const reduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    if (doc.startViewTransition && !hasMedia && !reduced) {
+      const transition = doc.startViewTransition(() => {
+        flushSync(() => setShownIndex(index));
+      });
+      // Advancing again mid-fade skips the running transition, rejecting
+      // these promises. That is expected — swallow it so a fast presenter
+      // never fills the console with errors during a service.
+      const ignore = () => {};
+      transition.finished.catch(ignore);
+      transition.ready.catch(ignore);
+      transition.updateCallbackDone.catch(ignore);
+    } else {
+      setShownIndex(index);
+    }
+  }, [index, shownIndex, hasMedia]);
+
+  const slide = deck.slides[shownIndex] ?? deck.slides[index];
   if (!slide) return null;
 
   const activeBg = slide.bg && deck.backgrounds[slide.bg] ? slide.bg : bgKeys[0];

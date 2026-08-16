@@ -161,18 +161,20 @@
   text-wrap: balance;
 }
 
-/* The letterpress punch — huge Bodoni caps like the title art */
+/* The punch — the title slide's own display voice: heavy grotesque caps,
+   flat clean terminals (never a slab), lightly speckled like aged ink. */
 .slide-frame .panel .mega {
-  font-family: var(--font-serif);
-  font-weight: 800;
-  font-size: 6.4cqw;
-  line-height: 1.02;
-  letter-spacing: 0.01em;
+  font-family: var(--font-archivo), "Archivo", system-ui, sans-serif;
+  font-weight: 900;
+  font-size: 5.4cqw;
+  line-height: 1.08;
+  letter-spacing: -0.005em;
   text-transform: uppercase;
   color: #3a2817;
   max-width: 100%;
   text-wrap: balance;
-  text-shadow: 0.08cqw 0.12cqw 0 rgb(58 40 23 / 0.12);
+  -webkit-mask-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='500' height='500'><filter id='m'><feTurbulence type='fractalNoise' baseFrequency='0.2' numOctaves='2' seed='4'/><feColorMatrix type='matrix' values='0 0 0 0 1 0 0 0 0 1 0 0 0 0 1 0.35 0.35 0.35 0 0.78'/></filter><rect width='100%25' height='100%25' filter='url(%23m)'/></svg>");
+  mask-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='500' height='500'><filter id='m'><feTurbulence type='fractalNoise' baseFrequency='0.2' numOctaves='2' seed='4'/><feColorMatrix type='matrix' values='0 0 0 0 1 0 0 0 0 1 0 0 0 0 1 0.35 0.35 0.35 0 0.78'/></filter><rect width='100%25' height='100%25' filter='url(%23m)'/></svg>");
 }
 .slide-frame .panel .mega.oxblood {
   color: #6e2a1c;
@@ -221,7 +223,8 @@
   opacity: 0.7;
 }
 .slide-frame .panel .badge {
-  font-size: 1.5cqw;
+  font-family: var(--font-archivo), "Archivo", system-ui, sans-serif;
+  font-size: 1.7cqw;
   font-weight: 700;
   letter-spacing: 0.24em;
   text-transform: uppercase;
@@ -234,7 +237,7 @@
 /* Litany rows — serif italic question, bold olive answer */
 .slide-frame .panel .rows {
   width: 100%;
-  max-width: 46cqw;
+  max-width: 58cqw;
 }
 .slide-frame .panel .rows > div {
   display: flex;
@@ -242,17 +245,23 @@
   justify-content: space-between;
   gap: 2cqw;
   padding: 1.15cqw 0;
-  border-bottom: 0.1cqw solid rgb(90 80 60 / 0.3);
+  border-bottom: 0.1cqw solid rgb(90 80 60 / 0.28);
 }
 .slide-frame .panel .rows > div:last-child {
   border-bottom: none;
 }
 .slide-frame .panel .rows .q {
-  font-family: var(--font-serif);
+  font-family: var(--font-newsreader), Georgia, serif;
+  font-optical-sizing: auto;
   font-style: italic;
-  font-size: 2.5cqw;
-  color: #3a2817;
+  font-weight: 500;
+  font-size: 2.9cqw;
+  color: #38281a;
   text-align: left;
+}
+.slide-frame .panel .rows .q strong {
+  font-weight: 700;
+  color: #4c4a22;
 }
 .slide-frame .panel .rows .a {
   font-size: 1.9cqw;
@@ -277,19 +286,24 @@
   gap: 2.2cqw;
   text-align: left;
 }
+.slide-frame .panel .nums {
+  max-width: 58cqw;
+}
 .slide-frame .panel .nums .n {
-  font-family: var(--font-serif);
-  font-weight: 800;
-  font-size: 6.5cqw;
+  font-family: var(--font-archivo), "Archivo", system-ui, sans-serif;
+  font-weight: 900;
+  font-size: 5.5cqw;
   line-height: 1;
   color: #5c6b35;
   flex: none;
 }
 .slide-frame .panel .nums .t {
-  font-size: 2.5cqw;
-  font-weight: 600;
+  font-family: var(--font-newsreader), Georgia, serif;
+  font-optical-sizing: auto;
+  font-size: 2.8cqw;
+  font-weight: 500;
   line-height: 1.35;
-  color: #3a2817;
+  color: #38281a;
 }
 
 /* Olive sprig ornament */
@@ -297,6 +311,153 @@
   width: 9cqw;
   height: auto;
   color: #5c6b35;
+}
+
+/* Wide panel — full-frame centered composition, for plain-parchment and
+   solid-color slides (no doorway column to avoid). */
+.slide-frame .panel.wide {
+  top: 9cqw;
+  bottom: 9cqw;
+  left: 11cqw;
+  right: 11cqw;
+}
+
+/* Solid-color grounds — clean, content-first. */
+.slide-frame .fill {
+  position: absolute;
+  inset: 0;
+}
+.slide-frame .fill.espresso {
+  background: linear-gradient(160deg, #2c1c0e, #1b1007);
+}
+.slide-frame .fill.olive {
+  background: linear-gradient(160deg, #47521f, #313b15);
+}
+/* Vintage parchment — the ONE ground for every content slide. Recreates
+   the title art's paper: warm glow, patchy age stains, soft grain, and a
+   gently darkened vignette. All procedural, seamless at any size. */
+.slide-frame .fill.parchment {
+  background-color: #f2e8d0;
+  background-image:
+    /* fine paper grain */
+    url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='300' height='300'><filter id='g'><feTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' seed='11'/><feColorMatrix type='matrix' values='0 0 0 0 0.45 0 0 0 0 0.36 0 0 0 0 0.2 0.22 0.22 0.22 0 -0.14'/></filter><rect width='100%25' height='100%25' filter='url(%23g)'/></svg>"),
+    /* very faint age mottling — one non-tiling sheet across the slide */
+    url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='1920' height='1080'><filter id='p'><feTurbulence type='fractalNoise' baseFrequency='0.0022' numOctaves='3' seed='9'/><feColorMatrix type='matrix' values='0 0 0 0 0.5 0 0 0 0 0.4 0 0 0 0 0.22 0.16 0.16 0.16 0 -0.055'/></filter><rect width='100%25' height='100%25' filter='url(%23p)'/></svg>"),
+    radial-gradient(ellipse 95% 85% at 50% 40%, #faf3e2 0%, #f2e8d0 58%, #e6d8b8 118%);
+  background-size:
+    300px 300px,
+    100% 100%,
+    100% 100%;
+  box-shadow: inset 0 0 14cqw 2cqw rgb(150 125 80 / 0.12);
+}
+
+/* ---- The slide type system. THREE roles, TWO families, always the
+   same, so the next slide never surprises you:
+     .mega      Archivo 900 caps  — the title-slide display voice
+     .statement Newsreader 600    — the tagline serif, upright
+     .question  Newsreader italic — the tagline serif itself
+   Labels (.kicker/.badge) are Archivo 600 spaced caps.            ---- */
+.slide-frame .panel .statement {
+  font-family: var(--font-newsreader), Georgia, serif;
+  font-optical-sizing: auto;
+  font-weight: 600;
+  font-size: 4.3cqw;
+  line-height: 1.24;
+  color: #38281a;
+  max-width: 100%;
+  text-wrap: balance;
+}
+.slide-frame .panel .statement.cream {
+  color: #f2e8d5;
+}
+
+.slide-frame .panel .question {
+  font-family: var(--font-newsreader), Georgia, serif;
+  font-optical-sizing: auto;
+  font-style: italic;
+  font-weight: 500;
+  font-size: 4cqw;
+  line-height: 1.28;
+  color: #4c4a22;
+  max-width: 100%;
+  text-wrap: balance;
+}
+
+/* Scripture passage — the one slide type that carries several verses.
+   Still 44px+ at 1080p, well above the back-row floor. */
+.slide-frame .panel .scripture {
+  font-family: var(--font-newsreader), Georgia, serif;
+  font-optical-sizing: auto;
+  font-weight: 450;
+  font-size: 2.45cqw;
+  line-height: 1.5;
+  color: #38281a;
+  max-width: 62cqw;
+  text-wrap: pretty;
+}
+.slide-frame .panel .scripture em {
+  font-style: normal;
+  font-weight: 700;
+  color: #4c4a22;
+}
+
+/* Ambient accent — a hairline that breathes at the foot of the slide.
+   Motion so soft it reads as life, not movement. */
+.slide-frame .ambient-rule {
+  position: absolute;
+  left: 50%;
+  bottom: 7cqw;
+  width: 14cqw;
+  height: 0.18cqw;
+  min-height: 2px;
+  background: linear-gradient(90deg, transparent, #5c6b35 30%, #5c6b35 70%, transparent);
+  transform: translateX(-50%);
+  opacity: 0.55;
+}
+.slide-frame .ambient-rule.gold {
+  background: linear-gradient(90deg, transparent, #c9a063 30%, #c9a063 70%, transparent);
+}
+@media (prefers-reduced-motion: no-preference) {
+  .slide-frame:not(.preview) .ambient-rule {
+    animation: ambient-breathe 9s ease-in-out infinite;
+  }
+}
+@keyframes ambient-breathe {
+  0%,
+  100% {
+    transform: translateX(-50%) scaleX(0.72);
+    opacity: 0.38;
+  }
+  50% {
+    transform: translateX(-50%) scaleX(1.12);
+    opacity: 0.68;
+  }
+}
+
+/* Slide-change cross-fade (View Transitions, used by the screen) */
+::view-transition-old(root),
+::view-transition-new(root) {
+  animation-duration: 0.55s;
+  animation-timing-function: ease;
+}
+
+/* Light-ink variants for dark fills */
+.slide-frame .panel .cream {
+  color: #f2e8d5;
+}
+.slide-frame .panel .gold {
+  color: #c9a063;
+}
+.slide-frame .panel .mega.cream {
+  color: #f2e8d5;
+  text-shadow: 0.08cqw 0.12cqw 0 rgb(0 0 0 / 0.35);
+}
+.slide-frame .panel .badge.cream {
+  color: #f2e8d5;
+  border-color: rgb(242 232 213 / 0.45);
+}
+.slide-frame .panel .thesis.ink {
+  color: #3a2817;
 }
 
 /* Gold sub-line under a headline */
@@ -458,9 +619,10 @@
 }
 
 .slide-frame .kicker {
+  font-family: var(--font-archivo), "Archivo", system-ui, sans-serif;
   font-size: 1.7cqw;
   font-weight: 600;
-  letter-spacing: 0.14em;
+  letter-spacing: 0.18em;
   text-transform: uppercase;
   color: var(--color-lamplight);
   max-width: none;

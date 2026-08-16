@@ -515,199 +515,213 @@ const openWaterFaithSlides: SeedSlideInput[] = [
 ];
 
 /**
- * The Obvious — Deuteronomy 6:4–9, 20. Joe's parchment-and-doorway artwork
- * IS the slide background (title baked in), so every slide carries it and
- * text lands in the open parchment right of the doorway (.panel). Empty
- * panel = title screen. Deliberately lean: statements only where they land.
+ * The Obvious — Deuteronomy 6:4–9, 20.
+ *
+ * DESIGN SYSTEM (agreed with Joe 2026-08-15):
+ *  · Slide 1 is Joe's title artwork; it sets colors + type for everything.
+ *  · Every other slide sits on the SAME vintage-parchment ground — no
+ *    background changes mid-sermon, nothing for the room to wonder about.
+ *  · Two type families only, both from the title art: Archivo (heavy caps
+ *    display + spaced labels) and Newsreader (statements + questions).
+ *  · Slides are ANCHORS, not captions: one per movement-beat, holding for
+ *    minutes while the preacher talks. Nothing below ~44px at 1080p.
+ *  · The FULL outline lives in outline_html — it is Joe's pulpit manuscript
+ *    on the controller, kept in his own wording.
  */
-const OBVIOUS_BG = `<img class="slide-image drift" src="/sermons/the-obvious/bg.jpg" alt="The Obvious — Deuteronomy 6:4–9, 20">`;
 const OBVIOUS_TITLE = `<img class="slide-image" src="/sermons/the-obvious/title.jpg" alt="The Obvious — the key to transformation is right under our nose. Deuteronomy 6:4–9, 20">`;
-const SPRIG = `<svg class="sprig" viewBox="0 0 120 26" aria-hidden="true"><path d="M8 15 Q60 11 112 13" fill="none" stroke="currentColor" stroke-width="1.6"/><g fill="currentColor"><ellipse cx="28" cy="9" rx="8" ry="3" transform="rotate(-24 28 9)"/><ellipse cx="46" cy="7" rx="8" ry="3" transform="rotate(-18 46 7)"/><ellipse cx="64" cy="6" rx="8" ry="3" transform="rotate(-12 64 6)"/><ellipse cx="82" cy="7" rx="8" ry="3" transform="rotate(-20 82 7)"/><ellipse cx="36" cy="19" rx="8" ry="3" transform="rotate(20 36 19)"/><ellipse cx="55" cy="20" rx="8" ry="3" transform="rotate(14 55 20)"/><ellipse cx="74" cy="19" rx="8" ry="3" transform="rotate(22 74 19)"/></g></svg>`;
 
-function obviousSlide(panelHtml?: string): string {
-  return panelHtml ? `${OBVIOUS_BG}<div class="panel">${panelHtml}</div>` : OBVIOUS_BG;
+/** Every content slide: one ground, one panel, one breathing hairline. */
+function ob(panelHtml: string): string {
+  return `<div class="fill parchment"></div><div class="panel wide">${panelHtml}</div><div class="ambient-rule"></div>`;
 }
 
 const theObviousSlides: SeedSlideInput[] = [
+  /* ---------------- opening ---------------- */
   {
     position: 1,
     html: OBVIOUS_TITLE,
-    outline_html: `<p><strong>The Obvious</strong> — the key to transformation is right under our nose. Title up; hold through the welcome.</p>`,
-    notes: "Title slide. Hold through the welcome.",
+    outline_html: `<p><strong>THE OBVIOUS</strong> — <em>The key to transformation is right under our nose.</em></p><p>It's strange how easily we can overlook the events of transformation simply because we stare at them every day.</p>`,
+    notes: "Title up. Let it breathe through the welcome.",
   },
   {
     position: 2,
-    html: obviousSlide(
-      `<div class="soft stage" data-stage="1">Sometimes the most difficult things to see are not the things that are hidden.</div><div class="mid stage" data-stage="2">They're the things that become all too&hellip;</div><div class="mega stage" data-stage="2">Familiar.</div>`,
+    html: ob(
+      `<div class="statement">Sometimes the most difficult things to see are not the things that are hidden.</div>`,
     ),
-    outline_html: `<p>It's strange how easily we can overlook the events of transformation simply because we stare at them every day. Sometimes the most difficult things to see are not the things that are hidden — they're the things that become all too familiar.</p>`,
-    notes: "One click — the big word lands on its own.",
+    outline_html: `<p>Sometimes the <strong>most difficult things to see</strong> are not the things that are hidden.</p><p>&ndash; They're the things that <strong>become all too familiar.</strong></p><p>We can spend a lot of time thinking about <strong>what we need but don't have.</strong></p><p>&ndash; The hidden belief is that transformation is expensive, requires a lot of trouble.<br>&ndash; More money. More people. More talent. More opportunities. More resources.</p>`,
+    notes: "The screen holds the setup. YOU land 'all too familiar.'",
   },
   {
     position: 3,
-    html: obviousSlide(
-      `<div class="badge-row"><span class="badge">What if&hellip;</span></div><div class="mid stage" data-stage="1">&hellip;one of our biggest problems isn't what we <strong>don't</strong> have?</div><div class="mid stage" data-stage="2">&hellip;we're overlooking what God has already put <strong>right in front of us?</strong></div>`,
+    html: ob(
+      `<p class="kicker">What if&hellip;</p><div class="question">&hellip;we're overlooking what God has already put <strong>right in front of us?</strong></div>`,
     ),
-    outline_html: `<p>We spend a lot of time thinking about what we need but don't have. The hidden belief: transformation is expensive — more money, more people, more talent, more opportunities, more resources.</p><p><strong>What if one of our biggest problems isn't what we don't have? What if we're overlooking what God has already put right in front of us?</strong> How can something be right in front of us every day — and we never see what it could become?</p>`,
-    notes: "One click — the second question lands on its own.",
+    outline_html: `<p><strong>What if</strong> one of our biggest problems <strong>isn't what we don't have?</strong></p><p><strong>What if</strong> we're overlooking what God has already <strong>put right in front of us?</strong></p><p>How can something be right in front of us every day — but yet we never see what it could become?</p><p><strong>How do we miss what's right in front of us?</strong> We buy technology and immediately learn how it can entertain us. We discover a new restaurant and think about eating there. We get a new vehicle and think about where we can go. We meet somebody new and we start looking for what we have in common.</p><p>Nothing wrong with any of that.</p>`,
+    notes: "Both 'what if' questions live here — deliver the first one before the slide's line.",
   },
   {
     position: 4,
-    html: obviousSlide(
-      `<div class="badge-row"><span class="badge">The question we rarely ask</span></div><div class="qmark">&ldquo;</div><div class="thesis xl">How could God use this for His purpose?</div>${SPRIG}`,
+    html: ob(
+      `<p class="kicker">The question we rarely ask</p><div class="question">&ldquo;How could God use this for His purpose?&rdquo;</div>`,
     ),
-    outline_html: `<p><strong>How do we miss what's right in front of us?</strong> We buy technology and immediately learn how it can entertain us. We discover a new restaurant and think about eating there. We get a new vehicle and think about where we can go. We meet somebody new and look for what we have in common. Nothing wrong with any of that — but there's another question we rarely ask: <strong>how could God use this for His purpose?</strong> Is it possible the place to start is just using what we already have?</p>`,
-    notes: null,
+    outline_html: `<p><strong>But what if</strong> there is another question we rarely ask?</p><p><strong>How could God use this for His purpose?</strong></p><p><strong>Is it possible</strong> that the place to start is by just using what we already have?</p>`,
+    notes: "The anchor question of the whole sermon. It comes back at the end. Let it sit.",
   },
+
+  /* ---------------- Moses: look around ---------------- */
   {
     position: 5,
-    html: obviousSlide(
-      `<div class="soft">Moses told the Israelites&hellip;</div><div class="mega">&ldquo;Look around, people.&rdquo;</div><div class="badge-row"><span class="badge">Deuteronomy 6:4&ndash;9</span></div>`,
+    html: ob(
+      `<p class="kicker">Deuteronomy 6:4&ndash;9</p><div class="scripture">Hear, O Israel: The LORD our God, the LORD is one. Love the LORD your God with all your heart and with all your soul and with all your strength. <em>These commandments that I give you today are to be on your hearts.</em> Impress them on your children. Talk about them when you sit at home and when you walk along the road, when you lie down and when you get up. Tie them as symbols on your hands and bind them on your foreheads. Write them on the doorframes of your houses and on your gates.</div>`,
     ),
-    outline_html: `<p><strong>Read Deuteronomy 6:4–9.</strong> Background to Deuteronomy — Moses wasn't merely giving them information. He's teaching them to build a new perspective.</p>`,
-    notes: "Read the passage before advancing.",
+    outline_html: `<p><strong>Moses told the Israelites, &ldquo;Look around, people.&rdquo;</strong></p><p>Background to Deut. — <strong>read Deut. 6:4&ndash;9.</strong></p><p><strong>Moses wasn't merely giving them information. He's teaching them to build a new perspective.</strong></p><p><strong>Don't confine</strong> God's Word to one religious moment. Surround yourself with reminders of it. Build it into your day. Build it into your house. Build it into your relationships. Build it into the raising of your children.</p>`,
+    notes: "The verse is on the screen (your outline's instruction). Read it, then teach from it.",
   },
   {
     position: 6,
-    html: obviousSlide(
-      `<div class="qmark">&ldquo;</div><div class="thesis xl">These commandments that I give you today are to be on your hearts.</div><div class="badge-row"><span class="badge">Deuteronomy 6:6</span></div>`,
-    ),
-    outline_html: `<p><strong>Destination — the heart. The means</strong> — doorpost, hand, forehead, conversations, morning, evening, and roadway. Don't confine God's Word to one religious moment. Surround yourself with reminders of it. Build it into your day, your house, your relationships, the raising of your children.</p>`,
-    notes: null,
+    html: ob(`<div class="mega">&ldquo;Look around, people.&rdquo;</div>`),
+    outline_html: `<p>&ldquo;These commandments that I give you today are to be on your hearts.&rdquo; — <strong>Destination:</strong> the heart. <strong>The means:</strong> doorpost, hand, forehead, conversations, morning, evening, and roadway.</p><p>Your house? <strong>Use it.</strong> Your doorway? <strong>Use it.</strong> Your hands? <strong>Use them.</strong> Your forehead? <strong>Use it.</strong> Your conversations with your children? <strong>Use them.</strong> Walking down the road? <strong>Use that.</strong> Sitting around the house? <strong>Use that.</strong> Getting up in the morning? <strong>Use that.</strong> Going to bed? <strong>Use that.</strong></p><p>Moses isn't pointing them toward <strong>some extraordinary resource.</strong> He's saying: <strong>Look around.</strong> There's a door — write it there. You have children — talk to them. You're going somewhere — talk about it while you're walking. You're sitting around the house — talk about it there. You're getting ready for bed — there's another opportunity. You're waking up — there's another one.</p><p><strong>Moses is calling on us to turn ordinary events into a DELIVERY SYSTEM for the Word of God.</strong></p>`,
+    notes: "This one anchor holds the entire 'use it' litany. The screen stays put; you deliver.",
   },
   {
     position: 7,
-    html: obviousSlide(
-      `<div class="soft">This wasn't &ldquo;remember to have a Bible lesson occasionally.&rdquo; It was much bigger:</div><div class="mid">Make the Word of God part of the</div><div class="mega">Architecture</div><div class="mid">of your life.</div>`,
+    html: ob(
+      `<p class="kicker">Make the Word of God part of the</p><div class="mega">Architecture</div><div class="question">of your life.</div>`,
     ),
-    outline_html: `<p>This wasn't "remember to have a Bible lesson occasionally." It was much bigger: <strong>make the Word of God part of the architecture of your life.</strong> Israel now possessed God's revealed instruction in a form that could be remembered, taught, repeated, written, displayed, and deliberately passed from one generation to another.</p>`,
-    notes: null,
+    outline_html: `<p>This wasn't: &ldquo;Remember to have a Bible lesson occasionally.&rdquo; It was much bigger.</p><p><strong>Make the Word of God part of the architecture of your life.</strong></p><p>Israel now possessed God's revealed instruction in a form that could be remembered, taught, repeated, written, displayed, and deliberately passed from one generation to another.</p>`,
+    notes: "The landing of the Moses movement.",
   },
+
+  /* ---------------- the question nobody is asking ---------------- */
   {
     position: 8,
-    html: obviousSlide(
-      `<div class="badge-row"><span class="badge">Look around</span></div><div class="rows"><div><span class="q">Your house?</span><span class="a">Use it.</span></div><div><span class="q">Your doorway?</span><span class="a">Use it.</span></div><div><span class="q">Conversations with your children?</span><span class="a">Use them.</span></div><div><span class="q">Walking down the road?</span><span class="a">Use that.</span></div><div><span class="q">Waking up? Going to bed?</span><span class="a">Use that.</span></div></div>`,
+    html: ob(
+      `<p class="kicker">None of those events were new</p><div class="statement">What Moses changed was <strong>the purpose attached to them.</strong></div>`,
     ),
-    outline_html: `<p><strong>Moses isn't pointing them toward some extraordinary resource.</strong> He's saying: look around. There's a door — write it there. You have children — talk to them. You're going somewhere — talk about it while you're walking. Sitting around the house — talk about it there. Getting ready for bed — there's another opportunity. Waking up — there's another one.</p>`,
+    outline_html: `<p><strong>There's a question nobody is asking: why would Moses have to tell them this?</strong></p><p><strong>Moses is commanding something that apparently wasn't happening automatically.</strong></p><p>They had doors before Moses mentioned doorposts. They had homes. They had children. They had conversations. They walked the roads. They woke up. They went to sleep.</p><p>None of those events were new. What Moses changed was <strong>the purpose attached to them.</strong></p>`,
     notes: null,
   },
   {
     position: 9,
-    html: obviousSlide(
-      `<div class="soft">Moses is calling on us to turn ordinary events into&hellip;</div><div class="mega">A delivery system</div><div class="thesis">for the Word of God.</div>`,
+    html: ob(
+      `<div class="statement">Maybe we just haven't learned how to see the <strong>Kingdom possibilities</strong> in the resources we <strong>already have.</strong></div>`,
     ),
-    outline_html: `<p><strong>Moses is calling on us to turn ordinary events into a DELIVERY SYSTEM for the Word of God.</strong></p>`,
-    notes: null,
+    outline_html: `<p><strong>Maybe our greatest Kingdom problem isn't that we don't have enough resources.</strong></p><p><strong>Maybe we just haven't learned how to see the Kingdom possibilities in the resources we already have.</strong></p>`,
+    notes: "The thesis of the sermon, restated. Slow down.",
   },
   {
     position: 10,
-    html: obviousSlide(
-      `<div class="mid stage" data-stage="1">None of those events were new.</div><div class="soft stage" data-stage="2">What Moses changed was the&hellip;</div><div class="mega stage" data-stage="2">Purpose</div><div class="soft stage" data-stage="2">attached to them.</div>`,
+    html: ob(
+      `<p class="kicker">Obvious questions</p><div class="rows"><div><span class="q">What do I <strong>already</strong> have?</span></div><div><span class="q">Who do I <strong>already</strong> know?</span></div><div><span class="q">Where do I <strong>already</strong> go?</span></div><div><span class="q">What am I <strong>already</strong> good at?</span></div><div><span class="q">What conversations am I <strong>already</strong> having?</span></div></div>`,
     ),
-    outline_html: `<p><strong>The question nobody is asking: why would Moses have to tell them this?</strong> He's commanding something that apparently wasn't happening automatically. They had doors before Moses mentioned doorposts. They had homes. Children. Conversations. They walked the roads, woke up, went to sleep. None of those events were new — <strong>what Moses changed was the purpose attached to them.</strong></p>`,
-    notes: "One click — second line lands on its own.",
+    outline_html: `<p><strong>Obvious questions:</strong> What do I already have? Who do I already know? Where do I already go? What am I already good at? What technology am I already using? What conversations am I already having? At what places am I already hanging out?</p><p>Moses wanted the Israelites to build habits that would keep them seeing it over and over — because whatever isn't <strong>deliberately built</strong> into our lives eventually gets crowded out by everything that is.</p><p><strong>God didn't give Israel new things to do. He gave them new reasons (perspectives).</strong></p>`,
+    notes: "Read a couple, let the room fill in the rest.",
   },
   {
     position: 11,
-    html: obviousSlide(
-      `<div class="mid stage" data-stage="1">Maybe our greatest Kingdom problem isn't that we don't have enough resources.</div><div class="mid stage" data-stage="2">Maybe we haven't learned to see the <strong>Kingdom possibilities</strong> in the resources we <strong>already have.</strong></div>`,
+    html: ob(
+      `<p class="kicker">The danger wasn't scarcity</p><div class="mega">Walking into abundance and going blind.</div>`,
     ),
-    outline_html: `<p>Maybe our greatest Kingdom problem isn't that we don't have enough resources. Maybe we just haven't learned how to see the Kingdom possibilities in the resources we already have.</p>`,
-    notes: "One click — second line lands on its own.",
+    outline_html: `<p>The danger wasn't scarcity. The danger wasn't the enemy. The danger wasn't the wilderness.</p><p><strong>The danger was walking into abundance and going blind.</strong></p><p>The solution was, <strong>create new habits.</strong></p>`,
+    notes: null,
   },
+
+  /* ---------------- our habits reveal what gets our best ---------------- */
   {
     position: 12,
-    html: obviousSlide(
-      `<div class="badge-row"><span class="badge">Obvious questions</span></div><div class="rows"><div><span class="q">What do I <strong>already</strong> have?</span></div><div><span class="q">Who do I <strong>already</strong> know?</span></div><div><span class="q">Where do I <strong>already</strong> go?</span></div><div><span class="q">What am I <strong>already</strong> good at?</span></div><div><span class="q">What conversations am I <strong>already</strong> having?</span></div></div>`,
+    html: ob(
+      `<div class="question">Has the Kingdom become something we <strong>believe in</strong> without becoming something we <strong>build our lives around?</strong></div>`,
     ),
-    outline_html: `<p><strong>Obvious questions:</strong> What do I already have? Who do I already know? Where do I already go? What am I already good at? What technology am I already using? What conversations am I already having? At what places am I already hanging out?</p><p>Moses wanted Israel to build habits that would keep them seeing it over and over — because whatever isn't deliberately built into our lives eventually gets crowded out by everything that is. God didn't give Israel new things to do. He gave them new reasons.</p>`,
-    notes: null,
+    outline_html: `<p><strong>Our habits reveal what gets our best.</strong> Habits also explain <strong>why we overlook the obvious.</strong> We naturally build habits around what matters to us.</p><p>&ndash; We don't have to remind ourselves constantly to <strong>check our phones.</strong><br>&ndash; We don't need a <strong>discipleship class to teach</strong> us to open Facebook.<br>&ndash; Nobody needs to call me on Thursday afternoon and say: <em>&ldquo;Joe, remember, you're supposed to eat supper tonight.&rdquo;</em></p><p>Here's what we do: we buy technology and immediately learn how it can entertain us. We find a new restaurant and start planning our next dinner. We get a new vehicle and we plan a road trip.</p><p>Our lives naturally organize themselves around things we have decided matter. And that's where the uncomfortable question creeps in:</p><p><strong>Has the Kingdom become something we believe in without it becoming something we build our lives around? It's present in belief but absent in life.</strong></p>`,
+    notes: "The supper line is the laugh — let it land before the uncomfortable question.",
   },
   {
     position: 13,
-    html: obviousSlide(
-      `<div class="soft stage" data-stage="1">The danger wasn't scarcity. It wasn't the enemy. It wasn't the wilderness.</div><div class="mid stage" data-stage="2">The danger was walking into abundance&hellip;</div><div class="mega stage" data-stage="2">and going blind.</div>`,
+    html: ob(
+      `<div class="statement">Attach the things of God to things <strong>you're already doing.</strong></div>`,
     ),
-    outline_html: `<p>The danger wasn't scarcity. The danger wasn't the enemy. The danger wasn't the wilderness. <strong>The danger was walking into abundance and going blind.</strong> The solution: create new habits.</p><p><strong>Our habits reveal what gets our best</strong> — and they explain why we overlook the obvious. Nobody reminds us to check our phones. We don't need a discipleship class to teach us to open Facebook. Nobody calls me Thursday afternoon: "Joe, remember, you're supposed to eat supper tonight."</p>`,
-    notes: "The supper line is the laugh — let it land.",
+    outline_html: `<p>Moses is saying: <strong>Build habits that keep God from becoming peripheral.</strong></p><p>There's an idea in leadership called a <em>keystone habit</em> — one small &ldquo;key&rdquo; habit that begins influencing other areas of your life. (Floss &gt; &ldquo;I'm disciplined, feel great&rdquo; &gt; kiss the wife &gt; wake up ready to face the next day&hellip;)</p><p>And when I read Deuteronomy 6, it's clear that <strong>Moses understood that principle</strong> a long time ago. He doesn't tell them, &ldquo;Once a year, have a really big spiritual event and remind yourselves of God.&rdquo; He says when you get up — talk about it. When you sit around the house — talk about it. When you're traveling — talk about it. When you go to bed — talk about it.</p><p><strong>Attach the things of God to things you're already doing.</strong></p><p>Because sometimes one small, repeated habit can begin changing the environment of an entire life — hence, <strong>TRANSFORMATION!</strong></p>`,
+    notes: null,
   },
   {
     position: 14,
-    html: obviousSlide(
-      `<div class="qmark">&ldquo;</div><div class="thesis">Has the Kingdom become something we believe in without becoming something we build our lives around?</div><div class="badge-row"><span class="badge">Present in belief &middot; absent in life</span></div>`,
+    html: ob(
+      `<p class="kicker">Romans 12:2</p><div class="scripture">Don't live the way this world lives. <em>Let your way of thinking be completely changed.</em> Then you will be able to test what God wants for you. And you will agree that what he wants is right. His plan is good and pleasing and perfect.</div>`,
     ),
-    outline_html: `<p>Our lives naturally organize themselves around things we have decided matter. And that's where the uncomfortable question creeps in: <strong>has the Kingdom become something we believe in without it becoming something we build our lives around?</strong> Present in belief but absent in life.</p><p>Moses is saying: build habits that keep God from becoming peripheral. There's an idea in leadership called a <strong>keystone habit</strong> — one small habit that begins influencing other areas of your life (floss → "I'm disciplined" → kiss the wife → wake up ready). Moses understood that long ago: not "once a year, have a big spiritual event" — when you get up, talk about it; around the house, talk about it; traveling, going to bed, talk about it. <strong>Attach the things of God to things you're already doing.</strong> One small, repeated habit can change the environment of an entire life — transformation.</p>`,
+    outline_html: `<p>The Apostle Paul taught that <strong>true transformation comes from God by changing how you think.</strong></p><p>Romans 12:2 (NIrV) — on the screen.</p>`,
     notes: null,
   },
+
+  /* ---------------- one question ---------------- */
   {
     position: 15,
-    html: obviousSlide(
-      `<div class="qmark">&ldquo;</div><div class="thesis xl">Don't live the way this world lives. Let your way of thinking be completely changed.</div><div class="badge-row"><span class="badge">Romans 12:2</span></div>`,
+    html: ob(
+      `<p class="kicker">Imagine if we started asking one question</p><div class="question">&ldquo;How can I use this moment for the Kingdom?&rdquo;</div>`,
     ),
-    outline_html: `<p><strong>Romans 12:2 (NIrV):</strong> "Don't live the way this world lives. Let your way of thinking be completely changed. Then you will be able to test what God wants for you. And you will agree that what he wants is right. His plan is good and pleasing and perfect." Paul taught that true transformation comes from God by changing how you think.</p>`,
-    notes: null,
+    outline_html: `<p>What if for the next week you developed one new &ldquo;keystone&rdquo; habit? Every time you pick up something, walk into some place, meet somebody — you see it as an opportunity and then ask:</p><p><strong>&ldquo;How can I use this moment for the Kingdom?&rdquo;</strong></p><p>The whole passage from Deut. is teaching Israel to <strong>train themselves to notice God in everyday, mundane events.</strong></p><p>Bought a car? How could I use this for the Kingdom? New computer? How could I use it for the Kingdom? Love drinking coffee somewhere every morning? How could God use that place? Good at woodworking? How could God use that? Have a home? How could this home bless someone? Know how to make videos (reels)? How could that communicate the Kingdom? Are you an awesome cook? Who could sit around your table?</p><p><strong>Maybe that's the event that can make a difference for God's Kingdom.</strong></p>`,
+    notes: "Your repeated question, now as the practical challenge.",
   },
   {
     position: 16,
-    html: obviousSlide(
-      `<div class="badge-row"><span class="badge">One question</span></div><div class="qmark">&ldquo;</div><div class="thesis xl">How can I use this moment for the Kingdom?</div>${SPRIG}`,
+    html: ob(
+      `<div class="statement">Don't miss what God can do through something <strong>you've stopped noticing.</strong></div>`,
     ),
-    outline_html: `<p><strong>Imagine if we started asking one question.</strong> What if for the next week you developed one new keystone habit — every time you pick up something, walk into some place, meet somebody: <strong>"How can I use this moment for the Kingdom?"</strong></p><p>Bought a car? New computer? Love drinking coffee somewhere every morning? Good at woodworking? Have a home? Know how to make videos? An awesome cook — who could sit around your table? Maybe that's the event that makes a difference for God's Kingdom.</p>`,
+    outline_html: `<p><strong>Don't miss what God can do through something you've stopped noticing.</strong></p><p>Some of our greatest Kingdom opportunities may be hiding in plain sight.</p><p>One last thought&hellip;</p>`,
     notes: null,
   },
+
+  /* ---------------- don't miss the handoff ---------------- */
   {
     position: 17,
-    html: obviousSlide(
-      `<div class="mid">Don't miss what God can do through something you've</div><div class="mega">Stopped noticing.</div><div class="soft">Some of our greatest Kingdom opportunities are hiding in plain sight.</div>`,
-    ),
-    outline_html: `<p><strong>Don't miss what God can do through something you've stopped noticing.</strong> Some of our greatest Kingdom opportunities may be hiding in plain sight.</p><p>One last thought&hellip;</p>`,
+    html: ob(`<p class="kicker">Deuteronomy 6:20</p><div class="mega">Don't miss the handoff.</div>`),
+    outline_html: `<p><strong>Don't miss the handoff.</strong> Immediately after the instructions about teaching, Moses starts talking about <strong>children and future generations.</strong></p><p>And later in the chapter comes the beautiful question: &ldquo;In the future, when your son asks you, &lsquo;What is the meaning of the stipulations, decrees and laws&hellip;?&rsquo;&rdquo; (Deut. 6:20) — <em>You tell them what God did in Egypt.</em></p><p>Moses isn't only worried about whether <strong>this generation knows.</strong> He's thinking about what happens with <strong>the next generation:</strong></p><p><strong>Every generation inherits something from the generation before it. Every generation is teaching the generation behind it — even when it doesn't realize it's teaching.</strong></p><p>Question: <strong>How are we helping the next generation know, discover, and appreciate who God is?</strong></p>`,
     notes: null,
   },
   {
     position: 18,
-    html: obviousSlide(
-      `<div class="soft">Every generation is teaching the one behind it &mdash; even when it doesn't realize it's teaching.</div><div class="mega">Don't miss the handoff.</div><div class="badge-row"><span class="badge">Deuteronomy 6:20</span></div>`,
+    html: ob(
+      `<div class="statement">We may have <strong>more ways to communicate</strong> than any generation in history &mdash; and still fail to communicate <strong>the thing that matters most.</strong></div>`,
     ),
-    outline_html: `<p><strong>Don't miss the handoff.</strong> Immediately after the teaching instructions, Moses starts talking about children and future generations. "In the future, when your son asks you, 'What is the meaning of the stipulations, decrees and laws…?'" (Deut. 6:20) — you tell them what God did in Egypt.</p><p>Every generation inherits something from the generation before it. Every generation is teaching the generation behind it — even when it doesn't realize it's teaching. <strong>How are we helping the next generation know, discover, and appreciate who God is?</strong></p><p>In 2026 we have phones, tablets, computers, social media, video, podcasts, coffee shops, vehicles, homes, workplaces, friendships, hobbies&hellip; The problem isn't opportunity. We may have more ways to communicate than any generation in history — and still fail to communicate the thing that matters most.</p>`,
+    outline_html: `<p>In 2026 we have: phones, tablets, televisions, computers, websites, social media, text messaging, email, video, podcasts, coffee shops, restaurants, vehicles, homes, workplaces, friendships, hobbies, community events&hellip;</p><p>The problem certainly isn't that we don't have enough opportunities to influence others.</p><p><strong>We may have more ways to communicate than any generation in history — and still fail to communicate the thing that matters most.</strong></p>`,
     notes: null,
   },
   {
     position: 19,
-    html: obviousSlide(
-      `<div class="mid stage" data-stage="1">The last time God told Israel to put something on a doorframe&hellip;</div><div class="mega oxblood stage" data-stage="2">It was blood.</div><div class="thesis stage" data-stage="3">And it was the difference between life and death.</div>`,
+    html: ob(
+      `<div class="statement stage" data-stage="1">The last time God told Israel to put something on a doorframe&hellip;</div><div class="mega stage" data-stage="2">It was blood.</div>`,
     ),
-    outline_html: `<p>Imagine where the Israelites stood&hellip; <strong>The last time God told Israel to put something on a doorframe, it was blood</strong> (Egypt). And it was the difference between life and death.</p>`,
-    notes: "One click — second line lands on its own. Slow down here.",
+    outline_html: `<p>Imagine where the Israelites stood&hellip;</p><p><strong>The last time God told Israel to put something on a doorframe, it was blood.</strong> (Egypt)</p><p>And it was the difference between life and death.</p>`,
+    notes: "One click. The second line lands by itself — give it room. Slow down here.",
   },
   {
     position: 20,
-    html: obviousSlide(
-      `<div class="mid">God has always done His most important work</div><div class="mega">on ordinary doorways.</div><div class="thesis">Claim your doorway for the Kingdom.</div>`,
+    html: ob(
+      `<p class="kicker">God has always done His most important work on</p><div class="mega">Ordinary doorways.</div><div class="question">Claim your doorway for the Kingdom.</div>`,
     ),
-    outline_html: `<p><strong>God has always done His most important work on ordinary doorways.</strong> Claim your doorway for the Kingdom.</p>`,
+    outline_html: `<p><strong>God has always done His most important work on ordinary doorways.</strong></p><p><strong>Claim your doorway for the Kingdom.</strong></p>`,
     notes: null,
   },
   {
     position: 21,
-    html: obviousSlide(
-      `<div class="qmark">&ldquo;</div><div class="thesis xl">As for me and my house, we will serve the Lord.</div><div class="badge-row"><span class="badge">Joshua 24:15</span></div>`,
+    html: ob(
+      `<p class="kicker">Joshua 24:15</p><div class="scripture">&ldquo;<em>As for me and my house, we will serve the Lord.</em>&rdquo;</div>`,
     ),
-    outline_html: `<p>Near the end of his life, Joshua gathers Israel at Shechem and challenges them to give up foreign idols and choose whom they will follow: <strong>"As for me and my house, we will serve the Lord."</strong> (Joshua 24:15)</p><p>Are you ready to reclaim your doorpost for the Kingdom? Walks, restaurants, cars, mornings, nights&hellip;</p>`,
+    outline_html: `<p>Near the end of his life, Joshua gathers the people of Israel at Shechem. He challenges them to give up foreign idols and choose whom they will follow.</p><p>Joshua said, <strong>&ldquo;As for me and my house, we will serve the Lord.&rdquo;</strong> (Joshua 24:15)</p><p><strong>Are you ready to reclaim your doorpost for the Kingdom?</strong> Walks, restaurants, cars, mornings, nights, etc.</p>`,
     notes: null,
   },
   {
     position: 22,
-    html: obviousSlide(
-      `<div class="badge-row"><span class="badge">The challenge</span></div><div class="nums"><div><span class="n">1</span><span class="t">Start noticing the daily events where transformation is hidden.</span></div><div><span class="n">2</span><span class="t">Build one keystone habit for the Kingdom &mdash; and start seeing God appear in your life.</span></div></div>`,
+    html: ob(
+      `<p class="kicker">The challenge</p><div class="nums"><div><span class="n">1</span><span class="t">Start taking notice of the daily events where transformation is hidden.</span></div><div><span class="n">2</span><span class="t">Build one &ldquo;keystone&rdquo; habit for the Kingdom and start seeing God appear in your life.</span></div></div>`,
     ),
-    outline_html: `<p><strong>Final challenge:</strong> 1) Start taking notice of the daily events where transformation is hidden. 2) Build one "keystone" habit for the Kingdom and start seeing God appear in your life.</p>`,
-    notes: null,
+    outline_html: `<p><strong>Final challenge:</strong></p><p>1. Start taking notice of the daily events where transformation is hidden.</p><p>2. Build one &ldquo;keystone&rdquo; habit for the Kingdom and start seeing God appear in your life.</p>`,
+    notes: "Leave this up through the close.",
   },
   {
     position: 23,
     html: OBVIOUS_TITLE,
     outline_html: `<p><strong>Title screen</strong> — invitation / closing prayer.</p>`,
-    notes: "Title slide back up for the invitation.",
+    notes: "Back to the title for the invitation.",
   },
 ];
 

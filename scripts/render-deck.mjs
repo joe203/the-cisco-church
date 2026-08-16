@@ -40,11 +40,14 @@ if (!count) {
 }
 
 for (let i = 1; i <= count; i++) {
-  // Staged slides need time for every beat to land before the shot.
+  // Let the slide change commit (cross-fade + remount) before inspecting it,
+  // or a staged slide reads as unstaged and gets shot mid-reveal.
+  await new Promise((r) => setTimeout(r, 900));
   const hasStages = await page.evaluate(
     () => document.querySelectorAll(".slide-frame .stage").length > 0,
   );
-  await new Promise((r) => setTimeout(r, hasStages ? 6800 : 900));
+  // Staged slides need time for every beat to land before the shot.
+  if (hasStages) await new Promise((r) => setTimeout(r, 6200));
   const file = path.join(outDir, `slide-${String(i).padStart(2, "0")}.png`);
   await page.screenshot({ path: file });
   console.log(file);
