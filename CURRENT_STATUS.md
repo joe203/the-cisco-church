@@ -1,219 +1,160 @@
 # CURRENT_STATUS — TheCiscoChurch.org
-Updated: 2026-08-15 · Read this first when starting a new session.
+Updated: 2026-08-16 · Read this first when starting a new session.
 
-## Latest session (2026-08-15, part 5): "The Obvious" deck
+## NEXT TASK (Joe's stated priority)
 
-- Joe's next sermon **The Obvious** (Deut 6:4–9, 20; outline in
-  `past_sermons/the_obvious/`) is built as deck slug `the-obvious`
-  (`/slides/the-obvious` + `/present`). Deliberately lean: **23 slides**
-  (vs Open Water's 40) — statements/quotes only where they land,
-  full-manuscript outline segments on the controller.
-- Design: Joe's parchment-doorway artwork (`photos/slide_background.png`,
-  title baked in) is the full-bleed background of EVERY slide
-  (`public/sermons/the-obvious/bg.jpg`); text renders in the open parchment
-  right of the doorway via new `.panel` styles in `slides.css` — dark ink
-  (#3D2B1C), olive kicker/refs (#5C6B35). New `img.slide-image.drift` class
-  adds a 36s Ken Burns zoom so the background breathes.
-- `005_the_obvious.sql` generated via the export script.
-- Production PRESENTER_KEY changed to `cut-the-rope-1701` (Joe's request;
-  container recreated, site verified up). Local remains `local-dev-key`.
-- HyperFrames (animated slide visuals) discussed but not yet used — the
-  background system accepts rendered mp4 loops whenever we generate them.
+**Add a new sermon to the home page.** Joe will supply the sermon details.
+Everything needed is listed under "How to add a sermon" below — read that
+section before starting, and ask Joe only for the details you can't derive
+(title, date, scripture, links, assets).
 
-## Earlier (2026-08-15, part 4): the presentation module
-
-Joe supplied `presentation_module/` (his hand-built Open Water Faith HTML
-deck — controller + screen synced via BroadcastChannel, same-machine only)
-and asked for it to become the site's permanent, every-sermon system. Built:
-
-- **Controller** (`/slides/[deck]/present`, rewritten `Presenter.tsx`):
-  locked centered slide preview + Back/Next/Blank/Go-live on top; the full
-  sermon outline scrolls beneath in its own region; tap a segment → that
-  slide hits the screen; current segment highlighted + auto-centered.
-  Clicker keys (PageUp/PageDown) supported. `b` = blank.
-- **Screen** (`/slides/[deck]`, updated `LiveViewer.tsx`): looping video
-  background layers (deck metadata `backgrounds`, per-slide `bg` key,
-  cross-fade on change), blank keeps background running, F = fullscreen,
-  poll now 2s. Follows controller when live; self-paced otherwise.
-- **Staged reveals** (`slides.css`): `class="stage" data-stage="2"` lands
-  ~2.8s after slide entry — long/split quotes are ONE click, never two.
-  Controller preview shows all stages at once. Slide bodies now centered.
-- **Sync without Supabase**: the state route keeps per-deck state in process
-  memory, so tablet→projector sync works TODAY through the 2s poll.
-  Verified end-to-end with puppeteer (outline click → server state → screen
-  followed, background switched at "Cut the Rope"). Supabase later = same
-  API, Realtime push, poll as fallback.
-- **Schema**: `003_presentation.sql` adds `cisco_slides.outline_html`, `.bg`,
-  `cisco_deck_state.is_blank` (+ anon grant). `004_open_water_faith.sql` is
-  GENERATED — `node scripts/export-deck-sql.mjs <slug> <uuid>` exports any
-  seed deck to SQL (the tool for future sermons too).
-- **Open Water Faith deck** fully converted into `lib/seed.ts`: 40 slides,
-  outline segments + presenter cues, shore/open video loops (ffmpeg-encoded
-  56MB→12MB at `public/sermons/open-water-faith/bg/`). No sermon page — deck
-  is standalone at `/slides/open-water-faith`.
-- Existing image decks (hard-truth, bag-of-seeds) work in the new controller
-  (outline falls back to notes text).
-- Still to explore per Joe: HyperFrames-generated background loops / visuals
-  per sermon; his `photos/slide_background.png` ("The Obvious") awaits that
-  sermon's deck as an image background.
-
-## Earlier (2026-08-15, part 3): outlines + real slide decks wired in
-
-- Joe added his full sermon outlines and slide-deck PNGs to `past_sermons/`.
-  Sermon-page points for BOTH sermons were rewritten from the real outlines
-  (5 points each, using Joe's own language and slide taglines as labels).
-- **Both sermons now have real image slide decks** in the live slide system:
-  7 slides each at `public/sermons/[slug]/slides/NN.jpg` (1920w jpg via
-  sharp). Deck slugs: `the-hard-truth`, `the-bag-of-seeds`. The old 6-slide
-  HTML demo deck is gone.
-- Seed refactor: `lib/seed.ts` now exports `seedDecks` (plural) +
-  `findSeedDeck()` + `seedDeckNotes()`; `lib/data.ts` and the deck state API
-  route use them. Image slides are `<img class="slide-image">` fragments —
-  full-bleed rule added to `app/slides/slides.css`; DOMPurify passes img/src/
-  class/alt through. Presenter notes were written from the outlines.
-- Bag of Seeds deck skips `slide_00.png` (QR-code variant of the title).
-- Joe confirmed the inferred dates (Jul 19 / Jul 26) are correct.
-- `002_seed.sql` kept in exact sync with `lib/seed.ts`.
-- Verified: tsc clean, both sermon pages + fullscreen viewer screenshots,
-  deck state API 200 for both decks. Still not committed/deployed.
-
-## Earlier (2026-08-15, part 2): two REAL sermons are in
-
-- Joe supplied assets in `past_sermons/` (reflection-guide PDFs + Cloudinary
-  title-slide links + YouTube links) for his two real past sermons. Both are
-  now wired through `lib/seed.ts` **and** `supabase/migrations/002_seed.sql`
-  (kept in sync); the two fake placeholder sermons are gone.
-  - **The Bag of Seeds** — Matthew 13:1–23, YouTube `q1ILOtr_yAM`, featured
-    (newest). No slide deck.
-  - **The Hard Truth About the Kingdom** — Matthew 25:14–30, YouTube
-    `BrBm6-QasUo`, thesis corrected to "God celebrates faithfulness." Keeps
-    the 6-slide demo deck (`the-hard-truth`), which matches this sermon.
-- Assets live at `public/sermons/[slug]/artwork.jpg` (title slides, sharp →
-  1600w jpg) and `.../reflection-guide.pdf`. Verified serving as 200
-  `application/pdf`. Resource cards (Preview/Watch) light up automatically.
-- **TODO(Joe): confirm sermon dates** — 2026-07-19 (Hard Truth) and
-  2026-07-26 (Bag of Seeds) were inferred from slide-upload timestamps.
-- Sermon artwork is 16:9, so card/banner slots are now `aspect-video`
-  (featured card art column widened to 1.5fr).
-- Joe approved the light redesign ("much better feel"). Still not committed
-  or deployed.
-
-## Earlier this session (2026-08-15): design refresh to "Texas morning"
-
-- **The full light-palette redesign is built locally and NOT yet committed or
-  deployed.** Joe asked for a lighter, fun, celebrative look based on the Oak
-  Hills sample images he added to `photos/` (`sample_*.png`, `hero_sample.png`).
-- New identity: warm-white base, teal diagonal hero over a real photo
-  (`trail-rock.jpg` — kids on a trail rock), coral CTAs, marigold accents,
-  Bricolage Grotesque display font, rounded cards, tilted "snapshot" photos.
-  Full token table now lives in CLAUDE.md → Visual Identity.
-- Sweep covered: homepage (hero, service band, welcome, recent sermons),
-  header/footer, `/sermons` archive, `/sermons/[slug]`, sermon cards +
-  typographic artwork fallback (now teal). **Slides/presenter deliberately
-  keep the dark gold-on-espresso look** (projector rooms); the deck viewer
-  band on sermon pages was re-grounded on Ink instead of Pitch.
-- Photos: `photos/*.png` were converted/graded (sharp, +5% brightness, +10%
-  saturation) into `public/images/` — new files `trail-rock.jpg`,
-  `road-trip.jpg`, `kids-outside.jpg`; regenerated `youth.jpg`,
-  `fellowship-ladies.jpg`, `congregation.jpg`, `bible-class.jpg`,
-  `fellowship-men.jpg`. Remember the `.next/cache/images` gotcha.
-- Verified: `tsc` clean; desktop + mobile + reduced-motion screenshots; slide
-  viewer unchanged. Awaiting Joe's reaction before commit/deploy.
+---
 
 ## Where things stand
 
-**The site is LIVE at https://theciscochurch.org** — SSL valid (Let's Encrypt,
-auto-renews), `www` redirects to the bare domain, DNS delegated to
-DigitalOcean nameservers (`ns1–3.digitalocean.com`), apex + www A records →
-`67.207.83.48`.
+**Everything is committed, deployed, and live at https://theciscochurch.org.**
+Working tree clean as of `e2e2e62`. No pending or half-finished work.
 
-## What's been accomplished
+- Next.js 16 (App Router) + Tailwind v4 + TypeScript, container `cisco-church`
+  on the droplet (`ssh droplet`), repo `/root/the-cisco-church`, external `web`
+  network, host port **3060**, Caddy proxies `theciscochurch.org → :3060`.
+- Deploy: `cd /root/the-cisco-church && git pull && docker compose --env-file .env up -d --build`
+- GitHub: https://github.com/joe203/the-cisco-church (private).
+- **PRESENTER_KEY (production): `cut-the-rope-1701`** — one key for ALL decks
+  (it is a single site-wide env var, not per-deck). Local dev: `local-dev-key`.
+- Data still comes from bundled seed data (`lib/seed.ts`); Supabase is written
+  but deliberately NOT connected yet.
 
-### Built and deployed
-- **Full site** on Next.js 16 (App Router) + Tailwind v4 + TypeScript:
-  homepage (hero → service band → welcome → recent sermons → footer),
-  `/sermons` archive (grouped by year), `/sermons/[slug]` full sermon pages,
-  live slide system (`/slides/[deck]` realtime viewer + `/slides/[deck]/present`
-  presenter + `PRESENTER_KEY`-gated API route).
-- **Deployed** on the main FiveSixteen droplet (`ssh droplet`), repo at
-  `/root/the-cisco-church`, container `cisco-church` on the external `web`
-  network, host port **3060**, Caddy (host systemd) proxying
-  `theciscochurch.org → localhost:3060`.
-- **GitHub:** https://github.com/joe203/the-cisco-church (private; droplet
-  pulls with the token embedded in its git remote, same pattern as
-  stockdale-church). Deploy = `cd /root/the-cisco-church && git pull && docker
-  compose --env-file .env up -d --build`.
-- **PRESENTER_KEY** was generated on the droplet: `cat /root/the-cisco-church/.env`.
-  Local dev uses `.env.local` (`local-dev-key`).
+## What's live
 
-### Naming + copy direction (established with Joe, applies to ALL future copy)
-- Site is branded **"The Cisco Church"** (header, footer, page titles).
-- **"Church of Christ" is used sparingly** — exactly one homepage mention, in
-  the footer: "The Church of Christ in Cisco, Texas is a place where good
-  things are happening." Don't add more mentions.
-- **No "small church / country church / simple / the way we've always done it"
-  framing — ever.** The voice is: energy, momentum, things happening, a great
-  worship experience. "Fresh" and "new" are on-message. Never say anything
-  that would need an apology later (e.g. "no stage lights" — stage upgrades
-  are planned).
-- Hero headline: "SOMETHING NEW IS HAPPENING IN CISCO." — heavy italic
-  uppercase Figtree on a diagonal gold field, last line outlined as it crosses
-  onto the dark side (inspired by `photos/hero_sample.png`, Oak Hills style).
-  Hero photo slot deliberately empty for now.
+**Site:** homepage (hero → service band → welcome → recent sermons → footer),
+`/sermons` archive, `/sermons/[slug]` sermon pages — all in the light
+"Texas morning" palette (teal / coral / marigold on warm white).
 
-### Content state
-- **Real:** service times (Sun 9:30 class / 10:30 worship / 6:00 PM evening;
-  Wed 7:00 PM), address (1701 Avenue N, Cisco, TX 76437), phone
-  ((254) 442-1450), map link. All in `lib/site.ts`.
-- **Real photos** in `public/images/` (converted from `photos/`, neutral
-  names, no VBS labels — Joe confirmed they're publicly published already):
-  hero = laughing ladies; welcome = wide fellowship-hall shot, men, youth
-  selfie, kids in pews.
-- **Real sermons:** both seed sermons are real with artwork, guides, and
-  YouTube links (see the top section). Still placeholder: the 6-slide demo
-  deck content, Joe's bio (no photo — section renders text-only by design).
-- Data layer (`lib/data.ts`) currently serves bundled seed data
-  (`lib/seed.ts`) because Supabase env vars are not set — by design.
+**Sermons (2)** — both real, with artwork, reflection-guide PDFs, YouTube
+links, 5 outline-based points each, and image slide decks:
+- `the-bag-of-seeds` — Matthew 13:1–23, 2026-07-26, **is_featured: true**
+- `the-hard-truth-about-the-kingdom` — Matthew 25:14–30, 2026-07-19
 
-## Direction / what's next (in order)
+**Slide decks (5)** at `/slides/[deck]` + `/slides/[deck]/present`:
+| Deck slug | Type | Notes |
+|---|---|---|
+| `the-obvious` | Composed HTML, 23 slides | The reference build — see design system below |
+| `knowledge` | 8 supplied images | Joe's finished artwork; outline text read off the images |
+| `the-bag-of-seeds` | 7 images | Attached to its sermon page |
+| `the-hard-truth` | 7 images | Attached to its sermon page |
+| `open-water-faith` | Composed HTML, 40 slides | Video-loop backgrounds; standalone, no sermon page |
 
-1. **Sermons + slides (Joe's immediate priority).** Post the real sermon,
-   build its slide deck, replace the two placeholder sermons. Joe wants to
-   work on this "tonight or tomorrow."
-2. **Design refresh — IMPORTANT.** Joe likes the current color scheme but for
-   THIS site it reads **too dark**. The look must communicate **life and
-   adventure**. He will post inspiration images of a sample site. Expect a
-   palette/mood rework (likely lighter, more energetic) while keeping the
-   quality bar. Don't start this before seeing his inspiration images.
-3. **Supabase (deliberately last, after the site is otherwise settled).**
-   Migrations are written and idempotent in `supabase/migrations/` but NOT
-   applied. Steps: apply 001 + 002 via `docker exec -i supabase-db psql -U
-   supabase_admin -d postgres < file.sql`; add `cisco` to `PGRST_DB_SCHEMAS`
-   in the Supabase docker `.env` + recreate PostgREST; set
-   `NEXT_PUBLIC_SUPABASE_URL/ANON_KEY` + `SUPABASE_SERVICE_ROLE_KEY` in the
-   droplet `.env`; rebuild; run the RLS/notes/realtime verification in
-   `supabase/migrations/README.md`. App uses the **`cisco` Postgres schema**
-   (tables still `cisco_`-prefixed), clients pass `db: { schema: "cisco" }`.
-4. **Still wanted from Joe (not blocking):** speaker photo + preferred bio,
-   contact email (if any), Facebook/YouTube links, favicon/OG design (a
-   gold-on-espresso monogram was offered), eventually a real worship photo for
-   the hero slot and an exterior/building shot.
+Joe preached with `the-obvious` and reported it worked: *"pretty decent…
+good for the first trial."*
 
-## Gotchas the next session should know
+---
 
-- **This droplet has NO `n8n_default` network.** Apps run on the external
-  `web` network; Caddy proxies to `localhost:<port>`. Port 3060 is this app's.
-- Changing files in `public/images/` requires clearing
-  `.next/cache/images` (and restarting) or Next serves the stale optimized
-  copy.
-- The lockfile pins `@emnapi/runtime` + `@emnapi/core` as devDependencies —
-  Windows npm omits them otherwise and `npm ci` fails on Linux. Docker base is
-  node:24-alpine for npm-11 lockfile compatibility.
-- `screenshot.mjs` (puppeteer-core + cached Chrome) captures with
-  `captureBeyondViewport: false` so CSS `view()` scroll animations render;
-  label containing "reduced" tests `prefers-reduced-motion`, "slides" shoots
-  1920×1080 viewport-only.
+## The slide design system (HARD-WON — do not relitigate)
+
+These rules came from several rounds of Joe rejecting work. Follow them.
+
+1. **Slides are ANCHORS, not captions.** One slide per movement-beat, holding
+   for minutes. A slide that changes every time the preacher makes a point is
+   a distraction and Joe will reject it. ~20 slides for a 35–40 min sermon.
+2. **One background for the whole deck.** No color changes mid-sermon — they
+   make the room wonder what's happening. Title artwork opens and closes;
+   every content slide sits on the same ground.
+3. **Two type families maximum, taken from the sermon's own title artwork.**
+   Joe notices font variation immediately and dislikes it. For `the-obvious`:
+   **Archivo** (heavy caps display + spaced labels) + **Newsreader**
+   (statements, questions, scripture). Loaded in `app/layout.tsx`.
+   - **Never a slab serif** (Ultra was rejected: "looks Western").
+4. **Nothing smaller than ~44px at 1080p** — must read from the back row.
+5. **Fade transitions** between slides (View Transitions cross-fade, 0.55s).
+6. **The controller carries the speaker's ENTIRE outline, verbatim** — it
+   replaces his printed manuscript. Never paraphrase it down.
+7. Ambient motion is allowed only if it's nearly invisible (the breathing
+   hairline `.ambient-rule`, the 36s `drift` Ken Burns).
+
+**Slide type classes** (`app/slides/slides.css`, `.panel` scope):
+`.mega` (Archivo 900 caps punch) · `.statement` (Newsreader 600) ·
+`.question` (Newsreader italic) · `.scripture` (passages) · `.kicker` /
+`.badge` (spaced caps labels) · `.rows` (litany table) · `.nums` (numbered
+challenge) · `.fill.parchment` (the procedural vintage ground).
+Staged reveal: `class="stage" data-stage="2"` lands ~2.8s later — ONE click.
+
+**Review workflow:** `node scripts/render-deck.mjs <deck-slug>` renders every
+slide to `slide_review/<slug>/*.png` (gitignored) for Joe to inspect or drag
+into Claude Desktop. Requires the dev server running.
+
+---
+
+## How to add a sermon (the next task)
+
+A sermon on the homepage is separate from a slide deck. Homepage cards come
+from `getRecentSermons()` → `seedSermons` in `lib/seed.ts`.
+
+1. **Assets** → `public/sermons/<slug>/`: `artwork.jpg` (16:9, sharp → 1600w),
+   `reflection-guide.pdf`, and `slides/NN.jpg` if there's a deck (1920w).
+   Convert with a sharp script; source material goes in `past_sermons/<name>/`
+   (gitignored — heavy).
+2. **`lib/seed.ts`** — add a `SermonDetail` to `seedSermons`. Fields that
+   matter: `slug`, `title`, `thesis`, `scripture_ref`, `scripture_text`,
+   `sermon_date` (ISO), `artwork_url`, `summary`, `youtube_url`, `guide_url`,
+   `is_featured`, `deck_slug`, `points[]` (5, drawn from Joe's real outline —
+   his own language, slide taglines as labels).
+   - **Set `is_featured: true` on the new one and false on `bagOfSeeds`**, or
+     leave all false and let newest-by-date win. Never hardcode elsewhere.
+3. **Deck (optional)** — add a `SeedSlideInput[]` and register it in
+   `seedDecks` via `buildDeck(...)`.
+4. **Mirror into SQL** — `supabase/migrations/002_seed.sql` for the sermon
+   rows; for decks run `node scripts/export-deck-sql.mjs <slug> <uuid>` into a
+   new numbered migration. Keep seed.ts and SQL identical.
+5. Verify: `npx tsc --noEmit`, screenshot the homepage + `/sermons/<slug>`,
+   confirm the guide PDF serves 200. Then commit, push, deploy.
+
+Existing migrations: 001 init, 002 seed, 003 presentation, 004 open water,
+005 the obvious, 006 knowledge.
+
+---
+
+## Still wanted from Joe (not blocking)
+
+- Speaker photo + preferred bio (section renders text-only by design now).
+- Contact email, Facebook / YouTube channel links (`lib/site.ts`, null = hidden).
+- Favicon + OG image design.
+- A real worship photo for the hero, and an exterior/building shot.
+
+## Deliberately deferred
+
+- **Supabase.** Migrations are written and idempotent but NOT applied. Steps:
+  apply via `docker exec -i supabase-db psql -U supabase_admin -d postgres <
+  file.sql`; add `cisco` to `PGRST_DB_SCHEMAS` in the Supabase docker `.env` +
+  recreate PostgREST; set `NEXT_PUBLIC_SUPABASE_URL/ANON_KEY` +
+  `SUPABASE_SERVICE_ROLE_KEY` in the droplet `.env`; rebuild; run the
+  RLS/notes/realtime checks in `supabase/migrations/README.md`. Schema is
+  `cisco`, tables `cisco_`-prefixed, clients pass `db: { schema: "cisco" }`.
+  Until then, deck state lives in the state route's process memory and
+  tablet→projector sync works through the 2s poll (verified live).
+- **HyperFrames / animated slide visuals.** Discussed repeatedly, never used.
+  Joe's actual ask is "find a tool that makes slides genuinely engaging" — the
+  tool choice is ours. The background system already accepts rendered mp4
+  loops (`cisco_decks.metadata->backgrounds`), so animated moments can drop in
+  per slide whenever we build them.
+
+## Gotchas
+
+- **No `n8n_default` network on this droplet.** External `web` network; Caddy
+  proxies to `localhost:3060`.
+- Changing `public/images/` requires clearing `.next/cache/images` or Next
+  serves the stale optimized copy.
+- Lockfile pins `@emnapi/runtime` + `@emnapi/core` as devDependencies (Windows
+  npm omits them; `npm ci` then fails on Linux). Docker base is node:24-alpine.
+- `sharp` can't be imported from the scratchpad — import it by absolute path:
+  `node_modules/sharp/dist/index.mjs`.
+- `scripts/render-deck.mjs` waits for the slide to commit before checking for
+  staged elements; don't "optimize" that wait away or staged slides shoot early.
+- The screen swallows View Transition `AbortError` on purpose (advancing
+  mid-fade skips the transition — expected, not a bug).
 - `next dev` appends a self-managing `nextjs-agent-rules` block to CLAUDE.md —
   leave it alone.
-- Local prod server may be running from a previous session — check before
-  starting another (`npm run dev` / `npm run start` both bind :3000).
+- **The dev server from the last session is stopped.** Start a fresh one with
+  `npm run dev` (binds :3000) before screenshotting or rendering decks.
+- Source folders `past_sermons/`, `presentation_module/`, `knowledge_slides/`,
+  `sample_slides/`, `slide_review/` are gitignored (heavy / local-only).
