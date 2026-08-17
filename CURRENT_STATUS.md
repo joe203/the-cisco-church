@@ -20,8 +20,10 @@ Working tree clean as of `e2e2e62`. No pending or half-finished work.
   network, host port **3060**, Caddy proxies `theciscochurch.org → :3060`.
 - Deploy: `cd /root/the-cisco-church && git pull && docker compose --env-file .env up -d --build`
 - GitHub: https://github.com/joe203/the-cisco-church (private).
-- **PRESENTER_KEY (production): `cut-the-rope-1701`** — one key for ALL decks
-  (it is a single site-wide env var, not per-deck). Local dev: `local-dev-key`.
+- **PRESENTER_KEY: `1701`** — one key for ALL decks (single site-wide env var,
+  not per-deck). Same value locally and in production.
+- Controller route is **`/slides/[deck]/controls`** (renamed from `/present`
+  2026-08-16; the old path 308-redirects so bookmarks still work).
 - Data still comes from bundled seed data (`lib/seed.ts`); Supabase is written
   but deliberately NOT connected yet.
 
@@ -36,7 +38,7 @@ links, 5 outline-based points each, and image slide decks:
 - `the-bag-of-seeds` — Matthew 13:1–23, 2026-07-26, **is_featured: true**
 - `the-hard-truth-about-the-kingdom` — Matthew 25:14–30, 2026-07-19
 
-**Slide decks (5)** at `/slides/[deck]` + `/slides/[deck]/present`:
+**Slide decks (5)** at `/slides/[deck]` + `/slides/[deck]/controls`:
 | Deck slug | Type | Notes |
 |---|---|---|
 | `the-obvious` | Composed HTML, 23 slides | The reference build — see design system below |

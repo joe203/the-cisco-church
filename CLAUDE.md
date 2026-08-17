@@ -75,7 +75,7 @@ If a request seems to need one of these, **stop and ask Joe**.
 /sermons                 archive, newest first
 /sermons/[slug]          full sermon page
 /slides/[deck]           live slide viewer (follows presenter; self-paced when not live)
-/slides/[deck]/present   presenter controls (PRESENTER_KEY gated)
+/slides/[deck]/controls  presenter controls (PRESENTER_KEY gated)
 /api/deck/[deck]/state   POST — presenter writes, server-side only
 ```
 
@@ -180,7 +180,7 @@ unreachable.
 
 ## Slide System
 
-### Controller (`/slides/[deck]/present`) — Joe's outline + clicker
+### Controller (`/slides/[deck]/controls`) — Joe's outline + clicker
 - Gated by `PRESENTER_KEY` (entered once, held in `sessionStorage`).
 - Layout: locked centered slide preview + controls on top; the **full sermon
   outline** scrolls in its own region beneath. Each slide's `outline_html`
@@ -288,7 +288,7 @@ project-root/
 │   │   ├── slides.css           ← scoped slide styling
 │   │   └── [deck]/
 │   │       ├── page.tsx         ← viewer
-│   │       └── present/page.tsx ← presenter
+│   │       └── controls/page.tsx ← controller
 │   └── api/deck/[deck]/state/route.ts
 ├── components/
 │   ├── sections/                ← Hero, ServiceBand, Welcome, RecentSermons, Footer…

@@ -6,13 +6,13 @@ import { getDeck, getDeckState } from "@/lib/data";
 export const dynamic = "force-dynamic";
 
 export const metadata: Metadata = {
-  title: "Presenter",
+  title: "Controls",
   robots: { index: false },
 };
 
 type Params = { deck: string };
 
-export default async function PresenterPage({ params }: { params: Promise<Params> }) {
+export default async function ControlsPage({ params }: { params: Promise<Params> }) {
   const { deck: deckSlug } = await params;
   const deck = await getDeck(deckSlug);
   if (!deck || deck.slides.length === 0) notFound();

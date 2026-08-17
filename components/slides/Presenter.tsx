@@ -172,10 +172,10 @@ export function Presenter({ deck, initialState }: PresenterProps) {
             if (keyInput.trim()) void verify(keyInput.trim());
           }}
         >
-          <p className="eyebrow text-lamplight">Presenter</p>
+          <p className="eyebrow text-lamplight">Controls</p>
           <h1 className="font-display mt-3 text-[2rem] text-cream">{deck.title}</h1>
           <label className="mt-8 block text-[0.9rem] text-ash" htmlFor="presenter-key">
-            Presenter key
+            Key
           </label>
           <input
             id="presenter-key"
@@ -195,7 +195,7 @@ export function Presenter({ deck, initialState }: PresenterProps) {
             disabled={authState === "checking"}
             className="btn-gold mt-6 w-full justify-center disabled:opacity-60"
           >
-            {authState === "checking" ? "Checking…" : "Open presenter"}
+            {authState === "checking" ? "Checking…" : "Open controls"}
           </button>
         </form>
       </div>
