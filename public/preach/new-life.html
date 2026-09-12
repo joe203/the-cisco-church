@@ -1,0 +1,784 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>Make Room for a New Life — preaching sheet</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400;1,6..72,500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink:#14181B;
+    --deep:#1C3A4B;
+    --quiet:#5E6E76;
+    --hair:#C8D2D7;
+    --parch:#F4F6F3;
+    --glow:#FFF3D6;
+    --glowedge:#C8891F;
+    --slidefill:#C9EDF6;
+    --slideedge:#046A7B;
+    --slidechip:#08606E;
+    --sans:"Archivo","Helvetica Neue",Arial,sans-serif;
+    --serif:"Newsreader",Georgia,"Times New Roman",serif;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{
+    background:#8A9299;
+    font-family:var(--sans);color:var(--ink);
+    -webkit-font-smoothing:antialiased;
+    padding:0 14px 45vh;
+  }
+
+  /* ================= control bar (screen only) ================= */
+  .bar{
+    position:sticky;top:0;z-index:50;
+    max-width:8.5in;margin:0 auto;
+    background:#12222C;color:#E8EFF0;
+    padding:10px 16px;
+    display:flex;align-items:center;gap:12px;flex-wrap:wrap;
+    box-shadow:0 2px 14px rgba(0,0,0,.35);
+  }
+  .bar .where{flex:1 1 190px;min-width:0;font-size:12px;line-height:1.35}
+  .bar .where .pt{
+    font-size:10px;letter-spacing:.2em;text-transform:uppercase;
+    color:#93AEBB;font-weight:700;
+  }
+  .bar .where .nm{
+    font-weight:600;font-size:13.5px;
+    white-space:nowrap;overflow:hidden;text-overflow:ellipsis;
+  }
+  .bar button{
+    font-family:var(--sans);font-size:12px;font-weight:600;
+    background:#26414F;color:#E8EFF0;border:1px solid #3C5A6A;
+    padding:8px 12px;border-radius:4px;cursor:pointer;
+  }
+  .bar button:hover{background:#33566A}
+  .bar button.on{background:#F0C68A;color:#12222C;border-color:#F0C68A}
+  .bar .rail{flex:0 0 100%;height:4px;background:#26414F;border-radius:2px;overflow:hidden}
+  .bar .rail i{display:block;height:100%;background:#F0C68A;width:0;transition:width .18s}
+
+  .howto{
+    max-width:8.5in;margin:14px auto 0;background:#1B2C36;color:#CFDDE3;
+    border-radius:4px;padding:14px 18px;font-size:13px;line-height:1.7;
+  }
+  .howto b{color:#F0C68A}
+  .howto kbd{
+    font-family:var(--sans);font-size:11px;font-weight:700;
+    background:#2E4A59;border:1px solid #456878;border-radius:3px;
+    padding:2px 6px;margin:0 1px;
+  }
+
+  .sheet{
+    max-width:8.5in;margin:20px auto 0;background:#fff;
+    padding:0.7in 0.72in 0.8in;
+    box-shadow:0 3px 20px rgba(0,0,0,.28);
+  }
+
+  /* ================= masthead ================= */
+  .mast{border-bottom:3px solid var(--deep);padding-bottom:16px}
+  .mast .series{
+    font-size:10pt;letter-spacing:.24em;text-transform:uppercase;
+    color:var(--quiet);font-weight:700;margin-bottom:11px;
+  }
+  .mast h1{
+    font-size:36pt;font-weight:700;letter-spacing:-.022em;line-height:1.04;color:var(--deep);
+  }
+  .mast .date{font-size:11pt;font-weight:600;color:var(--quiet);margin-top:14px}
+  .mast .stext{
+    font-size:9.5pt;letter-spacing:.17em;text-transform:uppercase;
+    color:var(--quiet);font-weight:600;margin-top:7px;
+  }
+
+  .seriestext{
+    text-align:center;max-width:6in;margin:32px auto 10px;
+    font-family:var(--serif);font-size:17.5pt;font-style:italic;line-height:1.48;
+  }
+
+  /* ================= sections ================= */
+  .sec{margin-top:52px}
+  .sec > .head{
+    position:relative;padding-left:0.62in;
+    border-top:2.5px solid var(--deep);padding-top:12px;margin-bottom:8px;
+    page-break-after:avoid;
+  }
+  .sec .num{
+    position:absolute;left:0;top:12px;
+    font-size:24pt;font-weight:700;color:var(--deep);line-height:1;
+  }
+  .sec .ttl{
+    font-size:18pt;font-weight:700;letter-spacing:-.012em;
+    text-transform:uppercase;color:var(--deep);line-height:1.16;
+  }
+  .sec .ttl small{
+    display:block;font-size:12pt;font-weight:500;letter-spacing:.005em;
+    text-transform:none;color:#334049;margin-top:8px;
+    font-family:var(--sans);font-style:normal;line-height:1.35;
+  }
+
+  /* ================= content types ================= */
+  .n{font-size:13.5pt;line-height:1.62;margin:22px 0;max-width:6.1in}
+
+  .bul{
+    font-size:13.5pt;line-height:1.58;margin:16px 0;padding-left:0.24in;
+    text-indent:-0.24in;max-width:6.1in;
+  }
+  .bul::before{content:"— ";color:var(--quiet);font-weight:600}
+
+  .s{
+    font-size:12pt;line-height:1.55;color:#33414A;
+    margin:11px 0 11px 0.46in;padding-left:0.18in;text-indent:-0.18in;
+  }
+  .s::before{content:"· ";color:var(--quiet);font-weight:700}
+
+  /* the lines that land — centered, given room */
+  .b{
+    text-align:center;max-width:6in;margin:38px auto;
+    border-top:2px solid var(--deep);border-bottom:2px solid var(--deep);
+    padding:22px;
+    font-size:16.5pt;font-weight:700;line-height:1.34;letter-spacing:-.008em;
+    page-break-inside:avoid;
+  }
+  .b.wide{max-width:6.4in}
+
+  /* say-it-exactly, quieter than a .b */
+  .v{
+    font-family:var(--serif);font-size:14.5pt;font-style:italic;line-height:1.56;
+    border-left:3px solid var(--hair);padding:8px 0 8px 18px;margin:30px 0;max-width:5.9in;
+  }
+
+  /* the line that closes a point */
+  .close{
+    text-align:center;max-width:6.2in;margin:44px auto 10px;
+    border-top:3px solid var(--deep);border-bottom:3px solid var(--deep);
+    padding:22px 16px;font-size:15.5pt;line-height:1.46;
+    page-break-inside:avoid;
+  }
+
+  /* ================= scripture ================= */
+  .scr{
+    display:inline-block;background:var(--deep);color:#fff;
+    font-size:10.5pt;font-weight:700;letter-spacing:.12em;
+    padding:7px 13px;margin:34px 0 0;text-indent:0;
+  }
+  .passage{
+    position:relative;
+    background:var(--parch);border:1px solid var(--hair);border-top:none;
+    padding:18px 20px 19px;margin:0 0 8px;
+    page-break-inside:avoid;
+  }
+  .passage p{
+    font-family:var(--serif);font-size:13.5pt;line-height:1.62;
+    margin:0 0 11px;padding-left:0.28in;text-indent:-0.28in;
+  }
+  .passage p:last-of-type{margin-bottom:0}
+  .passage .vn{
+    font-family:var(--sans);font-size:8.5pt;font-weight:700;
+    color:var(--deep);vertical-align:2px;margin-right:6px;
+  }
+  .passage .tr{
+    font-size:8.5pt;font-weight:700;letter-spacing:.2em;text-transform:uppercase;
+    color:var(--quiet);margin-top:14px;padding-top:9px;border-top:1px solid var(--hair);
+  }
+  .passage.single p{padding-left:0;text-indent:0}
+
+  body.editing .passage{
+    background:#FFFDF4;border:2px dashed var(--glowedge);
+  }
+  body.editing .passage:focus{background:#fff;border-style:solid;outline:none}
+
+  /* ================= movement chain ================= */
+  .chain{
+    max-width:6.2in;margin:38px auto;
+    border:1.5px solid var(--deep);padding:22px 24px;
+    page-break-inside:avoid;
+  }
+  .chain div{
+    font-size:13.5pt;font-weight:700;line-height:1.42;margin:0 0 13px;
+    padding-left:0.28in;text-indent:-0.28in;
+  }
+  .chain div:last-child{margin-bottom:0}
+  .chain .arw{color:var(--glowedge)}
+
+  /* ================= closing ================= */
+  .finale{margin-top:60px;border-top:3px solid var(--deep);padding-top:26px}
+  .finale .lab{
+    text-align:center;
+    font-size:9.5pt;font-weight:700;letter-spacing:.22em;text-transform:uppercase;
+    color:var(--quiet);margin-bottom:18px;
+  }
+  .finale p{
+    text-align:center;max-width:6in;margin:0 auto;
+    font-family:var(--serif);font-size:21pt;font-weight:500;line-height:1.4;
+  }
+
+  /* ================= scripture credit ================= */
+  .credit{
+    max-width:6.2in;margin:46px auto 0;padding-top:14px;
+    border-top:1px solid var(--hair);
+    font-size:8pt;line-height:1.55;color:var(--quiet);
+  }
+
+  /* ================= the prompter ================= */
+  .step{
+    border-radius:5px;
+    transition:background .16s ease, opacity .16s ease, box-shadow .16s ease;
+  }
+  .step:hover{cursor:pointer}
+  .step.active{
+    background:var(--glow);
+    box-shadow:0 0 0 14px var(--glow), -6px 0 0 0 var(--glowedge);
+  }
+  .sec > .head.step.active{box-shadow:0 0 0 10px var(--glow), -6px 0 0 0 var(--glowedge)}
+  body.dim .step:not(.active){opacity:.34}
+  body.editing .step.active{background:transparent;box-shadow:none}
+  body.editing .step:hover{cursor:auto}
+  body.editing.dim .step:not(.active){opacity:1}
+
+  /* ---- slide cues: where a PowerPoint slide goes on the screen ---- */
+  .step[data-slide]{position:relative}
+  .step[data-slide]::before{
+    content:"Slide\A" attr(data-slide);
+    white-space:pre;text-align:center;line-height:1.3;
+    position:absolute;right:100%;margin-right:10px;top:0;
+    font-family:var(--sans);font-size:7pt;font-weight:700;
+    letter-spacing:.12em;text-transform:uppercase;
+    color:#EAFBFF;background:var(--slidechip);
+    padding:4px 6px;border-radius:3px;
+    -webkit-print-color-adjust:exact;print-color-adjust:exact;
+  }
+  .step[data-slide].active{
+    background:var(--slidefill);
+    box-shadow:0 0 0 14px var(--slidefill), -10px 0 0 0 var(--slideedge);
+  }
+  .sec > .head.step[data-slide].active{
+    box-shadow:0 0 0 10px var(--slidefill), -10px 0 0 0 var(--slideedge);
+  }
+  .step[data-slide].active::before{
+    background:var(--slideedge);
+    box-shadow:0 0 0 3px rgba(4,106,123,.28);
+  }
+  /* marked blocks stay readable in spotlight so he can see a slide coming */
+  body.dim .step[data-slide]:not(.active){opacity:.6}
+  body.editing .step[data-slide].active{background:transparent;box-shadow:none}
+
+  .sbadge{
+    display:none;
+    font-family:var(--sans);font-size:11.5px;font-weight:700;
+    letter-spacing:.13em;text-transform:uppercase;
+    background:#8CE7F7;color:#06323A;
+    padding:8px 12px;border-radius:4px;
+    max-width:38vw;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;
+  }
+  .sbadge.on{display:inline-block}
+
+  /* touch paddles */
+  .paddles{
+    position:fixed;right:16px;bottom:16px;z-index:60;
+    display:flex;flex-direction:column;gap:10px;
+  }
+  .paddles button{
+    width:58px;height:52px;border-radius:8px;cursor:pointer;
+    background:#12222C;color:#F0C68A;border:1px solid #3C5A6A;
+    font-size:20px;font-weight:700;line-height:1;
+    box-shadow:0 2px 10px rgba(0,0,0,.35);
+  }
+  .paddles button:active{background:#F0C68A;color:#12222C}
+
+  /* ================= print ================= */
+  @page{size:letter;margin:0.5in}
+  @media print{
+    body{background:#fff;padding:0}
+    .bar,.howto,.paddles{display:none}
+    .sheet{box-shadow:none;max-width:none;padding:0;margin:0}
+    .sec{margin-top:34px}
+    .step.active{background:none!important;box-shadow:none!important}
+    body.dim .step:not(.active){opacity:1}
+    .scr,.passage,.chain{-webkit-print-color-adjust:exact;print-color-adjust:exact}
+    .step[data-slide]::before{
+      content:"Slide " attr(data-slide);white-space:nowrap;
+      right:0;margin-right:0;top:-15px;
+    }
+    .sbadge{display:none!important}
+  }
+  @media (prefers-reduced-motion:reduce){
+    .step{transition:none}
+  }
+  @media (max-width:700px){
+    .sheet{padding:0.4in 0.34in 0.5in}
+    .mast h1{font-size:27pt}
+    .sec .ttl{font-size:15pt}
+    .b{font-size:14.5pt;padding:18px 14px;margin:30px auto}
+    .step[data-slide]::before{
+      content:"Slide " attr(data-slide);white-space:nowrap;
+      right:0;margin-right:0;top:-17px;
+    }
+    .sbadge{max-width:30vw}
+    .finale p{font-size:17pt}
+  }
+</style>
+</head>
+<body>
+
+<div class="bar">
+  <div class="where">
+    <div class="pt" id="wherePt">Ready</div>
+    <div class="nm" id="whereNm">Press the down arrow to begin</div>
+  </div>
+  <span id="slideBadge" class="sbadge">Slide</span>
+  <button id="btnDim" class="on">Spotlight</button>
+  <button id="btnEdit">Edit passages</button>
+  <button id="btnKjv">Restore NIV</button>
+  <button id="btnTop">Start over</button>
+  <div class="rail"><i id="rail"></i></div>
+</div>
+
+<div class="howto">
+  <b>Finding your place:</b> tap <kbd>↓</kbd> or <kbd>space</kbd> for the next thought,
+  <kbd>↑</kbd> to back up, or just <b>click any line</b> to jump straight to it. The highlighted
+  block is where you are, and the bar above always names the point you're in. Your place is saved,
+  so closing the file and reopening it puts you back where you left off.
+  <br><br>
+  <b>Slides:</b> any block that turns <b>bright blue</b> instead of gold is a slide cue &mdash;
+  that colour change means click the clicker. The margin tag gives the slide number, and the bar
+  above names what is on it. A label starting with <b>+</b> means that slide builds on the one
+  before it, so the screen adds a line rather than changing completely. Slides <b>1&ndash;3</b>
+  (the 9/11 remembrance, the series title, the sermon title) run at the top before point&nbsp;1.
+  <br><br>
+  <b>Spotlight</b> fades everything except the block you're on — turn it off if you'd rather read
+  ahead. <b>Edit passages</b> lets you click into any scripture panel and paste in your own
+  translation; it saves on this computer. <b>To print:</b> Ctrl&nbsp;+&nbsp;P (Cmd&nbsp;+&nbsp;P on
+  Mac), Margins <b>Default</b>, Background graphics <b>ON</b>. Highlighting never prints.
+</div>
+
+<div class="sheet" id="sheet">
+
+  <div class="mast">
+    <div class="series">The New Thing series</div>
+    <h1>Make Room for a New Life</h1>
+    <div class="date">September 13</div>
+    <div class="stext">Series text — Isaiah 43:19</div>
+  </div>
+
+  <div class="seriestext step" data-slide="1–3" data-slidelabel="We Remember · series · sermon title">“See, I am doing a new thing! Now it springs up; do you not perceive it?”</div>
+
+  <!-- ============ 1 ============ -->
+  <div class="sec" data-pt="Point 1" data-nm="God Has Always Been Willing to Do Something New">
+    <div class="head step">
+      <div class="num">1</div>
+      <div class="ttl">God Has Always Been Willing to Do Something New<small>Isaiah 43:16–19</small></div>
+    </div>
+
+    <div class="scr">READ · ISAIAH 43:16–19</div>
+    <div class="passage step" data-slide="4" data-slidelabel="Isaiah 43:16–19" data-pkey="isa43">
+      <p><span class="vn">16</span>This is what the LORD says— he who made a way through the sea, a path through the mighty waters,</p>
+      <p><span class="vn">17</span>who drew out the chariots and horses, the army and reinforcements together, and they lay there, never to rise again, extinguished, snuffed out like a wick:</p>
+      <p><span class="vn">18</span>“Forget the former things; do not dwell on the past.</p>
+      <p><span class="vn">19</span>See, I am doing a new thing! Now it springs up; do you not perceive it? I am making a way in the wilderness and streams in the wasteland.</p>
+      <div class="tr">New International Version</div>
+    </div>
+
+    <div class="n step">God reminds Israel of the Exodus. <strong>He made a way through the sea.</strong> That was their defining story. Their history taught them what God had done and who God was.</div>
+
+    <div class="n step">And then, almost surprisingly:</div>
+
+    <div class="b step">“Forget the former things; do not dwell on the past. See, I am doing a new thing!”</div>
+
+    <div class="n step">He's not telling them the Exodus didn't matter—<strong>He just reminded them of it.</strong></div>
+
+    <div class="b step" data-slide="5" data-slidelabel="Faith in what God did then">We can have faith in what God did then and still have no expectation for what God can do now.</div>
+
+    <div class="n step">Remember what God has done without becoming trapped by what God did.</div>
+
+    <div class="step">
+      <div class="bul">He delivered Israel from Egypt, <strong>but I'm not sure He can deliver me.</strong></div>
+      <div class="bul">He brought down the walls of Jericho, <strong>but I'm still living behind walls of negativity.</strong></div>
+      <div class="bul">David killed Goliath, <strong>but the giants in my house still roam free.</strong></div>
+    </div>
+
+    <div class="b wide step" data-slide="6" data-slidelabel="+ The danger is not that we forget">The danger is not that we forget what God has done. The danger is that we start believing God's greatest works are all behind us.</div>
+
+    <div class="step" data-slide="7" data-slidelabel="Water before · wilderness now">
+      <div class="n">God made a way through the water before.</div>
+      <div class="n">Now He's going to make a way through the wilderness.</div>
+    </div>
+
+    <div class="b step" data-slide="8" data-slidelabel="+ Same God. Same faithfulness.">Same God. Same faithfulness. Different way.</div>
+
+    <div class="v step">Can you honor what God has done without allowing it to limit what you believe God can do for you moving forward?</div>
+
+    <div class="b wide step" data-slide="9" data-slidelabel="Don’t become so attached">Don't become so attached to what God did yesterday that you fail to recognize what God is doing now.</div>
+
+    <div class="v step">Yes, God parted the waters for the Hebrews under the leadership of Moses, but what do you believe God will do for you today?</div>
+
+    <div class="b wide step" data-slide="10" data-slidelabel="+ Still struggle to recognize">God's people can know everything about what God has done and still struggle to recognize what God is doing.</div>
+
+    <div class="n step">It's sad to see someone crying from a troubled life feeling that God is so far away, that healing is impossible for them. But every minute God declares, I'm here, trust me, believe in me. Let go of your unbelief.</div>
+
+    <div class="b step" data-slide="11" data-slidelabel="Yesterday’s testimony">Yesterday's testimony was never meant to become today's limitation.</div>
+
+    <div class="close step">Remember the Exodus. Remember Jericho. Remember David. <strong>But don't make the mistake of thinking the God who did something new for them has nothing new left for you.</strong></div>
+  </div>
+
+  <!-- ============ 2 ============ -->
+  <div class="sec" data-pt="Point 2" data-nm="You Cannot Move Toward Something New If You Are Not Willing to See Something New">
+    <div class="head step">
+      <div class="num">2</div>
+      <div class="ttl">You Cannot Move Toward Something New If You Are Not Willing to See Something New</div>
+    </div>
+
+    <div class="v step" data-slide="12" data-slidelabel="Do you not perceive it?">“Now it springs up; <strong>do you not perceive it?</strong>”</div>
+
+    <div class="bul step" data-slide="13" data-slidelabel="+ Already beginning">The new thing may already be beginning while we are still looking backward.</div>
+
+    <div class="step">
+      <div class="n">New possibilities often begin as:</div>
+      <div class="bul">an idea</div>
+      <div class="s">a question</div>
+      <div class="s">a conversation</div>
+      <div class="s">“What if...?”</div>
+      <div class="s">“Could we...?”</div>
+    </div>
+
+    <div class="n step">Sometimes our first response to something unfamiliar is to <strong>criticize it, dismiss it, or explain why it won't work</strong>.</div>
+
+    <div class="bul step" data-slide="14" data-slidelabel="We can kill a possibility">We can kill a possibility before we have even allowed ourselves to see it.</div>
+
+    <div class="n step">You cannot move toward something new if you are not willing to see something new.</div>
+
+    <div class="b step" data-slide="15" data-slidelabel="+ You will never begin">You will never begin what you refuse even to imagine.</div>
+  </div>
+
+  <!-- ============ 3 ============ -->
+  <div class="sec" data-pt="Point 3" data-nm="The Problem With Something New Is That We Already Have Something Old">
+    <div class="head step">
+      <div class="num">3</div>
+      <div class="ttl">The Problem With Something New Is That We Already Have Something Old</div>
+    </div>
+
+    <div class="n step">The difficulty isn't simply believing that God <em>can</em> do something new. The difficulty is that <strong>new things disturb existing things</strong>.</div>
+
+    <div class="step">
+      <div class="bul">We already have ways of thinking.</div>
+      <div class="bul">Expectations.</div>
+      <div class="bul">Experiences.</div>
+      <div class="bul">Traditions.</div>
+      <div class="bul">Assumptions.</div>
+      <div class="bul">Familiar ways of doing things.</div>
+      <div class="bul">Ways of serving God.</div>
+    </div>
+
+    <div class="b step" data-slide="16" data-slidelabel="Old does not mean bad">Old does not necessarily mean bad.</div>
+
+    <div class="b wide step" data-slide="17" data-slidelabel="+ Time for a new season">Sometimes making room for something new doesn't mean declaring that the old thing was wrong.</div>
+
+    <div class="b wide step">It simply means recognizing that God is finished with that stage and it's time for a new season.</div>
+
+    <div class="step">
+      <div class="n">Yesterday's miracle isn't the blueprint God is obligated to follow tomorrow.</div>
+      <div class="n">Do not get stuck in yesterday's victory.</div>
+    </div>
+
+    <div class="bul step" data-slide="18" data-slidelabel="No open hand">We can hold something so tightly that we have no open hand with which to receive anything new.</div>
+
+    <div class="n step">But Scripture keeps attaching new life to something considerably less attractive:</div>
+
+    <div class="b step">death.</div>
+
+    <div class="n step">Romans 6:3–4 gives you the movement:</div>
+
+    <div class="b step" data-slide="19" data-slidelabel="Death · Burial · Resurrection">Death → Burial → Resurrection → Newness of life.</div>
+
+    <div class="scr">ROMANS 6:3–4</div>
+    <div class="passage step" data-pkey="rom6">
+      <p><span class="vn">3</span>Or don’t you know that all of us who were baptized into Christ Jesus were baptized into his death?</p>
+      <p><span class="vn">4</span>We were therefore buried with him through baptism into death in order that, just as Christ was raised from the dead through the glory of the Father, we too may live a new life.</p>
+      <div class="tr">New International Version</div>
+    </div>
+
+    <div class="n step">Galatians 2:20: <strong>“I have been crucified with Christ...”</strong></div>
+
+    <div class="scr">GALATIANS 2:20</div>
+    <div class="passage single step" data-pkey="gal2">
+      <p>I have been crucified with Christ and I no longer live, but Christ lives in me. The life I now live in the body, I live by faith in the Son of God, who loved me and gave himself for me.</p>
+      <div class="tr">New International Version</div>
+    </div>
+
+    <div class="n step">John 12:24 gives you the seed falling into the earth.</div>
+
+    <div class="scr">JOHN 12:24</div>
+    <div class="passage single step" data-pkey="joh12">
+      <p>Very truly I tell you, unless a kernel of wheat falls to the ground and dies, it remains only a single seed. But if it dies, it produces many seeds.</p>
+      <div class="tr">New International Version</div>
+    </div>
+  </div>
+
+  <!-- ============ 4 ============ -->
+  <div class="sec" data-pt="Point 4" data-nm="Something Has to Die for Something New to Live">
+    <div class="head step">
+      <div class="num">4</div>
+      <div class="ttl">Something Has to Die for Something New to Live</div>
+    </div>
+
+    <div class="step">
+      <div class="bul">We love:</div>
+      <div class="s">new beginnings</div>
+      <div class="s">new life</div>
+      <div class="s">resurrection</div>
+      <div class="s">rebirth</div>
+    </div>
+
+    <div class="n step">But Scripture repeatedly connects <strong>new life with death</strong>.</div>
+
+    <div class="b step" data-slide="20" data-slidelabel="Resurrection without a burial">We want RESURRECTION without a burial.</div>
+
+    <div class="n step" data-slide="21" data-slidelabel="Something new without releasing old">We want God to give us something new without asking us to release anything old.</div>
+
+    <div class="b step" data-slide="22" data-slidelabel="+ This is the tension">This is the tension of Making Room for New Life.</div>
+
+    <div class="n step">Sometimes the first thing that has to die is my insistence that what I already know, already have, and already understand is all there can be.</div>
+
+    <div class="n step">Something has to die for something to live.</div>
+
+    <div class="n step">The emphasis is on <strong>life</strong>, not death.</div>
+
+    <div class="step" data-slide="23" data-slidelabel="What do I need to stop doing?">
+      <div class="n">The challenge isn't simply, <em>“What do I need to stop doing?”</em></div>
+      <div class="n">The real questions is:</div>
+    </div>
+
+    <div class="b step" data-slide="24" data-slidelabel="+ What might God bring to life?">What might God be trying to bring to life in me</div>
+  </div>
+
+  <!-- ============ 5 ============ -->
+  <div class="sec" data-pt="Point 5" data-nm="Jesus introduces us to Nicodemus">
+    <div class="head step">
+      <div class="num">5</div>
+      <div class="ttl">Jesus introduces us to Nicodemus<small>John 3:1–8</small></div>
+    </div>
+
+    <div class="scr">READ · JOHN 3:1–8</div>
+    <div class="passage step" data-pkey="joh3">
+      <p><span class="vn">1</span>Now there was a Pharisee, a man named Nicodemus who was a member of the Jewish ruling council.</p>
+      <p><span class="vn">2</span>He came to Jesus at night and said, “Rabbi, we know that you are a teacher who has come from God. For no one could perform the signs you are doing if God were not with him.”</p>
+      <p><span class="vn">3</span>Jesus replied, “Very truly I tell you, no one can see the kingdom of God unless they are born again.”</p>
+      <p><span class="vn">4</span>“How can someone be born when they are old?” Nicodemus asked. “Surely they cannot enter a second time into their mother’s womb to be born!”</p>
+      <p><span class="vn">5</span>Jesus answered, “Very truly I tell you, no one can enter the kingdom of God unless they are born of water and the Spirit.</p>
+      <p><span class="vn">6</span>Flesh gives birth to flesh, but the Spirit gives birth to spirit.</p>
+      <p><span class="vn">7</span>You should not be surprised at my saying, ‘You must be born again.’</p>
+      <p><span class="vn">8</span>The wind blows wherever it pleases. You hear its sound, but you cannot tell where it comes from or where it is going. So it is with everyone born of the Spirit.”</p>
+      <div class="tr">New International Version</div>
+    </div>
+
+    <div class="n step" data-slide="25" data-slidelabel="Nicodemus · history, position">Nicodemus has <strong>history. Scripture. Tradition. Knowledge. Identity. Position.</strong></div>
+
+    <div class="bul step">Then Jesus presented him with something he had never understood this way before.</div>
+
+    <div class="b step">“You must be born again.”</div>
+
+    <div class="step" data-slide="26–27" data-slidelabel="Not an improvement · a new beginning">
+      <div class="bul">Jesus doesn't offer Nicodemus an improvement.</div>
+      <div class="bul">He doesn't merely give him new information.</div>
+      <div class="bul"><strong>Jesus is offering him a new beginning.</strong></div>
+      <div class="bul">Nicodemus: <strong>“How can this be?”</strong></div>
+      <div class="bul"><strong>Jesus is ultimately saying…</strong></div>
+    </div>
+
+    <div class="n step">Nicodemus knew the God of Israel. He knew the Scriptures. He knew the old story. <strong>But Jesus was inviting him somewhere he had never been before.</strong></div>
+
+    <div class="b wide step" data-slide="28" data-slidelabel="Not as the same old man">Nicodemus, you cannot enter this “new thing” as the same old man.</div>
+
+    <div class="b step">You must be born again.</div>
+  </div>
+
+  <!-- ============ 6 ============ -->
+  <div class="sec" data-pt="Point 6" data-nm="Make Room for a New Life">
+    <div class="head step">
+      <div class="num">6</div>
+      <div class="ttl">Make Room for a New Life</div>
+    </div>
+
+    <div class="step" data-slide="29–30" data-slidelabel="Rebirth is the beginning">
+      <div class="bul">Rebirth is not the completion of the journey.</div>
+      <div class="bul"><strong>Rebirth is the beginning of the journey.</strong></div>
+      <div class="bul">Something new begins when we become willing to release our grip on what was.</div>
+    </div>
+
+    <div class="n step"><strong>2 Corinthians 5:17 — new creation.</strong></div>
+
+    <div class="scr">2 CORINTHIANS 5:17</div>
+    <div class="passage single step" data-pkey="2cor5">
+      <p>Therefore, if anyone is in Christ, the new creation has come: The old has gone, the new is here!</p>
+      <div class="tr">New International Version</div>
+    </div>
+
+    <div class="n step"><strong>Ephesians 4:22–24 — put off the old; put on the new.</strong></div>
+
+    <div class="scr">EPHESIANS 4:22–24</div>
+    <div class="passage step" data-pkey="eph4">
+      <p><span class="vn">22</span>You were taught, with regard to your former way of life, to put off your old self, which is being corrupted by its deceitful desires;</p>
+      <p><span class="vn">23</span>to be made new in the attitude of your minds;</p>
+      <p><span class="vn">24</span>and to put on the new self, created to be like God in true righteousness and holiness.</p>
+      <div class="tr">New International Version</div>
+    </div>
+
+    <div class="b wide step" data-slide="31–32" data-slidelabel="Around us · in us">God isn't only interested in doing something new around us. He wants to begin something new in us.</div>
+
+    <div class="b step" data-slide="33" data-slidelabel="Rebirth is the courage">Rebirth is the courage to begin again.</div>
+
+    <div class="chain step">
+      <div>God announces something new <span class="arw">→</span></div>
+      <div>we must first perceive that something new is possible <span class="arw">→</span></div>
+      <div>beginning requires leaving something behind <span class="arw">→</span></div>
+      <div>that's why new life involves death <span class="arw">→</span></div>
+      <div>we want resurrection without burial <span class="arw">→</span></div>
+      <div>Nicodemus encounters Jesus and discovers that God isn't asking him merely to think differently; He's calling him to begin again.</div>
+    </div>
+  </div>
+
+  <!-- ============ CLOSING ============ -->
+  <div class="finale" data-pt="Closing" data-nm="Closing Question">
+    <div class="lab">Closing Question</div>
+    <p class="step" data-slide="34" data-slidelabel="Closing question">What might God be trying to bring to life in me? And what am I going to have to let go of to make room for the new thing?</p>
+  </div>
+
+  <div class="credit">Scripture quotations taken from The Holy Bible, New International Version&reg; NIV&reg;. Copyright &copy; 1973, 1978, 1984, 2011 by Biblica, Inc.&trade; Used by permission. All rights reserved worldwide.</div>
+
+</div>
+
+<div class="paddles">
+  <button id="pUp" aria-label="Previous">&#9650;</button>
+  <button id="pDown" aria-label="Next">&#9660;</button>
+</div>
+
+<script>
+(function(){
+  var KEY_STEP = 'newthing.lsn1.step';
+  var KEY_PASS = 'newthing.lsn1.passages.niv';
+  var KEY_DIM  = 'newthing.lsn1.dim';
+
+  var steps = Array.prototype.slice.call(document.querySelectorAll('.step'));
+  var i = -1;
+  var editing = false;
+
+  var wherePt = document.getElementById('wherePt');
+  var whereNm = document.getElementById('whereNm');
+  var rail    = document.getElementById('rail');
+  var slideBadge = document.getElementById('slideBadge');
+
+  function store(k,v){ try{ localStorage.setItem(k,v); }catch(e){} }
+  function load(k){ try{ return localStorage.getItem(k); }catch(e){ return null; } }
+
+  /* restore any passages he pasted in earlier */
+  (function(){
+    var raw = load(KEY_PASS);
+    if(!raw) return;
+    var saved;
+    try{ saved = JSON.parse(raw); }catch(e){ return; }
+    Object.keys(saved).forEach(function(k){
+      var el = document.querySelector('[data-pkey="'+k+'"]');
+      if(el) el.innerHTML = saved[k];
+    });
+  })();
+
+  function label(el){
+    var host = el.closest ? (el.closest('.sec') || el.closest('.finale')) : null;
+    if(host && host.getAttribute('data-pt')){
+      wherePt.textContent = host.getAttribute('data-pt');
+      whereNm.textContent = host.getAttribute('data-nm');
+    }else{
+      wherePt.textContent = 'Series text';
+      whereNm.textContent = 'Isaiah 43:19';
+    }
+    var hasSlide = el.hasAttribute && el.hasAttribute('data-slide');
+    slideBadge.classList.toggle('on', hasSlide);
+    if(hasSlide){
+      slideBadge.textContent = 'Slide ' + el.getAttribute('data-slide') +
+        ' · ' + (el.getAttribute('data-slidelabel') || '');
+    }
+    rail.style.width = (((i+1)/steps.length)*100).toFixed(1) + '%';
+  }
+
+  function go(n, scroll){
+    if(editing) return;
+    if(n < 0) n = 0;
+    if(n > steps.length-1) n = steps.length-1;
+    if(i > -1 && steps[i]) steps[i].classList.remove('active');
+    i = n;
+    var el = steps[i];
+    el.classList.add('active');
+    if(scroll !== false) el.scrollIntoView({block:'center', behavior:'smooth'});
+    label(el);
+    store(KEY_STEP, String(i));
+  }
+
+  steps.forEach(function(el, idx){
+    el.addEventListener('click', function(){
+      if(editing) return;
+      go(idx);
+    });
+  });
+
+  document.addEventListener('keydown', function(e){
+    if(editing) return;
+    var k = e.key;
+    if(k==='ArrowDown' || k==='ArrowRight' || k===' ' || k==='PageDown' || k==='j'){
+      e.preventDefault(); go(i+1);
+    }else if(k==='ArrowUp' || k==='ArrowLeft' || k==='PageUp' || k==='k'){
+      e.preventDefault(); go(i-1);
+    }else if(k==='Home'){
+      e.preventDefault(); go(0);
+    }else if(k==='End'){
+      e.preventDefault(); go(steps.length-1);
+    }
+  });
+
+  document.getElementById('pDown').addEventListener('click', function(e){ e.stopPropagation(); go(i+1); });
+  document.getElementById('pUp').addEventListener('click', function(e){ e.stopPropagation(); go(i-1); });
+  document.getElementById('btnTop').addEventListener('click', function(){ go(0); });
+
+  var btnDim = document.getElementById('btnDim');
+  function setDim(on){
+    document.body.classList.toggle('dim', on);
+    btnDim.classList.toggle('on', on);
+    store(KEY_DIM, on ? '1' : '0');
+  }
+  btnDim.addEventListener('click', function(){
+    setDim(!document.body.classList.contains('dim'));
+  });
+  setDim(load(KEY_DIM) !== '0');
+
+  var btnEdit = document.getElementById('btnEdit');
+  var passages = Array.prototype.slice.call(document.querySelectorAll('.passage'));
+
+  function savePassages(){
+    var out = {};
+    passages.forEach(function(p){ out[p.getAttribute('data-pkey')] = p.innerHTML; });
+    store(KEY_PASS, JSON.stringify(out));
+  }
+
+  btnEdit.addEventListener('click', function(){
+    editing = !editing;
+    document.body.classList.toggle('editing', editing);
+    btnEdit.classList.toggle('on', editing);
+    btnEdit.textContent = editing ? 'Done editing' : 'Edit passages';
+    passages.forEach(function(p){ p.contentEditable = editing ? 'true' : 'false'; });
+    if(!editing) savePassages();
+  });
+
+  document.getElementById('btnKjv').addEventListener('click', function(){
+    if(!confirm('Replace every scripture panel with the New International Version text this file came with? Anything you pasted in will be lost.')) return;
+    try{ localStorage.removeItem(KEY_PASS); }catch(e){}
+    location.reload();
+  });
+
+  var saved = parseInt(load(KEY_STEP), 10);
+  if(!isNaN(saved) && saved >= 0 && saved < steps.length){
+    go(saved, false);
+    setTimeout(function(){ if(steps[i]) steps[i].scrollIntoView({block:'center'}); }, 60);
+  }
+})();
+</script>
+</body>
+</html>

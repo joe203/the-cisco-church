@@ -53,3 +53,6 @@ next-env.d.ts
 
 /knowledge_slides/
 /sample_slides/
+
+# one-off files dropped in for Claude to read/publish
+/incoming/
