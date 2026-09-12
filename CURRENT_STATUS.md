@@ -56,6 +56,32 @@ links, 5 outline-based points each, and image slide decks:
 Joe preached with `the-obvious` and reported it worked: *"pretty decent…
 good for the first trial."*
 
+**Preaching sheets** — a new, separate thing from the slide decks (added
+2026-09-12). Joe writes these by hand as one self-contained HTML file: a
+keyboard prompter that highlights one block at a time so he can keep his
+place while preaching. They are **static files in `public/preach/`**, served
+by a rewrite in `next.config.ts` (`/preach/:sheet` → `/preach/:sheet.html`)
+so the URL is short enough to type on a strange computer. They are NOT Next
+pages — no layout, no `globals.css`, no shared tokens. Leave them that way.
+
+| Sheet | URL | Sermon |
+|---|---|---|
+| `new-life` | `/preach/new-life` | Make Room for a New Life — The New Thing series, Sept 13 |
+
+`new-life` notes: all scripture is **NIV** (Biblica credit line at the foot,
+required for quotation); 29 slide cues map every one of the 34 slides in
+Joe's PowerPoint deck. A cue block turns **cyan** instead of the usual gold
+and carries a `Slide n` margin tag — that colour change is Joe's signal to
+click his clicker. Labels beginning `+` mark build slides that add a line to
+the previous slide rather than replacing it. Marked up with
+`data-slide` / `data-slidelabel` on `.step` elements; the CSS and the badge
+in the control bar read those attributes, so re-mapping is an attribute edit.
+
+Every sheet is `noindex, nofollow` and nothing links to it. These are Joe's
+working notes, not visitor content — do not surface them in nav or sitemaps.
+**Edit `public/preach/*.html` directly**; it is the source of truth (the
+original drafts live in the gitignored `incoming/`, which is not deployed).
+
 ---
 
 ## The slide design system (HARD-WON — do not relitigate)
