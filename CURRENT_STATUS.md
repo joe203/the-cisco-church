@@ -1,5 +1,5 @@
 # CURRENT_STATUS — TheCiscoChurch.org
-Updated: 2026-08-16 · Read this first when starting a new session.
+Updated: 2026-09-12 · Read this first when starting a new session.
 
 ## NEXT TASK (Joe's stated priority)
 
@@ -13,7 +13,13 @@ section before starting, and ask Joe only for the details you can't derive
 ## Where things stand
 
 **Everything is committed, deployed, and live at https://theciscochurch.org.**
-Working tree clean as of `e2e2e62`. No pending or half-finished work.
+Working tree clean at `ddaf710`; the droplet is running that same commit.
+No pending or half-finished work.
+
+**Re-verified 2026-09-12** (a month after the last work session): homepage,
+`/sermons`, a sermon page, both the screen and controls routes, the old
+`/present` → `/controls` 308 redirect, and key `1701` driving the deck — all
+answering correctly. Container up ~3 weeks, no drift.
 
 - Next.js 16 (App Router) + Tailwind v4 + TypeScript, container `cisco-church`
   on the droplet (`ssh droplet`), repo `/root/the-cisco-church`, external `web`
