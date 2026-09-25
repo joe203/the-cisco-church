@@ -56,3 +56,4 @@ next-env.d.ts
 
 # one-off files dropped in for Claude to read/publish
 /incoming/
+/what_is_good_series/

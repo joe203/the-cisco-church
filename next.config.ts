@@ -14,6 +14,13 @@ const nextConfig: NextConfig = {
         source: "/preach/:sheet",
         destination: "/preach/:sheet.html",
       },
+      // Unlisted share-only pages: self-contained static HTML in
+      // public/share, given a short link-friendly URL. Not in nav, not
+      // indexed — visited only by whoever Joe sends the link to.
+      {
+        source: "/share/:page",
+        destination: "/share/:page.html",
+      },
     ];
   },
   async redirects() {
