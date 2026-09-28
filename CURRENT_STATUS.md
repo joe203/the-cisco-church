@@ -1,25 +1,31 @@
 # CURRENT_STATUS — TheCiscoChurch.org
-Updated: 2026-09-12 · Read this first when starting a new session.
+Updated: 2026-09-28 · Read this first when starting a new session.
 
 ## NEXT TASK (Joe's stated priority)
 
-**Add a new sermon to the home page.** Joe will supply the sermon details.
-Everything needed is listed under "How to add a sermon" below — read that
-section before starting, and ask Joe only for the details you can't derive
-(title, date, scripture, links, assets).
+**Grow the hero video reel.** Joe is gathering more footage over time —
+preaching, song leader, maybe building/candid shots — to drop in and keep
+the homepage hero rotation feeling current. See "Hero video reel" below for
+the exact repeatable process; the whole point of that system is that
+picking this task back up should never require touching Hero.tsx.
+
+Also still open: **add a new sermon to the home page** when Joe supplies
+the details — see "How to add a sermon" below.
 
 ---
 
 ## Where things stand
 
 **Everything is committed, deployed, and live at https://theciscochurch.org.**
-Working tree clean at `ddaf710`; the droplet is running that same commit.
-No pending or half-finished work.
+Working tree clean; the droplet is running the same commit. No pending or
+half-finished work.
 
-**Re-verified 2026-09-12** (a month after the last work session): homepage,
-`/sermons`, a sermon page, both the screen and controls routes, the old
-`/present` → `/controls` 308 redirect, and key `1701` driving the deck — all
-answering correctly. Container up ~3 weeks, no drift.
+**2026-09-28 session:** built the hero video reel (see its own section
+below) and fixed two things Joe flagged: Wednesday night was showing a
+single wrong 7:00 PM slot (now Meal 5:30 / Bible Study 6:00 in
+`lib/site.ts`), and the hero's "Worship that lifts" line overclaimed where
+the service actually is — reworded to Joe's own framing, "We're building a
+new worship experience that lifts... Come grow with us."
 
 - Next.js 16 (App Router) + Tailwind v4 + TypeScript, container `cisco-church`
   on the droplet (`ssh droplet`), repo `/root/the-cisco-church`, external `web`
@@ -32,6 +38,74 @@ answering correctly. Container up ~3 weeks, no drift.
   2026-08-16; the old path 308-redirects so bookmarks still work).
 - Data still comes from bundled seed data (`lib/seed.ts`); Supabase is written
   but deliberately NOT connected yet.
+
+## Hero video reel (added 2026-09-28)
+
+The homepage hero has a rotating video/still background on desktop —
+Joe wanted something like oakhills.church's cycling hero clips, but built
+so it's cheap to refresh with new footage indefinitely, not a one-off.
+
+**How it's built:**
+- `lib/heroMedia.ts` is the single source of truth — an ordered array of
+  clips/stills with their timing, playback speed, and focal point. This is
+  the only file that normally needs editing to change what's in the
+  rotation.
+- `components/sections/HeroReel.tsx` (client component) reads that array
+  and cycles through it, mounted inside `components/sections/Hero.tsx`'s
+  desktop photo panel, layered on top of the same static trail-rock photo
+  that's always there as the base/fallback.
+- Cuts are **hard cuts, not crossfades** — a crossfade-via-remount approach
+  was tried first and caused a double-exposure ghosting artifact where a
+  `<video>` still mid-decode composited underneath the old frame. Hard
+  cuts sidestep that entirely and look intentional (broadcast-style), not
+  broken.
+- Every item (video or image) advances on a **plain timer**, not just a
+  video's `ended` event — this is a safety net so the reel can never get
+  permanently stuck on one frame if autoplay is blocked or a clip fails to
+  decode. `duration` in the config is what that timer uses.
+- **Mobile and `prefers-reduced-motion` never load the reel at all** — the
+  desktop-only gate lives in `HeroReel`'s own `matchMedia` check, so
+  neither path pays any video bandwidth. This matches the site's "3s max
+  on mobile with weak signal" rule and reduced-motion is respected for
+  real, not just cosmetically.
+
+**The repeatable workflow — this is what Joe asked to be designed in from
+day one, so future sessions can just run it:**
+1. Joe drops a raw clip (phone footage is fine) in a gitignored staging
+   folder at the repo root: `video_v1/`, next batch `video_v2/`, etc.
+   (pattern: `/video_v*/` in `.gitignore` — never commit raw source).
+2. Claude finds the shots in it (use `ffmpeg -vf "fps=1/2,scale=320:-1,
+   tile=7x4" -update 1 -frames:v 1` to make a contact-sheet JPG and eyeball
+   shot boundaries — scene-detection filters didn't reliably find cuts in
+   Joe's footage, contact sheets did).
+3. Cut + compress each shot with ffmpeg into `public/videos/hero/`:
+   ```
+   ffmpeg -ss <in> -i <raw> -t <len> -vf "scale=1280:-2" -an \
+     -c:v libx264 -profile:v main -preset medium -crf 27 \
+     -pix_fmt yuv420p -movflags +faststart <name>.mp4
+   ```
+   Then a poster frame per clip: `ffmpeg -i <name>.mp4 -vframes 1 -q:v 4
+   <name>-poster.jpg`. Target well under 1MB per clip — these are muted
+   background loops, not archival footage.
+4. Add an entry to `lib/heroMedia.ts` with the right `duration`, and a
+   `focus` (object-position) tuned to wherever the subject actually sits
+   in that particular shot — the reel panel crops hard, so a value tuned
+   for one clip's framing will crop a differently-framed subject clean out
+   of the picture. Check the poster image to pick it, then verify live.
+5. Rebuild/redeploy as usual. Nothing in `Hero.tsx` or `HeroReel.tsx`
+   should need to change for a routine footage refresh.
+
+**Current rotation (4 items, all from `video_v1/website_clips_v1.mp4`,**
+**a single 55s clip Joe recorded across one sermon + song leader):**
+preaching (wide/front angle) → trail-rock kids photo (Ken Burns pan,
+reused from the existing photo library) → preaching (side/profile angle,
+0.75x slow motion) → song leader, brief per Joe's "keep it minimal" ask →
+loops.
+
+**Known rough edge:** the raw source clip has handheld camera movement, so
+individual frames within a shot vary in framing (e.g. Joe leaning down to
+set his notes aside mid-clip) — this is normal live footage, not a crop
+bug, and isn't worth chasing frame-by-frame.
 
 ## What's live
 

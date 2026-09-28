@@ -58,3 +58,7 @@ next-env.d.ts
 /incoming/
 /what_is_good_series/
 /photos_v2/
+
+# raw hero-video footage Joe drops in — processed clips are committed
+# under public/videos/hero/, the raw source never is
+/video_v*/

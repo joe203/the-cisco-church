@@ -2,11 +2,16 @@ import Image from "next/image";
 import Link from "next/link";
 import { mapLabel, site } from "@/lib/site";
 import type { Sermon } from "@/lib/types";
+import { HeroReel } from "./HeroReel";
 
 /**
- * Hero v3 — sunlit and energy-forward: a diagonal teal field with
+ * Hero v4 — sunlit and energy-forward: a diagonal teal field with
  * oversized white italic caps over a real photo of our kids out on the
  * trail. The last line renders in outline as it crosses onto the photo.
+ * On desktop, HeroReel layers a rotating video/still reel (preaching,
+ * song leader, moving stills — see lib/heroMedia.ts) over this same
+ * photo. Mobile and prefers-reduced-motion visitors never load the
+ * reel and just see the static photo underneath.
  */
 export function Hero({ featured }: { featured: Sermon | null }) {
   return (
@@ -21,6 +26,7 @@ export function Hero({ featured }: { featured: Sermon | null }) {
           sizes="(min-width: 1024px) 60vw, 100vw"
           className="object-cover object-[30%_35%]"
         />
+        <HeroReel />
         {/* Soft scrim so outlined type stays readable where it crosses the photo */}
         <div className="absolute inset-0 bg-[linear-gradient(100deg,rgb(11_84_93/0.5)_0%,transparent_45%,rgb(11_84_93/0.25)_100%)]" />
       </div>
