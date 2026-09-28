@@ -2,11 +2,15 @@ import Image from "next/image";
 import Link from "next/link";
 import { mapLabel, site } from "@/lib/site";
 import type { Sermon } from "@/lib/types";
+import { PhotoSlot } from "./PhotoSlot";
 
 /**
  * Hero v3 — sunlit and energy-forward: a diagonal teal field with
  * oversized white italic caps over a real photo of our kids out on the
  * trail. The last line renders in outline as it crosses onto the photo.
+ * A floating snapshot of Joe preaching sits over the seam between the
+ * teal field and the photo — the congregation stays the lead image, the
+ * preaching shot is the accent that says "this is real, come see it."
  */
 export function Hero({ featured }: { featured: Sermon | null }) {
   return (
@@ -25,13 +29,23 @@ export function Hero({ featured }: { featured: Sermon | null }) {
         <div className="absolute inset-0 bg-[linear-gradient(100deg,rgb(11_84_93/0.5)_0%,transparent_45%,rgb(11_84_93/0.25)_100%)]" />
       </div>
 
+      {/* Snapshot inset — Joe preaching, floating over the photo */}
+      <div className="absolute right-10 bottom-12 z-10 hidden w-[12rem] -rotate-3 lg:block xl:right-16 xl:w-[13.5rem]">
+        <PhotoSlot
+          file="preaching-podium.jpg"
+          alt="Joe preaching from the pulpit at The Cisco Church"
+          caption="A photo of Joe preaching goes here."
+          className="snapshot aspect-[4/5] ring-4 ring-cloud/90"
+        />
+      </div>
+
       {/* Diagonal teal field */}
       <div
         aria-hidden
         className="absolute inset-y-0 left-0 w-full bg-[linear-gradient(130deg,#1a99a3_0%,var(--color-teal)_45%,var(--color-deepsea)_115%)] lg:w-[64%] lg:[clip-path:polygon(0_0,100%_0,72%_100%,0_100%)]"
       />
 
-      <div className="relative mx-auto max-w-6xl px-5 pt-14 pb-14 sm:px-8 lg:pt-20 lg:pb-24">
+      <div className="relative z-20 mx-auto max-w-6xl px-5 pt-14 pb-14 sm:px-8 lg:pt-20 lg:pb-24">
         <h1 className="hero-enter font-sans text-[clamp(3rem,9.5vw,7.25rem)] leading-[0.95] font-black tracking-[-0.02em] text-white uppercase italic">
           <span className="block">Something</span>
           <span className="block">new is</span>
@@ -96,6 +110,15 @@ export function Hero({ featured }: { featured: Sermon | null }) {
           sizes="100vw"
           className="object-cover object-[70%_35%] [clip-path:polygon(0_9%,100%_0,100%_100%,0_100%)]"
         />
+        {/* Snapshot inset — Joe preaching */}
+        <div className="absolute bottom-4 left-4 w-24 rotate-[-4deg] sm:w-28">
+          <PhotoSlot
+            file="preaching-podium.jpg"
+            alt="Joe preaching from the pulpit at The Cisco Church"
+            caption="A photo of Joe preaching goes here."
+            className="snapshot aspect-[4/5] ring-2 ring-cloud/90"
+          />
+        </div>
       </div>
     </section>
   );
