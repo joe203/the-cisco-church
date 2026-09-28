@@ -14,12 +14,15 @@ export const site = {
   town: "Cisco, Texas",
   domain: "theciscochurch.org",
 
-  // Confirmed by Joe, 2026-08-14.
+  // Confirmed by Joe, 2026-08-14. Wednesday corrected 2026-09-28: meal at
+  // 5:30, Bible study (framed as gathering around the table) at 6:00 —
+  // replaces the old 7:00 PM value, which was wrong.
   services: [
     { label: "Sunday Bible Class", time: "9:30 AM" },
     { label: "Sunday Worship", time: "10:30 AM" },
     { label: "Sunday Evening", time: "6:00 PM" },
-    { label: "Wednesday Study", time: "7:00 PM" },
+    { label: "Wednesday Meal", time: "5:30 PM" },
+    { label: "Wednesday Bible Study", time: "6:00 PM" },
   ],
 
   /** The single line used in the hero strip and footer. */

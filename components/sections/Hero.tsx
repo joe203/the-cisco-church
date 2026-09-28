@@ -46,9 +46,10 @@ export function Hero({ featured }: { featured: Sermon | null }) {
             className="hero-enter text-[1.08rem] leading-[1.65] font-medium text-white/90 lg:max-w-[40ch]"
             style={{ "--enter-delay": "0.12s" } as React.CSSProperties}
           >
-            Worship that lifts, teaching that meets your week, and a church
-            family that&rsquo;s genuinely glad you walked in.{" "}
-            <strong className="font-bold text-white">Come see for yourself.</strong>
+            We&rsquo;re building a new worship experience that lifts &mdash;
+            teaching that meets your week, and a church family that&rsquo;s
+            genuinely glad you walked in.{" "}
+            <strong className="font-bold text-white">Come grow with us.</strong>
           </p>
 
           <div
