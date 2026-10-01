@@ -14,6 +14,35 @@ the details — see "How to add a sermon" below.
 
 ---
 
+## Bulletin + staff login (built 2026-10-01 — NOT yet deployed/committed)
+
+Joe asked for an online bulletin to replace the printed one, plus logins so he
+and the secretary (Cyndi Kitchens) can maintain it. Full design + rules are in
+CLAUDE.md → "Bulletin + staff area". State at end of session:
+
+- Code complete and type-clean; 37-check end-to-end test passed against the
+  real shared Supabase (guards, role limits, conflict 409, publish, carry-over,
+  anon can't read drafts/roster/write). Test accounts were deleted.
+- **Done on the droplet:** `007_bulletin.sql` applied; `cisco` added to
+  `PGRST_DB_SCHEMAS`; `theciscochurch.org` (+www) added to
+  `ADDITIONAL_REDIRECT_URLS`; rest + auth recreated; `cisco` app added to the
+  shared auth-mailer and rebuilt (sender `no-reply@theciscochurch.org`; the domain was added to Mailgun 2026-10-01 and needs its DNS records verified before emails send). Backups: `/root/supabase/docker/.env.bak.2026-10-01-cisco`,
+  `/root/apps/auth-mailer/*.bak-20261001-cisco`.
+- **Local `.env.local`** now holds the Supabase URL/anon/service keys (backup
+  `.env.local.bak-bulletin`). The local dev server therefore talks to the REAL
+  shared database.
+- **To go live:** commit + push; add `NEXT_PUBLIC_SUPABASE_URL`,
+  `NEXT_PUBLIC_SUPABASE_ANON_KEY`, `SUPABASE_SERVICE_ROLE_KEY` to
+  `/root/the-cisco-church/.env`; rebuild (the NEXT_PUBLIC values are build
+  args); `node scripts/add-staff.mjs <joe's email> admin "Joe"`; then sign in
+  on production to verify the real emailed link (the one thing that can't be
+  tested locally).
+- With Supabase connected, decks/sermons still fall back to seed data because
+  001–006 are unapplied — slides keep working from process memory as before.
+- Open: optional article
+  image upload (needs a storage bucket + policies); announcements don't
+  auto-expire (staff remove them); `site.email` now set from the bulletin.
+
 ## Where things stand
 
 **Everything is committed, deployed, and live at https://theciscochurch.org.**

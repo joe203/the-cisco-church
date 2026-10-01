@@ -3,7 +3,7 @@ import { site } from "@/lib/site";
 
 export function SiteHeader() {
   return (
-    <header className="bg-cloud">
+    <header className="bg-cloud print:hidden">
       <div className="mx-auto flex max-w-6xl items-center justify-between gap-6 px-5 py-5 sm:px-8">
         <Link
           href="/"
@@ -14,6 +14,9 @@ export function SiteHeader() {
         <nav className="flex items-center gap-6 sm:gap-9" aria-label="Main">
           <Link href="/sermons" className="eyebrow link-under text-teal hover:text-deepsea">
             Sermons
+          </Link>
+          <Link href="/bulletin" className="eyebrow link-under text-teal hover:text-deepsea">
+            Bulletin
           </Link>
           <Link href="/#visit" className="eyebrow link-under text-teal hover:text-deepsea">
             Visit

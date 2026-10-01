@@ -62,3 +62,6 @@ next-env.d.ts
 # raw hero-video footage Joe drops in — processed clips are committed
 # under public/videos/hero/, the raw source never is
 /video_v*/
+
+# Printed-bulletin source material (members' names) — not deployed
+/bulletin/

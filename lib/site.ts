@@ -35,10 +35,40 @@ export const site = {
     "https://www.google.com/maps/search/?api=1&query=Cisco+Church+of+Christ,+1701+Avenue+N,+Cisco,+TX+76437",
 
   phone: "(254) 442-1450" as string | null,
+  // Email confirmed from the printed bulletin (2026-10-01).
   // TODO(Joe): remaining contact details — null values are omitted from the UI.
-  email: null as string | null,
+  email: "ciscochurchofchrist@outlook.com" as string | null,
   youtubeChannel: null as string | null,
   facebook: null as string | null,
+
+  /**
+   * Standing details printed on every bulletin — they change rarely, so they
+   * live here rather than in the weekly editor. Source: Oct 4, 2026 bulletin.
+   */
+  weeklyMeetings: [
+    {
+      day: "Sunday",
+      items: [
+        { label: "Bible Study", time: "9:30 AM" },
+        { label: "Morning Service", time: "10:30 AM" },
+        { label: "Evening Service", time: "6:00 PM" },
+      ],
+    },
+    { day: "Monday", items: [{ label: "Ladies Bible Study", time: "4:30 PM" }] },
+    {
+      day: "Wednesday",
+      items: [
+        { label: "Youth Activity", time: "5:00 PM" },
+        { label: "Fellowship Meal", time: "5:30 PM" },
+        { label: "Bible Class", time: "6:00 PM" },
+      ],
+    },
+  ],
+  people: {
+    preacher: "Joe Cabrera",
+    elders: ["Allen Masters", "Lee Lewis"],
+    secretary: "Cyndi Kitchens",
+  },
 } as const;
 
 export function mapLabel(): string {

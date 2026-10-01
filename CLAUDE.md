@@ -54,12 +54,16 @@ slide takeover on the homepage) are deferred unless they solve a v1 problem.
 - Downloadable materials per sermon (guide, PDF, podcast/YouTube links)
 - **Live HTML slide decks** — presenter view, viewer view, realtime sync
 - Service times, address, map link, contact
+- **Weekly bulletin** (`/bulletin`) + a **staff-only editor** (`/staff`) so the
+  minister and secretary maintain it — added 2026-10-01 at Joe's request.
+  This is a deliberate, narrow exception to the two bans below; it does not
+  reopen them. See "Bulletin + staff area".
 
 **Explicitly out of scope — do not build, do not suggest:**
 - About / staff / leadership / ministries / events / calendar pages
 - Giving/donations
-- Public user accounts or signup
-- CMS or general-purpose admin panel
+- Public user accounts or signup (staff are added by an admin — there is no signup)
+- CMS or general-purpose admin panel (the bulletin editor edits the bulletin only)
 - Newsletter signup, contact forms, chat widgets
 - The "Ask About This Lesson" chat assistant and SMS notify-me box (exist on
   Joe's hand-built pages; deferred — leave room in the sermon layout)
@@ -77,6 +81,12 @@ If a request seems to need one of these, **stop and ask Joe**.
 /slides/[deck]           live slide viewer (follows presenter; self-paced when not live)
 /slides/[deck]/controls  presenter controls (PRESENTER_KEY gated)
 /api/deck/[deck]/state   POST — presenter writes, server-side only
+/bulletin                this week's bulletin (newest published, never future-dated)
+/bulletin/[date]         a past bulletin;  /bulletin/archive  the list
+/staff                   dashboard (staff only) — also /staff/login, /staff/people (admin)
+/staff/bulletin/[date]   the editor (+ /preview of the draft)
+/auth/confirm            magic-link target;  /auth/signout  POST
+/api/staff/*             all staff writes (login, bulletins, publish, people)
 ```
 
 ## Homepage section order
@@ -175,6 +185,49 @@ When Supabase env vars are absent or a query fails, the data layer
 (`lib/data.ts`) falls back to bundled seed data (`lib/seed.ts`) that mirrors
 the seed migration. The site must never render empty because the database is
 unreachable.
+
+---
+
+## Bulletin + staff area (added 2026-10-01)
+
+**Public:** `/bulletin` is built to be used, not just read — order of service
+first (Sunday morning), then the week's announcements, minister's article,
+prayer list, standing times/contact. Print stylesheet included (`print:`
+variants), so it can still produce paper while the congregation transitions.
+Design signature: the dotted-leader run sheet and the big date stamp; reuses
+the Texas-morning tokens. Standing details (weekly meetings, preacher/elders/
+secretary) live in `lib/site.ts` — only the five weekly pieces are editable.
+
+**Data:** `cisco_bulletins` (one row per Sunday; order_of_service,
+announcements, prayer_groups, article, series as validated jsonb — see
+`lib/bulletin/schema.ts`) and `cisco_staff` (who may sign in + role).
+Migration `007_bulletin.sql` is self-contained and **already applied** on the
+droplet; `001–006` are still not applied. Anon can SELECT only
+`status='published'` rows; drafts and the staff roster are service-role only.
+Seed fallback: `lib/bulletin/seed.ts` (the Oct 4, 2026 printed bulletin).
+
+**Auth — email magic link, no passwords, no signup.**
+- Shared-instance rule: GoTrue's users table is shared with other apps, so
+  *signing in proves nothing* — access = a row in `cisco_staff`
+  (`getStaff()` in `lib/supabase/auth.ts`). `/api/staff/login` only emails
+  people already in `cisco_staff` and gives the same answer either way.
+- Flow: `/staff/login` → `/api/staff/login` → shared **auth-mailer** hook
+  (`/root/apps/auth-mailer`, `cisco` entry in `apps.mjs`, sends from
+  `no-reply@theciscochurch.org` — Cisco's OWN Mailgun domain. Never borrow
+  another church's domain: Concan, Stockdale etc. are separate churches) → `/auth/confirm?token_hash…` → session cookie
+  (`@supabase/ssr`, refreshed by `proxy.ts`).
+- Roles (`ROLE_SECTIONS` in `lib/bulletin/schema.ts` — the one place to change
+  who edits what): **admin** = everything + `/staff/people`; **secretary** =
+  order of service, announcements, prayer list. Enforced server-side on every
+  write, not just hidden in the UI.
+- Add the first admin: `node scripts/add-staff.mjs <email> admin "Name"`.
+  After that, admins add people at `/staff/people`.
+- Writes are Route Handlers only; saves carry `base_updated_at` so two people
+  editing at once get a 409 instead of silently overwriting.
+- `emailRedirectTo` is built from the request host, restricted to
+  theciscochurch.org / www / localhost:3000 (`siteOrigin` in `lib/staff-api.ts`).
+  The mailer only resolves the two production hosts, so **magic-link emails can
+  only be tested on production**; locally use `auth.admin.generateLink`.
 
 ---
 

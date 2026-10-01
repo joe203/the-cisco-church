@@ -3,7 +3,7 @@ import { mapLabel, site } from "@/lib/site";
 
 export function SiteFooter() {
   return (
-    <footer className="bg-ink text-white">
+    <footer className="bg-ink text-white print:hidden">
       <div className="mx-auto grid max-w-6xl gap-10 px-5 py-14 sm:px-8 md:grid-cols-[1.4fr_1fr_1fr]">
         <div>
           <p className="font-display text-[1.6rem] font-extrabold tracking-[-0.01em]">
@@ -51,6 +51,11 @@ export function SiteFooter() {
                 Recent lessons
               </Link>
             </li>
+            <li>
+              <Link href="/bulletin" className="link-under">
+                This week’s bulletin
+              </Link>
+            </li>
           </ul>
           {(site.phone || site.email) && (
             <div className="mt-8">
@@ -80,7 +85,12 @@ export function SiteFooter() {
           <p className="text-[0.8rem] text-white/55">
             © {new Date().getFullYear()} {site.shortName}
           </p>
-          <p className="text-[0.8rem] text-white/55">{site.domain}</p>
+          <p className="text-[0.8rem] text-white/55">
+            {site.domain} ·{" "}
+            <Link href="/staff" className="link-under">
+              Staff
+            </Link>
+          </p>
         </div>
       </div>
     </footer>
