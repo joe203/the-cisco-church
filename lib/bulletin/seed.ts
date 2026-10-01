@@ -84,7 +84,7 @@ export const seedBulletin: Bulletin = {
     },
     {
       label: "Nursing home",
-      names: ["Joan Penn", "Cecelia Boles", "Johnny Adams", "Barbara Brinkley", "Jov Davies"],
+      names: ["Joan Penn", "Cecelia Boles", "Johnny Adams", "Barbara Brinkley", "Joy Davies"],
     },
   ],
 

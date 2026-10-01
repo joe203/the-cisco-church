@@ -81,7 +81,11 @@ export async function extractBulletin(pdf: Buffer): Promise<ExtractResult> {
       ],
     });
   } catch (error) {
-    if (error instanceof Anthropic.BadRequestError) return { ok: false, reason: "unreadable" };
+    // Only a complaint about the document itself means "this PDF can't be read".
+    // Anything else (account, key, workspace, quota) is a problem on our side.
+    if (error instanceof Anthropic.BadRequestError && /pdf|document|page/i.test(error.message)) {
+      return { ok: false, reason: "unreadable" };
+    }
     return { ok: false, reason: "unavailable" };
   }
 

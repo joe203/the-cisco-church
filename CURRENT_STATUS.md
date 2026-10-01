@@ -43,15 +43,18 @@ CLAUDE.md → "Bulletin + staff area". State at end of session:
   image upload (needs a storage bucket + policies); announcements don't
   auto-expire (staff remove them); `site.email` now set from the bulletin.
 
-## Bulletin PDF import (built 2026-10-01 — deployed, needs ANTHROPIC_API_KEY)
+## Bulletin PDF import (built + verified 2026-10-01 — live)
 
 Secretary uploads her finished paper bulletin as a PDF → Claude reads it →
-draft bulletin for that Sunday → she/Joe checks and publishes. Code is live;
-the card says "Uploading isn't switched on yet" until `ANTHROPIC_API_KEY` is in
-the droplet `.env` (and `.env.local` for local testing). **Not yet tested
-against the real API** — first real run should use `bulletin/October 4th
-bulletin.pdf` (gitignored) and be compared against `lib/bulletin/seed.ts`,
-which is that bulletin transcribed by hand.
+draft bulletin for that Sunday → she/Joe checks and publishes. Needs
+`ANTHROPIC_API_KEY` (set on the droplet and in `.env.local`; the key must be
+created INSIDE a console workspace — an unscoped key 400s with "not scoped to a
+workspace"). Verified against the real API on the Oct 4 PDF: ~24s, date and
+order of service identical to the hand-typed copy, article identical to the
+character; it also caught a name I had mistyped ("Joy Davies"). Save/replace/
+refuse paths tested against the DB. Not yet exercised: a bulletin exported by the
+secretary's own software (Word/Publisher) — first real upload from her is the
+true test; always read the draft against the paper copy.
 
 ## Where things stand
 
