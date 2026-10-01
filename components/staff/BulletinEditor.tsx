@@ -174,6 +174,9 @@ export function BulletinEditor({
           >
             Preview how it looks
           </a>
+          <a href="/staff/help#check" className="link-under font-semibold text-teal">
+            Need help?
+          </a>
         </p>
       </div>
 

@@ -14,6 +14,9 @@ export function StaffHeader({ staff }: { staff: StaffMember }) {
               People
             </Link>
           )}
+          <Link href="/staff/help" className="eyebrow link-under text-teal hover:text-deepsea">
+            Help
+          </Link>
           <Link href="/bulletin" className="eyebrow link-under text-teal hover:text-deepsea">
             View site
           </Link>

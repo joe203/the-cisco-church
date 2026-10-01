@@ -44,6 +44,14 @@ export default async function StaffHome() {
             : "You can edit the order of service, announcements and prayer list."}
         </p>
 
+        <p className="mt-6 rounded-xl bg-white px-5 py-3.5 text-[0.95rem] shadow-card">
+          <strong className="font-bold">First time, or not sure what to do?</strong>{" "}
+          <Link href="/staff/help" className="link-under font-semibold text-teal">
+            Read the quick guide
+          </Link>
+          .
+        </p>
+
         <div className="mt-8 grid items-start gap-8 lg:grid-cols-[1fr_24rem]">
           <ul className="divide-y rule-tint rounded-2xl bg-white shadow-panel-light">
             {bulletins.length === 0 && (
@@ -67,7 +75,7 @@ export default async function StaffHome() {
               </li>
             ))}
           </ul>
-          <div className="space-y-8">
+          <div className="order-first space-y-8 lg:order-none">
             <ImportBulletin enabled={importConfigured()} />
             <NewBulletin suggestedDate={suggested} />
           </div>

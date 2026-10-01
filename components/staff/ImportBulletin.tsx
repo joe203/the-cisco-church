@@ -64,9 +64,9 @@ export function ImportBulletin({ enabled }: { enabled: boolean }) {
             />
             <label
               htmlFor="bulletin-pdf"
-              className="eyebrow inline-block cursor-pointer rounded-full border border-teal/40 px-5 py-3 text-teal transition-transform duration-300 ease-[var(--ease-spring)] hover:-translate-y-0.5 focus-within:outline-2 active:translate-y-0"
+              className="eyebrow inline-block cursor-pointer rounded-full border-2 border-teal bg-teal/10 px-6 py-3.5 text-deepsea transition-transform duration-300 ease-[var(--ease-spring)] hover:-translate-y-0.5 active:translate-y-0"
             >
-              {file ? "Choose a different PDF" : "Choose a PDF"}
+              {file ? "Choose a different PDF" : "1. Choose a PDF"}
             </label>
             {file && <p className="mt-3 text-[0.92rem] break-all text-ink/75">{file.name}</p>}
           </div>
@@ -77,7 +77,7 @@ export function ImportBulletin({ enabled }: { enabled: boolean }) {
             onClick={() => upload(false)}
             className="btn-teal mt-5 cursor-pointer disabled:cursor-default disabled:opacity-45"
           >
-            {busy ? "Reading the bulletin…" : "Read this bulletin"}
+            {busy ? "Reading the bulletin…" : "2. Read this bulletin"}
           </button>
           {busy && (
             <p role="status" className="mt-3 text-[0.9rem] text-ink/65">
