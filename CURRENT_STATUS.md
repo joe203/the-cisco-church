@@ -43,6 +43,16 @@ CLAUDE.md → "Bulletin + staff area". State at end of session:
   image upload (needs a storage bucket + policies); announcements don't
   auto-expire (staff remove them); `site.email` now set from the bulletin.
 
+## Bulletin PDF import (built 2026-10-01 — deployed, needs ANTHROPIC_API_KEY)
+
+Secretary uploads her finished paper bulletin as a PDF → Claude reads it →
+draft bulletin for that Sunday → she/Joe checks and publishes. Code is live;
+the card says "Uploading isn't switched on yet" until `ANTHROPIC_API_KEY` is in
+the droplet `.env` (and `.env.local` for local testing). **Not yet tested
+against the real API** — first real run should use `bulletin/October 4th
+bulletin.pdf` (gitignored) and be compared against `lib/bulletin/seed.ts`,
+which is that bulletin transcribed by hand.
+
 ## Where things stand
 
 **Everything is committed, deployed, and live at https://theciscochurch.org.**

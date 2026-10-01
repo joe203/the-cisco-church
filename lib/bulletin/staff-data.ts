@@ -118,6 +118,36 @@ export async function saveSections(
   return { ok: true, bulletin: rowToBulletin(data) };
 }
 
+/**
+ * Save an imported bulletin as a DRAFT. An existing draft is replaced only when
+ * `replaceDraft` is set; a published bulletin is never overwritten by an import.
+ */
+export async function saveImported(
+  date: string,
+  sections: Pick<Bulletin, SectionKey>,
+  replaceDraft: boolean,
+  staff: StaffMember,
+): Promise<SaveResult | { ok: false; reason: "exists-draft" | "exists-published" }> {
+  const db = getServiceClient();
+  if (!db) return { ok: false, reason: "no-database" };
+
+  const { data: existing } = await db
+    .from("cisco_bulletins")
+    .select("status")
+    .eq("bulletin_date", date)
+    .maybeSingle();
+  if (existing?.status === "published") return { ok: false, reason: "exists-published" };
+  if (existing && !replaceDraft) return { ok: false, reason: "exists-draft" };
+
+  const row = { ...sections, bulletin_date: date, status: "draft", updated_by: staff.user_id };
+  const query = existing
+    ? db.from("cisco_bulletins").update(row).eq("bulletin_date", date)
+    : db.from("cisco_bulletins").insert(row);
+  const { data, error } = await query.select(BULLETIN_COLUMNS).single();
+  if (error || !data) return { ok: false, reason: "failed" };
+  return { ok: true, bulletin: rowToBulletin(data) };
+}
+
 export async function setPublished(
   date: string,
   published: boolean,

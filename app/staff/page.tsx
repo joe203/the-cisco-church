@@ -1,8 +1,10 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { redirect } from "next/navigation";
+import { ImportBulletin } from "@/components/staff/ImportBulletin";
 import { NewBulletin } from "@/components/staff/NewBulletin";
 import { StaffHeader } from "@/components/staff/StaffHeader";
+import { importConfigured } from "@/lib/bulletin/import";
 import { nextSunday } from "@/lib/bulletin/schema";
 import { listBulletins, suggestNextDate } from "@/lib/bulletin/staff-data";
 import { formatDate } from "@/lib/format";
@@ -42,7 +44,7 @@ export default async function StaffHome() {
             : "You can edit the order of service, announcements and prayer list."}
         </p>
 
-        <div className="mt-8 grid gap-8 lg:grid-cols-[1fr_22rem]">
+        <div className="mt-8 grid items-start gap-8 lg:grid-cols-[1fr_24rem]">
           <ul className="divide-y rule-tint rounded-2xl bg-white shadow-panel-light">
             {bulletins.length === 0 && (
               <li className="p-6 text-ink/65">No bulletins yet. Start the first one.</li>
@@ -65,7 +67,10 @@ export default async function StaffHome() {
               </li>
             ))}
           </ul>
-          <NewBulletin suggestedDate={suggested} />
+          <div className="space-y-8">
+            <ImportBulletin enabled={importConfigured()} />
+            <NewBulletin suggestedDate={suggested} />
+          </div>
         </div>
       </main>
     </>

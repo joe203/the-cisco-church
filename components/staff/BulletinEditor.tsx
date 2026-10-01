@@ -50,7 +50,15 @@ function move<T>(list: T[], from: number, to: number): T[] {
   return next;
 }
 
-export function BulletinEditor({ initial, role }: { initial: Bulletin; role: StaffRole }) {
+export function BulletinEditor({
+  initial,
+  role,
+  imported = false,
+}: {
+  initial: Bulletin;
+  role: StaffRole;
+  imported?: boolean;
+}) {
   const [draft, setDraft] = useState<Draft>(() => toDraft(initial));
   const [baseVersion, setBaseVersion] = useState(initial.updated_at);
   const [status, setStatus] = useState(initial.status);
@@ -168,6 +176,16 @@ export function BulletinEditor({ initial, role }: { initial: Bulletin; role: Sta
           </a>
         </p>
       </div>
+
+      {imported && (
+        <div role="status" className="mt-6 rounded-2xl bg-marigold/25 p-5">
+          <p className="font-display text-[1.15rem] font-bold">Read from your PDF — please check it over</p>
+          <p className="mt-1 text-[0.92rem] text-ink/80">
+            Compare it with the paper copy, especially names, dates and times. Fix anything that’s off,
+            then publish. Use “Preview how it looks” to see it the way visitors will.
+          </p>
+        </div>
+      )}
 
       <div className="mt-8 space-y-8">
         {/* ------------------------------------------------ order of service */}

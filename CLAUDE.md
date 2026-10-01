@@ -220,6 +220,17 @@ Seed fallback: `lib/bulletin/seed.ts` (the Oct 4, 2026 printed bulletin).
   who edits what): **admin** = everything + `/staff/people`; **secretary** =
   order of service, announcements, prayer list. Enforced server-side on every
   write, not just hidden in the UI.
+- **Upload-a-PDF import** (`/staff` → "Upload the finished paper bulletin"):
+  the secretary exports her finished bulletin to PDF and uploads it;
+  `lib/bulletin/import.ts` sends it to Claude (`claude-opus-5-5`, structured
+  output via zod) and the result is validated by the same `cleanSection`
+  rules and saved as a **draft** (never auto-published — names in the prayer
+  list must be eyeballed). Import fills every section regardless of role; the
+  role limits apply to manual editing. Needs `ANTHROPIC_API_KEY` (server
+  only; this site's OWN key, not another church's). Unset = the card says
+  uploads are off. The PDF is processed in memory, never stored. A published
+  bulletin is never overwritten by an import; an existing draft is replaced
+  only after an explicit confirm.
 - Add the first admin: `node scripts/add-staff.mjs <email> admin "Name"`.
   After that, admins add people at `/staff/people`.
 - Writes are Route Handlers only; saves carry `base_updated_at` so two people
