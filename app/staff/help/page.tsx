@@ -53,7 +53,8 @@ export default async function StaffHelpPage() {
 
   const jumps = [
     ["week", "The weekly routine"],
-    ["upload", "Upload a PDF"],
+    ["email", "Send it by email"],
+    ["upload", "Backup: upload it"],
     ["check", "Check the draft"],
     ["publish", "Publish"],
     ["type", "Type it instead"],
@@ -92,8 +93,8 @@ export default async function StaffHelpPage() {
             <p>Each week is three things. That’s all.</p>
             <Steps>
               <>
-                <B>Get the finished bulletin in.</B> Upload the PDF from the Staff page (next section) —
-                or type it in if you’d rather.
+                <B>Email the finished bulletin</B> as a PDF to <B>bulletin@theciscochurch.org</B>. (If
+                email ever doesn’t work, you can upload it on the Staff page instead — see below.)
               </>
               <>
                 <B>Check the draft.</B> Compare it with the paper copy. It takes a couple of minutes.
@@ -107,7 +108,34 @@ export default async function StaffHelpPage() {
             </p>
           </Section>
 
-          <Section id="upload" title="Upload a PDF">
+          <Section id="email" title="Send it by email">
+            <Steps>
+              <>
+                Finish the bulletin the way you always do, then save it as a <B>PDF</B>. In Word:{" "}
+                <B>File → Save As → PDF</B> (or <B>Export</B>). In Publisher: <B>File → Export → Create
+                PDF</B>.
+              </>
+              <>
+                Send a new email <B>to bulletin@theciscochurch.org</B> with the PDF attached. Nothing needs
+                to be written in the message — the subject and text don’t matter.
+              </>
+              <>
+                Within a minute or two you’ll get an email back from The Cisco Church. It says the draft is
+                ready and has a link to it. (Joe gets a copy too.)
+              </>
+            </Steps>
+            <p>
+              <B>Send it from your own email address</B> — the same one you sign in with. Email from any
+              other address is ignored, so a stranger can’t send in a bulletin.
+            </p>
+            <p>
+              Sent the wrong one, or spotted a typo? Just send a corrected PDF. If nobody has edited the
+              draft yet, the new one replaces it. If someone has already made changes to the draft, it
+              won’t be replaced — the reply email tells you.
+            </p>
+          </Section>
+
+          <Section id="upload" title="Backup: upload it yourself">
             <Steps>
               <>
                 Finish the bulletin the way you always do, then save it as a <B>PDF</B>. In Word:{" "}
@@ -202,6 +230,10 @@ export default async function StaffHelpPage() {
               <Rule title="Nothing goes public until someone presses Publish">
                 Drafts — including anything just uploaded — are private. Only Publish puts it on the website.
               </Rule>
+              <Rule title="Email only ever makes a draft">
+                Sending the bulletin by email never puts it on the website. It makes a draft and emails you
+                a link; a person still has to open it and press Publish.
+              </Rule>
               <Rule title="Always read the prayer list">
                 A misspelled or missing name is the kind of mistake that matters. The upload is checked by
                 the same rules as typing, but a person should always give it a last look.
@@ -226,6 +258,11 @@ export default async function StaffHelpPage() {
 
           <Section id="trouble" title="If something goes wrong">
             <ul className="space-y-3">
+              <Rule title="No email came back after you sent the bulletin">
+                Give it five minutes and check spam or junk. Make sure you sent it from your own staff
+                address, to bulletin@theciscochurch.org, with the PDF attached (not a link to a file).
+                Still nothing? Use the upload on the Staff page, and let Joe know.
+              </Rule>
               <Rule title="“That PDF couldn’t be read”">
                 Save the bulletin as a PDF again (don’t rename a Word file to .pdf), then upload the new
                 file. Or use “Start a new bulletin” and type it in.

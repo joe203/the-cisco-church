@@ -231,6 +231,20 @@ Seed fallback: `lib/bulletin/seed.ts` (the Oct 4, 2026 printed bulletin).
   uploads are off. The PDF is processed in memory, never stored. A published
   bulletin is never overwritten by an import; an existing draft is replaced
   only after an explicit confirm.
+- **Bulletin-by-email** (primary intake; upload above is the backup): staff email
+  the PDF to `bulletin@theciscochurch.org` → Mailgun route → `POST
+  /api/inbound/bulletin` (`lib/bulletin/inbound.ts`). Accepts only: a valid
+  Mailgun HMAC signature (`MAILGUN_SIGNING_KEY`), a `From` that is a
+  `cisco_staff` address, and a passing **DKIM** result. Answers instantly, then
+  reads/saves via `after()`; always a DRAFT, never published. Replies (to the
+  sender + all admins) via `lib/mail.ts` using `MAILGUN_SENDING_KEY` — a key
+  scoped to theciscochurch.org ONLY. `cisco_inbound_log` (migration 008) gives
+  exactly-once processing and an audit trail. A resend replaces a prior
+  email-created draft only if nobody has edited it since; published bulletins
+  are never touched. Mailgun routes (account-level): prio 1
+  `match_recipient("bulletin@theciscochurch.org")` → forward + stop; prio 5
+  `match_recipient(".*@theciscochurch.org")` → stop (keeps other Cisco mail out
+  of the account's catch-all → FiveSixteen n8n pipeline).
 - Add the first admin: `node scripts/add-staff.mjs <email> admin "Name"`.
   After that, admins add people at `/staff/people`.
 - Writes are Route Handlers only; saves carry `base_updated_at` so two people
