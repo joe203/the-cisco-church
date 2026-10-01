@@ -245,6 +245,25 @@ Seed fallback: `lib/bulletin/seed.ts` (the Oct 4, 2026 printed bulletin).
   `match_recipient("bulletin@theciscochurch.org")` → forward + stop; prio 5
   `match_recipient(".*@theciscochurch.org")` → stop (keeps other Cisco mail out
   of the account's catch-all → FiveSixteen n8n pipeline).
+- **The theciscochurch.org inbox** (`/staff/mail`, admins only via `MAIL_ACCESS` in
+  `lib/bulletin/schema.ts`): mail to any `@theciscochurch.org` address except
+  bulletin@ is forwarded by Mailgun (prio 5 route) to `POST /api/inbound/mail`,
+  stored in `cisco_mail` (migration 009; RLS on, no policies, service-role
+  only). Built on the pattern EasyCaseload and FiveSixteen.church use for their
+  admin inboxes, but WITHOUT the shared n8n router / `mail.inbound_emails` — Cisco
+  keeps its own `cisco_` table (project rule) and never touches shared n8n
+  workflows. Reads/replies/compose/archive are Route Handlers under
+  `/api/staff/mail`. Replies and composed mail are sent as
+  `hello@theciscochurch.org` through the domain-scoped Mailgun key, one message
+  per recipient (max 25, deduped), threaded via In-Reply-To/References; sent
+  rows keep `message_id` NULL (Mailgun redelivers a copy of mail sent to our own
+  domain with the same Message-Id). HTML bodies render only in a fully sandboxed
+  iframe with a no-network CSP; attachments are not stored (names/sizes only).
+  **Text alert on new mail** (`lib/inbox/alert.ts`): OFF unless
+  `MAIL_ALERT_SMS_ENABLED=true` + `OPERATOR_PHONE` + `TELNYX_API_KEY` +
+  `TELNYX_FROM_NUMBER`; fixed-sentence text (never email content), skipped for
+  suspected spam, at most one per 10 minutes.
+  Feedback/survey FORMS are still out of scope — this is the mailbox only.
 - Add the first admin: `node scripts/add-staff.mjs <email> admin "Name"`.
   After that, admins add people at `/staff/people`.
 - Writes are Route Handlers only; saves carry `base_updated_at` so two people

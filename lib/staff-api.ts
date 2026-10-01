@@ -1,10 +1,11 @@
 import { NextResponse } from "next/server";
 import { getStaff } from "@/lib/supabase/auth";
+import { canUseMail } from "@/lib/bulletin/schema";
 import type { StaffMember } from "@/lib/bulletin/types";
 
 /** Route Handler guard: resolves the signed-in staff member or a ready 401/403. */
 export async function requireStaff(
-  options: { admin?: boolean } = {},
+  options: { admin?: boolean; mail?: boolean } = {},
 ): Promise<{ staff: StaffMember } | { error: NextResponse }> {
   const staff = await getStaff();
   if (!staff) {
@@ -12,6 +13,9 @@ export async function requireStaff(
   }
   if (options.admin && staff.role !== "admin") {
     return { error: NextResponse.json({ error: "Only an admin can do that." }, { status: 403 }) };
+  }
+  if (options.mail && !canUseMail(staff.role)) {
+    return { error: NextResponse.json({ error: "Your account can't use the inbox." }, { status: 403 }) };
   }
   return { staff };
 }

@@ -60,7 +60,7 @@ export default async function StaffHelpPage() {
     ["type", "Type it instead"],
     ["good", "Good to know"],
     ["trouble", "If something goes wrong"],
-    ...(admin ? [["people", "Adding people"]] : []),
+    ...(admin ? [["inbox", "The inbox"], ["people", "Adding people"]] : []),
   ];
 
   return (
@@ -282,6 +282,40 @@ export default async function StaffHelpPage() {
               </Rule>
             </ul>
           </Section>
+
+          {admin && (
+            <Section id="inbox" title="The inbox (admins)">
+              <p>
+                Email sent to <B>any address @theciscochurch.org</B> — hello@, feedback@, anything — lands in
+                the <Link href="/staff/mail" className="link-under font-semibold text-teal">Inbox</Link>. The
+                one exception is bulletin@, which is only for sending in the bulletin. A number next to
+                “Inbox” at the top of the page shows how many messages are unread.
+              </p>
+              <ul className="space-y-3">
+                <Rule title="Reading">
+                  Pick a message in the list to open it. It’s marked read when you do; “Mark unread” puts it
+                  back. The filters (New, Read, Replied, Sent, Archived) narrow the list.
+                </Rule>
+                <Rule title="Replying and writing">
+                  Replies go out as <B>hello@theciscochurch.org</B>, in the same conversation. “New message”
+                  starts one. If you write to several people, each gets their <B>own</B> copy — they never see
+                  each other’s addresses.
+                </Rule>
+                <Rule title="Attachments aren’t saved">
+                  You can see that an email had attachments, and their names, but the files themselves aren’t
+                  kept. If one matters, ask the sender to resend it somewhere you can open it.
+                </Rule>
+                <Rule title="Spam">
+                  Anyone can email these addresses, so some spam arrives. Likely spam is marked “Possible spam”
+                  — be careful with links. Formatted emails are shown in a locked-down box, and “Show plain
+                  text” is always the safest view.
+                </Rule>
+                <Rule title="Only admins see the inbox">
+                  Feedback can be personal, so secretaries don’t have access unless Joe turns it on.
+                </Rule>
+              </ul>
+            </Section>
+          )}
 
           {admin && (
             <Section id="people" title="Adding people (admins)">

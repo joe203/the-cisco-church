@@ -24,6 +24,16 @@ export function canEdit(role: StaffRole, section: SectionKey): boolean {
   return ROLE_SECTIONS[role].includes(section);
 }
 
+/**
+ * Who may open the theciscochurch.org inbox. Feedback and survey replies can be
+ * personal, so it starts admin-only; add "secretary" here to let the office in.
+ */
+export const MAIL_ACCESS: readonly StaffRole[] = ["admin"];
+
+export function canUseMail(role: StaffRole): boolean {
+  return MAIL_ACCESS.includes(role);
+}
+
 export const ISO_DATE = /^\d{4}-\d{2}-\d{2}$/;
 
 export function isIsoDate(value: unknown): value is string {
