@@ -22,7 +22,7 @@ const PAN_VARS: Record<string, React.CSSProperties> = {
  * but the timer is what guarantees the reel never gets stuck on one frame
  * if autoplay is delayed/blocked or a clip fails to load.
  */
-export function HeroReel() {
+export function HeroReel({ items = heroReel }: { items?: HeroReelItem[] }) {
   const [eligible, setEligible] = useState(false);
   const [index, setIndex] = useState(0);
 
@@ -39,27 +39,29 @@ export function HeroReel() {
     };
   }, []);
 
-  const item = heroReel[index] ?? heroReel[0];
+  const item = items[index] ?? items[0];
+  // One video on its own just loops natively — no timer, no cut.
+  const single = items.length === 1;
 
   const advance = useCallback(() => {
-    setIndex((i) => (i + 1) % heroReel.length);
-  }, []);
+    setIndex((i) => (i + 1) % items.length);
+  }, [items.length]);
 
   useEffect(() => {
-    if (!eligible) return;
+    if (!eligible || single) return;
     const speed = item.type === "video" ? (item.speed ?? 1) : 1;
     const ms = (item.duration / speed) * 1000 + 800; // +buffer past the ended/timer race
     const id = setTimeout(advance, ms);
     return () => clearTimeout(id);
-  }, [eligible, index, item, advance]);
+  }, [eligible, single, index, item, advance]);
 
-  if (!eligible || heroReel.length === 0) return null;
+  if (!eligible || items.length === 0) return null;
 
   return (
     <div className="absolute inset-0">
       <div key={`${item.type}-${item.file}`} className="hero-reel-layer absolute inset-0">
         {item.type === "video" ? (
-          <HeroReelVideo item={item} onEnded={advance} />
+          <HeroReelVideo item={item} loop={single} onEnded={advance} />
         ) : (
           <div
             className="hero-reel-kenburns absolute inset-0"
@@ -81,9 +83,11 @@ export function HeroReel() {
 
 function HeroReelVideo({
   item,
+  loop,
   onEnded,
 }: {
   item: Extract<HeroReelItem, { type: "video" }>;
+  loop: boolean;
   onEnded: () => void;
 }) {
   const videoRef = useRef<HTMLVideoElement>(null);
@@ -109,7 +113,7 @@ function HeroReelVideo({
       title={item.alt}
       autoPlay
       muted
-      loop={false}
+      loop={loop}
       playsInline
       preload="auto"
       onEnded={onEnded}

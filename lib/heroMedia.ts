@@ -2,7 +2,11 @@
  * Hero reel rotation — the desktop hero cycles through this list in order,
  * cutting cleanly between items, then loops back to the start.
  *
- * This is a highlight reel, not raw footage playback: keep every item
+ * Currently a single entry: Joe's own ~28s edit, framed for the glass
+ * diagonal (see CURRENT_STATUS → "Homepage hero"). The notes below apply
+ * if it ever goes back to a multi-item rotation.
+ *
+ * A rotation is a highlight reel, not raw footage playback: keep every item
  * SHORT (video ~1.5–2s, stills ~2–2.5s). The point — per Joe, modeled on
  * oakhills.church's hero — is quick, confident beats that a visitor
  * doesn't have time to scrutinize, not lingering on any one shot.
@@ -52,61 +56,15 @@ export type HeroReelItem =
       alt: string;
     };
 
+// A single entry loops on its own; two or more rotate as described above.
 export const heroReel: HeroReelItem[] = [
   {
     type: "video",
-    file: "/videos/hero/preaching-wide.mp4",
-    poster: "/videos/hero/preaching-wide-poster.jpg",
-    duration: 1.8,
-    focus: "58% 25%",
-    alt: "Joe preaching from the pulpit",
-  },
-  {
-    type: "image",
-    file: "/images/trail-rock.jpg",
-    duration: 2.4,
-    pan: "left",
-    focus: "30% 35%",
-    alt: "Kids from the congregation out on a trail",
-  },
-  {
-    type: "image",
-    file: "/images/reel-preaching-titlecard.jpg",
-    duration: 2.4,
-    pan: "up",
-    focus: "60% 15%",
-    alt: "Joe preaching, The New Thing series title card behind him",
-  },
-  {
-    type: "video",
-    file: "/videos/hero/song-leader.mp4",
-    poster: "/videos/hero/song-leader-poster.jpg",
-    duration: 1.8,
-    focus: "72% 20%",
-    alt: "Song leader leading worship",
-  },
-  {
-    type: "image",
-    file: "/images/fellowship-ladies.jpg",
-    duration: 2.4,
-    pan: "right",
-    focus: "38% 20%",
-    alt: "Two friends laughing together over dinner in the fellowship hall",
-  },
-  {
-    type: "image",
-    file: "/images/reel-preaching-close.jpg",
-    duration: 2.4,
-    pan: "down",
-    focus: "50% 8%",
-    alt: "Joe preaching, close angle",
-  },
-  {
-    type: "image",
-    file: "/images/reel-preaching-wide-establishing.jpg",
-    duration: 2.4,
-    pan: "left",
-    focus: "50% 15%",
-    alt: "Joe preaching, wide establishing shot with The New Thing series title",
+    file: "/videos/hero/hero-reel-v5.mp4",
+    poster: "/videos/hero/hero-reel-v5-poster.jpg",
+    duration: 27.9,
+    // Joe framed this edit for the glass hero: subjects sit right of the diagonal.
+    focus: "100% 40%",
+    alt: "The church building, then Sunday preaching, song leading, kids, and fellowship",
   },
 ];

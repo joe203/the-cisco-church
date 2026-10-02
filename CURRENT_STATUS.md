@@ -1,5 +1,5 @@
 # CURRENT_STATUS — TheCiscoChurch.org
-Updated: 2026-09-28 · Read this first when starting a new session.
+Updated: 2026-10-02 · Read this first when starting a new session.
 
 ## OPEN ITEMS (updated 2026-10-01, end of the bulletin/mail build session)
 
@@ -100,103 +100,53 @@ new worship experience that lifts... Come grow with us."
 - Data still comes from bundled seed data (`lib/seed.ts`); Supabase is written
   but deliberately NOT connected yet.
 
-## Hero video reel (added 2026-09-28, redesigned same day after feedback)
+## Homepage hero — "glass diagonal" + Joe's edited video (2026-10-02)
 
-The homepage hero has a rotating video/still background on desktop —
-Joe wanted something like oakhills.church's cycling hero clips: quick,
-confident highlight-reel beats, not lingering footage. Built so it's cheap
-to refresh with new footage indefinitely, not a one-off.
+Replaced the 2026-09-28 rotating reel (7 short clips/stills) with **one
+video Joe edits himself** (`video_v2/website_hero_clip_v5.mp4`, ~28s) that
+loops behind the hero. Joe picked this layout from three trial versions
+(wide diagonal / glass diagonal / framed 16:9 card).
 
-**First attempt got this wrong twice — read before touching the rotation:**
-1. Cut long clips (6–8s) and just played them back-to-back. Joe's
-   correction: this is a highlight reel, not raw footage — cut it like
-   oakhills.church, brisk beats the viewer doesn't have time to scrutinize.
-   **Every item is now ~1.5–2.4s**, and stills (Ken Burns pans on real
-   photos) outnumber video clips, mixing in the photo library Joe shared,
-   not just the one video file.
-2. Picked ONE `focus` (object-position) per clip and trusted it for the
-   whole clip. Joe's correction: he was moving/walking in that footage and
-   crossed clean out of the crop mid-clip — the panel is a tall, narrow
-   crop of a 16:9 source, so it crops hard, and a static focus point can't
-   track a moving subject. Fix: only cut from portions where the subject
-   is genuinely stable (check first-frame AND last-frame posters before
-   committing a cut, not just one), and dropped the one shot that was
-   inherently a walking shot rather than fighting it. A verified-safe
-   moving subject beats a clever crop.
+**Layout (`components/sections/Hero.tsx`):**
+- One continuous section from the top edge. On `/` the site header floats
+  over the hero (transparent, white type, full-bleed gutters) — see
+  `SiteHeader.tsx` (`usePathname() === "/"`). Every other page keeps the
+  light Cloud bar. Joe: the old light bar "didn't go with the page".
+- Desktop: the video runs **full-bleed behind everything**; the diagonal
+  teal field is a **translucent pane (opacity 0.9)** over it, edged by a
+  thin marigold line. Pane top edge at 54vw, bottom at 36vw (moved left
+  twice at Joe's request so the clear window holds the speaker). The
+  headline runs from a 48px left margin and its last line ("IN CISCO.",
+  outlined) crosses the line onto the footage — intended.
+- Headline size `clamp(3rem, min(8.4vw, 12vh), 7.4rem)` — the vh cap keeps
+  the CTA above the fold on 1280×720 laptops.
+- Mobile / reduced motion: no video at all; solid teal pane, trail photo
+  slants in below (unchanged behaviour).
 
-**How it's built:**
-- `lib/heroMedia.ts` is the single source of truth — an ordered array of
-  clips/stills with their timing, playback speed, and focal point. This is
-  the only file that normally needs editing to change what's in the
-  rotation.
-- `components/sections/HeroReel.tsx` (client component) reads that array
-  and cycles through it, mounted inside `components/sections/Hero.tsx`'s
-  desktop photo panel, layered on top of the same static trail-rock photo
-  that's always there as the base/fallback.
-- Cuts are **hard cuts, not crossfades** — a crossfade-via-remount approach
-  was tried first and caused a double-exposure ghosting artifact where a
-  `<video>` still mid-decode composited underneath the old frame. Hard
-  cuts sidestep that entirely and look intentional (broadcast-style), not
-  broken.
-- Every item (video or image) advances on a **plain timer**, not just a
-  video's `ended` event — this is a safety net so the reel can never get
-  permanently stuck on one frame if autoplay is blocked or a clip fails to
-  decode. `duration` in the config is what that timer uses.
-- **Mobile and `prefers-reduced-motion` never load the reel at all** — the
-  desktop-only gate lives in `HeroReel`'s own `matchMedia` check, so
-  neither path pays any video bandwidth. This matches the site's "3s max
-  on mobile with weak signal" rule and reduced-motion is respected for
-  real, not just cosmetically.
+**Video framing rules (learned over v2–v5):**
+- Only ~the right 40% of the frame is the clear window; the rest shows
+  dimmed through the teal. Subjects and anything readable go right of the
+  line; the left must still be REAL footage — flat black fill shows
+  through the glass as a "chopped" block (v4's problem).
+- Joe has an overlay for his editor: `video_v2/hero-glass-guide.png`
+  (1920×1080, gold line = the diagonal at 1440×900, the tightest common
+  desktop ratio). Regenerate it if the diagonal moves.
+- No burned-in captions — the headline already carries the message, and
+  captions get cut by the line.
 
-**The repeatable workflow — this is what Joe asked to be designed in from
-day one, so future sessions can just run it:**
-1. Joe drops a raw clip (phone footage is fine) in a gitignored staging
-   folder at the repo root: `video_v1/`, next batch `video_v2/`, etc.
-   (pattern: `/video_v*/` in `.gitignore` — never commit raw source). He
-   may also drop still photos in a `photos_v*/` folder the same way — USE
-   THEM, don't default to video-only. A good rotation is mostly stills
-   with a couple of short video beats mixed in, not the other way round.
-2. Claude finds the shots in the video (use `ffmpeg -vf "fps=1/2,scale=320:-1,
-   tile=7x4" -update 1 -frames:v 1` to make a contact-sheet JPG and eyeball
-   shot boundaries — scene-detection filters didn't reliably find cuts in
-   Joe's footage, contact sheets did).
-3. For each shot, **verify stability before cutting**: contact-sheet that
-   shot specifically at a finer interval (0.25–0.5s) across its full span.
-   If the subject is walking/pacing, either skip it or find the shortest
-   sub-window where they're genuinely still. When in doubt, cut it anyway,
-   extract BOTH the first-frame and last-frame poster, and eyeball both —
-   don't trust one frame to represent the whole clip.
-4. Cut + compress each shot with ffmpeg into `public/videos/hero/`, short
-   (1.5–2.5s):
-   ```
-   ffmpeg -ss <in> -i <raw> -t <len> -vf "scale=1280:-2" -an \
-     -c:v libx264 -profile:v main -preset medium -crf 27 \
-     -pix_fmt yuv420p -movflags +faststart <name>.mp4
-   ```
-   Then a poster frame: `ffmpeg -i <name>.mp4 -vframes 1 -q:v 4
-   <name>-poster.jpg`. Target well under 1MB per clip.
-5. For stills, resize/compress with sharp (see any recent commit touching
-   `public/images/` for the pattern) — target ~50KB each, well under the
-   1MB-per-image ceiling that matters.
-6. Add entries to `lib/heroMedia.ts`: short `duration` (~1.5–2.5s), and a
-   `focus` (object-position) tuned to wherever the subject actually sits.
-   **Verify the crop in isolation before trusting it live** — a plain HTML
-   file with a `width:835px;height:894px` div (the real desktop panel
-   size, check via `getBoundingClientRect()` in a live page if it's
-   changed) and `object-fit:cover` + the candidate `object-position`,
-   screenshotted directly, is far more reliable than trying to time a
-   screenshot against the live rotating reel.
-7. Rebuild/redeploy as usual. Nothing in `Hero.tsx` or `HeroReel.tsx`
-   should need to change for a routine footage refresh.
-
-**Current rotation (7 items, brisk pacing, ~16s full loop):** preaching
-(wide, stable podium moment) → trail-rock kids photo (Ken Burns) →
-preaching title-card still → song leader (brief) → fellowship-ladies photo
-(Ken Burns) → preaching close-up still → preaching wide-establishing still
-→ loops. Two video beats, five stills — deliberately still-heavy per the
-"don't dwell" note above. Source: `video_v1/website_clips_v1.mp4` (Joe's
-one clip, sermon + song leader) plus `photos_v2/image_00{3,4,6}.png` and
-two photos already in `public/images/`.
+**Swapping in a new edit:** Joe drops `video_v2/website_hero_clip_vN.mp4`, then
+```
+ffmpeg -i video_v2/website_hero_clip_vN.mp4 -an -c:v libx264 -preset slow \
+  -crf 28 -pix_fmt yuv420p -movflags +faststart public/videos/hero/hero-reel-vN.mp4
+ffmpeg -ss 2.5 -i video_v2/website_hero_clip_vN.mp4 -frames:v 1 -q:v 5 \
+  public/videos/hero/hero-reel-vN-poster.jpg
+```
+Keep full 1080p (1280-wide looked soft stretched full-bleed; ~4.7MB for
+28s, desktop-only). Point `lib/heroMedia.ts` at the new file, delete the old
+one, screenshot several timestamps by pausing the `<video>` and setting
+`currentTime` in puppeteer (far more reliable than timing a live loop).
+`HeroReel.tsx` still supports a multi-item rotation (a single entry loops
+natively), so going back to a clip/still reel needs no code change.
 
 ## What's live
 
