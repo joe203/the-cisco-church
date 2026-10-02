@@ -1,16 +1,35 @@
 # CURRENT_STATUS — TheCiscoChurch.org
 Updated: 2026-09-28 · Read this first when starting a new session.
 
-## NEXT TASK (Joe's stated priority)
+## OPEN ITEMS (updated 2026-10-01, end of the bulletin/mail build session)
 
-**Grow the hero video reel.** Joe is gathering more footage over time —
-preaching, song leader, maybe building/candid shots — to drop in and keep
-the homepage hero rotation feeling current. See "Hero video reel" below for
-the exact repeatable process; the whole point of that system is that
-picking this task back up should never require touching Hero.tsx.
+Live at theciscochurch.org: bulletin, staff login, PDF upload, bulletin-by-email,
+admin inbox, text alert on new mail. Details are in CLAUDE.md -> "Bulletin + staff
+area" and the sections below. What is NOT finished:
 
-Also still open: **add a new sermon to the home page** when Joe supplies
-the details — see "How to add a sermon" below.
+1. **Replace the borrowed Telnyx key** (Joe, next week). The droplet `.env` uses
+   EasyCaseload's `TELNYX_API_KEY` / `TELNYX_FROM_NUMBER` (copied server-side
+   2026-10-01). Create a Cisco-specific key, swap both values in
+   `/root/the-cisco-church/.env`, then
+   `docker compose --env-file .env up -d --force-recreate`. A test text to
+   210-422-0607 already arrived, so the number/carrier path works.
+2. **Real-world test of the two email paths.** Simulated deliveries pass (15 for
+   bulletin@, 26 for the inbox) but a real email through Mailgun has not yet been
+   confirmed for either: (a) email the Oct 4 PDF to bulletin@theciscochurch.org
+   from a staff address -> expect an "already published" reply; (b) email
+   hello@theciscochurch.org from Gmail -> expect an inbox row, a text, and a
+   working reply. Check `cisco_inbound_log` (bulletin) and `cisco_mail` (inbox).
+3. **Cyndi's first real bulletin** (login `ciscochurchofchrist@outlook.com`,
+   secretary). Her PDF has only been tested via Joe uploading it. Check her first
+   email-in draft against the paper copy.
+4. **Surveys / feedback forms** are still out of scope (CLAUDE.md). The mailbox
+   exists so they can receive replies; building forms needs the fence updated first.
+5. The Oct 11 bulletin is an unpublished draft Joe started.
+
+Mailgun routes (account-level, prio): 0 Concan x2 (not ours), 1
+`bulletin@theciscochurch.org` -> /api/inbound/bulletin, 5 `.*@theciscochurch.org`
+-> /api/inbound/mail, 10 catch_all -> FiveSixteen n8n (not ours). Do not remove
+Cisco's MX records — Mailgun receiving depends on them.
 
 ---
 
