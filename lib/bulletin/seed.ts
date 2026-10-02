@@ -19,7 +19,7 @@ export const seedBulletin: Bulletin = {
       { label: "The Lord's Supper & Offering", who: "", note: "" },
       { label: "Presiding", who: "Mike Lewis", note: "" },
       { label: "Congregational Singing", who: "", note: "" },
-      { label: "Sermon", who: "Joe Cabrera", note: "“What Could Be Born Here?”" },
+      { label: "Sermon", who: "Joe Cabrera", note: "“The Jesus Test”" },
       { label: "Invitation Song", who: "", note: "" },
       { label: "Closing Comments & Prayer", who: "", note: "" },
       { label: "Closing Song & Dismissal", who: "", note: "" },
