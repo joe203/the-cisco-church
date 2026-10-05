@@ -19,6 +19,8 @@ export type Sermon = {
   slug: string;
   title: string;
   thesis: string | null;
+  /** Optional short hook for the homepage spotlight. Shown only when set. */
+  teaser: string | null;
   scripture_ref: string | null;
   scripture_text: string | null;
   sermon_date: string; // ISO date
@@ -28,6 +30,10 @@ export type Sermon = {
   podcast_url: string | null;
   guide_url: string | null;
   pdf_url: string | null;
+  /** "Gold nuggets": a few standout lines from the sermon, in Joe's words. */
+  nuggets: string[];
+  /** Discussion questions for the generated reflection guide (used when there is no hand-made guide PDF). */
+  guide_questions: string[];
   is_featured: boolean;
 };
 

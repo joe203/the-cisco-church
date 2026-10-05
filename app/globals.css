@@ -269,7 +269,7 @@
      shadow lives on the wrapper (drop-shadow follows the clipped shape)
      and the fold is a darker triangle laid over the cut. */
   .paper-wrap {
-    height: 100%;
+    display: flex;
     filter: drop-shadow(0 1px 1px rgb(20 51 60 / 0.1))
       drop-shadow(0 12px 18px rgb(11 84 93 / 0.14));
     transition: transform 0.35s var(--ease-spring);
@@ -281,6 +281,7 @@
     transform: translateY(-1px);
   }
   .paper {
+    flex: 1;
     position: relative;
     background-color: #fff;
     clip-path: polygon(0 0, calc(100% - 2.1rem) 0, 100% 2.1rem, 100% 100%, 0 100%);
@@ -366,4 +367,58 @@
   to {
     transform: scale(1.12) translate3d(var(--kenburns-x, -1.5%), var(--kenburns-y, -1.5%), 0);
   }
+}
+
+/* ---------------------------------------------------------------- */
+/* Handouts — letter-size sheets for /downloads/[slug]/[piece].
+   One named @page so only these print with letter + fixed margins;
+   the bulletin keeps its own print behaviour.                       */
+@page handout {
+  size: letter;
+  margin: 0.6in 0.65in;
+}
+
+.handout {
+  page: handout;
+  width: min(100%, 8.5in);
+  margin-inline: auto;
+  padding: clamp(1.25rem, 5vw, 0.65in);
+  background: #fff;
+  color: var(--color-ink);
+  box-shadow: var(--shadow-panel-light);
+  -webkit-print-color-adjust: exact;
+  print-color-adjust: exact;
+}
+.handout-page {
+  min-height: 11in;
+}
+@media print {
+  html:has(.handout),
+  html:has(.handout) body {
+    background: #fff;
+  }
+  .handout {
+    width: auto;
+    margin: 0;
+    padding: 0;
+    box-shadow: none;
+  }
+  /* Letter (11in) minus the 1.2in of page margin, with a hair to spare so
+     a single sheet never spills a blank second page. */
+  .handout-page {
+    height: 9.7in;
+    min-height: 0;
+    overflow: hidden;
+  }
+}
+
+/* Lined writing space, 0.3in apart */
+.ruled {
+  background-image: repeating-linear-gradient(
+    to bottom,
+    transparent 0,
+    transparent calc(0.3in - 1px),
+    rgb(20 51 60 / 0.22) calc(0.3in - 1px),
+    rgb(20 51 60 / 0.22) 0.3in
+  );
 }

@@ -33,16 +33,43 @@ Cisco's MX records — Mailgun receiving depends on them.
 
 ---
 
-## Downloads page (built 2026-10-05 — NOT yet committed/deployed)
+## Weekly sermon intake (set up 2026-10-05)
 
-`/downloads`: dashboard of printable handouts, grouped by kind with an index
-rail; each is a paper-sheet card (Download + Open + link to its sermon). Data:
-`lib/downloads.ts` (reflection guides auto-derived from sermons' `guide_url`;
-everything else in `manualDownloads`; files in `public/downloads/`). Only the
-2 existing guides are listed — sermon notes / verses / quotes / handouts show
-"Soon" until Joe supplies them. Nav + footer links added; header nav now wraps
-to its own row on mobile (4 links didn't fit). Next: Joe's notes/verses/quotes
-content; a separate videos page that links to and from these.
+Joe sends (Thu / early Fri): manuscript PDF, one title slide image, optional teaser,
+nugget picks. Steps: (1) slide -> `public/sermons/<slug>/artwork.jpg` (sharp, 1600w);
+(2) add a `SermonDetail` to `lib/seed.ts` — points (5ish, his language), `teaser`,
+`nuggets` (3-4), `guide_questions` (5-6, DRAFTS for Joe to review), `sermon_date`;
+(3) mirror in a numbered migration (see 011); (4) `npm run dev` then
+`node scripts/build-handouts.mjs <slug>`; (5) tsc, screenshot, commit, deploy.
+First one done: `hold-on-to-what-is-good` (Lesson 1 "The Jesus Test", Oct 4 2026,
+series continues Oct 11 Ask Better Questions / Oct 18 With All His Might / Oct 25
+Hope For The Family). Its nuggets (4 of ~18 marked in the manuscript), points
+(condensed from slides 02-10) and guide questions are MY picks — Joe to review.
+Generated guide is used only when a sermon has no hand-made `guide_url`.
+
+## Homepage sermon spotlight (2026-10-05 — not committed/deployed)
+
+The "Recent lessons" grid is gone. Right under the service times, one
+`SermonSpotlight` shows the next upcoming sermon, else the latest (see CLAUDE.md
+homepage order). To feature a coming Sunday: add the sermon with its future
+`sermon_date` + artwork. Downloads cards now show artwork on every lesson (the
+Hard Truth card only looked "missing" because older cards had no image slot).
+
+## Downloads page (built 2026-10-05 — NOT yet committed/deployed after the sermon-first rework)
+
+`/downloads` is sermon-first: newest lesson featured (artwork + pieces), older
+lessons below. Pieces per sermon: reflection guide (existing PDF), recap, gold
+nuggets, notes page. Recap/notes/nuggets are generated: layouts in
+`components/downloads/Handouts.tsx`, route `/downloads/[slug]/[piece]` (View /
+Print / Download PDF), PDFs built by `node scripts/build-handouts.mjs <slug>`
+into `public/downloads/<slug>/` (both seeded sermons built). Data in
+`lib/downloads.ts`; `nuggets text[]` added to sermons (seed + migration 010,
+not applied — nothing in the DB is applied for sermons yet).
+**The nuggets for both sermons are DRAFTS pulled from lines in Joe's outline
+text — replace with his own picks.** Weekly flow: outline final by Thursday →
+update `lib/seed.ts` → rebuild PDFs → commit/deploy Friday. Nav + footer links
+added; header nav wraps to its own row on mobile. Not built: filtering by kind,
+a videos page (planned; will cross-link).
 
 ## Bulletin + staff login (built 2026-10-01 — NOT yet deployed/committed)
 

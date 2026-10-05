@@ -15,7 +15,7 @@ values (
   'Joe Cabrera',
   null,
   array['Minister', 'Educator', 'Consultant'],
-  'Joe serves the Cisco congregation in an interim ministry role, bringing years of teaching and preaching alongside his work as an educator and consultant.'
+  'Joe is the minister of the Cisco congregation. He spent almost 30 years in education as a teacher and administrator, and has been involved in ministry for even longer.'
 )
 on conflict (slug) do nothing;
 

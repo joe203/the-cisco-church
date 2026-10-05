@@ -30,7 +30,7 @@ function db(): Db | null {
 }
 
 const SERMON_COLUMNS =
-  "id, slug, title, thesis, scripture_ref, scripture_text, sermon_date, artwork_url, summary, youtube_url, podcast_url, guide_url, pdf_url, is_featured";
+  "id, slug, title, thesis, teaser, scripture_ref, scripture_text, sermon_date, artwork_url, summary, youtube_url, podcast_url, guide_url, pdf_url, nuggets, guide_questions, is_featured";
 
 export async function getSermonList(): Promise<Sermon[]> {
   const client = db();
@@ -44,16 +44,34 @@ export async function getSermonList(): Promise<Sermon[]> {
   return seedSermonList().sort((a, b) => b.sermon_date.localeCompare(a.sermon_date));
 }
 
-/** Featured = `is_featured`, falling back to the newest by date. Never hardcoded. */
-export async function getFeaturedSermon(): Promise<Sermon | null> {
-  const list = await getSermonList();
-  if (list.length === 0) return null;
-  return list.find((s) => s.is_featured) ?? list[0];
+/** Today as yyyy-mm-dd in the church's timezone (the server runs in UTC). */
+function todayInCisco(): string {
+  return new Date().toLocaleDateString("en-CA", { timeZone: "America/Chicago" });
 }
 
-export async function getRecentSermons(count = 3): Promise<Sermon[]> {
+export type SermonSpotlight = {
+  sermon: SermonDetail;
+  /** True when the lesson is today or still ahead; false = the latest one we have. */
+  upcoming: boolean;
+};
+
+/**
+ * The one lesson the homepage promotes: the next upcoming sermon (today or
+ * later); when none is scheduled, the most recent one. Never hardcoded —
+ * adding a sermon with a future date is all it takes.
+ */
+export async function getSermonSpotlight(): Promise<SermonSpotlight | null> {
   const list = await getSermonList();
-  return list.slice(0, count);
+  if (list.length === 0) return null;
+
+  const today = todayInCisco();
+  const ahead = list
+    .filter((s) => s.sermon_date >= today)
+    .sort((a, b) => a.sermon_date.localeCompare(b.sermon_date));
+  const pick = ahead[0] ?? list[0];
+
+  const sermon = await getSermonDetail(pick.slug);
+  return sermon ? { sermon, upcoming: ahead.length > 0 } : null;
 }
 
 export async function getSermonDetail(slug: string): Promise<SermonDetail | null> {

@@ -16,7 +16,7 @@ const joe: Speaker = {
   photo_url: null,
   tags: ["Minister", "Educator", "Consultant"],
   // TODO(Joe): replace with your preferred bio when sermon assets arrive.
-  bio: "Joe serves the Cisco congregation in an interim ministry role, bringing years of teaching and preaching alongside his work as an educator and consultant.",
+  bio: "Joe is the minister of the Cisco congregation. He spent almost 30 years in education as a teacher and administrator, and has been involved in ministry for even longer.",
 };
 
 const hardTruth: SermonDetail = {
@@ -24,6 +24,7 @@ const hardTruth: SermonDetail = {
   slug: "the-hard-truth-about-the-kingdom",
   title: "The Hard Truth About the Kingdom",
   thesis: "God celebrates faithfulness.",
+  teaser: null,
   scripture_ref: "Matthew 25:14–30",
   scripture_text:
     "“Well done, good and faithful servant. You have been faithful over a little; I will set you over much. Enter into the joy of your master.”",
@@ -35,6 +36,13 @@ const hardTruth: SermonDetail = {
   podcast_url: null,
   guide_url: "/sermons/the-hard-truth-about-the-kingdom/reflection-guide.pdf",
   pdf_url: null,
+  // Drafted from lines already in Joe's outline — swap in his own picks.
+  nuggets: [
+    "God celebrates faithfulness.",
+    "Talent is meant to be used, not admired.",
+    "Fear stops the flow of faith.",
+  ],
+  guide_questions: [],
   is_featured: false,
   deck_slug: "the-hard-truth",
   speaker: joe,
@@ -78,6 +86,7 @@ const bagOfSeeds: SermonDetail = {
   slug: "the-bag-of-seeds",
   title: "The Bag of Seeds",
   thesis: "What are you carrying — and what will you plant?",
+  teaser: null,
   scripture_ref: "Matthew 13:1–23",
   scripture_text: "“A sower went out to sow… He who has ears, let him hear.”",
   sermon_date: "2026-07-26",
@@ -88,6 +97,13 @@ const bagOfSeeds: SermonDetail = {
   podcast_url: null,
   guide_url: "/sermons/the-bag-of-seeds/reflection-guide.pdf",
   pdf_url: null,
+  // Drafted from lines already in Joe's outline — swap in his own picks.
+  nuggets: [
+    "God doesn't measure the bag. He watches what leaves it.",
+    "Emptying the bag is ours. Growing the seed is God's.",
+    "Your legacy is in the seed you sow.",
+  ],
+  guide_questions: [],
   is_featured: true,
   deck_slug: "the-bag-of-seeds",
   speaker: joe,
@@ -126,7 +142,78 @@ const bagOfSeeds: SermonDetail = {
   ],
 };
 
-export const seedSermons: SermonDetail[] = [hardTruth, bagOfSeeds];
+
+// October 2026 series on 1 Thessalonians 5:21–22. Content drawn from Joe's
+// manuscript (What_Is_Good_lsn_1_fnl.pdf); the reflection questions are drafts.
+const holdOnToWhatIsGood: SermonDetail = {
+  id: "seed-sermon-3",
+  slug: "hold-on-to-what-is-good",
+  title: "Hold On to What Is Good",
+  thesis: "Open to every good gift. Anchored in Christ.",
+  teaser:
+    "We live in a world filled with voices telling us what to believe, who to trust, and what is true. But that challenge isn’t new. God’s people have always lived among competing voices.\n\nIn The Jesus Test, we look at how Paul entered a world full of different beliefs without running from the conversation—and without accepting everything he heard. His example gives us a better way: keep Jesus at the center, test what we hear, and hold on to what is good.\n\nThe voices have changed. The challenge has not.",
+  scripture_ref: "1 Thessalonians 5:21–22",
+  scripture_text: "“…test them all; hold on to what is good, reject every kind of evil.”",
+  sermon_date: "2026-10-04",
+  artwork_url: "/sermons/hold-on-to-what-is-good/artwork.jpg",
+  summary:
+    "The voices have changed; the challenge has not. From Abraham to Daniel to Paul in Athens, God’s people have always lived among competing voices — and ours now fit in a pocket. This first lesson of the October series, The Jesus Test, follows Paul into a city full of idols and ideas: he didn’t run, and he didn’t accept everything. He listened, recognized what was true, tested it, and brought the conversation to Jesus.",
+  youtube_url: null,
+  podcast_url: null,
+  guide_url: null,
+  pdf_url: null,
+  nuggets: [
+    "God doesn’t tell us to be afraid of everything we hear. He tells us to test it.",
+    "Religion often begins with humanity reaching upward. The Gospel begins with God reaching downward.",
+    "Paul didn’t run from the voices. He brought Jesus into the conversation.",
+    "If Jesus is firmly at the center, we don’t have to be afraid of the noise around us.",
+  ],
+  guide_questions: [
+    "Where do you hear the most competing voices about God and faith right now — screens, friends, family? Which ones get most of your attention?",
+    "Every culture asks, “How do I reach God?” Where do you catch yourself acting as if the answer is something you have to earn? Read John 1:14 and Philippians 2:5–8: what does it mean to you that God came looking for you?",
+    "Read Acts 17:16–34. Paul observed, listened, reasoned, and engaged. Which of those is hardest for you when you meet a belief you disagree with?",
+    "Read 1 John 4:1–3 and 1 Corinthians 15:3–4. When you hear something new about faith, how could you use the three questions: What does it say about Jesus? Does it lead me toward following Jesus? Does it line up with what Jesus taught?",
+    "Is there something good you’ve been slow to receive — a song, a book, a teacher, a conversation — because of who it came from? What would it look like to test it instead of dismissing it?",
+    "“Embrace the greater. Talk through the lesser.” What belongs at the center of your life this week, and what has been crowding it?",
+  ],
+  is_featured: false,
+  deck_slug: null,
+  speaker: joe,
+  points: [
+    {
+      position: 1,
+      title: "Every Religion Asks: How Do I Reach God?",
+      label: "The System",
+      body: "Human beings have always been searching — Who is God? Why am I here? What happens when I die? How do I get to God? The answers have produced systems: meditation, discipline, ritual, pilgrimage, moral achievement, enlightenment. Not mocking any of them. People are searching. Three out of four people on earth identify with some religion — the search is as alive today as it was in ancient Athens, where Paul preached (Acts 17).",
+    },
+    {
+      position: 2,
+      title: "The Gospel Begins With God’s Love",
+      label: "The Savior",
+      body: "Before the Gospel tells us what we must do, it tells us what God has done. He came toward us because He loves us. The story of salvation begins not with humanity searching for God, but with a God whose love moves Him toward His creation — the Word became flesh and made His dwelling among us. At the center of Christianity is not a man climbing a throne. It is God stepping down from one.",
+    },
+    {
+      position: 3,
+      title: "Paul Didn’t Run From the Voices",
+      label: "Acts 17:16–34",
+      body: "God’s people have never lived in a world with only one voice — Abraham, Moses, Daniel, Jesus, Paul. Paul’s story is told in Acts 17:16–34. He walked into Athens, the great Greek city, full of idols and the latest ideas — and he observed, listened, reasoned, and engaged. He quoted their poets without accepting their whole worldview. He listened, recognized, tested, and redirected — and brought the conversation to Jesus.",
+    },
+    {
+      position: 4,
+      title: "Jesus Must Remain at the Center",
+      label: "The Jesus Test",
+      body: "Paul’s Athens was a city full of competing voices. Ours fits in our pocket — YouTube, Facebook, TikTok, podcasts, and more, all on one phone. We don’t suffer from a lack of information; we suffer from an abundance of voices. Tradition, culture, teachers, experience, and opinion can’t be the center. John doesn’t say believe every voice — and he doesn’t say be afraid of every voice. He says, “test the spirits” (1 John 4:1–3). And the test always comes back to Jesus: he must remain at the center.",
+    },
+    {
+      position: 5,
+      title: "Test It. Keep What Is Good. Leave What Isn’t.",
+      label: "1 Thessalonians 5:21–22",
+      body: "A critical spirit listens for what to reject. A discerning spirit listens carefully enough to recognize what is true. We don’t have to surrender our convictions in order to listen, and we don’t have to reject a person in order to disagree with them. Embrace the greater. Talk through the lesser. Jesus belongs at the center.",
+    },
+  ],
+};
+
+export const seedSermons: SermonDetail[] = [holdOnToWhatIsGood, hardTruth, bagOfSeeds];
 
 /**
  * Slide decks — Joe's real image slides, served from

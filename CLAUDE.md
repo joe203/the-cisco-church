@@ -28,7 +28,7 @@ placeholders, mark them `TODO` in `lib/site.ts`, and keep a running list for Joe
 ## What This Site Is
 
 A **temporary** site for the **Cisco Church of Christ** in Cisco, Texas, where
-Joe serves in an interim ministry role. Its jobs, in order:
+Joe is the church's minister (he began in an interim role; don't call him interim, and don't mention full-time vs part-time). Its jobs, in order:
 
 1. Make a first-time visitor feel *these are real people and I could walk in on
    Sunday.* The homepage leads with **the congregation, not the sermon**.
@@ -58,12 +58,17 @@ slide takeover on the homepage) are deferred unless they solve a v1 problem.
   minister and secretary maintain it — added 2026-10-01 at Joe's request.
   This is a deliberate, narrow exception to the two bans below; it does not
   reopen them. See "Bulletin + staff area".
-- **Downloads** (`/downloads`) — dashboard of printable handouts only (reflection
-  guides, sermon notes, verse cards, quote sheets, handouts), added 2026-10-05 at
-  Joe's request. PDFs, no video (video gets its own page later; the two will
-  cross-link). Catalog + how-to-add live in `lib/downloads.ts`; files go in
-  `public/downloads/`. Sermon reflection guides appear automatically from
-  `guide_url`.
+- **Downloads** (`/downloads`) — sermon-first dashboard of printable handouts,
+  added 2026-10-05 at Joe's request. Each lesson shows whichever pieces exist:
+  reflection guide (hand-made PDF), **recap**, **notes page** (skeletal outline
+  with lined space), and **gold nuggets** (a few bold standout lines — keep to
+  ~3). PDFs only, no video (video gets its own page later; the two cross-link).
+  Recap/notes/nuggets are generated from sermon data (`points`, `nuggets` in
+  `lib/seed.ts` + migration 010): print layouts at `/downloads/[slug]/[piece]`,
+  saved to `public/downloads/<slug>/` by `node scripts/build-handouts.mjs <slug>`
+  (needs `npm run dev`). A piece is listed only if its PDF exists. Weekly
+  routine: Joe finalizes the outline by Thursday → update the sermon in seed →
+  build PDFs → commit + deploy Friday.
 
 **Explicitly out of scope — do not build, do not suggest:**
 - About / staff / leadership / ministries / events / calendar pages
@@ -96,17 +101,16 @@ If a request seems to need one of these, **stop and ask Joe**.
 /api/staff/*             all staff writes (login, bulletins, publish, people)
 ```
 
-## Homepage section order
+## Homepage section order (revised 2026-10-05 at Joe's request)
 
-1. **Hero** — energy-forward: "SOMETHING NEW IS HAPPENING IN CISCO." in heavy
-   italic caps on a diagonal gold field (see `photos/hero_sample.png` for the
-   inspiration). Not a sermon, not a passage. A worship photo lands in the
-   dark right-hand field once supplied.
-2. **Service times + location** — day, time, street address, map link. Visible
-   without hunting.
-3. **Welcome / What to Expect** — what a Sunday morning here is actually like.
-4. **Recent sermons** — a few recent cards from the database → `/sermons/[slug]`,
-   with a link to the full archive.
+1. **Hero** — energy-forward headline over Joe's video (see CURRENT_STATUS).
+2. **Service times + location** — day, time, street address, map link.
+3. **Sermon spotlight** — ONE lesson, big: artwork, title, scripture, thesis,
+   who's preaching, Read / Watch / "To print" links. It is the next upcoming
+   sermon (`sermon_date` today or later, nearest first); if none is scheduled,
+   the most recent one (`getSermonSpotlight()` in `lib/data.ts`; `is_featured`
+   is no longer used). The archive lives at `/sermons`.
+4. **Welcome / What to Expect** — what a Sunday morning here is actually like.
 5. **Footer** — address, times, contact, copyright.
 
 ## Sermon page order (mirrors Joe's hand-built pages)

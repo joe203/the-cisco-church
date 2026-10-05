@@ -1,120 +1,134 @@
 import { stat } from "node:fs/promises";
 import path from "node:path";
-import { getSermonList } from "./data";
+import { getSermonDetail, getSermonList } from "./data";
+import type { SermonDetail } from "./types";
 
 /**
- * The downloads catalog — printable handouts only (no video; that's a
- * separate page that will link back here).
+ * Downloads are organized around the sermon: each lesson gets whichever of
+ * these pieces exist for it.
  *
- * Two sources feed `/downloads`:
- *  1. Every sermon with a `guide_url` automatically gets a reflection guide
- *     entry, so adding a sermon never means editing this file.
- *  2. `manualDownloads` below — everything else (sermon notes, verse cards,
- *     quote sheets, general handouts).
+ *  - guide    — the reflection guide: a hand-made PDF (`guide_url`) when one
+ *               exists, otherwise generated from the sermon's `guide_questions`.
+ *  - recap    — the lesson in a page or two, built from the sermon's data.
+ *  - outline  — a skeletal notes page with room to write, built from the points.
+ *  - nuggets  — a few standout lines ("gold nuggets"), from `sermon.nuggets`.
  *
- * To add a handout: drop the PDF in `public/downloads/` and add one entry to
- * `manualDownloads`. Set `sermon_slug` to link it to a sermon page.
+ * recap / outline / nuggets (and a questions-based guide) are generated: the print layouts live at
+ * `/downloads/[slug]/[piece]`, and `node scripts/build-handouts.mjs <slug>`
+ * saves them as PDFs in `public/downloads/<slug>/`. A piece is listed only
+ * when its PDF exists, so a download button is never dead.
  */
 
-export type DownloadKind = "guide" | "notes" | "verses" | "quotes" | "handout";
+export type PieceKind = "guide" | "recap" | "outline" | "nuggets";
+/** Every piece can be generated; a hand-made guide PDF simply takes precedence. */
+export type PrintPiece = PieceKind;
 
-export type Download = {
-  id: string;
-  kind: DownloadKind;
-  title: string;
-  /** One or two plain sentences: what this is and who it's for. */
-  blurb: string | null;
-  /** ISO date (yyyy-mm-dd) — newest first within each kind. */
-  date: string;
-  /** Public path, e.g. "/downloads/the-bag-of-seeds-notes.pdf". */
-  url: string;
-  /** Saved-as name when downloaded. Defaults to the file's own name. */
-  filename?: string;
-  sermon_slug?: string;
-  sermon_title?: string;
-  scripture_ref?: string | null;
-};
+export const pieceOrder: PieceKind[] = ["guide", "recap", "nuggets", "outline"];
+export const printPieces: PrintPiece[] = ["guide", "recap", "outline", "nuggets"];
 
-export type DownloadItem = Download & { sizeLabel: string | null };
-
-export const kindMeta: Record<
-  DownloadKind,
-  { label: string; plural: string; blurb: string; band: string }
-> = {
+export const pieceMeta: Record<PieceKind, { label: string; blurb: string }> = {
   guide: {
     label: "Reflection guide",
-    plural: "Reflection guides",
-    blurb: "Questions to work through on your own or with a group after the lesson.",
-    band: "bg-teal text-white",
+    blurb: "Questions to work through alone or with a group.",
   },
-  notes: {
-    label: "Sermon notes",
-    plural: "Sermon notes",
-    blurb: "The highlights of a lesson on one page — to review, mark up, or share.",
-    band: "bg-clay text-white",
+  recap: {
+    label: "Sermon recap",
+    blurb: "The whole lesson on a page or two, with its verses.",
   },
-  verses: {
-    label: "Verses",
-    plural: "Verses to keep",
-    blurb: "The passages from a lesson, ready to print and put where you'll see them.",
-    band: "bg-deepsea text-white",
+  nuggets: {
+    label: "Gold nuggets",
+    blurb: "A few lines worth keeping.",
   },
-  quotes: {
-    label: "Quotes",
-    plural: "Quotes worth keeping",
-    blurb: "Lines from a lesson worth reading again.",
-    band: "bg-marigold text-ink",
-  },
-  handout: {
-    label: "Handout",
-    plural: "Handouts",
-    blurb: "Everything else we put on paper.",
-    band: "bg-ink text-white",
+  outline: {
+    label: "Notes page",
+    blurb: "The outline with room to write your own thoughts.",
   },
 };
 
-export const kindOrder: DownloadKind[] = ["guide", "notes", "verses", "quotes", "handout"];
+export function isPrintPiece(value: string): value is PrintPiece {
+  return (printPieces as string[]).includes(value);
+}
 
-export const manualDownloads: Download[] = [];
+/** Can this sermon supply the content for a printable piece? */
+export function canBuildPiece(sermon: SermonDetail, piece: PrintPiece): boolean {
+  if (piece === "nuggets") return (sermon.nuggets ?? []).length > 0;
+  if (piece === "guide") return (sermon.guide_questions ?? []).length > 0;
+  return sermon.points.length > 0;
+}
+
+export function pieceUrl(slug: string, piece: PrintPiece): string {
+  return `/downloads/${slug}/${piece}.pdf`;
+}
+
+export type Piece = {
+  kind: PieceKind;
+  /** The file to download. */
+  url: string;
+  /** Where "View" goes: the on-site print page for generated pieces, else the file. */
+  viewUrl: string;
+  filename: string;
+  sizeLabel: string | null;
+};
+
+export type SermonDownloads = {
+  sermon: SermonDetail;
+  pieces: Piece[];
+};
 
 function formatSize(bytes: number): string {
   if (bytes < 1024 * 1024) return `${Math.max(1, Math.round(bytes / 1024))} KB`;
   return `${(bytes / (1024 * 1024)).toFixed(1)} MB`;
 }
 
-/** File size for a bundled /public file; null for remote URLs or missing files. */
-async function sizeLabelFor(url: string): Promise<string | null> {
+/** Size of a bundled /public file, or null when it isn't there. */
+async function fileSize(url: string): Promise<number | null> {
   if (!url.startsWith("/") || url.includes("..")) return null;
   try {
-    const file = await stat(path.join(process.cwd(), "public", url));
-    return formatSize(file.size);
+    return (await stat(path.join(process.cwd(), "public", url))).size;
   } catch {
     return null;
   }
 }
 
-export async function getDownloads(): Promise<DownloadItem[]> {
-  const sermons = await getSermonList();
+async function piecesFor(sermon: SermonDetail): Promise<Piece[]> {
+  const candidates: { kind: PieceKind; url: string | null }[] = [
+    { kind: "guide", url: sermon.guide_url ?? pieceUrl(sermon.slug, "guide") },
+    ...printPieces
+      .filter((kind) => kind !== "guide")
+      .map((kind) => ({ kind, url: pieceUrl(sermon.slug, kind) })),
+  ];
 
-  const guides: Download[] = sermons
-    .filter((s) => s.guide_url)
-    .map((s) => ({
-      id: `guide-${s.slug}`,
-      kind: "guide",
-      title: s.title,
-      blurb: s.thesis,
-      date: s.sermon_date,
-      url: s.guide_url as string,
-      filename: `${s.slug}-reflection-guide.pdf`,
-      sermon_slug: s.slug,
-      sermon_title: s.title,
-      scripture_ref: s.scripture_ref,
-    }));
-
-  const manualUrls = new Set(manualDownloads.map((d) => d.url));
-  const all = [...manualDownloads, ...guides.filter((g) => !manualUrls.has(g.url))].sort((a, b) =>
-    b.date.localeCompare(a.date),
+  const found = await Promise.all(
+    candidates.map(async ({ kind, url }): Promise<Piece | null> => {
+      if (!url) return null;
+      const bytes = await fileSize(url);
+      // Remote guide links can't be checked; local files must exist.
+      if (bytes === null && url.startsWith("/")) return null;
+      return {
+        kind,
+        url,
+        viewUrl: url === pieceUrl(sermon.slug, kind) ? `/downloads/${sermon.slug}/${kind}` : url,
+        filename: `${sermon.slug}-${kind}.pdf`,
+        sizeLabel: bytes === null ? null : formatSize(bytes),
+      };
+    }),
   );
 
-  return Promise.all(all.map(async (d) => ({ ...d, sizeLabel: await sizeLabelFor(d.url) })));
+  return pieceOrder.flatMap((kind) => found.filter((p): p is Piece => p?.kind === kind));
+}
+
+/** Every sermon that has at least one download, newest first. */
+export async function getSermonDownloads(): Promise<SermonDownloads[]> {
+  const list = await getSermonList();
+  const details = await Promise.all(list.map((s) => getSermonDetail(s.slug)));
+
+  const withPieces = await Promise.all(
+    details
+      .filter((s): s is SermonDetail => s !== null)
+      .map(async (sermon) => ({ sermon, pieces: await piecesFor(sermon) })),
+  );
+
+  return withPieces
+    .filter((d) => d.pieces.length > 0)
+    .sort((a, b) => b.sermon.sermon_date.localeCompare(a.sermon.sermon_date));
 }
