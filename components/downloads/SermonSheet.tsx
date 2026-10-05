@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { SermonArtwork } from "@/components/sermons/SermonArtwork";
 import { formatDate } from "@/lib/format";
+import { seriesLabel } from "@/lib/series";
 import { pieceMeta, type SermonDownloads } from "@/lib/downloads";
 
 /**
@@ -23,8 +24,10 @@ export function SermonSheet({ entry, featured = false }: { entry: SermonDownload
       {sermon.scripture_ref && (
         <p className="font-serif mt-2 text-[1.1rem] text-deepsea italic">{sermon.scripture_ref}</p>
       )}
-      {sermon.thesis && (
-        <p className="mt-3 max-w-[46ch] text-[0.97rem] leading-[1.65] text-ink/75">{sermon.thesis}</p>
+      {(sermon.thesis ?? sermon.series?.tagline) && (
+        <p className="mt-3 max-w-[46ch] text-[0.97rem] leading-[1.65] text-ink/75">
+          {sermon.thesis ?? sermon.series?.tagline}
+        </p>
       )}
       <Link
         href={`/sermons/${sermon.slug}`}
@@ -84,6 +87,7 @@ export function SermonSheet({ entry, featured = false }: { entry: SermonDownload
       <div className="paper flex flex-col">
         <div className="flex items-baseline justify-between gap-3 bg-teal py-3 pr-12 pl-6 text-white">
           <p className="eyebrow">{formatDate(sermon.sermon_date)}</p>
+          {sermon.series && <p className="eyebrow text-right text-white/85">{seriesLabel(sermon)}</p>}
         </div>
 
         {featured ? (

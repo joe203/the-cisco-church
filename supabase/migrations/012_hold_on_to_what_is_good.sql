@@ -1,23 +1,24 @@
--- 011_hold_on_to_what_is_good.sql — Lesson 1 of the October 2026 series (1 Thessalonians 5:21–22)
--- Mirrors holdOnToWhatIsGood in lib/seed.ts. Idempotent. Requires 001/002 and 010.
--- Apply: docker exec -i supabase-db psql -U supabase_admin -d postgres < 011_hold_on_to_what_is_good.sql
+-- 012_hold_on_to_what_is_good.sql — the four lessons of the October 2026 series (1 Thessalonians 5:21–22)
+-- Mirrors theJesusTest / askBetterQuestions / the upcoming lessons in lib/seed.ts.
+-- Idempotent. Requires 001/002, 010, and 011 (the series row).
+-- Apply: docker exec -i supabase-db psql -U supabase_admin -d postgres < 012_hold_on_to_what_is_good.sql
 
 begin;
 
 insert into cisco.cisco_sermons
   (id, slug, title, thesis, teaser, scripture_ref, scripture_text, sermon_date,
-   artwork_url, summary, nuggets, guide_questions, speaker_id, is_featured)
+   artwork_url, summary, nuggets, guide_questions, speaker_id, is_featured, series_id, lesson_number)
 values (
   'b1000000-0000-4000-8000-000000000003',
-  'hold-on-to-what-is-good',
-  'Hold On to What Is Good',
-  'Open to every good gift. Anchored in Christ.',
+  'the-jesus-test',
+  'The Jesus Test',
+  null,
   E'We live in a world filled with voices telling us what to believe, who to trust, and what is true. But that challenge isn’t new. God’s people have always lived among competing voices.\n\nIn The Jesus Test, we look at how Paul entered a world full of different beliefs without running from the conversation—and without accepting everything he heard. His example gives us a better way: keep Jesus at the center, test what we hear, and hold on to what is good.\n\nThe voices have changed. The challenge has not.',
   '1 Thessalonians 5:21–22',
   '“…test them all; hold on to what is good, reject every kind of evil.”',
   '2026-10-04',
-  '/sermons/hold-on-to-what-is-good/artwork.jpg',
-  'The voices have changed; the challenge has not. From Abraham to Daniel to Paul in Athens, God’s people have always lived among competing voices — and ours now fit in a pocket. This first lesson of the October series, The Jesus Test, follows Paul into a city full of idols and ideas: he didn’t run, and he didn’t accept everything. He listened, recognized what was true, tested it, and brought the conversation to Jesus.',
+  null,
+  'The voices have changed; the challenge has not. From Abraham to Daniel to Paul in Athens, God’s people have always lived among competing voices — and ours now fit in a pocket. This first lesson in the series follows Paul into a city full of idols and ideas: he didn’t run, and he didn’t accept everything. He listened, recognized what was true, tested it, and brought the conversation to Jesus.',
   array[
     'God doesn’t tell us to be afraid of everything we hear. He tells us to test it.',
     'Religion often begins with humanity reaching upward. The Gospel begins with God reaching downward.',
@@ -33,8 +34,43 @@ values (
     '“Embrace the greater. Talk through the lesser.” What belongs at the center of your life this week, and what has been crowding it?'
   ],
   'a1000000-0000-4000-8000-000000000001',
-  false
+  false,
+  'd1000000-0000-4000-8000-000000000001',
+  1
 )
+on conflict (slug) do nothing;
+
+-- Lesson 2 — announced (slide + teaser); content arrives with the manuscript.
+insert into cisco.cisco_sermons
+  (id, slug, title, teaser, sermon_date, artwork_url, speaker_id, is_featured, series_id, lesson_number)
+values (
+  'b1000000-0000-4000-8000-000000000004',
+  'ask-better-questions',
+  'Ask Better Questions',
+  E'Sometimes the things we question most quickly are the things that are unfamiliar. But what about the things we’ve never thought to question at all?
+
+Faith doesn’t have to be afraid of honest questions. In fact, sometimes a better question can help us see Scripture—and even our own familiar ways of doing things—with fresh eyes.
+
+This week, we’ll discover how a faith firmly anchored in Christ can be curious enough to listen, humble enough to examine, and courageous enough to ask:
+
+Is this what Scripture actually says—or simply what I’ve always assumed?',
+  '2026-10-11',
+  '/sermons/ask-better-questions/artwork.jpg',
+  'a1000000-0000-4000-8000-000000000001',
+  false,
+  'd1000000-0000-4000-8000-000000000001',
+  2
+)
+on conflict (slug) do nothing;
+
+-- Lessons 3 and 4 — placeholders (title + date) so the series shows its whole run.
+insert into cisco.cisco_sermons
+  (id, slug, title, sermon_date, speaker_id, is_featured, series_id, lesson_number)
+values
+  ('b1000000-0000-4000-8000-000000000005', 'with-all-his-might', 'With All His Might', '2026-10-18',
+   'a1000000-0000-4000-8000-000000000001', false, 'd1000000-0000-4000-8000-000000000001', 3),
+  ('b1000000-0000-4000-8000-000000000006', 'hope-for-the-family', 'Hope For The Family', '2026-10-25',
+   'a1000000-0000-4000-8000-000000000001', false, 'd1000000-0000-4000-8000-000000000001', 4)
 on conflict (slug) do nothing;
 
 insert into cisco.cisco_sermon_points (sermon_id, position, title, label, body)

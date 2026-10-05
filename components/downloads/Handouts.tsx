@@ -1,5 +1,6 @@
 import { formatDate } from "@/lib/format";
 import { site } from "@/lib/site";
+import { seriesLabel } from "@/lib/series";
 import type { SermonDetail } from "@/lib/types";
 
 /**
@@ -39,6 +40,9 @@ function SheetFooter() {
 function Title({ sermon }: { sermon: SermonDetail }) {
   return (
     <div className="mt-5">
+      {sermon.series && (
+        <p className="eyebrow mb-2 text-coral">{seriesLabel(sermon)}</p>
+      )}
       <h1 className="font-display text-[2.1rem] leading-[1.05] font-extrabold tracking-[-0.03em]">
         {sermon.title}
       </h1>
@@ -90,8 +94,10 @@ export function RecapSheet({ sermon }: { sermon: SermonDetail }) {
       <SheetHeader label="Sermon recap" sermon={sermon} />
       <Title sermon={sermon} />
 
-      {sermon.thesis && (
-        <p className="font-serif mt-4 text-[1.35rem] leading-snug text-ink/85 italic">{sermon.thesis}</p>
+      {(sermon.thesis ?? sermon.series?.tagline) && (
+        <p className="font-serif mt-4 text-[1.35rem] leading-snug text-ink/85 italic">
+          {typo(sermon.thesis ?? sermon.series?.tagline ?? "")}
+        </p>
       )}
 
       {sermon.scripture_text && (
@@ -196,8 +202,10 @@ export function GuideSheet({ sermon }: { sermon: SermonDetail }) {
       <SheetHeader label="Reflection guide" sermon={sermon} />
       <Title sermon={sermon} />
 
-      {sermon.thesis && (
-        <p className="font-serif mt-4 text-[1.3rem] leading-snug text-ink/85 italic">{typo(sermon.thesis)}</p>
+      {(sermon.thesis ?? sermon.series?.tagline) && (
+        <p className="font-serif mt-4 text-[1.3rem] leading-snug text-ink/85 italic">
+          {typo(sermon.thesis ?? sermon.series?.tagline ?? "")}
+        </p>
       )}
       {sermon.scripture_text && (
         <blockquote className="font-serif mt-4 border-l-4 border-marigold bg-sand/70 px-5 py-3 text-[1.05rem] leading-relaxed italic">

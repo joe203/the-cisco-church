@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { SermonCard } from "@/components/sermons/SermonCard";
 import { getSermonList } from "@/lib/data";
+import { isAnnounced } from "@/lib/series";
 
 export const revalidate = 300;
 
@@ -11,7 +12,7 @@ export const metadata: Metadata = {
 };
 
 export default async function SermonsPage() {
-  const sermons = await getSermonList();
+  const sermons = (await getSermonList()).filter((s) => isAnnounced(s));
 
   const byYear = new Map<number, typeof sermons>();
   for (const sermon of sermons) {

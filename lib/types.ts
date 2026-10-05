@@ -14,6 +14,16 @@ export type SermonPoint = {
   body: string | null;
 };
 
+/** A run of related lessons ("Hold On to What Is Good"). */
+export type SeriesRef = {
+  slug: string;
+  title: string;
+  scripture_ref: string | null;
+  /** One line that sums up the series. */
+  tagline: string | null;
+  artwork_url: string | null;
+};
+
 export type Sermon = {
   id: string;
   slug: string;
@@ -35,6 +45,9 @@ export type Sermon = {
   /** Discussion questions for the generated reflection guide (used when there is no hand-made guide PDF). */
   guide_questions: string[];
   is_featured: boolean;
+  series: SeriesRef | null;
+  /** Position within the series (1-based); null for standalone sermons. */
+  lesson_number: number | null;
 };
 
 export type SermonDetail = Sermon & {

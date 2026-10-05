@@ -2,9 +2,11 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { DeckViewer } from "@/components/sermons/DeckViewer";
+import { SeriesStrip } from "@/components/sermons/SeriesStrip";
 import { SermonArtwork } from "@/components/sermons/SermonArtwork";
-import { getDeck, getSermonDetail } from "@/lib/data";
+import { getDeck, getSeriesLessons, getSermonDetail } from "@/lib/data";
 import { formatDate } from "@/lib/format";
+import { isAnnounced, seriesLabel } from "@/lib/series";
 import type { SermonDetail } from "@/lib/types";
 
 export const revalidate = 300;
@@ -37,8 +39,10 @@ function buildResources(sermon: SermonDetail) {
 export default async function SermonPage({ params }: { params: Promise<Params> }) {
   const { slug } = await params;
   const sermon = await getSermonDetail(slug);
-  if (!sermon) notFound();
+  if (!sermon || !isAnnounced(sermon)) notFound();
 
+  const lessons = sermon.series ? await getSeriesLessons(sermon.series.slug) : [];
+  const tagline = sermon.thesis ?? sermon.series?.tagline ?? null;
   const deck = sermon.deck_slug ? await getDeck(sermon.deck_slug) : null;
   const resources = buildResources(sermon);
   const speaker = sermon.speaker;
@@ -60,16 +64,25 @@ export default async function SermonPage({ params }: { params: Promise<Params> }
       <header className="bg-cloud text-ink">
         <div className="mx-auto max-w-4xl px-5 py-16 sm:px-8 lg:py-20">
           <p className="eyebrow text-teal">
-            A sermon
-            {sermon.scripture_ref && <> on {sermon.scripture_ref}</>} &middot;{" "}
-            {formatDate(sermon.sermon_date)}
+            {sermon.series ? (
+              <>{seriesLabel(sermon, lessons.length || undefined)}</>
+            ) : (
+              <>
+                A sermon
+                {sermon.scripture_ref && <> on {sermon.scripture_ref}</>}
+              </>
+            )}{" "}
+            &middot; {formatDate(sermon.sermon_date)}
           </p>
           <h1 className="font-display mt-5 text-display font-extrabold tracking-[-0.02em] text-ink">
             {sermon.title}
           </h1>
-          {sermon.thesis && (
+          {sermon.series && sermon.scripture_ref && (
+            <p className="font-serif mt-4 text-[1.25rem] text-deepsea italic">{sermon.scripture_ref}</p>
+          )}
+          {tagline && (
             <p className="font-serif mt-6 text-[1.5rem] italic text-deepsea sm:text-[1.75rem]">
-              {sermon.thesis}
+              {tagline}
             </p>
           )}
         </div>
@@ -121,12 +134,18 @@ export default async function SermonPage({ params }: { params: Promise<Params> }
         </section>
       )}
 
-      {/* 5 — About this lesson */}
-      {sermon.summary && (
+      {/* 5 — About this lesson (the teaser stands in until the summary is written) */}
+      {(sermon.summary || sermon.teaser) && (
         <section className="bg-sand text-ink">
           <div className="mx-auto max-w-4xl border-t border-ink/10 px-5 py-14 sm:px-8 lg:py-16">
-            <p className="eyebrow reveal text-teal">About this lesson</p>
-            <p className="reveal mt-6 text-[1.08rem] leading-[1.8]">{sermon.summary}</p>
+            <p className="eyebrow reveal text-teal">
+              {sermon.summary ? "About this lesson" : "Coming up"}
+            </p>
+            <div className="reveal mt-6 space-y-4 text-[1.08rem] leading-[1.8]">
+              {(sermon.summary ?? sermon.teaser ?? "").split("\n\n").map((paragraph) => (
+                <p key={paragraph}>{paragraph}</p>
+              ))}
+            </div>
           </div>
         </section>
       )}
@@ -158,6 +177,15 @@ export default async function SermonPage({ params }: { params: Promise<Params> }
           )}
         </div>
       </section>
+
+      {/* 6b — The rest of the series */}
+      {sermon.series && lessons.length > 1 && (
+        <section className="bg-sand text-ink">
+          <div className="mx-auto max-w-6xl px-5 py-14 sm:px-8 lg:py-16">
+            <SeriesStrip series={sermon.series} lessons={lessons} currentSlug={sermon.slug} />
+          </div>
+        </section>
+      )}
 
       {/* 7 — Meet the speaker (photo column appears only when a photo exists) */}
       {speaker && (

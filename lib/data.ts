@@ -1,5 +1,6 @@
 import { createClient, type SupabaseClient } from "@supabase/supabase-js";
 import { findSeedDeck, seedDeckState, seedSermonList, seedSermons } from "./seed";
+import { isAnnounced, todayInCisco } from "./series";
 import type { Deck, DeckState, Sermon, SermonDetail } from "./types";
 
 /**
@@ -29,8 +30,23 @@ function db(): Db | null {
   return cached;
 }
 
-const SERMON_COLUMNS =
-  "id, slug, title, thesis, teaser, scripture_ref, scripture_text, sermon_date, artwork_url, summary, youtube_url, podcast_url, guide_url, pdf_url, nuggets, guide_questions, is_featured";
+const SERMON_COLUMNS = `id, slug, title, thesis, teaser, scripture_ref, scripture_text, sermon_date, artwork_url, summary, youtube_url, podcast_url, guide_url, pdf_url, nuggets, guide_questions, is_featured, lesson_number,
+   series:cisco_series(slug, title, scripture_ref, tagline, artwork_url)`;
+
+/**
+ * Normalizes a sermon row: the embedded series arrives as an object (or a
+ * one-item array), and a lesson with no art of its own borrows its series'.
+ */
+function shape<T extends Sermon>(row: T): T {
+  const raw = row.series as unknown;
+  const series = (Array.isArray(raw) ? raw[0] : raw) ?? null;
+  return {
+    ...row,
+    series,
+    lesson_number: row.lesson_number ?? null,
+    artwork_url: row.artwork_url ?? series?.artwork_url ?? null,
+  };
+}
 
 export async function getSermonList(): Promise<Sermon[]> {
   const client = db();
@@ -39,14 +55,11 @@ export async function getSermonList(): Promise<Sermon[]> {
       .from("cisco_sermons")
       .select(SERMON_COLUMNS)
       .order("sermon_date", { ascending: false });
-    if (!error && data && data.length > 0) return data as Sermon[];
+    if (!error && data && data.length > 0) return (data as unknown as Sermon[]).map(shape);
   }
-  return seedSermonList().sort((a, b) => b.sermon_date.localeCompare(a.sermon_date));
-}
-
-/** Today as yyyy-mm-dd in the church's timezone (the server runs in UTC). */
-function todayInCisco(): string {
-  return new Date().toLocaleDateString("en-CA", { timeZone: "America/Chicago" });
+  return seedSermonList()
+    .map(shape)
+    .sort((a, b) => b.sermon_date.localeCompare(a.sermon_date));
 }
 
 export type SermonSpotlight = {
@@ -65,10 +78,12 @@ export async function getSermonSpotlight(): Promise<SermonSpotlight | null> {
   if (list.length === 0) return null;
 
   const today = todayInCisco();
-  const ahead = list
+  const announced = list.filter((s) => isAnnounced(s, today));
+  if (announced.length === 0) return null;
+  const ahead = announced
     .filter((s) => s.sermon_date >= today)
     .sort((a, b) => a.sermon_date.localeCompare(b.sermon_date));
-  const pick = ahead[0] ?? list[0];
+  const pick = ahead[0] ?? announced[0];
 
   const sermon = await getSermonDetail(pick.slug);
   return sermon ? { sermon, upcoming: ahead.length > 0 } : null;
@@ -92,14 +107,23 @@ export async function getSermonDetail(slug: string): Promise<SermonDetail | null
       const pointList = (points as SermonDetail["points"] | null) ?? [];
       const deckList = (decks as { slug: string }[] | null) ?? [];
       return {
-        ...(sermon as Sermon),
+        ...shape(sermon as unknown as Sermon),
         points: [...pointList].sort((a, b) => a.position - b.position),
         speaker: (speaker as SermonDetail["speaker"]) ?? null,
         deck_slug: deckList[0]?.slug ?? null,
       };
     }
   }
-  return seedSermons.find((s) => s.slug === slug) ?? null;
+  const seeded = seedSermons.find((s) => s.slug === slug);
+  return seeded ? shape(seeded) : null;
+}
+
+/** Every lesson in a series (placeholders included), in lesson order. */
+export async function getSeriesLessons(seriesSlug: string): Promise<Sermon[]> {
+  const list = await getSermonList();
+  return list
+    .filter((s) => s.series?.slug === seriesSlug)
+    .sort((a, b) => (a.lesson_number ?? 0) - (b.lesson_number ?? 0));
 }
 
 export async function getDeck(slug: string): Promise<Deck | null> {

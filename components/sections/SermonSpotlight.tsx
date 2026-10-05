@@ -1,11 +1,14 @@
 import Link from "next/link";
 import { SermonArtwork } from "@/components/sermons/SermonArtwork";
+import { SeriesStrip } from "@/components/sermons/SeriesStrip";
 import type { SermonSpotlight as Spotlight } from "@/lib/data";
 import { pieceMeta, type Piece } from "@/lib/downloads";
 import { formatDate } from "@/lib/format";
+import { seriesLabel } from "@/lib/series";
+import type { Sermon } from "@/lib/types";
 
 /** "This Sunday" only when the lesson really is within the next week. */
-function eyebrowFor({ sermon, upcoming }: Spotlight): string {
+function whenLabel({ sermon, upcoming }: Spotlight): string {
   if (!upcoming) return `The latest lesson · ${formatDate(sermon.sermon_date)}`;
   const [y, m, d] = sermon.sermon_date.split("-").map(Number);
   const days = Math.round((new Date(y, m - 1, d).getTime() - Date.now()) / 86_400_000);
@@ -17,17 +20,24 @@ function eyebrowFor({ sermon, upcoming }: Spotlight): string {
 /**
  * The homepage's one sermon: who's preaching and what the lesson is about,
  * with the artwork leading. Sits straight under the service times because a
- * visitor's first two questions are "when?" and "what's the lesson?".
+ * visitor's first two questions are "when?" and "what's the lesson?". When the
+ * lesson belongs to a series, the series and its whole run show beneath it.
  */
 export function SermonSpotlight({
   spotlight,
   pieces,
+  lessons,
 }: {
   spotlight: Spotlight;
   pieces: Piece[];
+  /** Every lesson in this sermon's series (empty for a standalone sermon). */
+  lessons: Sermon[];
 }) {
   const { sermon } = spotlight;
   const speaker = sermon.speaker;
+  const series = sermon.series;
+  const tagline = sermon.thesis ?? series?.tagline ?? null;
+  const teaser = sermon.teaser?.split("\n\n") ?? [];
 
   return (
     <section id="sermons" className="scroll-mt-8 bg-sand">
@@ -45,20 +55,28 @@ export function SermonSpotlight({
           </Link>
 
           <div className="reveal">
-            <p className="eyebrow text-teal">{eyebrowFor(spotlight)}</p>
+            <p className="eyebrow text-teal">{whenLabel(spotlight)}</p>
+            {series && (
+              <p className="eyebrow mt-2 text-coral">{seriesLabel(sermon, lessons.length || undefined)}</p>
+            )}
             <h2 className="font-display mt-4 text-display font-extrabold tracking-[-0.03em] text-ink">
               {sermon.title}
             </h2>
             {sermon.scripture_ref && (
               <p className="font-serif mt-3 text-[1.35rem] text-deepsea italic">{sermon.scripture_ref}</p>
             )}
-            {sermon.thesis && (
-              <p className="mt-4 max-w-[40ch] text-[1.1rem] leading-[1.6] text-ink/80">{sermon.thesis}</p>
+            {tagline && (
+              <p className="mt-4 max-w-[40ch] text-[1.1rem] leading-[1.6] text-ink/80">{tagline}</p>
             )}
-            {sermon.teaser && (
+            {teaser.length > 0 && (
               <div className="mt-4 max-w-[48ch] space-y-3 text-[1rem] leading-[1.7] text-ink/75">
-                {sermon.teaser.split("\n\n").map((paragraph) => (
-                  <p key={paragraph}>{paragraph}</p>
+                {teaser.map((paragraph, i) => (
+                  <p
+                    key={paragraph}
+                    className={i === teaser.length - 1 && teaser.length > 1 ? "font-semibold text-ink" : undefined}
+                  >
+                    {paragraph}
+                  </p>
                 ))}
               </div>
             )}
@@ -100,6 +118,11 @@ export function SermonSpotlight({
           </div>
         </div>
 
+        {series && lessons.length > 1 && (
+          <div className="reveal mt-14 border-t rule-tint pt-8 lg:mt-20">
+            <SeriesStrip series={series} lessons={lessons} currentSlug={sermon.slug} />
+          </div>
+        )}
       </div>
     </section>
   );

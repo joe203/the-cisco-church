@@ -157,7 +157,9 @@ Ship `.env.example` with placeholders. Never commit `.env`.
 cisco_speakers       slug, name, photo_url, tags[], bio
 cisco_sermons        slug, title, thesis, scripture_ref, scripture_text,
                      sermon_date, artwork_url, summary, youtube_url,
-                     podcast_url, guide_url, pdf_url, speaker_id, is_featured
+                     podcast_url, guide_url, pdf_url, speaker_id, is_featured,
+                     series_id, lesson_number, teaser, nuggets[], guide_questions[]
+cisco_series         slug, title, scripture_ref, tagline, artwork_url   (added 2026-10-05)
 cisco_sermon_points  sermon_id, position, title, label, body
 cisco_decks          slug, title, sermon_id, metadata->backgrounds
 cisco_slides         deck_id, position, html, outline_html, bg,

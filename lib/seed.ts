@@ -1,4 +1,4 @@
-import type { Deck, DeckState, Sermon, SermonDetail, SlideWithNotes, Speaker } from "./types";
+import type { Deck, DeckState, Sermon, SermonDetail, SeriesRef, SlideWithNotes, Speaker } from "./types";
 
 /**
  * Bundled fallback data, mirroring supabase/migrations/002_seed.sql.
@@ -43,6 +43,8 @@ const hardTruth: SermonDetail = {
     "Fear stops the flow of faith.",
   ],
   guide_questions: [],
+  series: null,
+  lesson_number: null,
   is_featured: false,
   deck_slug: "the-hard-truth",
   speaker: joe,
@@ -104,6 +106,8 @@ const bagOfSeeds: SermonDetail = {
     "Your legacy is in the seed you sow.",
   ],
   guide_questions: [],
+  series: null,
+  lesson_number: null,
   is_featured: true,
   deck_slug: "the-bag-of-seeds",
   speaker: joe,
@@ -143,21 +147,31 @@ const bagOfSeeds: SermonDetail = {
 };
 
 
-// October 2026 series on 1 Thessalonians 5:21–22. Content drawn from Joe's
-// manuscript (What_Is_Good_lsn_1_fnl.pdf); the reflection questions are drafts.
-const holdOnToWhatIsGood: SermonDetail = {
-  id: "seed-sermon-3",
+// October 2026 series on 1 Thessalonians 5:21–22. The series artwork is the
+// slide Joe supplied for the series; each lesson can add its own.
+const holdSeries: SeriesRef = {
   slug: "hold-on-to-what-is-good",
   title: "Hold On to What Is Good",
-  thesis: "Open to every good gift. Anchored in Christ.",
+  scripture_ref: "1 Thessalonians 5:21–22",
+  tagline: "Open to every good gift. Anchored in Christ.",
+  artwork_url: "/series/hold-on-to-what-is-good/artwork.jpg",
+};
+
+// Lesson 1 — content drawn from Joe's manuscript (What_Is_Good_lsn_1_fnl.pdf);
+// the reflection questions are drafts.
+const theJesusTest: SermonDetail = {
+  id: "seed-sermon-3",
+  slug: "the-jesus-test",
+  title: "The Jesus Test",
+  thesis: null,
   teaser:
     "We live in a world filled with voices telling us what to believe, who to trust, and what is true. But that challenge isn’t new. God’s people have always lived among competing voices.\n\nIn The Jesus Test, we look at how Paul entered a world full of different beliefs without running from the conversation—and without accepting everything he heard. His example gives us a better way: keep Jesus at the center, test what we hear, and hold on to what is good.\n\nThe voices have changed. The challenge has not.",
   scripture_ref: "1 Thessalonians 5:21–22",
   scripture_text: "“…test them all; hold on to what is good, reject every kind of evil.”",
   sermon_date: "2026-10-04",
-  artwork_url: "/sermons/hold-on-to-what-is-good/artwork.jpg",
+  artwork_url: null,
   summary:
-    "The voices have changed; the challenge has not. From Abraham to Daniel to Paul in Athens, God’s people have always lived among competing voices — and ours now fit in a pocket. This first lesson of the October series, The Jesus Test, follows Paul into a city full of idols and ideas: he didn’t run, and he didn’t accept everything. He listened, recognized what was true, tested it, and brought the conversation to Jesus.",
+    "The voices have changed; the challenge has not. From Abraham to Daniel to Paul in Athens, God’s people have always lived among competing voices — and ours now fit in a pocket. This first lesson in the series follows Paul into a city full of idols and ideas: he didn’t run, and he didn’t accept everything. He listened, recognized what was true, tested it, and brought the conversation to Jesus.",
   youtube_url: null,
   podcast_url: null,
   guide_url: null,
@@ -176,6 +190,8 @@ const holdOnToWhatIsGood: SermonDetail = {
     "Is there something good you’ve been slow to receive — a song, a book, a teacher, a conversation — because of who it came from? What would it look like to test it instead of dismissing it?",
     "“Embrace the greater. Talk through the lesser.” What belongs at the center of your life this week, and what has been crowding it?",
   ],
+  series: holdSeries,
+  lesson_number: 1,
   is_featured: false,
   deck_slug: null,
   speaker: joe,
@@ -213,7 +229,58 @@ const holdOnToWhatIsGood: SermonDetail = {
   ],
 };
 
-export const seedSermons: SermonDetail[] = [holdOnToWhatIsGood, hardTruth, bagOfSeeds];
+// Lesson 2 — announced (slide + teaser); content arrives with the manuscript.
+const askBetterQuestions: SermonDetail = {
+  id: "seed-sermon-4",
+  slug: "ask-better-questions",
+  title: "Ask Better Questions",
+  thesis: null,
+  teaser:
+    "Sometimes the things we question most quickly are the things that are unfamiliar. But what about the things we’ve never thought to question at all?\n\nFaith doesn’t have to be afraid of honest questions. In fact, sometimes a better question can help us see Scripture—and even our own familiar ways of doing things—with fresh eyes.\n\nThis week, we’ll discover how a faith firmly anchored in Christ can be curious enough to listen, humble enough to examine, and courageous enough to ask:\n\nIs this what Scripture actually says—or simply what I’ve always assumed?",
+  scripture_ref: null,
+  scripture_text: null,
+  sermon_date: "2026-10-11",
+  artwork_url: "/sermons/ask-better-questions/artwork.jpg",
+  summary: null,
+  youtube_url: null,
+  podcast_url: null,
+  guide_url: null,
+  pdf_url: null,
+  nuggets: [],
+  guide_questions: [],
+  series: holdSeries,
+  lesson_number: 2,
+  is_featured: false,
+  deck_slug: null,
+  speaker: joe,
+  points: [],
+};
+
+/** Placeholder lessons: title + date only, so the series shows its whole run. */
+function upcomingLesson(id: number, slug: string, title: string, date: string, lesson: number): SermonDetail {
+  return {
+    ...askBetterQuestions,
+    id: `seed-sermon-${id}`,
+    slug,
+    title,
+    teaser: null,
+    sermon_date: date,
+    artwork_url: null,
+    lesson_number: lesson,
+  };
+}
+
+const withAllHisMight = upcomingLesson(5, "with-all-his-might", "With All His Might", "2026-10-18", 3);
+const hopeForTheFamily = upcomingLesson(6, "hope-for-the-family", "Hope For The Family", "2026-10-25", 4);
+
+export const seedSermons: SermonDetail[] = [
+  hopeForTheFamily,
+  withAllHisMight,
+  askBetterQuestions,
+  theJesusTest,
+  hardTruth,
+  bagOfSeeds,
+];
 
 /**
  * Slide decks — Joe's real image slides, served from

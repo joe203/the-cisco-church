@@ -25,6 +25,18 @@ const nextConfig: NextConfig = {
   },
   async redirects() {
     return [
+      // The Oct 4 lesson was first published under the series title; it is
+      // now "The Jesus Test", Lesson 1 of the Hold On to What Is Good series.
+      {
+        source: "/sermons/hold-on-to-what-is-good",
+        destination: "/sermons/the-jesus-test",
+        permanent: true,
+      },
+      {
+        source: "/downloads/hold-on-to-what-is-good/:piece*",
+        destination: "/downloads/the-jesus-test/:piece*",
+        permanent: true,
+      },
       // The controller moved from /present to /controls — keep old bookmarks
       // and any note cards with the old URL working.
       {

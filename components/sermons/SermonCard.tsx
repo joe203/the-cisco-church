@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { formatDate } from "@/lib/format";
+import { seriesLabel } from "@/lib/series";
 import type { Sermon } from "@/lib/types";
 import { SermonArtwork } from "./SermonArtwork";
 
@@ -26,6 +27,7 @@ export function SermonCard({ sermon, featured = false }: SermonCardProps) {
         />
         <div className="flex flex-col justify-between gap-6 p-6 @2xl:p-8">
           <div>
+            {sermon.series && <p className="eyebrow mb-2 text-coral">{seriesLabel(sermon)}</p>}
             <p className="eyebrow text-ink/55">
               {formatDate(sermon.sermon_date)}
               {sermon.scripture_ref && (

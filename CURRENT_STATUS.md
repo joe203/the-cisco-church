@@ -33,6 +33,22 @@ Cisco's MX records — Mailgun receiving depends on them.
 
 ---
 
+## Series (built 2026-10-05)
+
+A series (`SeriesRef` in `lib/types.ts`, `holdSeries` in `lib/seed.ts`, table
+`cisco_series` via migration 011) groups numbered lessons. Sermons carry `series`
++ `lesson_number`; standalone sermons have both null. A lesson with no art of its
+own borrows its series' art. Shown as: homepage "SERIES · LESSON n OF N" line plus
+a `SeriesStrip` of all lessons; sermon page eyebrow + strip; handout headers;
+downloads card band; sermon cards. Lessons that are only a title + date
+(`isAnnounced()` in `lib/series.ts` = past, or has teaser/summary) appear in the
+strip but nowhere else and their page 404s. **Current series: Hold On to What Is
+Good** — L1 The Jesus Test (Oct 4, full), L2 Ask Better Questions (Oct 11,
+announced: slide + teaser), L3 With All His Might (Oct 18), L4 Hope For The
+Family (Oct 25) = placeholders. Old URLs for L1 redirect (`next.config.ts`).
+To add a lesson to a series: add a SermonDetail with `series: holdSeries` and the
+next `lesson_number`; mirror in a migration (012 has the pattern).
+
 ## Weekly sermon intake (set up 2026-10-05)
 
 Joe sends (Thu / early Fri): manuscript PDF, one title slide image, optional teaser,
@@ -41,7 +57,7 @@ nugget picks. Steps: (1) slide -> `public/sermons/<slug>/artwork.jpg` (sharp, 16
 `nuggets` (3-4), `guide_questions` (5-6, DRAFTS for Joe to review), `sermon_date`;
 (3) mirror in a numbered migration (see 011); (4) `npm run dev` then
 `node scripts/build-handouts.mjs <slug>`; (5) tsc, screenshot, commit, deploy.
-First one done: `hold-on-to-what-is-good` (Lesson 1 "The Jesus Test", Oct 4 2026,
+First one done: `the-jesus-test` (Lesson 1 "The Jesus Test", Oct 4 2026,
 series continues Oct 11 Ask Better Questions / Oct 18 With All His Might / Oct 25
 Hope For The Family). Its nuggets (4 of ~18 marked in the manuscript), points
 (condensed from slides 02-10) and guide questions are MY picks — Joe to review.
