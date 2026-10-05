@@ -58,6 +58,12 @@ slide takeover on the homepage) are deferred unless they solve a v1 problem.
   minister and secretary maintain it — added 2026-10-01 at Joe's request.
   This is a deliberate, narrow exception to the two bans below; it does not
   reopen them. See "Bulletin + staff area".
+- **Downloads** (`/downloads`) — dashboard of printable handouts only (reflection
+  guides, sermon notes, verse cards, quote sheets, handouts), added 2026-10-05 at
+  Joe's request. PDFs, no video (video gets its own page later; the two will
+  cross-link). Catalog + how-to-add live in `lib/downloads.ts`; files go in
+  `public/downloads/`. Sermon reflection guides appear automatically from
+  `guide_url`.
 
 **Explicitly out of scope — do not build, do not suggest:**
 - About / staff / leadership / ministries / events / calendar pages
@@ -81,6 +87,7 @@ If a request seems to need one of these, **stop and ask Joe**.
 /slides/[deck]           live slide viewer (follows presenter; self-paced when not live)
 /slides/[deck]/controls  presenter controls (PRESENTER_KEY gated)
 /api/deck/[deck]/state   POST — presenter writes, server-side only
+/downloads               printable handouts dashboard (guides, notes, verses, quotes)
 /bulletin                this week's bulletin (newest published, never future-dated)
 /bulletin/[date]         a past bulletin;  /bulletin/archive  the list
 /staff                   dashboard (staff only) — also /staff/login, /staff/people (admin)

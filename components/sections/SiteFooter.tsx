@@ -52,6 +52,11 @@ export function SiteFooter() {
               </Link>
             </li>
             <li>
+              <Link href="/downloads" className="link-under">
+                Guides &amp; handouts
+              </Link>
+            </li>
+            <li>
               <Link href="/bulletin" className="link-under">
                 This week’s bulletin
               </Link>

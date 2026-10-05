@@ -265,6 +265,38 @@
     background-size: 100% 2px;
   }
 
+  /* Paper sheet (downloads): clip-path cuts the top-right corner, so the
+     shadow lives on the wrapper (drop-shadow follows the clipped shape)
+     and the fold is a darker triangle laid over the cut. */
+  .paper-wrap {
+    height: 100%;
+    filter: drop-shadow(0 1px 1px rgb(20 51 60 / 0.1))
+      drop-shadow(0 12px 18px rgb(11 84 93 / 0.14));
+    transition: transform 0.35s var(--ease-spring);
+  }
+  .paper-wrap:hover {
+    transform: translateY(-4px) rotate(-0.4deg);
+  }
+  .paper-wrap:active {
+    transform: translateY(-1px);
+  }
+  .paper {
+    position: relative;
+    background-color: #fff;
+    clip-path: polygon(0 0, calc(100% - 2.1rem) 0, 100% 2.1rem, 100% 100%, 0 100%);
+    border-radius: 0.2rem 0 0.9rem 0.9rem;
+  }
+  .paper::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 2.1rem;
+    height: 2.1rem;
+    background: linear-gradient(225deg, transparent 50%, rgb(20 51 60 / 0.22) 50%);
+    pointer-events: none;
+  }
+
   /* Snapshot: a real photo pinned up — rounded, tinted shadow, slight tilt */
   .snapshot {
     border-radius: 0.9rem;

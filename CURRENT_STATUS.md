@@ -33,6 +33,17 @@ Cisco's MX records — Mailgun receiving depends on them.
 
 ---
 
+## Downloads page (built 2026-10-05 — NOT yet committed/deployed)
+
+`/downloads`: dashboard of printable handouts, grouped by kind with an index
+rail; each is a paper-sheet card (Download + Open + link to its sermon). Data:
+`lib/downloads.ts` (reflection guides auto-derived from sermons' `guide_url`;
+everything else in `manualDownloads`; files in `public/downloads/`). Only the
+2 existing guides are listed — sermon notes / verses / quotes / handouts show
+"Soon" until Joe supplies them. Nav + footer links added; header nav now wraps
+to its own row on mobile (4 links didn't fit). Next: Joe's notes/verses/quotes
+content; a separate videos page that links to and from these.
+
 ## Bulletin + staff login (built 2026-10-01 — NOT yet deployed/committed)
 
 Joe asked for an online bulletin to replace the printed one, plus logins so he
