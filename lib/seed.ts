@@ -237,7 +237,7 @@ const askBetterQuestions: SermonDetail = {
   thesis: null,
   teaser:
     "Sometimes the things we question most quickly are the things that are unfamiliar. But what about the things we’ve never thought to question at all?\n\nFaith doesn’t have to be afraid of honest questions. In fact, sometimes a better question can help us see Scripture—and even our own familiar ways of doing things—with fresh eyes.\n\nThis week, we’ll discover how a faith firmly anchored in Christ can be curious enough to listen, humble enough to examine, and courageous enough to ask:\n\nIs this what Scripture actually says—or simply what I’ve always assumed?",
-  scripture_ref: null,
+  scripture_ref: "Mark 7:6–8",
   scripture_text: null,
   sermon_date: "2026-10-11",
   artwork_url: "/sermons/ask-better-questions/artwork.jpg",

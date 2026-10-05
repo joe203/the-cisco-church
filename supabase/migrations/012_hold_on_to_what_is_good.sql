@@ -42,7 +42,7 @@ on conflict (slug) do nothing;
 
 -- Lesson 2 — announced (slide + teaser); content arrives with the manuscript.
 insert into cisco.cisco_sermons
-  (id, slug, title, teaser, sermon_date, artwork_url, speaker_id, is_featured, series_id, lesson_number)
+  (id, slug, title, teaser, scripture_ref, sermon_date, artwork_url, speaker_id, is_featured, series_id, lesson_number)
 values (
   'b1000000-0000-4000-8000-000000000004',
   'ask-better-questions',
@@ -54,6 +54,7 @@ Faith doesn’t have to be afraid of honest questions. In fact, sometimes a bett
 This week, we’ll discover how a faith firmly anchored in Christ can be curious enough to listen, humble enough to examine, and courageous enough to ask:
 
 Is this what Scripture actually says—or simply what I’ve always assumed?',
+  'Mark 7:6–8',
   '2026-10-11',
   '/sermons/ask-better-questions/artwork.jpg',
   'a1000000-0000-4000-8000-000000000001',
