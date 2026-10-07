@@ -1,5 +1,7 @@
 import type { Metadata } from "next";
+import { ClassSheet } from "@/components/downloads/ClassSheet";
 import { SermonSheet } from "@/components/downloads/SermonSheet";
+import { getClassDownloads } from "@/lib/classes";
 import { getSermonDownloads } from "@/lib/downloads";
 
 export const revalidate = 300;
@@ -11,7 +13,7 @@ export const metadata: Metadata = {
 };
 
 export default async function DownloadsPage() {
-  const entries = await getSermonDownloads();
+  const [entries, classes] = await Promise.all([getSermonDownloads(), getClassDownloads()]);
   const [latest, ...earlier] = entries;
 
   return (
@@ -60,6 +62,24 @@ export default async function DownloadsPage() {
                 </section>
               )}
             </>
+          )}
+
+          {classes.length > 0 && (
+            <section className={latest ? "mt-16 lg:mt-24" : ""}>
+              <div className="flex items-baseline gap-5">
+                <h2 className="font-display text-[1.9rem] font-extrabold tracking-[-0.02em] text-ink">
+                  Wednesday night class
+                </h2>
+                <div className="h-px flex-1 border-t rule-tint" aria-hidden />
+              </div>
+              <div className="mt-8 space-y-6">
+                {classes.map((entry) => (
+                  <div key={entry.guide.slug} className="reveal">
+                    <ClassSheet entry={entry} />
+                  </div>
+                ))}
+              </div>
+            </section>
           )}
         </div>
       </div>

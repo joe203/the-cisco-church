@@ -10,7 +10,7 @@ import type { SermonDetail } from "@/lib/types";
  */
 
 /** Straight apostrophes inside words become typographic ones. */
-function typo(text: string): string {
+export function typo(text: string): string {
   return text.replace(/(\w)'(\w)/g, "$1’$2");
 }
 
@@ -25,7 +25,7 @@ function SheetHeader({ label, sermon }: { label: string; sermon: SermonDetail })
   );
 }
 
-function SheetFooter() {
+export function SheetFooter() {
   return (
     <footer className="mt-6 flex flex-wrap justify-between gap-x-6 gap-y-1 border-t border-ink/15 pt-3 text-[0.7rem] text-ink/60">
       <span>
