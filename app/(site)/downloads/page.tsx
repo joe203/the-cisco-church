@@ -7,7 +7,7 @@ export const revalidate = 300;
 export const metadata: Metadata = {
   title: "Downloads",
   description:
-    "Reflection guides, sermon recaps, notes pages, and gold nuggets from each lesson at the Cisco Church — to print, mark up, and keep.",
+    "Reflection guides, sermon recaps, sermon handouts, and quotes from each lesson at the Cisco Church — to print, mark up, and keep.",
 };
 
 export default async function DownloadsPage() {
@@ -23,7 +23,7 @@ export default async function DownloadsPage() {
             Downloads
           </h1>
           <p className="mt-5 max-w-[54ch] text-[1.02rem] leading-[1.7] text-ink/70">
-            Each lesson&rsquo;s guide, recap, notes page, and gold nuggets &mdash;
+            Each lesson&rsquo;s guide, recap, sermon handout, and quotes &mdash;
             made to print, write on, and hand to a friend. Looking for a
             recording? Those live with the sermon.
           </p>
@@ -50,9 +50,9 @@ export default async function DownloadsPage() {
                     </h2>
                     <div className="h-px flex-1 border-t rule-tint" aria-hidden />
                   </div>
-                  <div className="mt-8 grid gap-7 md:grid-cols-2">
+                  <div className="mt-8 space-y-6">
                     {earlier.map((entry) => (
-                      <div key={entry.sermon.id} className="reveal flex">
+                      <div key={entry.sermon.id} className="reveal">
                         <SermonSheet entry={entry} />
                       </div>
                     ))}

@@ -37,6 +37,13 @@ function SheetFooter() {
   );
 }
 
+/** Who presented the lesson. Joe is credited with his role; a guest speaker by name only. */
+function byline(sermon: SermonDetail): string {
+  const name = sermon.speaker?.name;
+  if (name && name !== site.people.preacher) return name;
+  return `${site.people.preacher}, Minister`;
+}
+
 function Title({ sermon }: { sermon: SermonDetail }) {
   return (
     <div className="mt-5">
@@ -49,6 +56,7 @@ function Title({ sermon }: { sermon: SermonDetail }) {
       {sermon.scripture_ref && (
         <p className="font-serif mt-2 text-[1.25rem] text-deepsea italic">{sermon.scripture_ref}</p>
       )}
+      <p className="mt-2 text-[0.9rem] font-semibold text-ink/70">{byline(sermon)}</p>
     </div>
   );
 }
@@ -57,7 +65,7 @@ function Title({ sermon }: { sermon: SermonDetail }) {
 export function OutlineSheet({ sermon }: { sermon: SermonDetail }) {
   return (
     <section className="handout handout-page flex flex-col">
-      <SheetHeader label="Notes" sermon={sermon} />
+      <SheetHeader label="Sermon handout" sermon={sermon} />
       <Title sermon={sermon} />
 
       <ol className="mt-5 flex min-h-0 flex-1 flex-col">
@@ -132,7 +140,7 @@ export function RecapSheet({ sermon }: { sermon: SermonDetail }) {
 
       {nuggets.length > 0 && (
         <div className="mt-6 break-inside-avoid rounded-xl bg-marigold px-5 py-4">
-          <p className="eyebrow text-ink/75">Gold nuggets</p>
+          <p className="eyebrow text-ink/75">Quotes</p>
           <ul className="mt-2 space-y-1.5">
             {nuggets.map((n) => (
               <li key={n} className="font-display text-[1.02rem] leading-snug font-extrabold">
@@ -163,7 +171,7 @@ export function NuggetsSheet({ sermon }: { sermon: SermonDetail }) {
 
   return (
     <section className="handout handout-page flex flex-col">
-      <SheetHeader label="Gold nuggets" sermon={sermon} />
+      <SheetHeader label="Quotes" sermon={sermon} />
       <Title sermon={sermon} />
 
       <ul className="mt-6 flex min-h-0 flex-1 flex-col gap-4">

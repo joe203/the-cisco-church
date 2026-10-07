@@ -10,8 +10,8 @@ import type { SermonDetail } from "./types";
  *  - guide    — the reflection guide: a hand-made PDF (`guide_url`) when one
  *               exists, otherwise generated from the sermon's `guide_questions`.
  *  - recap    — the lesson in a page or two, built from the sermon's data.
- *  - outline  — a skeletal notes page with room to write, built from the points.
- *  - nuggets  — a few standout lines ("gold nuggets"), from `sermon.nuggets`.
+ *  - outline  — the sermon handout: a skeletal outline with room to write, built from the points.
+ *  - nuggets  — a few standout lines ("Quotes"), from `sermon.nuggets`.
  *
  * recap / outline / nuggets (and a questions-based guide) are generated: the print layouts live at
  * `/downloads/[slug]/[piece]`, and `node scripts/build-handouts.mjs <slug>`
@@ -36,12 +36,12 @@ export const pieceMeta: Record<PieceKind, { label: string; blurb: string }> = {
     blurb: "The whole lesson on a page or two, with its verses.",
   },
   nuggets: {
-    label: "Gold nuggets",
+    label: "Quotes",
     blurb: "A few lines worth keeping.",
   },
   outline: {
-    label: "Notes page",
-    blurb: "The outline with room to write your own thoughts.",
+    label: "Sermon handout",
+    blurb: "The outline with room to write your own notes.",
   },
 };
 

@@ -40,7 +40,7 @@ export type Sermon = {
   podcast_url: string | null;
   guide_url: string | null;
   pdf_url: string | null;
-  /** "Gold nuggets": a few standout lines from the sermon, in Joe's words. */
+  /** "Quotes": a few standout lines from the sermon, in Joe's words. */
   nuggets: string[];
   /** Discussion questions for the generated reflection guide (used when there is no hand-made guide PDF). */
   guide_questions: string[];

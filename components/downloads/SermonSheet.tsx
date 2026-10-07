@@ -6,8 +6,9 @@ import { pieceMeta, type SermonDownloads } from "@/lib/downloads";
 
 /**
  * One lesson and every handout that exists for it, drawn as a sheet of
- * paper. `featured` lays it out wide with the sermon artwork — used for the
- * newest lesson.
+ * paper, always horizontal: artwork and title on the left, the pieces on the
+ * right. `featured` is the full-size spotlight for the newest lesson; the
+ * default is a smaller version for earlier lessons.
  */
 export function SermonSheet({ entry, featured = false }: { entry: SermonDownloads; featured?: boolean }) {
   const { sermon, pieces } = entry;
@@ -16,22 +17,24 @@ export function SermonSheet({ entry, featured = false }: { entry: SermonDownload
     <div>
       <h3
         className={`font-display leading-[1.1] font-extrabold tracking-[-0.025em] text-ink ${
-          featured ? "text-[clamp(1.8rem,3vw,2.5rem)]" : "text-[1.55rem]"
+          featured ? "text-[clamp(1.8rem,3vw,2.5rem)]" : "text-[1.35rem]"
         }`}
       >
         {sermon.title}
       </h3>
       {sermon.scripture_ref && (
-        <p className="font-serif mt-2 text-[1.1rem] text-deepsea italic">{sermon.scripture_ref}</p>
+        <p className={`font-serif mt-2 text-deepsea italic ${featured ? "text-[1.1rem]" : "text-[1rem]"}`}>
+          {sermon.scripture_ref}
+        </p>
       )}
-      {(sermon.thesis ?? sermon.series?.tagline) && (
+      {featured && (sermon.thesis ?? sermon.series?.tagline) && (
         <p className="mt-3 max-w-[46ch] text-[0.97rem] leading-[1.65] text-ink/75">
           {sermon.thesis ?? sermon.series?.tagline}
         </p>
       )}
       <Link
         href={`/sermons/${sermon.slug}`}
-        className="link-under mt-4 inline-block text-[0.9rem] font-semibold text-teal"
+        className={`link-under inline-block text-[0.9rem] font-semibold text-teal ${featured ? "mt-4" : "mt-3"}`}
       >
         Go to the sermon &rarr;
       </Link>
@@ -44,10 +47,10 @@ export function SermonSheet({ entry, featured = false }: { entry: SermonDownload
         const meta = pieceMeta[piece.kind];
         const onSite = piece.viewUrl.startsWith("/downloads/") && !piece.viewUrl.endsWith(".pdf");
         return (
-          <li key={piece.kind} className="flex flex-wrap items-center justify-between gap-x-5 gap-y-3 py-4">
+          <li key={piece.kind} className={`flex flex-wrap items-center justify-between gap-x-5 gap-y-3 ${featured ? "py-4" : "py-3"}`}>
             <div className="min-w-[12rem] flex-1">
               <p className="font-display text-[1.1rem] font-bold text-ink">{meta.label}</p>
-              <p className="mt-0.5 text-[0.88rem] leading-snug text-ink/65">{meta.blurb}</p>
+              {featured && <p className="mt-0.5 text-[0.88rem] leading-snug text-ink/65">{meta.blurb}</p>}
             </div>
             <div className="flex items-center gap-4">
               <a
@@ -90,29 +93,23 @@ export function SermonSheet({ entry, featured = false }: { entry: SermonDownload
           {sermon.series && <p className="eyebrow text-right text-white/85">{seriesLabel(sermon)}</p>}
         </div>
 
-        {featured ? (
-          <div className="grid gap-8 p-6 sm:p-8 lg:grid-cols-[minmax(0,20rem)_1fr] lg:gap-10">
-            <div className="space-y-6">
-              <SermonArtwork
-                sermon={sermon}
-                transition={false}
-                className="aspect-video rounded-xl shadow-(--shadow-photo)"
-              />
-              {heading}
-            </div>
-            <div className="lg:self-center">{list}</div>
-          </div>
-        ) : (
-          <div className="flex flex-1 flex-col gap-6 p-6">
+        <div
+          className={`grid ${
+            featured
+              ? "gap-8 p-6 sm:p-8 lg:grid-cols-[minmax(0,20rem)_1fr] lg:gap-10"
+              : "gap-6 p-5 sm:p-6 md:grid-cols-[minmax(0,14rem)_1fr] md:gap-8"
+          }`}
+        >
+          <div className={featured ? "space-y-6" : "space-y-4"}>
             <SermonArtwork
               sermon={sermon}
               transition={false}
               className="aspect-video rounded-xl shadow-(--shadow-photo)"
             />
             {heading}
-            <div className="mt-auto">{list}</div>
           </div>
-        )}
+          <div className="md:self-center">{list}</div>
+        </div>
       </div>
     </article>
   );
