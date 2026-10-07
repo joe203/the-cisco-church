@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { ViewModal } from "@/components/downloads/ViewModal";
 import { SermonArtwork } from "@/components/sermons/SermonArtwork";
 import { formatDate } from "@/lib/format";
 import { seriesLabel } from "@/lib/series";
@@ -53,17 +54,14 @@ export function SermonSheet({ entry, featured = false }: { entry: SermonDownload
               {featured && <p className="mt-0.5 text-[0.88rem] leading-snug text-ink/65">{meta.blurb}</p>}
             </div>
             <div className="flex items-center gap-4">
-              <a
-                href={piece.viewUrl}
-                {...(onSite ? {} : { target: "_blank", rel: "noopener noreferrer" })}
-                className="link-under text-[0.9rem] font-semibold text-ink/70 hover:text-ink"
-              >
-                View
-                <span className="sr-only">
-                  {" "}
-                  {meta.label} for {sermon.title}
-                </span>
-              </a>
+              <ViewModal
+                label={meta.label}
+                sermonTitle={sermon.title}
+                src={onSite ? `/embed/${sermon.slug}/${piece.kind}` : piece.viewUrl}
+                openUrl={piece.viewUrl}
+                downloadUrl={piece.url}
+                filename={piece.filename}
+              />
               <a
                 href={piece.url}
                 download={piece.filename}
