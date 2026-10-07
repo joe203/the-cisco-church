@@ -34,7 +34,7 @@ const hardTruth: SermonDetail = {
     "Jesus told a story about a master, three servants, and a long absence — and it does not end the way we would write it. The parable of the talents is warm to the workers and unsparing to the fearful, and it asks a question most of us would rather not sit with: what did you do with what you were given? This lesson walks through each servant and lands on five hard truths about how the Kingdom actually works.",
   youtube_url: "https://youtu.be/BrBm6-QasUo",
   podcast_url: null,
-  guide_url: "/sermons/the-hard-truth-about-the-kingdom/reflection-guide.pdf",
+  guide_url: "/downloads/the-hard-truth-about-the-kingdom/guide.pdf",
   pdf_url: null,
   // Drafted from lines already in Joe's outline — swap in his own picks.
   nuggets: [
@@ -42,7 +42,14 @@ const hardTruth: SermonDetail = {
     "Talent is meant to be used, not admired.",
     "Fear stops the flow of faith.",
   ],
-  guide_questions: [],
+  guide_questions: [
+    "What part of today's message challenged you the most?",
+    "Where might God be inviting you to grow instead of simply staying comfortable?",
+    "What opportunity may already be in front of you that you've overlooked because it seems too difficult, unfamiliar, or risky?",
+    "When was the last time God asked you to learn something new, try something new, or trust Him in a new way?",
+    "If following Christ only confirms what you've always believed and always done, is it possible God is inviting you to take a new step of faith? What might that step be?",
+    "How can I connect to what God is already doing so that the talents He has entrusted to me can accomplish His purpose in His Kingdom?",
+  ],
   series: null,
   lesson_number: null,
   is_featured: false,
@@ -97,7 +104,7 @@ const bagOfSeeds: SermonDetail = {
     "Jesus sat down by the sea and told a story about a sower who scattered seed everywhere he went — on the path, in the rocks, among the thorns, and into good soil. The seed is God's Word. The soil is our heart. The harvest is changed lives. And the question the parable keeps asking is the one this lesson sits with: what's still in your bag, what keeps it closed, and who is ready for what you're carrying? Growing the seed is God's work. Emptying the bag is ours.",
   youtube_url: "https://youtu.be/q1ILOtr_yAM",
   podcast_url: null,
-  guide_url: "/sermons/the-bag-of-seeds/reflection-guide.pdf",
+  guide_url: "/downloads/the-bag-of-seeds/guide.pdf",
   pdf_url: null,
   // Drafted from lines already in Joe's outline — swap in his own picks.
   nuggets: [
@@ -105,7 +112,14 @@ const bagOfSeeds: SermonDetail = {
     "Emptying the bag is ours. Growing the seed is God's.",
     "Your legacy is in the seed you sow.",
   ],
-  guide_questions: [],
+  guide_questions: [
+    "If you emptied your bag today, what would surprise you about what's inside?",
+    "Is there a moment you can remember when you had the seed in your hand and chose not to plant it? What made you hold on?",
+    "Who sowed into you — someone whose seed is still growing, who may never have seen the harvest?",
+    "What keeps your bag closed: fear, comparison, “too busy,” or something quieter you haven't named?",
+    "Who is one person, right now, whose heart may be ready for what you're carrying?",
+    "What's one seed worth planting that you may never live to see grow?",
+  ],
   series: null,
   lesson_number: null,
   is_featured: true,
