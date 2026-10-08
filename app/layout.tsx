@@ -46,6 +46,17 @@ export const metadata: Metadata = {
   },
   description:
     "Something new is happening in Cisco. Worship with the Cisco Church of Christ — Sundays at 10:30, 1701 Avenue N. Service times, directions, and this week's sermon.",
+  // The share image comes from app/opengraph-image.jpg and app/twitter-image.jpg.
+  openGraph: {
+    type: "website",
+    siteName: "The Cisco Church",
+    locale: "en_US",
+    url: "/",
+    title: "The Cisco Church — Cisco, Texas",
+    description:
+      "Something new is happening in Cisco. Sundays at 10:30, 1701 Avenue N. Service times, directions, and this week's sermon.",
+  },
+  twitter: { card: "summary_large_image" },
 };
 
 export default function RootLayout({

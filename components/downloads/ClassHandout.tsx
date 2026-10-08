@@ -12,7 +12,7 @@ export function ClassGuideSheet({ guide }: { guide: ClassGuide }) {
         <p className="eyebrow text-teal">
           {site.shortName} &middot; Discussion guide
         </p>
-        <p className="eyebrow text-ink/55">Wednesday night class</p>
+        <p className="eyebrow text-ink/72">Wednesday night class</p>
       </header>
 
       <div className="mt-5">

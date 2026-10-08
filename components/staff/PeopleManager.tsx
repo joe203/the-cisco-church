@@ -57,7 +57,7 @@ export function PeopleManager({ people, selfId }: { people: StaffMember[]; selfI
           <li key={p.user_id} className="flex flex-wrap items-center justify-between gap-3 px-6 py-4">
             <div className="min-w-0">
               <p className="font-display text-[1.1rem] font-bold">{p.name || p.email}</p>
-              {p.name && <p className="text-[0.88rem] break-all text-ink/60">{p.email}</p>}
+              {p.name && <p className="text-[0.88rem] break-all text-ink/72">{p.email}</p>}
             </div>
             <div className="flex items-center gap-4">
               <span className="eyebrow rounded-full bg-teal/10 px-3 py-1 text-teal">
@@ -80,7 +80,7 @@ export function PeopleManager({ people, selfId }: { people: StaffMember[]; selfI
 
       <form onSubmit={add} className="rounded-2xl bg-white p-6 shadow-panel-light">
         <h2 className="font-display text-[1.3rem] font-bold">Give someone access</h2>
-        <p className="mt-1 text-[0.92rem] text-ink/65">
+        <p className="mt-1 text-[0.92rem] text-ink/72">
           They sign in with an emailed link at /staff/login — nothing to set up on their end. Secretaries
           edit the order of service, announcements and prayer list. Admins edit everything.
         </p>

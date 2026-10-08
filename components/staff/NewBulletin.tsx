@@ -34,7 +34,7 @@ export function NewBulletin({ suggestedDate }: { suggestedDate: string }) {
   return (
     <form onSubmit={create} className="rounded-2xl bg-white p-6 shadow-panel-light">
       <h2 className="font-display text-[1.3rem] font-bold">Start a new bulletin</h2>
-      <p className="mt-1 text-[0.92rem] text-ink/65">
+      <p className="mt-1 text-[0.92rem] text-ink/72">
         It starts from the most recent one — the order of service, announcements, prayer list and series
         carry over, so you only change what’s different.
       </p>

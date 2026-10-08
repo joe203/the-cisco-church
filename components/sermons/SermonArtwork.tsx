@@ -14,13 +14,15 @@ type SermonArtworkProps = {
   className?: string;
   /** Wire the shared-element view transition (card → sermon page hero). */
   transition?: boolean;
+  /** The image is the first thing on the page: load it right away, not lazily. */
+  eager?: boolean;
 };
 
 /**
  * Sermon artwork with a typographic fallback: when no artwork has been
  * uploaded, the cover is set in type — the passage as the image.
  */
-export function SermonArtwork({ sermon, className = "", transition = true }: SermonArtworkProps) {
+export function SermonArtwork({ sermon, className = "", transition = true, eager = false }: SermonArtworkProps) {
   const [book, verses] = splitRef(sermon.scripture_ref);
   const style = transition
     ? ({ viewTransitionName: `sermon-art-${sermon.slug}` } as React.CSSProperties)
@@ -34,6 +36,9 @@ export function SermonArtwork({ sermon, className = "", transition = true }: Ser
           src={sermon.artwork_url}
           alt={`Artwork for “${sermon.title}”`}
           className="absolute inset-0 h-full w-full object-cover"
+          loading={eager ? "eager" : "lazy"}
+          fetchPriority={eager ? "high" : "auto"}
+          decoding="async"
         />
       </div>
     );

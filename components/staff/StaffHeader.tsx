@@ -35,7 +35,7 @@ export async function StaffHeader({ staff }: { staff: StaffMember }) {
           </Link>
         </nav>
         <form action="/auth/signout" method="post" className="flex items-center gap-4">
-          <span className="text-[0.85rem] text-ink/60">{staff.name || staff.email}</span>
+          <span className="text-[0.85rem] text-ink/72">{staff.name || staff.email}</span>
           <button type="submit" className="eyebrow link-under cursor-pointer text-coral hover:text-clay">
             Sign out
           </button>

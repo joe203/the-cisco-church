@@ -20,14 +20,14 @@ function SheetHeader({ label, sermon }: { label: string; sermon: SermonDetail })
       <p className="eyebrow text-teal">
         {site.shortName} &middot; {label}
       </p>
-      <p className="eyebrow text-ink/55">{formatDate(sermon.sermon_date)}</p>
+      <p className="eyebrow text-ink/72">{formatDate(sermon.sermon_date)}</p>
     </header>
   );
 }
 
 export function SheetFooter() {
   return (
-    <footer className="mt-6 flex flex-wrap justify-between gap-x-6 gap-y-1 border-t border-ink/15 pt-3 text-[0.7rem] text-ink/60">
+    <footer className="mt-6 flex flex-wrap justify-between gap-x-6 gap-y-1 border-t border-ink/15 pt-3 text-[0.7rem] text-ink/72">
       <span>
         {site.serviceLine}
         {site.address ? ` · ${site.address}` : ""}

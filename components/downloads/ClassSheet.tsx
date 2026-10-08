@@ -21,7 +21,7 @@ export function ClassSheet({ entry }: { entry: ClassDownload }) {
             <li className="flex flex-wrap items-center justify-between gap-x-5 gap-y-3 py-4">
               <div className="min-w-[12rem] flex-1">
                 <p className="font-display text-[1.1rem] font-bold text-ink">Discussion guide</p>
-                <p className="mt-0.5 text-[0.88rem] leading-snug text-ink/65">
+                <p className="mt-0.5 text-[0.88rem] leading-snug text-ink/72">
                   Questions to work through alone or with the class.
                 </p>
               </div>
@@ -39,7 +39,7 @@ export function ClassSheet({ entry }: { entry: ClassDownload }) {
                   <span className="sr-only"> discussion guide for {guide.series}</span>
                 </a>
                 {entry.sizeLabel && (
-                  <span className="eyebrow hidden text-ink/45 sm:inline">PDF · {entry.sizeLabel}</span>
+                  <span className="eyebrow hidden text-ink/72 sm:inline">PDF · {entry.sizeLabel}</span>
                 )}
               </div>
             </li>

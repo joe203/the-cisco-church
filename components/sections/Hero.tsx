@@ -27,7 +27,6 @@ export function Hero({ featured }: { featured: Sermon | null }) {
           src="/images/trail-rock.jpg"
           alt=""
           fill
-          priority
           sizes="100vw"
           className="object-cover object-[30%_35%]"
         />
@@ -115,7 +114,8 @@ export function Hero({ featured }: { featured: Sermon | null }) {
             src={heroMobile.still}
             alt=""
             fill
-            priority
+            loading="eager"
+            fetchPriority="high"
             sizes="100vw"
             className="object-cover"
             style={{ objectPosition: heroMobile.focus }}

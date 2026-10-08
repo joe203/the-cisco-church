@@ -8,11 +8,11 @@
   --color-ink: #14333c; /* deep teal-slate text + dark footer field */
 
   /* Brand color fields */
-  --color-teal: #12838d; /* primary — hero field, links, headings accents */
+  --color-teal: #0e7680; /* primary — hero field, links, headings accents */
   --color-deepsea: #0b545d; /* deep teal band, hovers */
-  --color-coral: #e4573d; /* energy — CTAs, arrows */
+  --color-coral: #c94128; /* energy — CTAs, arrows (deepened 2026-10-08: white text 4.9:1, text on cream 4.8:1) */
   --color-clay: #bf3f28; /* coral pressed/hover */
-  --color-marigold: #f2ae3f; /* celebration accent, on dark fields */
+  --color-marigold: #f7bb50; /* celebration accent, on dark fields (lifted 2026-10-08 for 4.5:1 on deepsea) */
 
   /* ---- Dark-room palette (slides + decks keep the dark identity) ---- */
   --color-espresso: #17110d;
@@ -209,7 +209,7 @@
     display: inline-flex;
     align-items: center;
     gap: 0.6rem;
-    color: var(--color-coral);
+    color: var(--color-clay); /* clay, not coral: this link also sits on Sand, where coral is 4.3:1 */
     font-weight: 700;
     font-size: 0.95rem;
     padding: 0.85rem 0;

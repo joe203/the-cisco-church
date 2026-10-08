@@ -2,8 +2,25 @@ import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
   output: "standalone",
+  poweredByHeader: false,
   turbopack: {
     root: __dirname,
+  },
+  async headers() {
+    return [
+      {
+        source: "/:path*",
+        headers: [
+          // HTTPS only, for a year. Caddy already redirects http -> https.
+          { key: "Strict-Transport-Security", value: "max-age=31536000" },
+          { key: "X-Content-Type-Options", value: "nosniff" },
+          // Only this site may frame its pages (the Downloads "View" window does).
+          { key: "X-Frame-Options", value: "SAMEORIGIN" },
+          { key: "Referrer-Policy", value: "strict-origin-when-cross-origin" },
+          { key: "Permissions-Policy", value: "camera=(), microphone=(), geolocation=(), payment=()" },
+        ],
+      },
+    ];
   },
   async rewrites() {
     return [

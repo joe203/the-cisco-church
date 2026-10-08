@@ -162,7 +162,7 @@ export function MailClient({
           >
             New message
           </button>
-          <p className="text-[0.9rem] font-semibold text-ink/65">{unread > 0 ? `${unread} unread` : "All read"}</p>
+          <p className="text-[0.9rem] font-semibold text-ink/72">{unread > 0 ? `${unread} unread` : "All read"}</p>
         </div>
 
         <div className="mt-4 flex flex-wrap gap-1.5" role="tablist" aria-label="Filter">
@@ -183,7 +183,7 @@ export function MailClient({
         </div>
 
         <ul className="mt-4 divide-y rule-tint overflow-hidden rounded-2xl bg-white shadow-panel-light">
-          {messages.length === 0 && <li className="p-6 text-ink/65">Nothing here.</li>}
+          {messages.length === 0 && <li className="p-6 text-ink/72">Nothing here.</li>}
           {messages.map((m) => {
             const isNew = m.folder === "inbox" && m.status === "received";
             return (
@@ -198,13 +198,13 @@ export function MailClient({
                 >
                   <span className="flex items-baseline justify-between gap-3">
                     <span className={`truncate ${isNew ? "font-extrabold" : "font-semibold"}`}>{who(m)}</span>
-                    <span className="shrink-0 text-[0.78rem] text-ink/55">{when(m.received_at)}</span>
+                    <span className="shrink-0 text-[0.78rem] text-ink/72">{when(m.received_at)}</span>
                   </span>
                   <span className={`mt-0.5 block truncate text-[0.95rem] ${isNew ? "font-bold" : ""}`}>
                     {isNew && <span aria-label="Unread" className="mr-2 inline-block size-2 rounded-full bg-coral" />}
                     {m.subject || "(no subject)"}
                   </span>
-                  <span className="mt-0.5 block truncate text-[0.85rem] text-ink/60">{m.snippet}</span>
+                  <span className="mt-0.5 block truncate text-[0.85rem] text-ink/72">{m.snippet}</span>
                   {(m.spam || m.attachments > 0) && (
                     <span className="mt-1.5 flex gap-2">
                       {m.spam && <span className="eyebrow rounded-full bg-marigold/30 px-2.5 py-0.5">Possible spam</span>}
@@ -240,7 +240,7 @@ export function MailClient({
               ← Back to the list
             </button>
             <h2 className="font-display text-[1.4rem] font-extrabold tracking-[-0.02em]">New message</h2>
-            <p className="mt-1 text-[0.9rem] text-ink/65">
+            <p className="mt-1 text-[0.9rem] text-ink/72">
               Sent from hello@theciscochurch.org. Everyone gets their <strong>own</strong> copy — addresses
               are never shown to each other. Up to {MAX_COMPOSE_RECIPIENTS} people.
             </p>
@@ -361,7 +361,7 @@ export function MailClient({
         )}
 
         {!composing && !detail && (
-          <p className="hidden rounded-2xl bg-white/60 p-10 text-center text-ink/55 lg:block">Choose a message to read it.</p>
+          <p className="hidden rounded-2xl bg-white/60 p-10 text-center text-ink/72 lg:block">Choose a message to read it.</p>
         )}
       </section>
     </div>

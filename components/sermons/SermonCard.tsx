@@ -28,7 +28,7 @@ export function SermonCard({ sermon, featured = false }: SermonCardProps) {
         <div className="flex flex-col justify-between gap-6 p-6 @2xl:p-8">
           <div>
             {sermon.series && <p className="eyebrow mb-2 text-coral">{seriesLabel(sermon)}</p>}
-            <p className="eyebrow text-ink/55">
+            <p className="eyebrow text-ink/72">
               {formatDate(sermon.sermon_date)}
               {sermon.scripture_ref && (
                 <>
@@ -45,7 +45,7 @@ export function SermonCard({ sermon, featured = false }: SermonCardProps) {
               {sermon.title}
             </h3>
             {sermon.thesis && (
-              <p className="mt-2.5 text-[0.95rem] italic text-ink/65">{sermon.thesis}</p>
+              <p className="mt-2.5 text-[0.95rem] italic text-ink/72">{sermon.thesis}</p>
             )}
           </div>
           <p className="eyebrow text-coral">

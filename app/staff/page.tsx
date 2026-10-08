@@ -38,7 +38,7 @@ export default async function StaffHome() {
         <h1 className="font-display text-[2.4rem] leading-[1.05] font-extrabold tracking-[-0.03em]">
           Bulletins
         </h1>
-        <p className="mt-2 text-ink/65">
+        <p className="mt-2 text-ink/72">
           {staff.role === "admin"
             ? "You can edit every part of the bulletin and manage who has access."
             : "You can edit the order of service, announcements and prayer list."}
@@ -55,7 +55,7 @@ export default async function StaffHome() {
         <div className="mt-8 grid items-start gap-8 lg:grid-cols-[1fr_24rem]">
           <ul className="divide-y rule-tint rounded-2xl bg-white shadow-panel-light">
             {bulletins.length === 0 && (
-              <li className="p-6 text-ink/65">No bulletins yet. Start the first one.</li>
+              <li className="p-6 text-ink/72">No bulletins yet. Start the first one.</li>
             )}
             {bulletins.map((b) => (
               <li key={b.bulletin_date}>

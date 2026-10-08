@@ -14,15 +14,16 @@ import { pieceMeta, type SermonDownloads } from "@/lib/downloads";
 export function SermonSheet({ entry, featured = false }: { entry: SermonDownloads; featured?: boolean }) {
   const { sermon, pieces } = entry;
 
+  const Heading = featured ? "h2" : "h3";
   const heading = (
     <div>
-      <h3
+      <Heading
         className={`font-display leading-[1.1] font-extrabold tracking-[-0.025em] text-ink ${
           featured ? "text-[clamp(1.8rem,3vw,2.5rem)]" : "text-[1.35rem]"
         }`}
       >
         {sermon.title}
-      </h3>
+      </Heading>
       {sermon.scripture_ref && (
         <p className={`font-serif mt-2 text-deepsea italic ${featured ? "text-[1.1rem]" : "text-[1rem]"}`}>
           {sermon.scripture_ref}
@@ -51,7 +52,7 @@ export function SermonSheet({ entry, featured = false }: { entry: SermonDownload
           <li key={piece.kind} className={`flex flex-wrap items-center justify-between gap-x-5 gap-y-3 ${featured ? "py-4" : "py-3"}`}>
             <div className="min-w-[12rem] flex-1">
               <p className="font-display text-[1.1rem] font-bold text-ink">{meta.label}</p>
-              {featured && <p className="mt-0.5 text-[0.88rem] leading-snug text-ink/65">{meta.blurb}</p>}
+              {featured && <p className="mt-0.5 text-[0.88rem] leading-snug text-ink/72">{meta.blurb}</p>}
             </div>
             <div className="flex items-center gap-4">
               <ViewModal
@@ -74,7 +75,7 @@ export function SermonSheet({ entry, featured = false }: { entry: SermonDownload
                 </span>
               </a>
               {piece.sizeLabel && (
-                <span className="eyebrow hidden text-ink/45 sm:inline">PDF · {piece.sizeLabel}</span>
+                <span className="eyebrow hidden text-ink/72 sm:inline">PDF · {piece.sizeLabel}</span>
               )}
             </div>
           </li>
@@ -88,7 +89,7 @@ export function SermonSheet({ entry, featured = false }: { entry: SermonDownload
       <div className="paper flex flex-col">
         <div className="flex items-baseline justify-between gap-3 bg-teal py-3 pr-12 pl-6 text-white">
           <p className="eyebrow">{formatDate(sermon.sermon_date)}</p>
-          {sermon.series && <p className="eyebrow text-right text-white/85">{seriesLabel(sermon)}</p>}
+          {sermon.series && <p className="eyebrow text-right text-white">{seriesLabel(sermon)}</p>}
         </div>
 
         <div

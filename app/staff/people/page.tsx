@@ -19,7 +19,7 @@ export default async function PeoplePage() {
       <StaffHeader staff={staff} />
       <main className="mx-auto max-w-3xl px-5 py-12 sm:px-8">
         <h1 className="font-display text-[2.4rem] leading-[1.05] font-extrabold tracking-[-0.03em]">People</h1>
-        <p className="mt-2 mb-8 text-ink/65">Who can sign in to edit the bulletin.</p>
+        <p className="mt-2 mb-8 text-ink/72">Who can sign in to edit the bulletin.</p>
         <PeopleManager people={people} selfId={staff.user_id} />
       </main>
     </>

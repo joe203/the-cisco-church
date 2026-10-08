@@ -23,7 +23,7 @@ export function SeriesStrip({
         <p className="eyebrow text-teal">The series</p>
         <p className="font-serif text-[1.05rem] text-deepsea italic">
           {series.title}
-          {series.scripture_ref && <span className="text-ink/55"> &middot; {series.scripture_ref}</span>}
+          {series.scripture_ref && <span className="text-ink/72"> &middot; {series.scripture_ref}</span>}
         </p>
       </div>
 
@@ -40,7 +40,7 @@ export function SeriesStrip({
               <span className="font-display mt-2 block text-[1.15rem] leading-tight font-bold text-ink">
                 {lesson.title}
               </span>
-              <span className="mt-1.5 block text-[0.85rem] text-ink/60">{formatDateShort(lesson.sermon_date)}</span>
+              <span className="mt-1.5 block text-[0.85rem] text-ink/72">{formatDateShort(lesson.sermon_date)}</span>
             </>
           );
           const base = "block rounded-xl p-4 transition-transform duration-300 ease-(--ease-spring)";

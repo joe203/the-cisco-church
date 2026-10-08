@@ -21,9 +21,21 @@ export async function generateMetadata({
   const { slug } = await params;
   const sermon = await getSermonDetail(slug);
   if (!sermon) return {};
+  const description = sermon.thesis ?? sermon.summary ?? undefined;
   return {
     title: sermon.title,
-    description: sermon.thesis ?? sermon.summary ?? undefined,
+    description,
+    // A shared sermon link shows its own artwork; without any, the site-wide
+    // share image from app/opengraph-image.jpg is used.
+    openGraph: {
+      type: "article",
+      siteName: "The Cisco Church",
+      title: sermon.title,
+      description,
+      url: `/sermons/${sermon.slug}`,
+      ...(sermon.artwork_url ? { images: [{ url: sermon.artwork_url, alt: `Artwork for “${sermon.title}”` }] } : {}),
+    },
+    ...(sermon.artwork_url ? { twitter: { card: "summary_large_image" as const, images: [sermon.artwork_url] } } : {}),
   };
 }
 
@@ -55,7 +67,7 @@ export default async function SermonPage({ params }: { params: Promise<Params> }
       ) : (
         <section className="bg-cloud">
           <div className="mx-auto max-w-5xl px-5 pt-10 pb-2 sm:px-8">
-            <SermonArtwork sermon={sermon} className="aspect-video rounded-2xl" />
+            <SermonArtwork sermon={sermon} eager className="aspect-video rounded-2xl" />
           </div>
         </section>
       )}

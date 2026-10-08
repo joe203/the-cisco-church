@@ -85,7 +85,7 @@ export function BulletinView({
             </h1>
             {message ? (
               <>
-                <p className="mt-4 text-[0.95rem] font-semibold text-ink/65">This Sunday’s message</p>
+                <p className="mt-4 text-[0.95rem] font-semibold text-ink/72">This Sunday’s message</p>
                 <p className="font-serif mt-1 max-w-[20ch] text-passage font-medium text-ink italic">
                   “{message}”
                 </p>
@@ -289,7 +289,7 @@ function RunSheet({ bulletin }: { bulletin: Bulletin }) {
         <p className="eyebrow text-coral">10:30 AM</p>
       </div>
       {song_leader && (
-        <p className="mt-2 text-[0.95rem] text-ink/65">
+        <p className="mt-2 text-[0.95rem] text-ink/72">
           Song leader · <span className="font-semibold text-ink">{song_leader}</span>
         </p>
       )}
@@ -370,7 +370,7 @@ function AnnouncementRow({ item }: { item: Announcement }) {
     <li className="grid gap-2 py-7 first:pt-0 md:grid-cols-[9.5rem_1fr] md:gap-8 print:break-inside-avoid">
       <div>
         <p className="eyebrow text-teal">{dateText || "This week"}</p>
-        {timeText && <p className="mt-0.5 text-[0.9rem] font-semibold text-ink/60">{timeText}</p>}
+        {timeText && <p className="mt-0.5 text-[0.9rem] font-semibold text-ink/72">{timeText}</p>}
       </div>
       <div>
         <h3 className="font-display text-[1.35rem] leading-snug font-bold tracking-[-0.01em] text-ink">

@@ -364,7 +364,7 @@ export function BulletinEditor({
                       }
                     />
                   </Field>
-                  <p className="mt-2 text-[0.85rem] text-ink/60">{parseNames(g.text).length} names</p>
+                  <p className="mt-2 text-[0.85rem] text-ink/72">{parseNames(g.text).length} names</p>
                   {draft.prayer.length > 1 && (
                     <button
                       type="button"
@@ -559,7 +559,7 @@ function Card({ title, hint, children }: { title: string; hint?: string; childre
   return (
     <section className="rounded-2xl bg-white p-5 shadow-panel-light sm:p-7">
       <h2 className="font-display text-[1.4rem] font-extrabold tracking-[-0.02em]">{title}</h2>
-      {hint && <p className="mt-1 mb-5 text-[0.9rem] text-ink/65">{hint}</p>}
+      {hint && <p className="mt-1 mb-5 text-[0.9rem] text-ink/72">{hint}</p>}
       {children}
     </section>
   );

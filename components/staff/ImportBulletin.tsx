@@ -43,7 +43,7 @@ export function ImportBulletin({ enabled }: { enabled: boolean }) {
   return (
     <section className="rounded-2xl bg-white p-6 shadow-panel-light">
       <h2 className="font-display text-[1.3rem] font-bold">Upload the finished paper bulletin</h2>
-      <p className="mt-1 text-[0.92rem] text-ink/65">
+      <p className="mt-1 text-[0.92rem] text-ink/72">
         Save the bulletin as a PDF and upload it. It’s read for you and turned into a draft for that
         Sunday — nothing goes public until you publish.
       </p>
@@ -80,7 +80,7 @@ export function ImportBulletin({ enabled }: { enabled: boolean }) {
             {busy ? "Reading the bulletin…" : "2. Read this bulletin"}
           </button>
           {busy && (
-            <p role="status" className="mt-3 text-[0.9rem] text-ink/65">
+            <p role="status" className="mt-3 text-[0.9rem] text-ink/72">
               This takes about a minute. Keep this page open.
             </p>
           )}
