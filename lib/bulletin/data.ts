@@ -44,7 +44,22 @@ export async function getPublishedBulletin(date: string): Promise<Bulletin | nul
   return date === seedBulletin.bulletin_date ? seedBulletin : null;
 }
 
-/** The newest published bulletin that is not dated in the future. */
+/** The upcoming Sunday (today, if it is Sunday) as YYYY-MM-DD, Cisco time. */
+export function upcomingSunday(now: Date = new Date()): string {
+  const [y, m, d] = new Intl.DateTimeFormat("en-CA", { timeZone: "America/Chicago" })
+    .format(now)
+    .split("-")
+    .map(Number);
+  const day = new Date(Date.UTC(y, m - 1, d));
+  day.setUTCDate(day.getUTCDate() + ((7 - day.getUTCDay()) % 7));
+  return day.toISOString().slice(0, 10);
+}
+
+/**
+ * The newest published bulletin for the upcoming Sunday or earlier. Once
+ * published it is current immediately (Tuesday's bulletin is up Wednesday),
+ * but one dated beyond the upcoming Sunday stays hidden — wrong week.
+ */
 export async function getCurrentBulletin(): Promise<Bulletin> {
   const client = getAnonClient();
   if (client) {
@@ -55,11 +70,9 @@ export async function getCurrentBulletin(): Promise<Bulletin> {
       .order("bulletin_date", { ascending: false })
       .limit(8);
     if (!error && data && data.length > 0) {
-      const today = new Date().toISOString().slice(0, 10);
+      const cutoff = upcomingSunday();
       const rows = data as Record<string, unknown>[];
-      // A bulletin published early (Friday) is current on its Sunday; until
-      // then the previous Sunday's stays up.
-      const live = rows.find((r) => String(r.bulletin_date) <= today) ?? rows[rows.length - 1];
+      const live = rows.find((r) => String(r.bulletin_date) <= cutoff) ?? rows[rows.length - 1];
       return rowToBulletin(live);
     }
   }

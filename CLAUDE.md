@@ -60,8 +60,8 @@ slide takeover on the homepage) are deferred unless they solve a v1 problem.
   reopen them. See "Bulletin + staff area".
 - **Downloads** (`/downloads`) — sermon-first dashboard of printable handouts,
   added 2026-10-05 at Joe's request. Each lesson shows whichever pieces exist:
-  reflection guide (hand-made PDF), **recap**, **notes page** (skeletal outline
-  with lined space), and **gold nuggets** (a few bold standout lines — keep to
+  reflection guide (hand-made PDF), **recap**, **sermon handout** (internal piece key: `outline`) (skeletal outline
+  with lined space), and **quotes** (internal key: `nuggets`; "gold nuggets" is Joe's private term — never on the site) (a few bold standout lines — keep to
   ~3). PDFs only, no video (video gets its own page later; the two cross-link).
   Recap/notes/nuggets are generated from sermon data (`points`, `nuggets` in
   `lib/seed.ts` + migration 010): print layouts at `/downloads/[slug]/[piece]`,
@@ -93,7 +93,7 @@ If a request seems to need one of these, **stop and ask Joe**.
 /slides/[deck]/controls  presenter controls (PRESENTER_KEY gated)
 /api/deck/[deck]/state   POST — presenter writes, server-side only
 /downloads               printable handouts dashboard (guides, notes, verses, quotes)
-/bulletin                this week's bulletin (newest published, never future-dated)
+/bulletin                this week's bulletin (newest published, live the moment it's published; never dated past the upcoming Sunday)
 /bulletin/[date]         a past bulletin;  /bulletin/archive  the list
 /staff                   dashboard (staff only) — also /staff/login, /staff/people (admin)
 /staff/bulletin/[date]   the editor (+ /preview of the draft)
@@ -436,11 +436,11 @@ simple worship / the way we've always done it."
 | Cloud | `#FDFBF6` | Base page background |
 | Sand | `#F5EEE1` | Warm alternate band |
 | Ink | `#14333C` | Text on light; dark footer/resources field |
-| Teal | `#12838D` | Primary — hero field, headings accents, links |
+| Teal | `#0E7680` (deepened 2026-10-08: text 5.2:1 on Cloud) | Primary — hero field, headings accents, links |
 | Deepsea | `#0B545D` | Deep teal band (service times, scripture), hovers |
-| Coral | `#E4573D` | Energy — solid CTAs, arrows, "read" links |
+| Coral | `#C94128` (deepened 2026-10-08: white text 4.9:1) | Energy — solid CTAs, arrows, "read" links |
 | Clay | `#BF3F28` | Coral pressed/hover |
-| Marigold | `#F2AE3F` | Celebration accent **on dark fields only** (fails contrast on light) |
+| Marigold | `#F7BB50` (lifted 2026-10-08: 5.0:1 on Deepsea) | Celebration accent **on dark fields only** (fails contrast on light) |
 
 Dark-room tokens (Espresso `#17110D`, Pitch `#0D0906`, Lamplight `#C9A063`,
 Cream `#F4EDE2`, Ash `#A2937F`, etc.) remain defined in `globals.css` for the

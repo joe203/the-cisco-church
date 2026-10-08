@@ -1,5 +1,51 @@
 # CURRENT_STATUS — TheCiscoChurch.org
-Updated: 2026-10-02 · Read this first when starting a new session.
+Updated: 2026-10-08 · Read this first when starting a new session.
+
+## 2026-10-08 session — launch pass (everything below is committed + deployed)
+
+**Launch-readiness check done.** Live Lighthouse (mobile): performance 97–98,
+accessibility / best-practices / SEO 100 on /, /sermons, /sermons/[slug],
+/downloads, /bulletin. DB verified: RLS on all 4 `cisco_` tables, anon can read
+only the published bulletin and write nothing; secrets absent from the client
+bundle; staff routes gated; forged inbound mail rejected. 25 pages / 62 assets
+crawled, none broken. Only 4 tables exist in the DB (bulletins, staff, mail,
+inbound_log) — sermon/deck migrations 001–006 are still NOT applied; the site
+runs from `lib/seed.ts`.
+
+**Domain.** `ciscochurchofchrist.org` (+www; NOT "theciscochurch…") now
+301-redirects to theciscochurch.org via a Caddy block (path preserved). Its DNS
+stays at **HostGator** — only the `@` A record was changed to 67.207.83.48
+(cPanel Zone Editor). Do NOT move its nameservers: the mail/MX/SPF/DKIM records
+live there. If DNS ever looks wrong, HostGator's two nameservers can briefly
+disagree; wait before touching Caddy (failed cert attempts rate-limit).
+
+**Downloads.** Pieces are now: Reflection guide, Sermon recap, **Quotes**
+(key `nuggets`), **Sermon handout** (key `outline`). "Gold nuggets" is Joe's
+private term — never on the site. Every sheet carries "Joe Cabrera, Minister".
+All three guides are generated from `guide_questions` (the two older hand-made
+Word PDFs were replaced; `guide_url` points at `/downloads/<slug>/guide.pdf`).
+Earlier lessons use the same horizontal card as the latest, smaller. "View"
+opens the sheet in a dialog (`components/downloads/ViewModal.tsx`, iframe of
+`/embed/[slug]/[piece]`). Pagination for 10+ lessons is not built.
+
+**Phone hero.** `HeroVideoMobile.tsx`: a still of Joe preaching paints first,
+then the same hero edit as desktop (960x540, 1.2 MB, `hero-reel-v5-mobile.mp4`)
+fades in only once actually playing; falls back to the still on data-saver, 2G,
+reduced motion, or a stall. When the desktop edit changes, re-encode both the
+desktop and `-mobile` files and regenerate `joe-preaching.jpg` (frame 6.2s).
+
+**Share/SEO/headers/speed/contrast.** `app/opengraph-image.jpg` + `twitter-image.jpg`
+(1200x630), `robots.ts`, `sitemap.ts`, security headers in `next.config.ts`
+(HSTS, nosniff, X-Frame SAMEORIGIN, Referrer, Permissions), sermon artwork via
+`next/image`, Archivo/Newsreader fonts not preloaded (slides only). Colors
+deepened for 4.5:1: teal `#0E7680`, coral `#C94128`, marigold `#F7BB50`; muted
+text is `text-ink/72` minimum.
+
+**Open for Joe:** change PRESENTER_KEY (`1701` is guessable — slides are unused
+right now, left as is by choice); real end-to-end test of bulletin@ and
+hello@ email; publish the Oct 11 bulletin draft; Cisco-specific Telnyx key;
+better photos/clips for the phone hero and OG image when available.
+**Don't deploy during Sunday service** (a deploy resets in-memory slide state).
 
 ## OPEN ITEMS (updated 2026-10-01, end of the bulletin/mail build session)
 
