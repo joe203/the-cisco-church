@@ -4,11 +4,13 @@ import "./globals.css";
 
 /* Presentation faces — the sermon title art uses exactly two families, and
    so does every slide: Archivo (heavy grotesque display + spaced labels)
-   and Newsreader (the italic tagline serif). Nothing else. */
+   and Newsreader (the italic tagline serif). Nothing else. Only the slide
+   pages use them, so they are not preloaded on every other page. */
 const archivo = Archivo({
   subsets: ["latin"],
   variable: "--font-archivo",
   display: "swap",
+  preload: false,
 });
 
 const newsreader = Newsreader({
@@ -16,6 +18,7 @@ const newsreader = Newsreader({
   style: ["normal", "italic"],
   variable: "--font-newsreader",
   display: "swap",
+  preload: false,
 });
 
 const bricolage = Bricolage_Grotesque({

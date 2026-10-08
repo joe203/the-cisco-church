@@ -1,3 +1,4 @@
+import Image from "next/image";
 import { site } from "@/lib/site";
 import type { Sermon } from "@/lib/types";
 
@@ -16,13 +17,21 @@ type SermonArtworkProps = {
   transition?: boolean;
   /** The image is the first thing on the page: load it right away, not lazily. */
   eager?: boolean;
+  /** Rendered width hint for the image optimizer (a `sizes` attribute). */
+  sizes?: string;
 };
 
 /**
  * Sermon artwork with a typographic fallback: when no artwork has been
  * uploaded, the cover is set in type — the passage as the image.
  */
-export function SermonArtwork({ sermon, className = "", transition = true, eager = false }: SermonArtworkProps) {
+export function SermonArtwork({
+  sermon,
+  className = "",
+  transition = true,
+  eager = false,
+  sizes = "(min-width: 1024px) 40vw, 100vw",
+}: SermonArtworkProps) {
   const [book, verses] = splitRef(sermon.scripture_ref);
   const style = transition
     ? ({ viewTransitionName: `sermon-art-${sermon.slug}` } as React.CSSProperties)
@@ -31,15 +40,28 @@ export function SermonArtwork({ sermon, className = "", transition = true, eager
   if (sermon.artwork_url) {
     return (
       <div className={`relative overflow-hidden bg-deepsea ${className}`} style={style}>
-        {/* eslint-disable-next-line @next/next/no-img-element -- remote artwork host unknown until real assets arrive */}
-        <img
-          src={sermon.artwork_url}
-          alt={`Artwork for “${sermon.title}”`}
-          className="absolute inset-0 h-full w-full object-cover"
-          loading={eager ? "eager" : "lazy"}
-          fetchPriority={eager ? "high" : "auto"}
-          decoding="async"
-        />
+        {sermon.artwork_url.startsWith("/") ? (
+          // Bundled artwork: let Next resize it (and serve WebP/AVIF) instead of sending the 1600px original.
+          <Image
+            src={sermon.artwork_url}
+            alt={`Artwork for “${sermon.title}”`}
+            fill
+            sizes={sizes}
+            className="object-cover"
+            loading={eager ? "eager" : "lazy"}
+            fetchPriority={eager ? "high" : "auto"}
+          />
+        ) : (
+          // eslint-disable-next-line @next/next/no-img-element -- remote artwork host is not configured
+          <img
+            src={sermon.artwork_url}
+            alt={`Artwork for “${sermon.title}”`}
+            className="absolute inset-0 h-full w-full object-cover"
+            loading={eager ? "eager" : "lazy"}
+            fetchPriority={eager ? "high" : "auto"}
+            decoding="async"
+          />
+        )}
       </div>
     );
   }
