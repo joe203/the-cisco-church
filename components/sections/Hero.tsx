@@ -3,7 +3,8 @@ import Link from "next/link";
 import { mapLabel, site } from "@/lib/site";
 import type { Sermon } from "@/lib/types";
 import { HeroReel } from "./HeroReel";
-import { HeroReelMobile } from "./HeroReelMobile";
+import { heroMobile } from "@/lib/heroMedia";
+import { HeroVideoMobile } from "./HeroVideoMobile";
 
 /**
  * Hero v5 — "glass diagonal". One continuous section from the top edge:
@@ -13,10 +14,9 @@ import { HeroReelMobile } from "./HeroReelMobile";
  * window right of the diagonal is where the edit's subjects should sit;
  * the rest of the frame still shows, dimmed, through the teal.
  *
- * The desktop reel (lib/heroMedia.ts) is too heavy for phones; there the
- * pane is solid teal and a light reel of stills and short clips
- * (HeroReelMobile) slants in underneath. Reduced-motion and data-saver
- * visitors get the church-building still.
+ * On phones the pane is solid teal and the same edit slants in underneath
+ * as a lighter encode (HeroVideoMobile), behind a still of Joe preaching
+ * that stays up for reduced-motion, data-saver, and weak-signal visitors.
  */
 export function Hero({ featured }: { featured: Sermon | null }) {
   return (
@@ -106,19 +106,21 @@ export function Hero({ featured }: { featured: Sermon | null }) {
         </div>
       </div>
 
-      {/* Mobile media — slants in under the teal field. The church building is
-          the instant still; HeroReelMobile cycles real moments over it. */}
+      {/* Mobile media — slants in under the teal field. A still of Joe preaching
+          paints instantly; the same video as desktop fades in over it when the
+          connection can carry it. */}
       <div className="relative aspect-[16/10] overflow-hidden bg-deepsea lg:hidden" aria-hidden>
         <div className="absolute inset-0 [clip-path:polygon(0_9%,100%_0,100%_100%,0_100%)]">
           <Image
-            src="/images/hero-mobile/church-building.jpg"
+            src={heroMobile.still}
             alt=""
             fill
             priority
             sizes="100vw"
-            className="object-cover object-[50%_58%]"
+            className="object-cover"
+            style={{ objectPosition: heroMobile.focus }}
           />
-          <HeroReelMobile />
+          <HeroVideoMobile />
         </div>
       </div>
     </section>

@@ -69,55 +69,17 @@ export const heroReel: HeroReelItem[] = [
   },
 ];
 
+
 /**
- * Phone/tablet hero reel — the photo slot under the headline on screens under
- * 1024px (the desktop video is too heavy for a weak signal). Same item shape
- * as above; every item is cropped to the slot's 16:10. Clips are ~3s, muted,
- * ~100–210 KB each, and only start loading once the first still has painted.
- *
- * The FIRST item must stay a still: Hero.tsx renders it as the instantly
- * painted base image, and it is the whole hero for visitors who prefer
- * reduced motion or have data-saver on.
+ * Phone/tablet hero — the same edit as the desktop reel, in a lighter 960x540
+ * encode (~1.2 MB vs 4.7 MB), in the photo slot under the headline on screens
+ * under 1024px. `still` is a frame from that same footage: it is painted
+ * instantly and stays up as the whole hero for visitors who prefer reduced
+ * motion, have data-saver on, are on a slow link, or whose connection stalls
+ * the video (see HeroVideoMobile). Both share the desktop's `focus`.
  */
-export const heroReelMobile: HeroReelItem[] = [
-  {
-    type: "image",
-    file: "/images/hero-mobile/church-building.jpg",
-    duration: 4,
-    pan: "right",
-    focus: "50% 58%",
-    alt: "The church building on Avenue N at golden hour",
-  },
-  {
-    type: "video",
-    file: "/videos/hero/mobile/preaching.mp4",
-    poster: "/videos/hero/mobile/preaching.jpg",
-    duration: 3.2,
-    focus: "50% 40%",
-    alt: "Joe preaching on a Sunday morning",
-  },
-  {
-    type: "image",
-    file: "/images/hero-mobile/fellowship-meal.jpg",
-    duration: 3.6,
-    pan: "left",
-    focus: "50% 50%",
-    alt: "The church family sharing a meal together",
-  },
-  {
-    type: "video",
-    file: "/videos/hero/mobile/kids-craft.mp4",
-    poster: "/videos/hero/mobile/kids-craft.jpg",
-    duration: 3.2,
-    focus: "50% 50%",
-    alt: "Kids at a craft table during Bible class",
-  },
-  {
-    type: "video",
-    file: "/videos/hero/mobile/song-leader.mp4",
-    poster: "/videos/hero/mobile/song-leader.jpg",
-    duration: 2.8,
-    focus: "50% 40%",
-    alt: "A song leader leading worship",
-  },
-];
+export const heroMobile = {
+  video: "/videos/hero/hero-reel-v5-mobile.mp4",
+  still: "/images/hero-mobile/joe-preaching.jpg",
+  focus: "100% 40%",
+} as const;
