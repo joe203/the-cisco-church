@@ -3,6 +3,7 @@ import Link from "next/link";
 import { mapLabel, site } from "@/lib/site";
 import type { Sermon } from "@/lib/types";
 import { HeroReel } from "./HeroReel";
+import { HeroReelMobile } from "./HeroReelMobile";
 
 /**
  * Hero v5 — "glass diagonal". One continuous section from the top edge:
@@ -12,9 +13,10 @@ import { HeroReel } from "./HeroReel";
  * window right of the diagonal is where the edit's subjects should sit;
  * the rest of the frame still shows, dimmed, through the teal.
  *
- * The reel (lib/heroMedia.ts) is desktop-only; on mobile and for
- * reduced-motion visitors the pane is solid teal and the trail photo
- * slants in underneath.
+ * The desktop reel (lib/heroMedia.ts) is too heavy for phones; there the
+ * pane is solid teal and a light reel of stills and short clips
+ * (HeroReelMobile) slants in underneath. Reduced-motion and data-saver
+ * visitors get the church-building still.
  */
 export function Hero({ featured }: { featured: Sermon | null }) {
   return (
@@ -104,16 +106,20 @@ export function Hero({ featured }: { featured: Sermon | null }) {
         </div>
       </div>
 
-      {/* Mobile photo — slants in under the teal field */}
-      <div className="relative aspect-[16/10] lg:hidden" aria-hidden>
-        <Image
-          src="/images/trail-rock.jpg"
-          alt=""
-          fill
-          priority
-          sizes="100vw"
-          className="object-cover object-[70%_35%] [clip-path:polygon(0_9%,100%_0,100%_100%,0_100%)]"
-        />
+      {/* Mobile media — slants in under the teal field. The church building is
+          the instant still; HeroReelMobile cycles real moments over it. */}
+      <div className="relative aspect-[16/10] overflow-hidden bg-deepsea lg:hidden" aria-hidden>
+        <div className="absolute inset-0 [clip-path:polygon(0_9%,100%_0,100%_100%,0_100%)]">
+          <Image
+            src="/images/hero-mobile/church-building.jpg"
+            alt=""
+            fill
+            priority
+            sizes="100vw"
+            className="object-cover object-[50%_58%]"
+          />
+          <HeroReelMobile />
+        </div>
       </div>
     </section>
   );

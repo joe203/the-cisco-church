@@ -432,6 +432,17 @@
     animation-duration: var(--kenburns-duration, 7s);
   }
 }
+/* Phone hero reel: each beat eases in over the teal ground (opacity only —
+   never a crossfade over a decoding <video>, which ghosts; see above). */
+@media (prefers-reduced-motion: no-preference) {
+  .hero-mobile-layer {
+    opacity: 1;
+    transition: opacity 0.5s var(--ease-spring);
+    @starting-style {
+      opacity: 0;
+    }
+  }
+}
 @keyframes kenburns-zoom {
   from {
     transform: scale(1) translate3d(0, 0, 0);

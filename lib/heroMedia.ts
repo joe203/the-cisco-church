@@ -68,3 +68,56 @@ export const heroReel: HeroReelItem[] = [
     alt: "The church building, then Sunday preaching, song leading, kids, and fellowship",
   },
 ];
+
+/**
+ * Phone/tablet hero reel — the photo slot under the headline on screens under
+ * 1024px (the desktop video is too heavy for a weak signal). Same item shape
+ * as above; every item is cropped to the slot's 16:10. Clips are ~3s, muted,
+ * ~100–210 KB each, and only start loading once the first still has painted.
+ *
+ * The FIRST item must stay a still: Hero.tsx renders it as the instantly
+ * painted base image, and it is the whole hero for visitors who prefer
+ * reduced motion or have data-saver on.
+ */
+export const heroReelMobile: HeroReelItem[] = [
+  {
+    type: "image",
+    file: "/images/hero-mobile/church-building.jpg",
+    duration: 4,
+    pan: "right",
+    focus: "50% 58%",
+    alt: "The church building on Avenue N at golden hour",
+  },
+  {
+    type: "video",
+    file: "/videos/hero/mobile/preaching.mp4",
+    poster: "/videos/hero/mobile/preaching.jpg",
+    duration: 3.2,
+    focus: "50% 40%",
+    alt: "Joe preaching on a Sunday morning",
+  },
+  {
+    type: "image",
+    file: "/images/hero-mobile/fellowship-meal.jpg",
+    duration: 3.6,
+    pan: "left",
+    focus: "50% 50%",
+    alt: "The church family sharing a meal together",
+  },
+  {
+    type: "video",
+    file: "/videos/hero/mobile/kids-craft.mp4",
+    poster: "/videos/hero/mobile/kids-craft.jpg",
+    duration: 3.2,
+    focus: "50% 50%",
+    alt: "Kids at a craft table during Bible class",
+  },
+  {
+    type: "video",
+    file: "/videos/hero/mobile/song-leader.mp4",
+    poster: "/videos/hero/mobile/song-leader.jpg",
+    duration: 2.8,
+    focus: "50% 40%",
+    alt: "A song leader leading worship",
+  },
+];
