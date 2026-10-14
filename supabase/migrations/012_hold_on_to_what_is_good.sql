@@ -65,12 +65,36 @@ Is this what Scripture actually says—or simply what I’ve always assumed?',
 )
 on conflict (slug) do nothing;
 
--- Lessons 3 and 4 — placeholders (title + date) so the series shows its whole run.
+-- Lesson 3 — announced (slide + teaser); content arrives with the manuscript.
+insert into cisco.cisco_sermons
+  (id, slug, title, teaser, scripture_ref, sermon_date, artwork_url, speaker_id, is_featured, series_id, lesson_number)
+values (
+  'b1000000-0000-4000-8000-000000000005',
+  'with-all-his-might',
+  'With All His Might',
+  E'When was the last time worship filled your heart so completely that you couldn’t help but express it?
+
+David worshiped before the Lord with all his might. His praise was joyful, expressive, and deeply personal. And in the New Testament, Paul encourages believers to be filled with the Spirit, singing and making melody in their hearts to the Lord.
+
+But somewhere along the way, can worship become more about what we’re accustomed to than what we’re experiencing in our hearts?
+
+This Sunday, we’ll explore what Scripture teaches about heartfelt worship, the joy of praising God, and learning to appreciate expressions of faith that may be different from our own.
+
+What if the question isn’t whether someone worships like we do, but whether their worship is drawing them closer to God?',
+  '2 Samuel 6:14 · Ephesians 5:18–20',
+  '2026-10-18',
+  '/sermons/with-all-his-might/artwork.jpg',
+  'a1000000-0000-4000-8000-000000000001',
+  false,
+  'd1000000-0000-4000-8000-000000000001',
+  3
+)
+on conflict (slug) do nothing;
+
+-- Lesson 4 — placeholder (title + date) so the series shows its whole run.
 insert into cisco.cisco_sermons
   (id, slug, title, sermon_date, speaker_id, is_featured, series_id, lesson_number)
 values
-  ('b1000000-0000-4000-8000-000000000005', 'with-all-his-might', 'With All His Might', '2026-10-18',
-   'a1000000-0000-4000-8000-000000000001', false, 'd1000000-0000-4000-8000-000000000001', 3),
   ('b1000000-0000-4000-8000-000000000006', 'hope-for-the-family', 'Hope For The Family', '2026-10-25',
    'a1000000-0000-4000-8000-000000000001', false, 'd1000000-0000-4000-8000-000000000001', 4)
 on conflict (slug) do nothing;

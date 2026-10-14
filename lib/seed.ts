@@ -284,7 +284,15 @@ function upcomingLesson(id: number, slug: string, title: string, date: string, l
   };
 }
 
-const withAllHisMight = upcomingLesson(5, "with-all-his-might", "With All His Might", "2026-10-18", 3);
+// Lesson 3 — announced (slide + teaser); content arrives with the manuscript.
+const withAllHisMight: SermonDetail = {
+  ...upcomingLesson(5, "with-all-his-might", "With All His Might", "2026-10-18", 3),
+  teaser:
+    "When was the last time worship filled your heart so completely that you couldn’t help but express it?\n\nDavid worshiped before the Lord with all his might. His praise was joyful, expressive, and deeply personal. And in the New Testament, Paul encourages believers to be filled with the Spirit, singing and making melody in their hearts to the Lord.\n\nBut somewhere along the way, can worship become more about what we’re accustomed to than what we’re experiencing in our hearts?\n\nThis Sunday, we’ll explore what Scripture teaches about heartfelt worship, the joy of praising God, and learning to appreciate expressions of faith that may be different from our own.\n\nWhat if the question isn’t whether someone worships like we do, but whether their worship is drawing them closer to God?",
+  scripture_ref: "2 Samuel 6:14 · Ephesians 5:18–20",
+  scripture_text: null,
+  artwork_url: "/sermons/with-all-his-might/artwork.jpg",
+};
 const hopeForTheFamily = upcomingLesson(6, "hope-for-the-family", "Hope For The Family", "2026-10-25", 4);
 
 export const seedSermons: SermonDetail[] = [
