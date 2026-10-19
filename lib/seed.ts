@@ -293,7 +293,16 @@ const withAllHisMight: SermonDetail = {
   scripture_text: null,
   artwork_url: "/sermons/with-all-his-might/artwork.jpg",
 };
-const hopeForTheFamily = upcomingLesson(6, "hope-for-the-family", "Hope For The Family", "2026-10-25", 4);
+// Lesson 4 — announced (slide + teaser); content arrives with the manuscript.
+const hopeForTheFamily: SermonDetail = {
+  ...upcomingLesson(6, "hope-for-the-family", "Hope For The Family", "2026-10-25", 4),
+  thesis: "Discovering What Matters. Building What Lasts.",
+  teaser:
+    "Every family wants to build something that lasts. But with so many challenges, changing expectations, and competing voices, how do we know what really matters?\n\nWhat values should guide our marriages, our parenting, and the decisions we make every day?\n\nMaybe building a stronger family isn’t about having all the answers. Maybe it’s about learning to ask better questions, discovering what matters most, and finding the wisdom to make good decisions.\n\nThis Sunday, October 25, join us as we explore how to build stronger families, seek wisdom, and hold on to what is good.",
+  scripture_ref: null,
+  scripture_text: null,
+  artwork_url: "/sermons/hope-for-the-family/artwork.jpg",
+};
 
 export const seedSermons: SermonDetail[] = [
   hopeForTheFamily,

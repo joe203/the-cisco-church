@@ -91,12 +91,28 @@ What if the question isn’t whether someone worships like we do, but whether th
 )
 on conflict (slug) do nothing;
 
--- Lesson 4 — placeholder (title + date) so the series shows its whole run.
+-- Lesson 4 — announced (slide + teaser); content arrives with the manuscript.
 insert into cisco.cisco_sermons
-  (id, slug, title, sermon_date, speaker_id, is_featured, series_id, lesson_number)
-values
-  ('b1000000-0000-4000-8000-000000000006', 'hope-for-the-family', 'Hope For The Family', '2026-10-25',
-   'a1000000-0000-4000-8000-000000000001', false, 'd1000000-0000-4000-8000-000000000001', 4)
+  (id, slug, title, thesis, teaser, sermon_date, artwork_url, speaker_id, is_featured, series_id, lesson_number)
+values (
+  'b1000000-0000-4000-8000-000000000006',
+  'hope-for-the-family',
+  'Hope For The Family',
+  'Discovering What Matters. Building What Lasts.',
+  E'Every family wants to build something that lasts. But with so many challenges, changing expectations, and competing voices, how do we know what really matters?
+
+What values should guide our marriages, our parenting, and the decisions we make every day?
+
+Maybe building a stronger family isn’t about having all the answers. Maybe it’s about learning to ask better questions, discovering what matters most, and finding the wisdom to make good decisions.
+
+This Sunday, October 25, join us as we explore how to build stronger families, seek wisdom, and hold on to what is good.',
+  '2026-10-25',
+  '/sermons/hope-for-the-family/artwork.jpg',
+  'a1000000-0000-4000-8000-000000000001',
+  false,
+  'd1000000-0000-4000-8000-000000000001',
+  4
+)
 on conflict (slug) do nothing;
 
 insert into cisco.cisco_sermon_points (sermon_id, position, title, label, body)
