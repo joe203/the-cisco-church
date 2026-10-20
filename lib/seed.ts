@@ -321,21 +321,83 @@ function upcomingLesson(id: number, slug: string, title: string, date: string, l
     id: `seed-sermon-${id}`,
     slug,
     title,
+    thesis: null,
     teaser: null,
+    scripture_ref: null,
+    scripture_text: null,
     sermon_date: date,
     artwork_url: null,
+    summary: null,
+    nuggets: [],
+    guide_questions: [],
+    deck_slug: null,
+    points: [],
     lesson_number: lesson,
   };
 }
 
-// Lesson 3 — announced (slide + teaser); content arrives with the manuscript.
 const withAllHisMight: SermonDetail = {
   ...upcomingLesson(5, "with-all-his-might", "With All His Might", "2026-10-18", 3),
   teaser:
     "When was the last time worship filled your heart so completely that you couldn’t help but express it?\n\nDavid worshiped before the Lord with all his might. His praise was joyful, expressive, and deeply personal. And in the New Testament, Paul encourages believers to be filled with the Spirit, singing and making melody in their hearts to the Lord.\n\nBut somewhere along the way, can worship become more about what we’re accustomed to than what we’re experiencing in our hearts?\n\nThis Sunday, we’ll explore what Scripture teaches about heartfelt worship, the joy of praising God, and learning to appreciate expressions of faith that may be different from our own.\n\nWhat if the question isn’t whether someone worships like we do, but whether their worship is drawing them closer to God?",
   scripture_ref: "2 Samuel 6:14 · Ephesians 5:18–20",
-  scripture_text: null,
+  scripture_text: "“And David danced before the Lord with all his might.”",
   artwork_url: "/sermons/with-all-his-might/artwork.jpg",
+  summary:
+    "Everything we receive as good for our lives must point to Jesus, and spiritual growth is learning to make choices that continually move us closer to him. But when we lose sight of the purpose, we begin protecting the routine — and how we worship can become more important than Who we worship. In 2 Samuel 6, David and all Israel celebrated with all their might as God’s presence came home. His worship was expressive, but it was never aimless; its center was God. The Psalms invite the same joy, and Paul, steeped in the Psalms, tells the Ephesians to be filled with the Spirit, speaking to one another in psalms, hymns, and spiritual songs. Paul doesn’t tell believers to suppress their joy. He tells them what should fill their hearts. Some of us are naturally expressive and others are more reserved, but everyone has something to celebrate when they recognize God’s goodness — because heaven knows how to celebrate what is good.",
+  nuggets: [
+    "Nobody has to teach us how to celebrate something that truly matters to us.",
+    "David’s worship was expressive, but it wasn’t aimless. His celebration had a center — and that center was God.",
+    "Some people are naturally expressive. Others are more reserved. But everyone has something to celebrate when they recognize God’s goodness.",
+    "The question isn’t whether we’re going to be moved by something. The question is what’s moving us.",
+  ],
+  guide_questions: [
+    "Think of something good you’ve received lately — a song, a book, a teacher, a habit. Run it through the three questions of the Jesus Test: Is Jesus at the center? Does it lead me toward following him? Does it line up with what he taught? Which question is hardest for you to answer honestly?",
+    "Read Luke 9:50. The disciples were focused on who belonged to their group; Jesus was focused on whose name was being honored. Where are you tempted to ask “Is he one of us?” before asking “Is Jesus being honored?”",
+    "“When we lose sight of the purpose, we begin protecting the routine.” Is there something in your own life — or in how we worship — where HOW has become more important than WHY? What would it take to bring the purpose back into focus?",
+    "Read 2 Samuel 6:1–5, 12–15. David wasn’t celebrating because everything was going his way; he was celebrating because God’s presence was coming home. What has God done lately that you have been slow to celebrate?",
+    "How do you express yourself when you’re truly joyful — a goal reached, a big win, a child’s first step? What do you do when you encounter God’s goodness? If you had stood watching David that day, would you have joined him, or questioned him like Michal (2 Samuel 6:20)?",
+    "Read Ephesians 5:15–20. “The question isn’t whether we’re going to be moved by something. The question is what’s moving us.” What fills your heart right now? And if our whole community joined us next Sunday, what would they leave believing about our God?",
+  ],
+  deck_slug: "with-all-his-might",
+  points: [
+    {
+      position: 1,
+      title: "Everything Good Must Point to Jesus",
+      label: "The Jesus Test",
+      body: "The Jesus Test asks three things: Is Jesus truly at the center? Does it lead me toward following Jesus? Does it line up with what Jesus taught? People in Jesus’ day faced the same challenge. In Luke 9:50 the disciples tried to stop someone casting out demons in Jesus’ name — they were focused on who belonged to their group, but Jesus was focused on whose name was being honored. Spiritual growth is learning to make choices that continually move us closer to Jesus.",
+    },
+    {
+      position: 2,
+      title: "When We Lose the Purpose, We Protect the Routine",
+      label: "Focus",
+      body: "The more we stay focused on the important things, the more what we’re doing makes sense. When we lose focus, other things take over — we begin protecting the routine, and before long HOW we do things becomes more important than WHY we do them. Sometimes we become so concerned about how we worship that we lose sight of Who we’re worshiping. That is exactly the tension in 2 Samuel 6.",
+    },
+    {
+      position: 3,
+      title: "David Celebrated With All His Might",
+      label: "2 Samuel 6",
+      body: "The Ark of the Covenant was Israel’s most sacred object — the earthly footstool of God, and proof that God was fighting for them. David and all Israel celebrated with all their might as it came home. Enthusiasm matters, but so does honoring God’s instructions. David wasn’t celebrating because everything was going his way; he was celebrating because God’s presence was coming home. His worship was expressive, but it wasn’t aimless — its center was God. The Psalms invite God’s people into the same joy (Psalm 149:3, 150:4).",
+    },
+    {
+      position: 4,
+      title: "Nobody Has to Teach Us to Celebrate",
+      label: "Joy",
+      body: "A diet goal reached, a big win, a baby’s first step — nobody has to teach us how to celebrate what truly matters. We naturally express what excites us, so why should our joy in God be any different? Some people are naturally expressive and others are more reserved, but everyone has something to celebrate when they recognize God’s goodness. The measure of worship isn’t how much we move, but how deeply our hearts are moved toward God. Would you have joined David — or pulled him aside like Michal?",
+    },
+    {
+      position: 5,
+      title: "Be Filled With the Spirit",
+      label: "Ephesians 5:18–20",
+      body: "When Paul described Spirit-filled worship, he reached for language God’s people already knew — psalms, hymns, and spiritual songs. The problem isn’t celebration; it’s celebration that loses sight of its purpose, like being drunk with wine. Paul doesn’t tell believers to suppress their joy; he tells them what should fill their hearts. The question isn’t whether we’ll be moved by something — it’s what’s moving us. David celebrated with all his might. Paul calls us to worship with Spirit-filled hearts. In both, God remains the focus.",
+    },
+    {
+      position: 6,
+      title: "Heaven Celebrates What Is Good",
+      label: "Revelation 5 · Luke 15",
+      body: "Genuine worship communicates something words alone cannot — an undeniable voice. Heaven celebrates the worthiness of the Lamb (Revelation 5:8–12), and Jesus tells us heaven rejoices when a sinner comes home (Luke 15). If our whole community joined us for worship next Sunday, would they leave convinced that we serve an awesome God and deeply love our Savior? If heaven knows how to celebrate what is good, perhaps we should rediscover the joy of celebrating it here.",
+    },
+  ],
 };
 // Lesson 4 — announced (slide + teaser); content arrives with the manuscript.
 const hopeForTheFamily: SermonDetail = {
@@ -1160,6 +1222,82 @@ const askBetterQuestionsSlides: SeedSlideInput[] = [
   },
 ];
 
+/**
+ * With All His Might (Lesson 3) — Joe's finished 16:9 slide images, served
+ * from public/sermons/with-all-his-might/slides/NN.jpg. Slide 01 is the lesson
+ * title; each slide's outline text is Joe's own notes. The audio and video
+ * clips (The Heart of Worship; the 2026 celebration clip) are played by Joe
+ * and are not hosted here.
+ */
+const withAllHisMightSlides: SeedSlideInput[] = [
+  {
+    position: 1,
+    html: imageSlide("with-all-his-might", 1, "Lesson 3 — With All His Might"),
+    outline_html: `<p><strong>Lesson 3: With All His Might &mdash; 2 Samuel 6:14</strong></p><p>Current series: Hold On To What Is Good &mdash; 1 Thessalonians 5:21.</p><p>Key for implementing 1 Thessalonians 5:21 &rarr; <strong>The Jesus Test</strong>.</p>`,
+    notes: "Lesson title.",
+  },
+  {
+    position: 2,
+    html: imageSlide("with-all-his-might", 2, "The Jesus Test — Spiritual growth is learning to make choices that continually move us closer to Jesus."),
+    outline_html: `<p><strong>What is The Jesus Test?</strong></p><p>&bull; <strong>Is Jesus truly at the center?</strong></p><p>&bull; <strong>Does it lead me toward following Jesus?</strong></p><p>&bull; <strong>Does it line up with what Jesus taught?</strong></p><p>The people in Jesus&rsquo; day were faced with these challenges:</p><p>John 6:29 &mdash; the work that God requires is to believe in the One he sent.</p><p>Luke 9:50 &mdash; John tried to stop someone from casting out demons in Jesus&rsquo; name, but Jesus said, &ldquo;Do not stop him, for whoever is not against you is for you.&rdquo; The disciples were focused on who belonged to their group. Jesus was focused on whose name was being honored.</p><p>Everything that we receive as good for our lives must point to Jesus.</p><p><strong>Spiritual growth is learning to make choices that continually move us closer to Jesus.</strong></p><p>If following Jesus is our destination, then what we focus on determines the direction we travel.</p>`,
+    notes: null,
+  },
+  {
+    position: 3,
+    html: imageSlide("with-all-his-might", 3, "When we lose sight of the purpose, we begin protecting a routine."),
+    outline_html: `<p><strong>The more we can stay focused on the important things, the more what we&rsquo;re doing makes sense.</strong></p><p>&bull; If we lose our focus, other things take over.</p><p>&bull; <strong>When we lose sight of the purpose, we begin protecting the routine.</strong> Routine becomes the way of doing things when focus is lost or absent. Before long, HOW we do things becomes more important than WHY we do them.</p><p>&bull; Focus is important because it reminds us of the big picture.</p><p>This is the principle Paul is talking about in 1 Thessalonians 5:21: <strong>Test &rarr; Hold &rarr; Leave</strong>. Discernment was not a new challenge for God&rsquo;s people.</p><p>Sometimes we become so concerned about HOW we worship that we lose sight of WHO we&rsquo;re worshiping. That&rsquo;s exactly the tension in 2 Samuel 6.</p><p><strong>Take notice of David&rsquo;s worship and celebration &mdash; 2 Samuel 6.</strong></p><p>Background: the Ark of the Covenant was the single most sacred artifact in Israelite history &mdash; the earthly footstool of Yahweh, with God&rsquo;s presence over the Mercy Seat between the two cherubim. Inside: the two stone tablets (and a jar of manna and Aaron&rsquo;s budded staff). Once a year the High Priest alone sprinkled blood on the Mercy Seat. The Ark led Israel in the wilderness, parted the Jordan, and brought down Jericho &mdash; <strong>God was fighting for them.</strong></p><p>6:1 &mdash; David chose 30,000 men to move the Ark. 6:5 &mdash; David and all Israel were celebrating <strong>with all their might</strong> before the Lord, with songs, harps, lyres, tambourines, sistrums and cymbals. Enthusiasm matters, but so does honoring God&rsquo;s instructions. The Ark ended up temporarily at the household of Obed-Edom. 6:12&ndash;14 (three months later).</p><p>David wasn&rsquo;t celebrating because everything was going his way. He was celebrating because God&rsquo;s presence was coming home.</p><p><strong>David&rsquo;s worship was expressive, but it wasn&rsquo;t aimless. His celebration had a center &mdash; and that center was God.</strong></p><p>Here&rsquo;s a 2026 clip version of what celebrating God looks like &mdash; very similar to Israel &ldquo;celebrating with all their might.&rdquo; <strong>[Video clip]</strong></p>`,
+    notes: "Ark detail from the lesson notes: the Ark sat at the epicenter of Israel’s spiritual, national, and physical lives. Hold on this slide through the 2 Samuel 6 background and the video clip.",
+  },
+  {
+    position: 4,
+    html: imageSlide("with-all-his-might", 4, "David didn’t just write about God’s greatness. He celebrated it."),
+    outline_html: `<p>What David demonstrated in his worship, the Psalms repeatedly invite God&rsquo;s people to experience: Psalms 95, 96, 99, 100, 101, 103.</p><p><strong>Psalm 149:3</strong> &mdash; &ldquo;Let them praise his name with dancing, making melody to him with tambourine and lyre!&rdquo;</p><p><strong>Psalm 150:4</strong> &mdash; &ldquo;Praise him with tambourine and dance; praise him with strings and pipe!&rdquo;</p><p><strong>David didn&rsquo;t just write about God&rsquo;s greatness. He celebrated it.</strong></p>`,
+    notes: null,
+  },
+  {
+    position: 5,
+    html: imageSlide("with-all-his-might", 5, "When we recognize God’s goodness, praise becomes a natural response."),
+    outline_html: `<p><strong>How expressive are you when you&rsquo;re truly joyful?</strong></p><p><strong>Nobody has to teach us how to celebrate something that truly matters to us.</strong> Reach a diet goal. Football team wins a big game. Your baby takes his or her first step.</p><p>Emotions can serve a good purpose. When we celebrate something good: hugs, clapping hands, raised voices, moving with joy. We naturally express what genuinely excites us &mdash; why should our joy in God be any different? Worship brings physical movement, emotion, and words together to communicate something on a new level.</p><p><strong>Some people are naturally expressive. Others are more reserved. But everyone has something to celebrate when they recognize God&rsquo;s goodness.</strong></p><p>What do you feel when you encounter God&rsquo;s goodness? Celebrate? Thankful? (How do you express it?) Would God&rsquo;s kingdom be greatly blessed if more believers worshiped like you?</p><p>If you lived in David&rsquo;s time, would you have joined the celebration? Raised hands? Played an instrument, banged a tambourine?</p><p>The measure of worship isn&rsquo;t how much we move, but how deeply our hearts are moved toward God.</p><p>Or would you have pulled him aside like Michal (2 Samuel 6:20)? Standing there watching David celebrate, would you have joined him &mdash; or questioned him?</p><p>We don&rsquo;t all express joy the same way, but we should never lose the joy we&rsquo;re expressing.</p>`,
+    notes: null,
+  },
+  {
+    position: 6,
+    html: imageSlide("with-all-his-might", 6, "Be filled with the Spirit — Ephesians 5:18–19"),
+    outline_html: `<p><strong>The NT encourages worship that comes from a Spirit-filled heart.</strong></p><p>Ephesians 5:1 &mdash; Paul uses familiar language. 5:3&ndash;7 &mdash; don&rsquo;t live in darkness. 5:8&ndash;14 &mdash; be children of light (impact the world in this way). 5:15 &mdash; be careful how you live. 5:16 &mdash; make the most of every opportunity (seize the moment for good). 5:17 &mdash; foolish vs. understanding what the Lord&rsquo;s will is. <strong>5:18 &mdash; drunk with wine vs. being filled with the Spirit.</strong></p><p>Read Ephesians 5 in the context of the Psalms &mdash; NT Christians, when they read the Scriptures, were reading the OT (the Psalms, for example).</p><p>Paul was so steeped in the rhythms of the Old Testament that when he sought to describe a life overflowing with the Holy Spirit, the language of the Psalms naturally poured onto his parchment. When Paul talked about Spirit-filled worship, he reached for language God&rsquo;s people already knew &mdash; psalms, hymns, and spiritual songs.</p>`,
+    notes: null,
+  },
+  {
+    position: 7,
+    html: imageSlide("with-all-his-might", 7, "Paul doesn’t tell believers to suppress their joy. He tells them what should fill their hearts."),
+    outline_html: `<p>The problem isn&rsquo;t celebration (that was a given). The problem is a celebration that loses sight of its purpose (drunk with wine).</p><p><strong>Paul doesn&rsquo;t tell believers to suppress their joy. He tells them what should fill their hearts.</strong></p><p><strong>The question isn&rsquo;t whether we&rsquo;re going to be moved by something. The question is what&rsquo;s moving us.</strong></p><p>David celebrated with all his might. Paul calls us to worship with Spirit-filled hearts. In both, God remains the focus.</p>`,
+    notes: null,
+  },
+  {
+    position: 8,
+    html: imageSlide("with-all-his-might", 8, "Has worship become something we do rather than something we experience?"),
+    outline_html: `<p><strong>Closing</strong></p><p><strong>[The Heart of Worship &mdash; audio clip]</strong> Comment on &ldquo;the thing we&rsquo;ve made it.&rdquo;</p><p>Has worship become something we do rather than something we experience?</p>`,
+    notes: "Play the audio clip while this is on screen.",
+  },
+  {
+    position: 9,
+    html: imageSlide("with-all-his-might", 9, "If our city worshiped with us, would our praise inspire them to celebrate God’s goodness?"),
+    outline_html: `<p>People are hungry to worship with people who clearly express in their worship that their God is awesome and that they love their Savior. (Must be convincing.)</p><p><strong>If our entire community joined us for worship next Sunday, would they leave convinced that we serve an awesome God and deeply love our Savior?</strong></p><p>Sometimes we become so focused ONLY on the way we worship. Genuine worship communicates something that words alone cannot.</p><p><strong>It&rsquo;s an undeniable voice.</strong></p>`,
+    notes: null,
+  },
+  {
+    position: 10,
+    html: imageSlide("with-all-his-might", 10, "Heaven knows how to celebrate what is good. Revelation 5:8–12"),
+    outline_html: `<p><strong>Revelation 5:6a, 8&ndash;12</strong> &mdash; heaven celebrates the worthiness of the Lamb.</p><p>Jesus tells us heaven rejoices when a sinner comes home &mdash; <strong>Luke 15:21&ndash;25</strong>.</p><p>God celebrates what is good. Heaven rejoices when the lost come home.</p>`,
+    notes: null,
+  },
+  {
+    position: 11,
+    html: imageSlide("with-all-his-might", 11, "If heaven knows how to celebrate what is good, perhaps we should rediscover the joy of celebrating it here."),
+    outline_html: `<p><strong>If heaven knows how to celebrate what is good, perhaps we should rediscover the joy of celebrating it here.</strong></p>`,
+    notes: "Leave up through the invitation.",
+  },
+];
+
 type SeedDeckWithNotes = Deck & { slidesWithNotes: SlideWithNotes[] };
 
 function buildDeck(
@@ -1199,6 +1337,7 @@ export const seedDecks: SeedDeckWithNotes[] = [
   buildDeck("seed-deck-5", "knowledge", "Knowledge", null, theKnowledgeSlides),
   buildDeck("seed-deck-6", "the-jesus-test", "The Jesus Test", "the-jesus-test", theJesusTestSlides),
   buildDeck("seed-deck-7", "ask-better-questions", "Ask Better Questions", "ask-better-questions", askBetterQuestionsSlides),
+  buildDeck("seed-deck-8", "with-all-his-might", "With All His Might", "with-all-his-might", withAllHisMightSlides),
 ];
 
 export function findSeedDeck(slug: string): Deck | null {
