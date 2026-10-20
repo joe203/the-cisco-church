@@ -255,19 +255,63 @@ const askBetterQuestions: SermonDetail = {
   scripture_text: "“The heart of the discerning acquires knowledge, for the ears of the wise seek it out.”",
   sermon_date: "2026-10-11",
   artwork_url: "/sermons/ask-better-questions/artwork.jpg",
-  summary: null,
+  summary:
+    "Kids go through a phase of asking why, how, and what — and somewhere along the way many of us stop. But much of what we enjoy exists because someone before us dared to ask a better question: penicillin, gravity, relativity. Proverbs 18:15 says the heart of the discerning acquires knowledge, and the ears of the wise seek it out. The posture of wisdom is not “Let me find what is wrong with this,” but “Let me understand this better.” The Bereans of Acts 17:11 were open enough to listen and grounded enough to examine, and Scripture calls them noble for it. A faith that welcomes questions isn’t weaker. Ask better questions, ask deeper questions, seek to understand — because questions lead to conversations, to investigating, to sharing, and someone in the kingdom gets blessed.",
   youtube_url: null,
   podcast_url: null,
   guide_url: null,
   pdf_url: null,
-  nuggets: [],
-  guide_questions: [],
+  nuggets: [
+    "Wisdom is curious before it is critical.",
+    "The posture of wisdom is not, “Let me find what is wrong with this.” It is, “Let me understand this better.”",
+    "They were open enough to listen and grounded enough to examine.",
+    "A faith that welcomes questions isn’t weaker.",
+  ],
+  guide_questions: [
+    "Think of a question someone once asked you — a child, a teacher, a friend — that changed how you saw something. What made it a better question than the ones you’d been asking?",
+    "Read Proverbs 18:15. When you meet an idea or a teaching that is unfamiliar, which comes first for you: “Let me find what is wrong with this,” or “Let me understand this better”? What shapes that reaction?",
+    "Read Matthew 6:33. What are you actively seeking right now? How is seeking different from being critical?",
+    "Read Acts 17:10–12. The Bereans were open enough to listen and grounded enough to examine. Which of those two comes more naturally to you, and which takes more effort?",
+    "Is there a question about your faith — or about something you’ve always simply assumed — that you have been hesitant to ask out loud? Who could you ask?",
+    "Ask better questions. Ask deeper questions. Seek to understand. Which one will you practice this week, and with whom could that become a conversation?",
+  ],
   series: holdSeries,
   lesson_number: 2,
   is_featured: false,
-  deck_slug: null,
+  deck_slug: "ask-better-questions",
   speaker: joe,
-  points: [],
+  points: [
+    {
+      position: 1,
+      title: "Aren’t You Glad Someone Asked a Better Question?",
+      label: "Curiosity",
+      body: "Kids go through a phase of asking why, how, what. And much of what we enjoy exists because someone dared to ask a better question. Alexander Fleming noticed that mold had killed bacteria in one of his cultures and, instead of discarding it, investigated — penicillin. Isaac Newton wondered why an apple always fell straight toward the Earth — the start of gravity. Albert Einstein imagined traveling alongside a beam of light and questioned the assumptions about space and time.",
+    },
+    {
+      position: 2,
+      title: "Wisdom Is Curious Before It Is Critical",
+      label: "Proverbs 18:15",
+      body: "The posture of wisdom is not, “Let me find what is wrong with this.” It is, “Let me understand this better.” Wisdom begins by asking, “What can I learn?”",
+    },
+    {
+      position: 3,
+      title: "Seeking Is Not the Same as Criticizing",
+      label: "Matthew 6:33",
+      body: "Jesus says to seek first the kingdom of God. The Spanish word is buscar — to go looking, the way you go to the tool shed for the garden hoe or look for presents under the tree. Seeking goes looking for something good to find; being critical goes looking for what’s wrong.",
+    },
+    {
+      position: 4,
+      title: "The Bereans: Open Enough to Listen, Grounded Enough to Examine",
+      label: "Acts 17:11",
+      body: "They received the message with great eagerness and examined the Scriptures every day to see if what Paul said was true. Questioning the preacher was called noble, and nobody in that church got lectured for asking. These Jews stood out because other Jews were not like this. A faith that welcomes questions isn’t weaker — it’s Berean.",
+    },
+    {
+      position: 5,
+      title: "Questions Lead Somewhere",
+      label: "Your Turn",
+      body: "Ask better questions. Ask deeper questions. Seek to understand. Questions lead to conversations, to investigating, to sharing — and someone in the kingdom gets blessed.",
+    },
+  ],
 };
 
 /** Placeholder lessons: title + date only, so the series shows its whole run. */
@@ -1042,6 +1086,80 @@ const theJesusTestSlides: SeedSlideInput[] = [
   },
 ];
 
+/**
+ * Ask Better Questions (Lesson 2) — Joe's finished 16:9 slide images, served
+ * from public/sermons/ask-better-questions/slides/NN.jpg. Slide 01 is the
+ * series title; the outline text on each slide is Joe's own notes.
+ */
+const askBetterQuestionsSlides: SeedSlideInput[] = [
+  {
+    position: 1,
+    html: imageSlide("ask-better-questions", 1, "Hold On to What Is Good — Open to every good gift. Anchored in Christ."),
+    outline_html: `<p><strong>Slide &mdash; We are in a series, Hold On To What Is Good.</strong></p>`,
+    notes: "Series title.",
+  },
+  {
+    position: 2,
+    html: imageSlide("ask-better-questions", 2, "1 Thessalonians 5:21–22 (ESV) — but test everything; hold fast what is good. Abstain from every form of evil."),
+    outline_html: `<p><strong>Slide &mdash; 1 Thessalonians 5:21</strong></p>`,
+    notes: null,
+  },
+  {
+    position: 3,
+    html: imageSlide("ask-better-questions", 3, "Lesson 2 — Ask Better Questions"),
+    outline_html: `<p><strong>Slide &mdash; Today&rsquo;s lesson, Ask Better Questions.</strong></p><p>Kids go through a phase and ask why, how, what&hellip;</p><p>Marriage &mdash; you asked the right questions and she married you.</p><p>Aren&rsquo;t you glad that someone before you asked better questions? Holidays, more dessert choices. Transportation &mdash; is there something better than a wagon, from cars to cars with A/C.</p><p><strong>History &mdash; we enjoy wonderful things because others dared to ask better questions:</strong></p><p><strong>1. Alexander Fleming</strong> &mdash; penicillin (1928). Noticed that mold had killed bacteria in one of his cultures. Instead of simply discarding the sample, <strong>he investigated</strong> what had happened.</p><p><strong>2. Isaac Newton</strong> &mdash; gravity. Sat in the garden of his family home and saw an apple fall straight down, rather than sideways or up. Wondered why it always fell toward the Earth&rsquo;s center &mdash; the start of his law of universal gravitation.</p><p><strong>3. Albert Einstein</strong> &mdash; relativity (1905). Explored questions about light, motion, space, and time. Imagined <strong>what it would be like</strong> to travel alongside a beam of light. His willingness to <strong>question established assumptions</strong> helped transform physics.</p><p>Is there something to be learned by asking a better question?</p>`,
+    notes: "Hold on the title through the opening stories and the three examples.",
+  },
+  {
+    position: 4,
+    html: imageSlide("ask-better-questions", 4, "Proverbs 18:15 (ESV) — An intelligent heart acquires knowledge, and the ear of the wise seeks knowledge."),
+    outline_html: `<p><strong>Slide &mdash; Proverbs 18:15 says it beautifully:</strong></p><p><em>&ldquo;The heart of the discerning acquires knowledge, for the ears of the wise seek it out.&rdquo;</em> (NIV)</p>`,
+    notes: "Notes are the NIV; the slide is the ESV.",
+  },
+  {
+    position: 5,
+    html: imageSlide("ask-better-questions", 5, "The posture of wisdom is, “Let me understand this better.”"),
+    outline_html: `<p>The posture of wisdom is not, <em>&ldquo;Let me find what is wrong with this.&rdquo;</em></p><p><strong>It is, &ldquo;Let me understand this better.&rdquo;</strong></p><p>Wisdom is <strong>curious</strong> before it is critical.</p><p>Wisdom <strong>begins</strong> by asking, &ldquo;What can I learn?&rdquo;</p><p><strong>There&rsquo;s a difference between being critical vs seeking.</strong></p><p>Matthew 6:33 &mdash; Seek first the Kingdom of God. In Spanish, &ldquo;buscar.&rdquo;</p><p>Illustration: my dad told me to go get the garden hoe from the tool shed.</p><p>Illustration: Christmas presents under the tree, Ofilia.</p>`,
+    notes: null,
+  },
+  {
+    position: 6,
+    html: imageSlide("ask-better-questions", 6, "Acts 17:11 (ESV) — Now these Jews were more noble than those in Thessalonica; they received the word with all eagerness, examining the Scriptures daily to see if these things were so."),
+    outline_html: `<p><strong>Acts 17:11 &mdash; The Bereans</strong></p><p>They &ldquo;received the message with great eagerness and examined the Scriptures every day to see if what Paul said was true.&rdquo;</p><p>They were <strong>open enough to listen</strong> and <strong>grounded enough to examine</strong>.</p><p>&ldquo;Questioning the preacher was called noble.&rdquo;</p><p>Nobody in that church got lectured for asking.</p>`,
+    notes: "These Jews stood out because other Jews were not like this.",
+  },
+  {
+    position: 7,
+    html: imageSlide("ask-better-questions", 7, "A faith that welcomes questions isn’t weaker."),
+    outline_html: `<p><strong>A faith that welcomes questions isn&rsquo;t weaker.</strong> (It&rsquo;s Berean.) Being informed!</p><p>These Jews stood out because other Jews were not like this.</p><p><strong>What team would you pick?</strong></p><p>Is this a practice that you incorporate in your spiritual journey? Ask better questions &middot; ask deeper questions &middot; seek to understand.</p><p>Questions lead to <strong>conversations</strong>, to <strong>investigating</strong>, to <strong>sharing</strong>.</p><p>Someone in the kingdom gets blessed.</p>`,
+    notes: null,
+  },
+  {
+    position: 8,
+    html: imageSlide("ask-better-questions", 8, "God Came Near — Max Lucado"),
+    outline_html: `<p><strong>God Came Near</strong> by Max Lucado</p>`,
+    notes: null,
+  },
+  {
+    position: 9,
+    html: imageSlide("ask-better-questions", 9, "It — Craig Groeschel"),
+    outline_html: `<p><strong>It</strong> by Craig Groeschel</p>`,
+    notes: null,
+  },
+  {
+    position: 10,
+    html: imageSlide("ask-better-questions", 10, "Life On Purpose — Jeff Little, Milestone Church"),
+    outline_html: `<p><strong>Life On Purpose</strong> by Jeff Little</p>`,
+    notes: null,
+  },
+  {
+    position: 11,
+    html: imageSlide("ask-better-questions", 11, "Life On Purpose, a study in Colossians — seven weeks"),
+    outline_html: `<p>Life On Purpose &mdash; a study in Colossians, seven weeks: Christ in You &middot; Your Thinking &middot; Your Relationships &middot; Your Peace &middot; Your Family &middot; Your Work &middot; Make the Most of Every Opportunity.</p>`,
+    notes: null,
+  },
+];
+
 type SeedDeckWithNotes = Deck & { slidesWithNotes: SlideWithNotes[] };
 
 function buildDeck(
@@ -1080,6 +1198,7 @@ export const seedDecks: SeedDeckWithNotes[] = [
   buildDeck("seed-deck-4", "the-obvious", "The Obvious", null, theObviousSlides),
   buildDeck("seed-deck-5", "knowledge", "Knowledge", null, theKnowledgeSlides),
   buildDeck("seed-deck-6", "the-jesus-test", "The Jesus Test", "the-jesus-test", theJesusTestSlides),
+  buildDeck("seed-deck-7", "ask-better-questions", "Ask Better Questions", "ask-better-questions", askBetterQuestionsSlides),
 ];
 
 export function findSeedDeck(slug: string): Deck | null {

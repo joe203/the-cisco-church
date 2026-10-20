@@ -117,6 +117,11 @@ async function piecesFor(sermon: SermonDetail): Promise<Piece[]> {
   return pieceOrder.flatMap((kind) => found.filter((p): p is Piece => p?.kind === kind));
 }
 
+/** The printable pieces that exist for one sermon (for its own page). */
+export async function getSermonPieces(sermon: SermonDetail): Promise<Piece[]> {
+  return piecesFor(sermon);
+}
+
 /** Every sermon that has at least one download, newest first. */
 export async function getSermonDownloads(): Promise<SermonDownloads[]> {
   const list = await getSermonList();

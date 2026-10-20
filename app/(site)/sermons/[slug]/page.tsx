@@ -5,8 +5,9 @@ import { DeckViewer } from "@/components/sermons/DeckViewer";
 import { SeriesStrip } from "@/components/sermons/SeriesStrip";
 import { SermonArtwork } from "@/components/sermons/SermonArtwork";
 import { getDeck, getSeriesLessons, getSermonDetail } from "@/lib/data";
+import { getSermonPieces, pieceMeta, type Piece } from "@/lib/downloads";
 import { formatDate } from "@/lib/format";
-import { isAnnounced, seriesLabel } from "@/lib/series";
+import { isAnnounced, seriesLabel, todayInCisco } from "@/lib/series";
 import type { SermonDetail } from "@/lib/types";
 
 export const revalidate = 300;
@@ -39,12 +40,12 @@ export async function generateMetadata({
   };
 }
 
-function buildResources(sermon: SermonDetail) {
+function buildResources(sermon: SermonDetail, pieces: Piece[]) {
   return [
-    { url: sermon.podcast_url, action: "Listen", detail: "Audio of this lesson" },
-    { url: sermon.guide_url, action: "Preview", detail: "Reflection guide" },
-    { url: sermon.pdf_url, action: "Download", detail: "Slides as PDF" },
     { url: sermon.youtube_url, action: "Watch", detail: "On YouTube" },
+    { url: sermon.podcast_url, action: "Listen", detail: "Audio of this lesson" },
+    ...pieces.map((piece) => ({ url: piece.url, action: pieceMeta[piece.kind].label, detail: "PDF · print or save" })),
+    { url: sermon.pdf_url, action: "Slides", detail: "Slides as PDF" },
   ].filter((r): r is { url: string; action: string; detail: string } => Boolean(r.url));
 }
 
@@ -56,7 +57,8 @@ export default async function SermonPage({ params }: { params: Promise<Params> }
   const lessons = sermon.series ? await getSeriesLessons(sermon.series.slug) : [];
   const tagline = sermon.thesis ?? sermon.series?.tagline ?? null;
   const deck = sermon.deck_slug ? await getDeck(sermon.deck_slug) : null;
-  const resources = buildResources(sermon);
+  const upcoming = sermon.sermon_date > todayInCisco();
+  const resources = buildResources(sermon, await getSermonPieces(sermon));
   const speaker = sermon.speaker;
 
   return (
@@ -183,10 +185,18 @@ export default async function SermonPage({ params }: { params: Promise<Params> }
             </div>
           ) : (
             <p className="reveal mt-6 max-w-[50ch] text-[1rem] text-white/65">
-              The guide, audio, and video for this lesson are being prepared —
-              check back after Sunday.
+              {upcoming
+                ? "The guide and handouts will be posted here after Sunday."
+                : "The guide, handouts, and recording will be posted here as soon as they are ready."}
             </p>
           )}
+          <p className="reveal mt-8 text-[0.95rem] text-white/65">
+            Every lesson’s handouts are on the{" "}
+            <Link href="/downloads" className="link-under font-semibold text-marigold">
+              Downloads page
+            </Link>
+            .
+          </p>
         </div>
       </section>
 
