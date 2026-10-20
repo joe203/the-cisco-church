@@ -15,7 +15,7 @@ update cisco.cisco_sermons set
   guide_questions = array[
   'Think of a question someone once asked you — a child, a teacher, a friend — that changed how you saw something. What made it a better question than the ones you’d been asking?',
   'Read Proverbs 18:15. When you meet an idea or a teaching that is unfamiliar, which comes first for you: “Let me find what is wrong with this,” or “Let me understand this better”? What shapes that reaction?',
-  'Read Matthew 6:33. What are you actively seeking right now? How is seeking different from being critical?',
+  'Read Matthew 6:33. Think of a time you wanted something so much that you kept looking until you found it. How strong is that wanting when it comes to seeking God’s kingdom first?',
   'Read Acts 17:10–12. The Bereans were open enough to listen and grounded enough to examine. Which of those two comes more naturally to you, and which takes more effort?',
   'Is there a question about your faith — or about something you’ve always simply assumed — that you have been hesitant to ask out loud? Who could you ask?',
   'Ask better questions. Ask deeper questions. Seek to understand. Which one will you practice this week, and with whom could that become a conversation?'
@@ -28,8 +28,8 @@ values
    'Kids go through a phase of asking why, how, what. And much of what we enjoy exists because someone dared to ask a better question. Alexander Fleming noticed that mold had killed bacteria in one of his cultures and, instead of discarding it, investigated — penicillin. Isaac Newton wondered why an apple always fell straight toward the Earth — the start of gravity. Albert Einstein imagined traveling alongside a beam of light and questioned the assumptions about space and time.'),
   ('b1000000-0000-4000-8000-000000000004', 2, 'Wisdom Is Curious Before It Is Critical', 'Proverbs 18:15',
    'The posture of wisdom is not, “Let me find what is wrong with this.” It is, “Let me understand this better.” Wisdom begins by asking, “What can I learn?”'),
-  ('b1000000-0000-4000-8000-000000000004', 3, 'Seeking Is Not the Same as Criticizing', 'Matthew 6:33',
-   'Jesus says to seek first the kingdom of God. The Spanish word is buscar — to go looking, the way you go to the tool shed for the garden hoe or look for presents under the tree. Seeking goes looking for something good to find; being critical goes looking for what’s wrong.'),
+  ('b1000000-0000-4000-8000-000000000004', 3, 'People Find What They Really Seek', 'Matthew 6:33',
+   'Jesus says to seek first the kingdom of God. The Spanish word is buscar — not a casual glance, but really going after something because you want to find it. When Dad sent me to the tool shed for the garden hoe, I wasn’t motivated. I didn’t want to pull weeds, so I wasn’t likely to find it. My sister was different with the Christmas presents. She wanted so badly to know what was inside that she kept looking until she found out. The difference wasn’t the searching — it was the wanting. Whoever really wants to find something seeks it out, and finds it. A person who wants to seek first the kingdom will find it. God will make sure of that.'),
   ('b1000000-0000-4000-8000-000000000004', 4, 'The Bereans: Open Enough to Listen, Grounded Enough to Examine', 'Acts 17:11',
    'They received the message with great eagerness and examined the Scriptures every day to see if what Paul said was true. Questioning the preacher was called noble, and nobody in that church got lectured for asking. These Jews stood out because other Jews were not like this. A faith that welcomes questions isn’t weaker — it’s Berean.'),
   ('b1000000-0000-4000-8000-000000000004', 5, 'Questions Lead Somewhere', 'Your Turn',

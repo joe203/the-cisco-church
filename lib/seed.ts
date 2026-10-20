@@ -270,7 +270,7 @@ const askBetterQuestions: SermonDetail = {
   guide_questions: [
     "Think of a question someone once asked you — a child, a teacher, a friend — that changed how you saw something. What made it a better question than the ones you’d been asking?",
     "Read Proverbs 18:15. When you meet an idea or a teaching that is unfamiliar, which comes first for you: “Let me find what is wrong with this,” or “Let me understand this better”? What shapes that reaction?",
-    "Read Matthew 6:33. What are you actively seeking right now? How is seeking different from being critical?",
+    "Read Matthew 6:33. Think of a time you wanted something so much that you kept looking until you found it. How strong is that wanting when it comes to seeking God’s kingdom first?",
     "Read Acts 17:10–12. The Bereans were open enough to listen and grounded enough to examine. Which of those two comes more naturally to you, and which takes more effort?",
     "Is there a question about your faith — or about something you’ve always simply assumed — that you have been hesitant to ask out loud? Who could you ask?",
     "Ask better questions. Ask deeper questions. Seek to understand. Which one will you practice this week, and with whom could that become a conversation?",
@@ -295,9 +295,9 @@ const askBetterQuestions: SermonDetail = {
     },
     {
       position: 3,
-      title: "Seeking Is Not the Same as Criticizing",
+      title: "People Find What They Really Seek",
       label: "Matthew 6:33",
-      body: "Jesus says to seek first the kingdom of God. The Spanish word is buscar — to go looking, the way you go to the tool shed for the garden hoe or look for presents under the tree. Seeking goes looking for something good to find; being critical goes looking for what’s wrong.",
+      body: "Jesus says to seek first the kingdom of God. The Spanish word is buscar — not a casual glance, but really going after something because you want to find it. When Dad sent me to the tool shed for the garden hoe, I wasn’t motivated. I didn’t want to pull weeds, so I wasn’t likely to find it. My sister was different with the Christmas presents. She wanted so badly to know what was inside that she kept looking until she found out. The difference wasn’t the searching — it was the wanting. Whoever really wants to find something seeks it out, and finds it. A person who wants to seek first the kingdom will find it. God will make sure of that.",
     },
     {
       position: 4,
@@ -1119,7 +1119,7 @@ const askBetterQuestionsSlides: SeedSlideInput[] = [
   {
     position: 5,
     html: imageSlide("ask-better-questions", 5, "The posture of wisdom is, “Let me understand this better.”"),
-    outline_html: `<p>The posture of wisdom is not, <em>&ldquo;Let me find what is wrong with this.&rdquo;</em></p><p><strong>It is, &ldquo;Let me understand this better.&rdquo;</strong></p><p>Wisdom is <strong>curious</strong> before it is critical.</p><p>Wisdom <strong>begins</strong> by asking, &ldquo;What can I learn?&rdquo;</p><p><strong>There&rsquo;s a difference between being critical vs seeking.</strong></p><p>Matthew 6:33 &mdash; Seek first the Kingdom of God. In Spanish, &ldquo;buscar.&rdquo;</p><p>Illustration: my dad told me to go get the garden hoe from the tool shed.</p><p>Illustration: Christmas presents under the tree, Ofilia.</p>`,
+    outline_html: `<p>The posture of wisdom is not, <em>&ldquo;Let me find what is wrong with this.&rdquo;</em></p><p><strong>It is, &ldquo;Let me understand this better.&rdquo;</strong></p><p>Wisdom is <strong>curious</strong> before it is critical.</p><p>Wisdom <strong>begins</strong> by asking, &ldquo;What can I learn?&rdquo;</p><p><strong>There&rsquo;s a difference between being critical vs seeking.</strong></p><p>Matthew 6:33 &mdash; Seek first the Kingdom of God. In Spanish, &ldquo;buscar.&rdquo;</p><p>Illustration: my dad told me to go get the garden hoe from the tool shed &mdash; not motivated, not likely to find it.</p><p>Illustration: Christmas presents under the tree, Ofilia &mdash; so motivated she kept looking until she found out what was inside.</p><p><strong>Whoever really wants to find something seeks it out, and finds it. Seek first the kingdom &mdash; God will make sure you find it.</strong></p>`,
     notes: null,
   },
   {
