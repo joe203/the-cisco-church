@@ -207,7 +207,7 @@ const theJesusTest: SermonDetail = {
   series: holdSeries,
   lesson_number: 1,
   is_featured: false,
-  deck_slug: null,
+  deck_slug: "the-jesus-test",
   speaker: joe,
   points: [
     {
@@ -967,6 +967,81 @@ const theKnowledgeSlides: SeedSlideInput[] = [
   },
 ];
 
+/**
+ * The Jesus Test (Lesson 1) — Joe's finished slide images, served from
+ * public/sermons/the-jesus-test/slides/NN.jpg, where NN is Joe's slide number
+ * from his manuscript.
+ * 4:3 slides are fitted whole inside the 16:9 frame (soft blurred fill at the sides).
+ */
+const theJesusTestSlides: SeedSlideInput[] = [
+  {
+    position: 1,
+    html: imageSlide("the-jesus-test", 1, "Hold On to What Is Good — Open to every good gift. Anchored in Christ."),
+    outline_html: `<p><strong>Hold On to What Is Good</strong></p><p>Video: &ldquo;God Is Speaking&rdquo; by Joseph The Dreamer. God&rsquo;s voice is everywhere &mdash; the noise drowns it out.</p><p>God is still speaking. God is still reaching. God is still working in unexpected places and unexpected people.</p><p><strong>God&rsquo;s voice is not the only voice we hear.</strong></p><p>Series: Oct 11 Ask Better Questions &middot; Oct 18 With All His Might &middot; Oct 25 Hope For The Family.</p><p>This month is about learning to recognize what is good &mdash; another tradition, teacher, song, book, conversation, even someone we strongly disagree with. We don&rsquo;t have to endorse everything to recognize something true.</p><p>Two extremes: accept everything, reject everything. Neither requires discernment.</p>`,
+    notes: "Title. Hold through the opening video and the series introduction. Weekly reminder: anything mentioned this month is offered to learn from and evaluate, not as a blanket endorsement.",
+  },
+  {
+    position: 2,
+    html: imageSlide("the-jesus-test", 2, "System — How can I reach God?"),
+    outline_html: `<p><strong>System &mdash; &ldquo;How can I reach God?&rdquo;</strong></p><p>Every culture asks the same questions: Who is God? Why am I here? What is wrong with us? What happens when I die? How do I get to God?</p><p>The answers have produced systems: meditation, discipline, ritual, pilgrimage, prescribed prayers, moral achievement, enlightenment, self-improvement. Not mocking any of them. People are searching.</p><p>Three out of four people on earth identify with some religion. The search is as alive as it was in Athens.</p><p><strong>SYSTEM asks: What must I do to reach God? The Gospel asks: What has God done to reach me?</strong></p>`,
+    notes: "Pew Research Center, June 2025 (world figures for 2020): Christians 2.3 billion (28.8%), Muslims 2.0 billion (25.6%), no religion 1.9 billion (24.2%), Hindus 1.2 billion (14.9%), Buddhists 324 million (4.1%), Jews 14.8 million (0.2%). Muslims grew fastest, mostly through births; the unaffiliated grew 270 million and this one is switching — for every adult who joined a religion, 3.2 left one. Christians grew 5.6%; share slipped from 30.6% to 28.8%. In 2020, 30.7% of Christians lived in sub-Saharan Africa. Say the year if you quote a number.",
+  },
+  {
+    position: 3,
+    html: imageSlide("the-jesus-test", 3, "Savior — God is coming to us. John 1:14"),
+    outline_html: `<p><strong>Savior &mdash; &ldquo;God is coming to us.&rdquo;</strong></p><p>John 1:14 &mdash; The Word became flesh and made his dwelling among us.</p><p>Religion often begins with humanity reaching upward. The Gospel begins with God reaching downward.</p><p>Ephesians 2:8&ndash;9. Obedience still matters &mdash; but our response did not create God&rsquo;s grace.</p><p>Philippians 2:5&ndash;8. Jesus came down, became a servant, humbled himself, went to the cross.</p><p><strong>At the center of Christianity is not a man climbing a throne. It is God stepping down from one.</strong></p><p>Not merely: Do you admire Jesus? But: Who is Jesus? Hold that thought.</p><p>Jesus didn&rsquo;t enter a world where everybody believed the same thing. Neither did Abraham, Moses, Daniel, or Paul.</p>`,
+    notes: null,
+  },
+  {
+    position: 4,
+    html: imageSlide("the-jesus-test", 4, "The voices have changed. The challenge has not."),
+    outline_html: `<p><strong>The voices have changed. The challenge has not.</strong></p><p>Move quickly through Bible history:</p><p><strong>Abraham</strong> &mdash; called out of a world of other gods; had to decide which voice to trust.</p><p><strong>Moses / Israel</strong> &mdash; Egypt, Pharaoh, Egyptian gods; later Canaanite gods.</p><p><strong>Daniel</strong> &mdash; Babylon: new culture, new gods, new values, pressure to conform.</p><p><strong>Jesus</strong> &mdash; Pharisees, Sadducees, Roman culture, competing interpretations of faithfulness.</p><p><strong>Paul</strong> &mdash; walks into Athens.</p><p><strong>God&rsquo;s people have never lived without competing voices.</strong></p><p>Every generation has to decide which voice it will trust. The names change. The cultures change. The technology changes. The challenge doesn&rsquo;t.</p><p>Acts 17:16 &mdash; Athens was &ldquo;full of idols,&rdquo; full of philosophers, full of religious ideas. Acts 17:21 &mdash; they spent their time &ldquo;talking about and listening to the latest ideas.&rdquo; Sounds familiar.</p><p><strong>Athens had more gods than anyone could count and more ideas than anyone could absorb.</strong></p><p>What does Paul do?</p>`,
+    notes: "Luke’s word for “full of idols” (kateidolos) appears nowhere else in classical Greek. Busts of Hermes stood “at every corner,” and the Acropolis was crowned with temples and a giant bronze Athena; by Paul’s day Athens lived on as a university town and a museum to its past. Two rival philosophies argued with Paul in the marketplace: Epicureans (pursue pleasure and peace of mind; the gods stay out of it) and Stoics (reason and fate govern everything). Different answers to the same big questions — slide 02 all over again.",
+  },
+  {
+    position: 5,
+    html: imageSlide("the-jesus-test", 5, "Paul didn’t run from the voices. He brought Jesus into the conversation."),
+    outline_html: `<p><strong>Paul didn&rsquo;t run from the voices. He brought Jesus into the conversation.</strong></p><p>Acts 17 &mdash; very important to the whole series. Paul is greatly distressed by the idols (17:16): he has convictions. But he doesn&rsquo;t run &mdash; he reasons daily in the synagogue and the marketplace (17:17).</p><p>He observes. He listens. He reasons. He engages. &ldquo;I see that in every way you are very religious.&rdquo; He notices the altar: TO AN UNKNOWN GOD (17:22&ndash;23).</p><p>He quotes their poets: &ldquo;We are his offspring&rdquo; (17:28).</p><p><strong>Paul could recognize truth in their culture without accepting everything their culture believed.</strong></p><p>Paul&rsquo;s pattern: listened &middot; recognized &middot; tested &middot; redirected &mdash; and brought it to Jesus and the resurrection (17:30&ndash;31).</p><p>The results were mixed (17:32&ndash;34): some sneered, some wanted to hear more, a few believed &mdash; Dionysius and Damaris.</p><p>Athens had its voices. We have ours.</p>`,
+    notes: "Scholars trace “We are his offspring” to the Greek poets Aratus or Cleanthes. Paul didn’t need everyone to agree to have done the right thing.",
+  },
+  {
+    position: 6,
+    html: imageSlide("the-jesus-test", 6, "The challenge isn’t finding a voice. It’s knowing which voices to trust."),
+    outline_html: `<p><strong>The challenge isn&rsquo;t finding a voice. It&rsquo;s knowing which voices to trust.</strong></p><p>Our Athens fits in our pocket: YouTube, Facebook, TikTok, podcasts, television, politics, preachers, churches, teachers, influencers, algorithms.</p><p>We don&rsquo;t suffer from lack of information. We suffer from an abundance of voices &mdash; and they&rsquo;re at home, not only overseas.</p><p><strong>The problem isn&rsquo;t that the world has nothing to say about God. The problem may be that the world has so much to say about God.</strong></p><p>Wrong people sometimes say true things. Good people sometimes say wrong things. Deciding WHO we listen to isn&rsquo;t enough &mdash; we have to learn HOW to listen.</p><p>Sometimes we draw the circle very tightly: &ldquo;Church of Christ? One of us?&rdquo; The New Testament gives us a deeper center. Tradition, culture, my experience, my opinion, even a respected teacher can&rsquo;t be the center. Something has to stay fixed.</p>`,
+    notes: "Pew Religious Landscape Study 2023–24: Christians 62% of U.S. adults, unaffiliated 29%; non-Christian faiths 4.7% (2007) to 7.1% — small, don’t overstate. The bigger shift is mix-and-match spirituality: 2018 Pew, about six in ten American adults hold at least one “New Age” belief, common among churchgoers too. Yet 83% still believe in God or a universal spirit. Spiritual hunger, not only unbelief.",
+  },
+  {
+    position: 7,
+    html: imageSlide("the-jesus-test", 7, "Jesus must remain at the center — 1 John 4:2"),
+    outline_html: `<p><strong>Jesus must remain at the center.</strong></p><p>1 John 4:1&ndash;3 &mdash; &ldquo;Every spirit that acknowledges that Jesus Christ has come in the flesh is from God.&rdquo;</p><p>John does NOT say, believe every voice. He doesn&rsquo;t say, be afraid of every voice. He says: TEST.</p><p>The Jesus Test: What does this teaching do with Jesus? Not &ldquo;do they mention Jesus?&rdquo; Not &ldquo;do they admire Jesus?&rdquo;</p><p><strong>The Jesus Test isn&rsquo;t, &ldquo;Do you admire Jesus?&rdquo; The question is, &ldquo;Who is Jesus?&rdquo;</strong></p><p>1 Corinthians 15:3&ndash;4 &mdash; of first importance: Christ died for our sins, was buried, was raised. Scripture itself recognizes a center.</p><p>Three questions when I hear something: What does it say about Jesus? Does it lead me toward following Jesus? Does it line up with what Jesus taught?</p><p>Tradition, culture, teachers, experience, opinions, religion &mdash; all of it gets brought back to Jesus. Once he is secure at the center, maybe I don&rsquo;t have to be so frightened of listening.</p>`,
+    notes: "“Spirits” = the inspiration behind prophets and teachers; the error John faced denied Jesus truly came as a human being (the letter never names it — say it that way). “Has come in the flesh” is perfect tense: his real humanity, death, and resurrection. 1 John 4:15 widens the door. Bede: confession is “not by tongue but by deeds, not by sounding but by loving.”",
+  },
+  {
+    position: 8,
+    html: imageSlide("the-jesus-test", 8, "How do we remain open without becoming critical?"),
+    outline_html: `<p><strong>How do we remain open without becoming critical?</strong></p><p>One of the big questions of this whole series.</p><p>Two dangers: CLOSED &mdash; &ldquo;I already know they&rsquo;re wrong.&rdquo; CRITICAL &mdash; &ldquo;I am listening mainly to find what&rsquo;s wrong.&rdquo; Neither is discernment.</p><p><strong>A critical spirit listens for what to reject. A discerning spirit listens carefully enough to recognize what is true.</strong></p><p>Can I listen to someone I disagree with? Can I hear one true thing without endorsing everything? Paul did. Can I recognize God&rsquo;s truth somewhere I didn&rsquo;t expect to find it?</p><p>Being open doesn&rsquo;t mean being gullible. Being discerning doesn&rsquo;t mean being suspicious. We need both openness and an anchor.</p>`,
+    notes: null,
+  },
+  {
+    position: 9,
+    html: imageSlide("the-jesus-test", 9, "Test it. Keep what is good. Leave what isn’t. — 1 Thessalonians 5:21–22"),
+    outline_html: `<p><strong>Test it. Keep what is good. Leave what isn&rsquo;t.</strong></p><p>1 Thessalonians 5:19&ndash;22. Paul is specifically talking about prophecy &mdash; don&rsquo;t stretch the text without saying so. He doesn&rsquo;t say believe it all; he doesn&rsquo;t say shut it all down. He says: TEST IT.</p><p>Picture testing metal: not destroying it, not accepting it because it shines &mdash; examining it to discover what it really is.</p><p>TEST IT &mdash; is it true? does it agree with Christ? what fruit does it produce? KEEP WHAT IS GOOD &mdash; don&rsquo;t throw away truth because of where you found it. LEAVE WHAT ISN&rsquo;T &mdash; I don&rsquo;t have to swallow the whole package.</p><p><strong>You don&rsquo;t have to accept everything someone says in order to receive something good from them.</strong></p><p>Truth doesn&rsquo;t become false because it came from somebody outside our circle.</p>`,
+    notes: null,
+  },
+  {
+    position: 10,
+    html: imageSlide("the-jesus-test", 10, "Discernment isn’t about finding something to reject. It’s about recognizing what is good."),
+    outline_html: `<p><strong>Discernment isn&rsquo;t about finding something to reject. It&rsquo;s about recognizing what is good.</strong></p><p>Paul didn&rsquo;t merely say reject what is evil. He first said: hold on to what is GOOD.</p><p>Widen the circle: Christians outside our tradition, songs, books, churches doing things we could learn from, people who disagree with us who still see something we&rsquo;ve missed.</p><p><strong>We don&rsquo;t have to surrender our convictions in order to listen. And we don&rsquo;t have to reject a person in order to disagree with them.</strong></p><p>Friends in the faith: start with what we share, be honest about where we disagree, keep studying together. Embrace the greater. Talk through the lesser. Jesus belongs at the center.</p><p><strong>Closing story &mdash; Chaplain Emil Kapaun, Korea, 1950&ndash;51.</strong></p><p>Army chaplain from a Kansas farm town. Unsan, Nov 1&ndash;2, 1950: moved under fire to comfort the wounded, refused to escape, stayed with the men who couldn&rsquo;t walk; captured. In the Pyoktong camp he foraged for food, boiled clean water, washed clothes, cleansed wounds, led prayer at night.</p><p>Easter 1951: purple stole, led dozens of prisoners to the ruins of an old church &mdash; &ldquo;men of different faith, perhaps some men of no faith &mdash; sang the Lord&rsquo;s Prayer.&rdquo; Died May 23, 1951: &ldquo;I&rsquo;m going where I&rsquo;ve always wanted to go.&rdquo; Blessed the guards: &ldquo;Forgive them, for they know not what they do.&rdquo; Medal of Honor, April 11, 2013.</p><p><strong>When everything else is stripped away, what&rsquo;s left is Jesus. That&rsquo;s the center. That&rsquo;s where we test from.</strong></p><p>SYSTEM &mdash; &ldquo;How can I reach God?&rdquo; &rarr; SAVIOR &mdash; &ldquo;God is coming to us.&rdquo; Paul walked into Athens; he didn&rsquo;t run. And now we walk into our Athens.</p>`,
+    notes: "Stay on this slide through the Kapaun story. Then advance to the closing title.",
+  },
+  {
+    position: 11,
+    html: imageSlide("the-jesus-test", 11, "Hold On to What Is Good — Open to every good gift. Anchored in Christ."),
+    outline_html: `<p><strong>Three things to remember</strong></p><p><strong>Jesus is the center. &rarr; Test what you hear. &rarr; Hold on to what is good.</strong></p><p><strong>If Jesus is firmly at the center, we don&rsquo;t have to be afraid of the noise around us.</strong></p><p>We can listen. We can test. We can learn. We can disagree. And when we discover something genuinely good &mdash; hold on to it.</p><p>Invitation.</p>`,
+    notes: "Back to the title for the invitation.",
+  },
+];
+
 type SeedDeckWithNotes = Deck & { slidesWithNotes: SlideWithNotes[] };
 
 function buildDeck(
@@ -1004,6 +1079,7 @@ export const seedDecks: SeedDeckWithNotes[] = [
   }),
   buildDeck("seed-deck-4", "the-obvious", "The Obvious", null, theObviousSlides),
   buildDeck("seed-deck-5", "knowledge", "Knowledge", null, theKnowledgeSlides),
+  buildDeck("seed-deck-6", "the-jesus-test", "The Jesus Test", "the-jesus-test", theJesusTestSlides),
 ];
 
 export function findSeedDeck(slug: string): Deck | null {
