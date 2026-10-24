@@ -20,6 +20,6 @@ export function isAnnounced(
 /** "Hold On to What Is Good · Lesson 2 of 4", or null for a standalone sermon. */
 export function seriesLabel(sermon: Pick<Sermon, "series" | "lesson_number">, total?: number): string | null {
   if (!sermon.series) return null;
-  const lesson = sermon.lesson_number ? ` · Lesson ${sermon.lesson_number}${total ? ` of ${total}` : ""}` : "";
+  const lesson = sermon.lesson_number ? ` · Lesson ${sermon.lesson_number}${total && total > 1 ? ` of ${total}` : ""}` : "";
   return `${sermon.series.title}${lesson}`;
 }

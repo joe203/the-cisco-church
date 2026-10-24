@@ -1,6 +1,17 @@
 # CURRENT_STATUS — TheCiscoChurch.org
 Updated: 2026-10-08 · Read this first when starting a new session.
 
+## The New Thing, Lesson 1 (added 2026-10-24 — NOT yet committed/deployed)
+
+`/sermons/make-room-for-a-new-life` (Sept 13, 2026, Isaiah 43:16–19), series "The New
+Thing" (`newThingSeries` in `lib/seed.ts`, migration `018_make_room_for_a_new_life.sql`,
+not applied). Built from Joe's notes + YouTube description in
+`~/web_apps/sermon-framework/sermons/007_TheNewThingSeries/` (matches the preached cut).
+YouTube: https://youtu.be/ykh8tU1NV2M. Artwork = the lesson title slide. Only Lesson 1 is
+on the site; Lessons 2 (Resistance) and 3 (What Could Be) are not, so the series strip is
+hidden and the label reads "Lesson 1" (no "of N"). No handouts/guide built (nuggets are
+drafts; `guide_questions` empty).
+
 ## Events page (built 2026-10-24 — NOT yet committed/deployed)
 
 `/events` is ONE timeline in date order for the coming week. Window = today through

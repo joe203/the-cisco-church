@@ -410,6 +410,84 @@ const hopeForTheFamily: SermonDetail = {
   artwork_url: "/sermons/hope-for-the-family/artwork.jpg",
 };
 
+// August–September 2026 series on Isaiah 43:19. Source: Joe's notes and
+// YouTube description (sermon-framework / 007_TheNewThingSeries). Lessons 2 and 3
+// are not on the site yet; the series strip stays hidden until they are.
+const newThingSeries: SeriesRef = {
+  slug: "the-new-thing",
+  title: "The New Thing",
+  scripture_ref: "Isaiah 43:19",
+  tagline: "See, I am doing a new thing!",
+  artwork_url: "/series/the-new-thing/artwork.jpg",
+};
+
+const makeRoomForANewLife: SermonDetail = {
+  id: "seed-sermon-9",
+  slug: "make-room-for-a-new-life",
+  title: "Make Room for a New Life",
+  thesis: "The danger isn’t forgetting what God has done. It’s believing His greatest works are all behind us.",
+  teaser: null,
+  scripture_ref: "Isaiah 43:16–19",
+  scripture_text: "“See, I am doing a new thing! Now it springs up; do you not perceive it?”",
+  sermon_date: "2026-09-13",
+  artwork_url: "/sermons/make-room-for-a-new-life/artwork.jpg",
+  summary: "Israel had crossed the Red Sea, and it was the story of their lives. Then Isaiah told them to stop dwelling on the past, because God was about to do something new. Are you still living in yesterday’s victory? And what has to die before something new can live?",
+  youtube_url: "https://youtu.be/ykh8tU1NV2M",
+  podcast_url: null,
+  guide_url: null,
+  pdf_url: null,
+  nuggets: [
+    "Yesterday’s testimony was never meant to become today’s limitation.",
+    "The danger is not that we forget what God has done. The danger is that we start believing God’s greatest works are all behind us.",
+    "We want resurrection without a burial.",
+    "Rebirth is the courage to begin again.",
+  ],
+  guide_questions: [],
+  series: newThingSeries,
+  lesson_number: 1,
+  is_featured: false,
+  deck_slug: null,
+  speaker: joe,
+  points: [
+    {
+      position: 1,
+      title: "God Has Always Been Willing to Do Something New",
+      label: "Isaiah 43:16–19",
+      body: "God reminds Israel of the Exodus: He made a way through the sea. That was their defining story. And then, almost surprisingly: “Forget the former things; do not dwell on the past. See, I am doing a new thing!” He isn’t saying the Exodus didn’t matter. We can have faith in what God did then and still have no expectation for what God can do now. Same God. Same faithfulness. Different way — through the wilderness this time.",
+    },
+    {
+      position: 2,
+      title: "Yesterday’s Testimony Was Never Meant to Become Today’s Limitation",
+      label: "Remember, Don’t Remain",
+      body: "Remember the Exodus. Remember Jericho. Remember David. He delivered Israel from Egypt, but I’m not sure He can deliver me. He brought down the walls of Jericho, but I’m still living behind walls of negativity. David killed Goliath, but the giants in my house still roam free. Don’t become so attached to what God did yesterday that you fail to recognize what God is doing now.",
+    },
+    {
+      position: 3,
+      title: "Do You Not Perceive It?",
+      label: "Isaiah 43:19",
+      body: "The new thing may already be beginning while we are still looking backward. New possibilities often start small — an idea, a question, a conversation: “What if…?” “Could we…?” Our first response to something unfamiliar is often to criticize it, dismiss it, or explain why it won’t work. You will never begin what you refuse even to imagine.",
+    },
+    {
+      position: 4,
+      title: "New Things Disturb Old Things",
+      label: "Old Isn’t Bad",
+      body: "The difficulty isn’t only believing that God can do something new. New things disturb what we already have: our ways of thinking, our expectations, traditions, and familiar ways of serving God. Old doesn’t necessarily mean bad. Making room for something new doesn’t mean the old thing was wrong; it means God isn’t finished with that stage and it’s time for a new season. Yesterday’s miracle isn’t the blueprint God is obligated to follow tomorrow.",
+    },
+    {
+      position: 5,
+      title: "Something Has to Die for Something to Live",
+      label: "Romans 6:3–4",
+      body: "We love new beginnings, new life, resurrection, rebirth. But Scripture keeps attaching new life to death. Romans 6:3–4 gives the movement: death, burial, resurrection, newness of life. “I have been crucified with Christ” (Galatians 2:20). The seed falls into the earth (John 12:24). We want resurrection without a burial. But the emphasis is on life, not death: what might God be trying to bring to life in me?",
+    },
+    {
+      position: 6,
+      title: "You Cannot Enter This New Thing as the Same Old Man",
+      label: "John 3:1–8",
+      body: "Nicodemus had history, Scripture, tradition, knowledge, identity, and position. Then Jesus said, “You must be born again.” He wasn’t offering an improvement or new information. He was offering a new beginning. Rebirth isn’t the end of the journey; it is the beginning (2 Corinthians 5:17; Ephesians 4:22–24). God isn’t only doing something new around us. He wants to begin something new in us. Rebirth is the courage to begin again.",
+    },
+  ],
+};
+
 export const seedSermons: SermonDetail[] = [
   hopeForTheFamily,
   withAllHisMight,
@@ -417,6 +495,7 @@ export const seedSermons: SermonDetail[] = [
   theJesusTest,
   hardTruth,
   bagOfSeeds,
+  makeRoomForANewLife,
 ];
 
 /**
