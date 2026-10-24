@@ -34,11 +34,17 @@ values (
   'https://youtu.be/ykh8tU1NV2M',
   array[
     'Yesterday’s testimony was never meant to become today’s limitation.',
-    'The danger is not that we forget what God has done. The danger is that we start believing God’s greatest works are all behind us.',
     'We want resurrection without a burial.',
     'Rebirth is the courage to begin again.'
   ],
-  array[]::text[],
+  array[
+    'Read Isaiah 43:16–19. God reminds Israel of the Exodus, then says, “Forget the former things; do not dwell on the past.” What do you think He does mean, and what does He not mean? Where is the line between honoring what God has done and getting stuck there?',
+    'Which of these sounds most like you right now: “He delivered Israel, but I’m not sure He can deliver me”; “He brought down the walls of Jericho, but I’m still living behind walls of negativity”; “David killed Goliath, but the giants in my house still roam free”? What would it look like to expect something new from God?',
+    '“Now it springs up; do you not perceive it?” When someone brings up a new idea — at home, at work, or at church — what is your first reaction: curiosity, or an explanation of why it won’t work? Where might you have dismissed a possibility before you even let yourself see it?',
+    'Old doesn’t necessarily mean bad. What is something familiar — a tradition, a routine, a way of serving God — that you hold tightly? Could you hold it with an open hand and still honor it?',
+    'Read Romans 6:3–4 and John 12:24. We want resurrection without a burial. What is one thing God may be asking you to release — a habit, an assumption, a way of doing things — to make room for something new?',
+    'Read John 3:1–8. Nicodemus had history, Scripture, tradition, knowledge, identity, and position, and Jesus still offered him a new beginning. What might God be trying to bring to life in you, and what will you have to make room for? Read 2 Corinthians 5:17 and Ephesians 4:22–24: what is one step you can take this week?'
+  ],
   'a1000000-0000-4000-8000-000000000001',
   false,
   'd1000000-0000-4000-8000-000000000002',

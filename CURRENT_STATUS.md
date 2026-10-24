@@ -11,6 +11,17 @@ YouTube: https://youtu.be/ykh8tU1NV2M. Artwork = the lesson title slide. Only Le
 on the site; Lessons 2 (Resistance) and 3 (What Could Be) are not, so the series strip is
 hidden and the label reads "Lesson 1" (no "of N"). No handouts/guide built (nuggets are
 drafts; `guide_questions` empty).
+Handouts built 2026-10-24 (public/downloads/make-room-for-a-new-life/: guide, recap, outline = "Sermon
+handout", quotes). The 6 reflection questions and the 3 quotes are MY DRAFTS from Joe's notes —
+Joe to review/replace, then rerun `node scripts/build-handouts.mjs make-room-for-a-new-life`.
+Joe removed the 9/11 "We Remember" slide, so the deck is 30 slides (export slides 2–31).
+Deck added 2026-10-24: `make-room-for-a-new-life` (30 slides, `public/sermons/make-room-for-a-new-life/slides/NN.jpg`,
+migration `019_make_room_for_a_new_life_deck.sql`, `seed-deck-9`). Source = the 31-slide
+`NewLife_Sermon_Deck_COMPLETE_fnl.pptx` saved Sept 12 1:24 PM (copy in `incoming/`); the
+34-slide copy in sermon-framework (8:47 AM) is the earlier draft with build slides, and the
+preaching sheet `public/preach/new-life.html` still maps THAT one (34). Exported with
+PowerPoint COM (`Presentation.Export(dir,"JPG",1920,1080)`). Slide 4 (Isaiah text) has a
+slight line overlap that is in Joe's original deck.
 
 ## Events page (built 2026-10-24 — NOT yet committed/deployed)
 

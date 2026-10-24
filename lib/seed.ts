@@ -438,15 +438,21 @@ const makeRoomForANewLife: SermonDetail = {
   pdf_url: null,
   nuggets: [
     "Yesterday’s testimony was never meant to become today’s limitation.",
-    "The danger is not that we forget what God has done. The danger is that we start believing God’s greatest works are all behind us.",
     "We want resurrection without a burial.",
     "Rebirth is the courage to begin again.",
   ],
-  guide_questions: [],
+  guide_questions: [
+    "Read Isaiah 43:16–19. God reminds Israel of the Exodus, then says, “Forget the former things; do not dwell on the past.” What do you think He does mean, and what does He not mean? Where is the line between honoring what God has done and getting stuck there?",
+    "Which of these sounds most like you right now: “He delivered Israel, but I’m not sure He can deliver me”; “He brought down the walls of Jericho, but I’m still living behind walls of negativity”; “David killed Goliath, but the giants in my house still roam free”? What would it look like to expect something new from God?",
+    "“Now it springs up; do you not perceive it?” When someone brings up a new idea — at home, at work, or at church — what is your first reaction: curiosity, or an explanation of why it won’t work? Where might you have dismissed a possibility before you even let yourself see it?",
+    "Old doesn’t necessarily mean bad. What is something familiar — a tradition, a routine, a way of serving God — that you hold tightly? Could you hold it with an open hand and still honor it?",
+    "Read Romans 6:3–4 and John 12:24. We want resurrection without a burial. What is one thing God may be asking you to release — a habit, an assumption, a way of doing things — to make room for something new?",
+    "Read John 3:1–8. Nicodemus had history, Scripture, tradition, knowledge, identity, and position, and Jesus still offered him a new beginning. What might God be trying to bring to life in you, and what will you have to make room for? Read 2 Corinthians 5:17 and Ephesians 4:22–24: what is one step you can take this week?",
+  ],
   series: newThingSeries,
   lesson_number: 1,
   is_featured: false,
-  deck_slug: null,
+  deck_slug: "make-room-for-a-new-life",
   speaker: joe,
   points: [
     {
@@ -1377,6 +1383,195 @@ const withAllHisMightSlides: SeedSlideInput[] = [
   },
 ];
 
+/**
+ * Make Room for a New Life (The New Thing, Lesson 1) — Joe's finished deck
+ * (NewLife_Sermon_Deck_COMPLETE_fnl.pptx, the 31-slide version saved Sept 12;
+ * its 9/11 remembrance slide is left out),
+ * exported to public/sermons/make-room-for-a-new-life/slides/NN.jpg.
+ */
+const makeRoomForANewLifeSlides: SeedSlideInput[] = [
+  {
+    position: 1,
+    html: imageSlide("make-room-for-a-new-life", 1, "The New Thing Series — “See, I am doing a new thing!” Isaiah 43:19"),
+    outline_html: "<p>The New Thing Series — “See, I am doing a new thing!” Isaiah 43:19</p>",
+    notes: null,
+  },
+  {
+    position: 2,
+    html: imageSlide("make-room-for-a-new-life", 2, "Make Room for a New Life — Something has to die for something new to live."),
+    outline_html: "<p>Make Room for a New Life — Something has to die for something new to live.</p>",
+    notes: null,
+  },
+  {
+    position: 3,
+    html: imageSlide("make-room-for-a-new-life", 3, "Isaiah 43:16–19"),
+    outline_html: "<p>Isaiah 43:16–19</p>",
+    notes: null,
+  },
+  {
+    position: 4,
+    html: imageSlide("make-room-for-a-new-life", 4, "We can have faith in what God did then and still have no expectation for what God can do now."),
+    outline_html: "<p>We can have faith in what God did then and still have no expectation for what God can do now.</p>",
+    notes: null,
+  },
+  {
+    position: 5,
+    html: imageSlide("make-room-for-a-new-life", 5, "The danger is not that we forget what God has done. The danger is that we start believing God’s greatest works are all behind us."),
+    outline_html: "<p>The danger is not that we forget what God has done. The danger is that we start believing God’s greatest works are all behind us.</p>",
+    notes: null,
+  },
+  {
+    position: 6,
+    html: imageSlide("make-room-for-a-new-life", 6, "God made a way through the water before. Now He’s going to make a way through the wilderness."),
+    outline_html: "<p>God made a way through the water before. Now He’s going to make a way through the wilderness.</p>",
+    notes: null,
+  },
+  {
+    position: 7,
+    html: imageSlide("make-room-for-a-new-life", 7, "Same God. Same faithfulness. Different way."),
+    outline_html: "<p>Same God. Same faithfulness. Different way.</p>",
+    notes: null,
+  },
+  {
+    position: 8,
+    html: imageSlide("make-room-for-a-new-life", 8, "Don’t become so attached to what God did yesterday that you fail to recognize what God is doing now."),
+    outline_html: "<p>Don’t become so attached to what God did yesterday that you fail to recognize what God is doing now.</p>",
+    notes: null,
+  },
+  {
+    position: 9,
+    html: imageSlide("make-room-for-a-new-life", 9, "God’s people can know everything about what God has done and still struggle to recognize what God is doing."),
+    outline_html: "<p>God’s people can know everything about what God has done and still struggle to recognize what God is doing.</p>",
+    notes: null,
+  },
+  {
+    position: 10,
+    html: imageSlide("make-room-for-a-new-life", 10, "Yesterday’s testimony was never meant to become today’s limitation."),
+    outline_html: "<p>Yesterday’s testimony was never meant to become today’s limitation.</p>",
+    notes: null,
+  },
+  {
+    position: 11,
+    html: imageSlide("make-room-for-a-new-life", 11, "“Now it springs up; do you not perceive it?” — Isaiah 43:19"),
+    outline_html: "<p>“Now it springs up; do you not perceive it?” — Isaiah 43:19</p>",
+    notes: null,
+  },
+  {
+    position: 12,
+    html: imageSlide("make-room-for-a-new-life", 12, "The new thing may already be beginning while we are still looking backward."),
+    outline_html: "<p>The new thing may already be beginning while we are still looking backward.</p>",
+    notes: null,
+  },
+  {
+    position: 13,
+    html: imageSlide("make-room-for-a-new-life", 13, "We can kill a possibility before we have even allowed ourselves to see it."),
+    outline_html: "<p>We can kill a possibility before we have even allowed ourselves to see it.</p>",
+    notes: null,
+  },
+  {
+    position: 14,
+    html: imageSlide("make-room-for-a-new-life", 14, "You will never begin what you refuse even to imagine."),
+    outline_html: "<p>You will never begin what you refuse even to imagine.</p>",
+    notes: null,
+  },
+  {
+    position: 15,
+    html: imageSlide("make-room-for-a-new-life", 15, "Old does not necessarily mean bad."),
+    outline_html: "<p>Old does not necessarily mean bad.</p>",
+    notes: null,
+  },
+  {
+    position: 16,
+    html: imageSlide("make-room-for-a-new-life", 16, "Making room for something new does not mean declaring that the old thing was wrong. It may simply mean it is time for a new season."),
+    outline_html: "<p>Making room for something new does not mean declaring that the old thing was wrong. It may simply mean it is time for a new season.</p>",
+    notes: null,
+  },
+  {
+    position: 17,
+    html: imageSlide("make-room-for-a-new-life", 17, "We can hold something so tightly that we have no open hand with which to receive anything new."),
+    outline_html: "<p>We can hold something so tightly that we have no open hand with which to receive anything new.</p>",
+    notes: null,
+  },
+  {
+    position: 18,
+    html: imageSlide("make-room-for-a-new-life", 18, "Death → Burial → Resurrection → Newness of life — Romans 6:3–4"),
+    outline_html: "<p>Death → Burial → Resurrection → Newness of life — Romans 6:3–4</p>",
+    notes: null,
+  },
+  {
+    position: 19,
+    html: imageSlide("make-room-for-a-new-life", 19, "We want resurrection without a burial."),
+    outline_html: "<p>We want resurrection without a burial.</p>",
+    notes: null,
+  },
+  {
+    position: 20,
+    html: imageSlide("make-room-for-a-new-life", 20, "We want God to give us something new without asking us to release anything old."),
+    outline_html: "<p>We want God to give us something new without asking us to release anything old.</p>",
+    notes: null,
+  },
+  {
+    position: 21,
+    html: imageSlide("make-room-for-a-new-life", 21, "This is the tension of making room for new life."),
+    outline_html: "<p>This is the tension of making room for new life.</p>",
+    notes: null,
+  },
+  {
+    position: 22,
+    html: imageSlide("make-room-for-a-new-life", 22, "The question is not simply: “What do I need to stop doing?”"),
+    outline_html: "<p>The question is not simply: “What do I need to stop doing?”</p>",
+    notes: null,
+  },
+  {
+    position: 23,
+    html: imageSlide("make-room-for-a-new-life", 23, "The real question is: “What might God be trying to bring to life in me?”"),
+    outline_html: "<p>The real question is: “What might God be trying to bring to life in me?”</p>",
+    notes: null,
+  },
+  {
+    position: 24,
+    html: imageSlide("make-room-for-a-new-life", 24, "Nicodemus — history, scripture, tradition, knowledge, identity, position. And Jesus tells him: “You must be born again.” — John 3:1–8"),
+    outline_html: "<p>Nicodemus — history, scripture, tradition, knowledge, identity, position. And Jesus tells him: “You must be born again.” — John 3:1–8</p>",
+    notes: null,
+  },
+  {
+    position: 25,
+    html: imageSlide("make-room-for-a-new-life", 25, "Jesus does not offer Nicodemus an improvement. Jesus does not merely give him new information."),
+    outline_html: "<p>Jesus does not offer Nicodemus an improvement. Jesus does not merely give him new information.</p>",
+    notes: null,
+  },
+  {
+    position: 26,
+    html: imageSlide("make-room-for-a-new-life", 26, "Nicodemus, you cannot enter this “new thing” as the same old man. You must be born again."),
+    outline_html: "<p>Nicodemus, you cannot enter this “new thing” as the same old man. You must be born again.</p>",
+    notes: null,
+  },
+  {
+    position: 27,
+    html: imageSlide("make-room-for-a-new-life", 27, "Rebirth is not the completion of the journey. Rebirth is the beginning of the journey."),
+    outline_html: "<p>Rebirth is not the completion of the journey. Rebirth is the beginning of the journey.</p>",
+    notes: null,
+  },
+  {
+    position: 28,
+    html: imageSlide("make-room-for-a-new-life", 28, "God is not only interested in doing something new around us. He wants to begin something new in us."),
+    outline_html: "<p>God is not only interested in doing something new around us. He wants to begin something new in us.</p>",
+    notes: null,
+  },
+  {
+    position: 29,
+    html: imageSlide("make-room-for-a-new-life", 29, "Rebirth is the courage to begin again."),
+    outline_html: "<p>Rebirth is the courage to begin again.</p>",
+    notes: null,
+  },
+  {
+    position: 30,
+    html: imageSlide("make-room-for-a-new-life", 30, "What might God be trying to bring to life in me, and what am I going to have to let go of to make room for the new thing?"),
+    outline_html: "<p>What might God be trying to bring to life in me, and what am I going to have to let go of to make room for the new thing?</p>",
+    notes: null,
+  },
+];
+
 type SeedDeckWithNotes = Deck & { slidesWithNotes: SlideWithNotes[] };
 
 function buildDeck(
@@ -1417,6 +1612,7 @@ export const seedDecks: SeedDeckWithNotes[] = [
   buildDeck("seed-deck-6", "the-jesus-test", "The Jesus Test", "the-jesus-test", theJesusTestSlides),
   buildDeck("seed-deck-7", "ask-better-questions", "Ask Better Questions", "ask-better-questions", askBetterQuestionsSlides),
   buildDeck("seed-deck-8", "with-all-his-might", "With All His Might", "with-all-his-might", withAllHisMightSlides),
+  buildDeck("seed-deck-9", "make-room-for-a-new-life", "Make Room for a New Life", "make-room-for-a-new-life", makeRoomForANewLifeSlides),
 ];
 
 export function findSeedDeck(slug: string): Deck | null {
