@@ -12,6 +12,8 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     { url: `${ORIGIN}/sermons`, changeFrequency: "weekly", priority: 0.8 },
     { url: `${ORIGIN}/downloads`, changeFrequency: "weekly", priority: 0.7 },
     { url: `${ORIGIN}/bulletin`, changeFrequency: "weekly", priority: 0.7 },
+    { url: `${ORIGIN}/announcements`, changeFrequency: "weekly", priority: 0.7 },
+    { url: `${ORIGIN}/events`, changeFrequency: "weekly", priority: 0.7 },
     ...sermons.map((s) => ({
       url: `${ORIGIN}/sermons/${s.slug}`,
       lastModified: s.sermon_date,

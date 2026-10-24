@@ -1,6 +1,35 @@
 # CURRENT_STATUS — TheCiscoChurch.org
 Updated: 2026-10-08 · Read this first when starting a new session.
 
+## Events page (built 2026-10-24 — NOT yet committed/deployed)
+
+`/events` is ONE timeline in date order for the coming week. Window = today through
+the Sunday ten days after the most recent Thursday (`windowEnd` in `lib/events.ts`),
+so it rolls forward by itself every Thursday, when the secretary's announcements
+arrive (Fri-Wed ends next Sunday; Thu on ends the Sunday after). Weekly (Mon Ladies
+Bible study, Wed evening) and monthly (First Sunday = first Sunday of the month)
+events repeat on each date they fall; one-offs live in `datedEvents` (exact `date`).
+`big: true` on a one-off shows it under "Mark your calendar" up to 10 weeks ahead.
+Each event has `photos[]` that rotate week by week (First Sunday: congregation.jpg +
+fellowship-ladies.jpg; Wednesday: youth.jpg; Ladies Bible study has none yet — Joe is
+building an image library; add files to `public/images/` and list them). Ticket-stub
+cards: stub shows the DATE; color = one-off / monthly / weekly. Headline: "New things
+are happening here. Come get in on it." Confirmed by Joe: First Sunday is the first
+Sunday of the month (next: Nov 1). Not built yet: past announcement weeks archive.
+
+## Announcements page (built 2026-10-23 — NOT yet committed/deployed)
+
+`/announcements` shows the Sunday screen slides as a page people can read at their
+own pace (jump chips, big slide, plain-text details beside each). Added at Joe's
+request; a deliberate narrow exception to the scope fence, like the bulletin.
+Weekly flow: Joe sends the announcements PDF -> `node scripts/build-announcements.mjs
+"<pdf>" --date <Sunday> --skip <pages>` (needs `pdftoppm`) -> fill `title/alt/details`
+in `lib/announcements.json` -> tsc, screenshot, commit, deploy. Prayer slide (names + health needs) is public by Joe's choice 2026-10-24; the
+welcome slide is skipped because the header card replaces it.
+Oct 25 build skipped only page 1 (welcome — now a small card in the page header); Joe chose to publish the prayer + phones slides. The QR slide for the
+looping screen is `QR_codes/announcements_qr_slide.png` (1920x1080, decodes to
+theciscochurch.org/announcements; QR never changes, so it stays in the loop).
+
 ## 2026-10-08 session — launch pass (everything below is committed + deployed)
 
 **Launch-readiness check done.** Live Lighthouse (mobile): performance 97–98,

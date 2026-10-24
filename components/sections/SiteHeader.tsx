@@ -37,7 +37,7 @@ export function SiteHeader() {
         >
           {site.shortName}
         </Link>
-        <nav className="flex w-full items-center justify-between sm:w-auto sm:justify-start sm:gap-9" aria-label="Main">
+        <nav className="flex w-full flex-wrap items-center justify-between gap-x-5 gap-y-1 sm:w-auto sm:justify-start sm:gap-x-7 lg:gap-x-9" aria-label="Main">
           <Link href="/sermons" className={`eyebrow link-under ${linkTone}`}>
             Sermons
           </Link>
@@ -46,6 +46,12 @@ export function SiteHeader() {
           </Link>
           <Link href="/bulletin" className={`eyebrow link-under ${linkTone}`}>
             Bulletin
+          </Link>
+          <Link href="/announcements" className={`eyebrow link-under ${linkTone}`}>
+            Announcements
+          </Link>
+          <Link href="/events" className={`eyebrow link-under ${linkTone}`}>
+            Events
           </Link>
           <Link href="/#visit" className={`eyebrow link-under ${linkTone}`}>
             Visit

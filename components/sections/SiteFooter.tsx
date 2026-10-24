@@ -61,6 +61,16 @@ export function SiteFooter() {
                 This week’s bulletin
               </Link>
             </li>
+            <li>
+              <Link href="/announcements" className="link-under">
+                Announcements
+              </Link>
+            </li>
+            <li>
+              <Link href="/events" className="link-under">
+                Events
+              </Link>
+            </li>
           </ul>
           {(site.phone || site.email) && (
             <div className="mt-8">

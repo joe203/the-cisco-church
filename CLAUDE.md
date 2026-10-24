@@ -70,8 +70,15 @@ slide takeover on the homepage) are deferred unless they solve a v1 problem.
   routine: Joe finalizes the outline by Thursday → update the sermon in seed →
   build PDFs → commit + deploy Friday.
 
+- **Events** (`/events`) — added 2026-10-24 at Joe's request: "ticket stub" cards
+  grouped Coming up / Once a month / Every week (`lib/events.ts`; dated items
+  drop off by themselves; next First Sunday is computed). Not a calendar.
+- **Announcements** (`/announcements`) — the Sunday screen slides to read at one's
+  own pace (`lib/announcements.json`, `scripts/build-announcements.mjs`).
+
 **Explicitly out of scope — do not build, do not suggest:**
-- About / staff / leadership / ministries / events / calendar pages
+- About / staff / leadership / ministries / calendar pages (an **events page**
+  is now in scope — see below — but never a calendar)
 - Giving/donations
 - Public user accounts or signup (staff are added by an admin — there is no signup)
 - CMS or general-purpose admin panel (the bulletin editor edits the bulletin only)

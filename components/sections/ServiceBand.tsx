@@ -1,3 +1,4 @@
+import Link from "next/link";
 import { mapLabel, site } from "@/lib/site";
 
 export function ServiceBand() {
@@ -17,6 +18,12 @@ export function ServiceBand() {
               </li>
             ))}
           </ul>
+          <Link
+            href="/events"
+            className="link-under mt-5 inline-block text-[0.95rem] font-bold text-marigold"
+          >
+            What’s happening this week →
+          </Link>
         </div>
 
         <div>

@@ -1,0 +1,72 @@
+{
+  "date": "2026-10-25",
+  "slides": [
+    {
+      "id": "directory",
+      "file": "01.webp",
+      "title": "Church directory update",
+      "alt": "Church Directory Update. Pick up a form on the foyer table by the water fountain, fill out a new form or update your information, and return it to Cyndi or the manila envelope on the table. Deadline: November 8.",
+      "details": [
+        "Pick up a form on the foyer table by the water fountain.",
+        "Fill out a new form, or update your current information.",
+        "Return it to Cyndi, or put it in the manila envelope on the table.",
+        "Deadline: November 8."
+      ]
+    },
+    {
+      "id": "ladies-bible-study",
+      "file": "02.webp",
+      "title": "Ladies Bible study",
+      "alt": "Ladies Bible Study. Mondays at 4:30 PM in the Fellowship Hall.",
+      "details": ["Mondays at 4:30 PM.", "Fellowship Hall."]
+    },
+    {
+      "id": "first-sunday-fellowship",
+      "file": "03.webp",
+      "title": "First Sunday fellowship",
+      "alt": "First Sunday Fellowship, next Sunday. After morning worship, a potluck meal in the fellowship hall, then congregational singing and a short devotional. There will be no evening service.",
+      "details": [
+        "Next Sunday, November 1, after morning worship.",
+        "Potluck meal in the fellowship hall, then congregational singing and a short devotional.",
+        "Bring a favorite dish to share, and plan to stay.",
+        "There will be no evening service."
+      ]
+    },
+    {
+      "id": "fall-back",
+      "file": "04.webp",
+      "title": "Daylight saving time ends",
+      "alt": "Fall back. Daylight Saving Time ends next Sunday. Set your clocks back one hour.",
+      "details": ["Daylight saving time ends next Sunday, November 1.", "Set your clocks back one hour."]
+    },
+    {
+      "id": "prayer-requests",
+      "file": "05.webp",
+      "title": "Prayer requests",
+      "alt": "Prayer Requests. The names are listed in the text beside this slide.",
+      "details": [
+        "Kennedy (Ray’s great-granddaughter), James & Lauren Dye and family, Sherry Trahan, Jim Dolgener, Mike Lewis, Caryon Garrett, Ken Cebrun, Jon & Glenda Dennison, Jason Lowe, Janice Reeves, Josh & Karlie Hamilton and family, Sharon Wilcoxen, Sandra Stuart, Spencer Kitchens, Julia Harris, Olene Knight, River (Spencer and Cyndi’s granddaughter), Terry McCormick.",
+        "Nursing homes: Joan Penn, Cecelia Boles.",
+        "Johnny Adams, Barbara Brinkley, Joy Davies."
+      ]
+    },
+    {
+      "id": "this-week",
+      "file": "06.webp",
+      "title": "Join us this week",
+      "alt": "Join us this week. Sunday: Bible class 9:30 AM, worship service 10:30 AM. Monday: Ladies Bible study 4:30 PM. Wednesday evening: youth activities 5:00 PM, fellowship meal 5:30 PM, Bible study 6:00 PM.",
+      "details": [
+        "Sunday: Bible class 9:30 AM, worship service 10:30 AM.",
+        "Monday: Ladies Bible study 4:30 PM.",
+        "Wednesday evening: youth activities 5:00 PM, fellowship meal 5:30 PM, Bible study 6:00 PM."
+      ]
+    },
+    {
+      "id": "silence-phones",
+      "file": "07.webp",
+      "title": "Silence your cell phones",
+      "alt": "As we prepare for worship, please silence your cell phones. Thank you.",
+      "details": ["As we prepare for worship, please silence your cell phones. Thank you."]
+    }
+  ]
+}
