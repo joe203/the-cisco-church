@@ -399,15 +399,70 @@ const withAllHisMight: SermonDetail = {
     },
   ],
 };
-// Lesson 4 — announced (slide + teaser); content arrives with the manuscript.
+// Lesson 4 — content from Joe's Oct 25 sermon notes (what was preached); the
+// reflection questions and quotes are drafts for Joe to review.
 const hopeForTheFamily: SermonDetail = {
   ...upcomingLesson(6, "hope-for-the-family", "Hope For The Family", "2026-10-25", 4),
   thesis: "Discovering What Matters. Building What Lasts.",
   teaser:
     "Every family wants to build something that lasts. But with so many challenges, changing expectations, and competing voices, how do we know what really matters?\n\nWhat values should guide our marriages, our parenting, and the decisions we make every day?\n\nMaybe building a stronger family isn’t about having all the answers. Maybe it’s about learning to ask better questions, discovering what matters most, and finding the wisdom to make good decisions.\n\nThis Sunday, October 25, join us as we explore how to build stronger families, seek wisdom, and hold on to what is good.",
-  scripture_ref: null,
-  scripture_text: null,
+  scripture_ref: "1 Corinthians 3:10–17 · 1 Thessalonians 5:21",
+  scripture_text: "“For no one can lay any foundation other than the one already laid, which is Jesus Christ.”",
   artwork_url: "/sermons/hope-for-the-family/artwork.jpg",
+  summary:
+    "Sometimes the greatest thing a family passes down isn’t what they own. It’s how they treat people. Our families give us our first picture of the world, but they don’t have to determine how we see it forever. Paul tells the Corinthians that each of us should build with care, because there is only one foundation: Jesus Christ. Some lives are built on a painful foundation, like Joyce Meyer’s; others walk away from a promising one, like Damon West. Both discovered that their beginning didn’t have to determine their ending. We don’t have to hold on to everything from our past to hold on to what is good — and the foundation matters.",
+  nuggets: [
+    "Our families give us our first experiences with life, but not all those experiences are good to hold on to.",
+    "Healing doesn’t change what happened yesterday. It changes what we carry into tomorrow.",
+    "A good foundation doesn’t guarantee good choices, but it gives us something worth returning to.",
+  ],
+  guide_questions: [
+    "Think of a way your family treated people — a habit, a kindness, a way of showing up — that you still carry. What did it teach you about what matters, even though nobody ever said it out loud?",
+    "“Our families give us our first picture of the world, but they don’t have to determine how we see it forever.” What is one thing from your family’s picture of the world that you are glad to hold on to? Is there something you have had to question or let go of?",
+    "Read 1 Corinthians 3:10–15. Paul says each one should build with care on the one foundation, Jesus Christ. Looking at your home and your daily choices, what are you building with — gold, silver, costly stones, or wood, hay, and straw?",
+    "“What gets passed down doesn’t always have to get passed on.” Is there something you received that you want to stop at your generation? Who could walk with you as you build something different?",
+    "“Sometimes we walk away from the very things that gave us a strong foundation.” Is there something good you were taught — a habit of prayer, a church family, a value — that you have drifted from? What would it look like to return to it? Who has reminded you of who you can still become?",
+    "Read 1 Thessalonians 5:21. “We don’t have to hold on to everything from our past to hold on to what is good.” What will you hold on to, what will you let go of, and who in the next generation is counting on the foundation you are building today?",
+  ],
+  deck_slug: "hope-for-the-family",
+  points: [
+    {
+      position: 1,
+      title: "Family Shapes Who We Become",
+      label: "Family Matters",
+      body: "Sometimes the greatest thing a family passes down isn’t what they own. It’s how they treat people. We don’t have to have everything to give someone something that matters. Our families give us our first picture of the world, but they don’t have to determine how we see it forever. God designed us for relationships and community. Our families influence our values, beliefs, personalities, and worldview, and family experiences can leave us with wonderful blessings or painful scars.",
+    },
+    {
+      position: 2,
+      title: "There’s Hope for Every Generation",
+      label: "Start From Something",
+      body: "Many of us didn’t have great teachers — no James Dobson, no Paul Faulkner or Carl Brecheen, and we hadn’t read books like His Needs, Her Needs. But we don’t have to start from scratch. What if we could discover what really matters and pass it on to the next generation? What if we could build our families on what lasts? What if we could give the next generation a strong foundation?",
+    },
+    {
+      position: 3,
+      title: "Build on the Right Foundation",
+      label: "1 Corinthians 3:10–17",
+      body: "There was division in the church at Corinth. Paul told them they were infants, not ready for solid food, and addressed the controversy over Paul and Apollos. Verses 10–17 are about building on the right foundation: no one can lay any foundation other than Jesus Christ, and each one should build with care. Gold, silver, costly stones, wood, hay, or straw — the Day will bring it to light. The principle speaks strongly to the very challenges of a family.",
+    },
+    {
+      position: 4,
+      title: "What Gets Passed Down Doesn’t Have to Get Passed On",
+      label: "A Painful Foundation",
+      body: "Not everyone grows up in a loving, supportive family. Some family experiences leave wounds, and sometimes the very people who should have protected us are the ones who hurt us the most. Joyce Meyer’s childhood is a powerful example of how difficult that foundation can be. We may inherit a painful beginning, but we can build a different future. Healing doesn’t change what happened yesterday. It changes what we carry into tomorrow. The past doesn’t have to be the future.",
+    },
+    {
+      position: 5,
+      title: "A Good Foundation Gives Us Something Worth Returning To",
+      label: "A Promising Foundation Abandoned",
+      body: "Not everyone who grows up in a loving, supportive family makes good choices. Damon West had a promising future — a college quarterback, a successful career, and parents who loved and supported him — but his choices took him down a very different path. Sometimes holding on to what is good means letting go of what has hurt us, and sometimes it means returning to what we’ve forgotten. His mom: “You come back as the man we raised.” Hope begins when someone reminds us of who we can still become. His parents couldn’t undo his choices, but they could remind him of his foundation.",
+    },
+    {
+      position: 6,
+      title: "There Is Still Hope for the Family",
+      label: "1 Thessalonians 5:21",
+      body: "Joyce Meyer had to overcome much of what she inherited. Damon West had to rediscover much of what he inherited. Both discovered that their beginning didn’t have to determine their ending. “Hold on to what is good!” We don’t have to hold on to everything from our past to hold on to what is good. You cannot rewrite the beginning of your family’s story, but with God’s help you can influence what happens in the next chapter. Tomorrow’s families are counting on the foundation we are building today. The foundation matters.",
+    },
+  ],
 };
 
 // August–September 2026 series on Isaiah 43:19. Source: Joe's notes and
@@ -1384,6 +1439,88 @@ const withAllHisMightSlides: SeedSlideInput[] = [
 ];
 
 /**
+ * Hope For The Family (Lesson 4) — Joe's finished 16:9 audience slides
+ * (Hope_for_the_Family_Audience_Slides.pdf), exported to
+ * public/sermons/hope-for-the-family/slides/NN.jpg. The Joyce Meyer and Damon
+ * West videos are played by Joe and are not hosted here; outline text comes
+ * from his Oct 25 sermon notes.
+ */
+const hopeForTheFamilySlides: SeedSlideInput[] = [
+  {
+    position: 1,
+    html: imageSlide("hope-for-the-family", 1, "We don’t have to have everything to give someone something that matters."),
+    outline_html: "<p><strong>Opening</strong></p><p>&bull; Tios: we&rsquo;d drop in on family&hellip;unannounced.</p><p>&bull; Lucas and Mary: they just got married.</p><p>&bull; Sometimes the greatest thing a family passes down isn&rsquo;t what they own. It&rsquo;s how they treat people.</p><p>&bull; <strong>We don&rsquo;t have to have everything to give someone something that matters.</strong></p>",
+    notes: null,
+  },
+  {
+    position: 2,
+    html: imageSlide("hope-for-the-family", 2, "We didn’t have great teachers — Marriage Enrichment Seminar, His Needs, Her Needs, and books by Dr. James Dobson"),
+    outline_html: "<p><strong>We didn&rsquo;t have great teachers&hellip;</strong></p><p>&bull; James Dobson</p><p>&bull; Paul Faulkner, Carl Brecheen</p><p>&bull; Hadn&rsquo;t read books like &ldquo;His Needs, Her Needs&rdquo;</p><p><strong>There&rsquo;s hope for every generation:</strong> we don&rsquo;t have to start from scratch. What if we could discover what really matters and pass it on? Build our families on what lasts? Give the next generation a strong foundation?</p>",
+    notes: null,
+  },
+  {
+    position: 3,
+    html: imageSlide("hope-for-the-family", 3, "1 Corinthians 3:10–11"),
+    outline_html: "<p><strong>1 Corinthians 3:10&ndash;17</strong></p><p>&bull; There&rsquo;s division in the church.</p><p>&bull; Paul: you are &ldquo;infants&rdquo; not ready for solid food.</p><p>&bull; Addresses the controversy over &ldquo;Paul&rdquo; and &ldquo;Apollos.&rdquo;</p><p>&bull; Verses 10&ndash;17 are about building on the right foundation.</p><p>&bull; The principle speaks strongly to the very challenges of a family.</p>",
+    notes: null,
+  },
+  {
+    position: 4,
+    html: imageSlide("hope-for-the-family", 4, "1 Corinthians 3:12–13"),
+    outline_html: "<p>Gold, silver, costly stones, wood, hay or straw &mdash; the Day will bring it to light.</p>",
+    notes: null,
+  },
+  {
+    position: 5,
+    html: imageSlide("hope-for-the-family", 5, "1 Corinthians 3:14–15"),
+    outline_html: "<p>Lives can be built on questionable foundations: a painful foundation; a promising foundation abandoned; two very different beginnings. Both need something to change.</p>",
+    notes: null,
+  },
+  {
+    position: 6,
+    html: imageSlide("hope-for-the-family", 6, "Healing doesn’t change what happened yesterday. It changes what we carry into tomorrow."),
+    outline_html: "<p><strong>Joyce Meyer</strong></p><p>&bull; Not everyone grows up in a loving, supportive family. Some family experiences can leave wounds.</p><p>&bull; Sometimes the very people who should have protected us are the ones who hurt us the most.</p><p><strong>[Video: Joyce Meyer &mdash; Her Story]</strong></p><p>&bull; What gets passed down doesn&rsquo;t always have to get passed on.</p><p>&bull; We may inherit a painful beginning, but we can build a different future.</p><p>&bull; <strong>Healing doesn&rsquo;t change what happened yesterday. It changes what we carry into tomorrow.</strong></p>",
+    notes: null,
+  },
+  {
+    position: 7,
+    html: imageSlide("hope-for-the-family", 7, "The past doesn’t have to be the future."),
+    outline_html: "<p>&ldquo;The past doesn&rsquo;t have to be the future.&rdquo;</p><p>Some people spend their adult lives trying to heal from what happened in their childhood.</p>",
+    notes: null,
+  },
+  {
+    position: 8,
+    html: imageSlide("hope-for-the-family", 8, "Sometimes we walk away from the very things that gave us a strong foundation."),
+    outline_html: "<p><strong>Damon West</strong></p><p>&bull; Not everyone who grows up in a loving, supportive family makes good choices.</p><p>&bull; Sometimes we walk away from the very things that gave us a strong foundation.</p><p>&bull; Damon West had a promising future &mdash; a college quarterback, a successful career, and parents who loved and supported him. But his choices took him down a very different path.</p><p><strong>[Video: Damon West &mdash; The Coffee Bean Story]</strong></p><p>&bull; &ldquo;A good foundation doesn&rsquo;t guarantee good choices, but it gives us something worth returning to.&rdquo;</p>",
+    notes: null,
+  },
+  {
+    position: 9,
+    html: imageSlide("hope-for-the-family", 9, "Sometimes holding on to what is good means returning to what we’ve forgotten."),
+    outline_html: "<p>&bull; Sometimes holding on to what is good means letting go of what has hurt us.</p><p>&bull; And sometimes it means returning to what we&rsquo;ve forgotten.</p><p>&bull; Mom: &ldquo;You come back as the man we raised.&rdquo; She was confident about how she raised him.</p>",
+    notes: null,
+  },
+  {
+    position: 10,
+    html: imageSlide("hope-for-the-family", 10, "Hope begins when someone reminds us of who we can still become."),
+    outline_html: "<p>&bull; Hope begins when someone reminds us of who we can still become.</p><p>&bull; His parents couldn&rsquo;t undo his choices, but they could remind him of his foundation.</p><p>&bull; A good foundation doesn&rsquo;t guarantee good choices. But it gives us something worth returning to.</p><p>Some people spend their adult lives trying to recover what they walked away from.</p>",
+    notes: null,
+  },
+  {
+    position: 11,
+    html: imageSlide("hope-for-the-family", 11, "Both discovered that their beginning didn’t have to determine their ending."),
+    outline_html: "<p><strong>There is still hope for the family</strong></p><p>&bull; Joyce &mdash; breaking the cycle, building something new.</p><p>&bull; Damon &mdash; rediscovering what was good, returning to his foundation.</p><p>&bull; Joyce Meyer had to overcome much of what she inherited. Damon West had to rediscover much of what he inherited.</p><p>&bull; <strong>Both discovered that their beginning didn&rsquo;t have to determine their ending.</strong></p>",
+    notes: null,
+  },
+  {
+    position: 12,
+    html: imageSlide("hope-for-the-family", 12, "We don’t have to hold on to everything from our past to hold on to what is good."),
+    outline_html: "<p><strong>Closing</strong></p><p>&bull; 1 Thessalonians 5:21 &mdash; &ldquo;Hold on to what is good!&rdquo;</p><p>&bull; <strong>We don&rsquo;t have to hold on to everything from our past to hold on to what is good.</strong></p><p>&bull; You cannot rewrite the beginning of your family&rsquo;s story.</p><p>&bull; But (with God&rsquo;s help) you can influence what happens in the next chapter.</p><p>&bull; The foundation matters.</p><p>Tomorrow&rsquo;s families are counting on the foundation that we are building today.</p>",
+    notes: null,
+  },
+];
+
+/**
  * Make Room for a New Life (The New Thing, Lesson 1) — Joe's finished deck
  * (NewLife_Sermon_Deck_COMPLETE_fnl.pptx, the 31-slide version saved Sept 12;
  * its 9/11 remembrance slide is left out),
@@ -1612,6 +1749,7 @@ export const seedDecks: SeedDeckWithNotes[] = [
   buildDeck("seed-deck-6", "the-jesus-test", "The Jesus Test", "the-jesus-test", theJesusTestSlides),
   buildDeck("seed-deck-7", "ask-better-questions", "Ask Better Questions", "ask-better-questions", askBetterQuestionsSlides),
   buildDeck("seed-deck-8", "with-all-his-might", "With All His Might", "with-all-his-might", withAllHisMightSlides),
+  buildDeck("seed-deck-10", "hope-for-the-family", "Hope For The Family", "hope-for-the-family", hopeForTheFamilySlides),
   buildDeck("seed-deck-9", "make-room-for-a-new-life", "Make Room for a New Life", "make-room-for-a-new-life", makeRoomForANewLifeSlides),
 ];
 

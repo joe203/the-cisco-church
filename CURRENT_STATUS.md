@@ -1,6 +1,15 @@
 # CURRENT_STATUS — TheCiscoChurch.org
 Updated: 2026-10-08 · Read this first when starting a new session.
 
+## Hold On to What Is Good, Lesson 4 — Hope For The Family (added 2026-10-26 — NOT yet committed/deployed)
+
+`/sermons/hope-for-the-family` (Oct 25, 2026; 1 Cor 3:10–17 + 1 Thess 5:21). Content comes from Joe's
+Oct 25 sermon notes only (what was preached), not the longer planning notes. 12-slide deck from
+`Hope_for_the_Family_Audience_Slides.pdf` (`public/sermons/hope-for-the-family/slides/`, seed-deck-10,
+migrations 020 + 021, not applied). Handouts built (guide, recap, outline, quotes). The 6 reflection
+questions and 3 quotes are MY DRAFTS for Joe to review, then rerun
+`node scripts/build-handouts.mjs hope-for-the-family`. No YouTube link yet (`youtube_url` null).
+
 ## The New Thing, Lesson 1 (added 2026-10-24 — NOT yet committed/deployed)
 
 `/sermons/make-room-for-a-new-life` (Sept 13, 2026, Isaiah 43:16–19), series "The New
