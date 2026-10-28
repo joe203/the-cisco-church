@@ -549,7 +549,40 @@ const makeRoomForANewLife: SermonDetail = {
   ],
 };
 
+// November 2026 series on Romans 8:15. Lesson 1 is announced (slide + teaser);
+// Lessons 2–5 are placeholders (title + date) until their material arrives.
+const familySeries: SeriesRef = {
+  slug: "the-family-of-god",
+  title: "The Family of God",
+  scripture_ref: "Romans 8:15",
+  tagline: "What does it really mean to be part of God’s family?",
+  artwork_url: "/series/the-family-of-god/artwork.jpg",
+};
+
+const theFatherWhoNeverGaveUp: SermonDetail = {
+  ...upcomingLesson(10, "the-father-who-never-gave-up", "The Father Who Never Gave Up", "2026-11-01", 1),
+  thesis: "His love never stopped reaching.",
+  teaser:
+    "We often call God our Father. But have we stopped to think about how remarkable that is?\n\nFrom the garden to the prodigal son’s long road home, the Bible tells the story of a God who wanted more than our worship and obedience. He wanted a family. And when His children wandered, He kept reaching.\n\nThis Sunday we begin The Family of God, a November series on being loved by God, belonging to His family, learning to love one another, and giving thanks for the place He has given us. We start where the story starts: with a Father who never gave up.\n\nHis love never stopped reaching.",
+  scripture_ref: "Romans 8:15",
+  scripture_text: "“The Spirit you received brought about your adoption to sonship. And by him we cry, ‘Abba, Father.’”",
+  artwork_url: "/sermons/the-father-who-never-gave-up/artwork.jpg",
+  series: familySeries,
+};
+
+const familyPlaceholders: SermonDetail[] = [
+  ["a-place-to-belong", "A Place to Belong", "2026-11-08", 2],
+  ["learning-to-love-like-family", "Learning to Love Like Family", "2026-11-15", 3],
+  ["thankful-to-be-his", "Thankful to Be His", "2026-11-22", 4],
+  ["the-family-business", "The Family Business", "2026-11-29", 5],
+].map(([slug, title, date, lesson], i) => ({
+  ...upcomingLesson(11 + i, slug as string, title as string, date as string, lesson as number),
+  series: familySeries,
+}));
+
 export const seedSermons: SermonDetail[] = [
+  ...[...familyPlaceholders].reverse(),
+  theFatherWhoNeverGaveUp,
   hopeForTheFamily,
   withAllHisMight,
   askBetterQuestions,
