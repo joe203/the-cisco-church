@@ -76,6 +76,12 @@ slide takeover on the homepage) are deferred unless they solve a v1 problem.
 - **Announcements** (`/announcements`) — the Sunday screen slides to read at one's
   own pace (`lib/announcements.json`, `scripts/build-announcements.mjs`).
 
+- **Members-only "where we're headed" page** (`/together`, added 2026-10-28 at
+  Joe's request): unlisted, noindex, behind an email-or-cell sign-in against a
+  member list; its own layout/footer (`app/together/`) carries the new schedule.
+  One narrow form lives there (`/api/together/ideas`: a member's story + ideas,
+  emailed to admins + the office, nothing stored). Not a general forms system.
+
 **Explicitly out of scope — do not build, do not suggest:**
 - About / staff / leadership / ministries / calendar pages (an **events page**
   is now in scope — see below — but never a calendar)

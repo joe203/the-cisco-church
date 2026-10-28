@@ -9,7 +9,7 @@ export default function robots(): MetadataRoute.Robots {
     rules: {
       userAgent: "*",
       allow: "/",
-      disallow: ["/staff", "/api/", "/auth/", "/embed/", "/slides/", "/preach/", "/share/"],
+      disallow: ["/staff", "/api/", "/auth/", "/embed/", "/slides/", "/preach/", "/share/", "/together"],
     },
     sitemap: "https://theciscochurch.org/sitemap.xml",
   };

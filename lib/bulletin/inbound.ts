@@ -75,7 +75,7 @@ export async function findStaffByEmail(email: string): Promise<StaffMember | nul
     : null;
 }
 
-async function adminEmails(): Promise<string[]> {
+export async function adminEmails(): Promise<string[]> {
   const db = getServiceClient();
   if (!db) return [];
   const { data } = await db.from("cisco_staff").select("email").eq("role", "admin");
