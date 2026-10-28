@@ -49,15 +49,15 @@ const values = [
   },
   {
     name: "Vision driven",
-    text: "We keep the big picture in front of us: what God is calling this congregation to be and do. We welcome gifts from inside and outside our walls and put them to work for that shared vision.",
+    text: "We keep the big picture in front of us by asking: What is God calling this congregation to be and do in His kingdom? Hence, we align ourselves to what God is doing. This helps us be decisive about what we say yes to and what we say no to.",
   },
   {
-    name: "Grace as gain",
-    text: "Success is more than numbers. It’s lives changed, faith that grows, and people who experience God’s grace.",
+    name: "Grace received, grace shared",
+    text: "We are saved by grace through faith, not by works (Ephesians 2:8–9). The more deeply we understand the grace God has shown us, the more freely we show it to the people around us. We celebrate God’s goodness. We encourage the presence of grace more and more in our fellowship, our ministries, and everything we do, and we count that as a godly step forward.",
   },
   {
     name: "Mission over tradition",
-    text: "Honor our heritage without allowing familiar practices to determine our future.",
+    text: "We honor our heritage, and we let our mission, not long-standing practices, set our direction.",
   },
 ];
 
