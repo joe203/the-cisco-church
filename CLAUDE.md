@@ -82,6 +82,15 @@ slide takeover on the homepage) are deferred unless they solve a v1 problem.
   One narrow form lives there (`/api/together/ideas`: a member's story + ideas,
   emailed to admins + the office, nothing stored). Not a general forms system.
 
+- **Church directory update form** (`/directory`, added 2026-10-28 at Joe's
+  request): public, unlisted (noindex, not in nav/sitemap), shared with members by
+  hand. ONE purpose-built form — not a general forms system. `POST /api/directory`
+  saves to `cisco_directory_submissions` (migration 023, service-role only — the
+  base for the future online directory) and emails the office
+  (`site.email` + admins, Reply-To = the family's first email). Abuse brake in
+  `lib/directory/guard.ts`: per-IP limit, honeypot, and a global trip (40 attempts
+  in 10 min) that pauses the form for 1 hour and texts the operator once.
+
 **Explicitly out of scope — do not build, do not suggest:**
 - About / staff / leadership / ministries / calendar pages (an **events page**
   is now in scope — see below — but never a calendar)

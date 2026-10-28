@@ -1,5 +1,18 @@
 # CURRENT_STATUS — TheCiscoChurch.org
-Updated: 2026-10-08 · Read this first when starting a new session.
+Updated: 2026-10-28 · Read this first when starting a new session.
+
+## Directory form (built 2026-10-28 — NOT yet committed/deployed)
+
+`/directory` — paper "Church Directory Information Update" as a web form (source photo
+`photos/directory_qtns.jpg`). Files: `app/(site)/directory/page.tsx`,
+`components/directory/DirectoryForm.tsx`, `app/api/directory/route.ts`,
+`lib/directory/{schema,guard}.ts`, migration `023_directory.sql` (**NOT applied yet** —
+until it is, submissions are emailed but not saved). Required: household name + your name + the yes/no choice;
+email or cell. People are rows (name/cell/email/birthday); children are rows; address,
+home phone, anniversary, status radio, "don't publish" box. No confirmation email to the
+family (open form + user-supplied address = relay risk). The guard's state is in memory
+(a deploy reopens a paused form). A test submission "ZZ Test" was emailed to the office
+on 2026-10-28 while testing locally.
 
 ## Hold On to What Is Good, Lesson 4 — Hope For The Family (added 2026-10-26 — NOT yet committed/deployed)
 
