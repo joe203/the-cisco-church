@@ -7,7 +7,7 @@ import { getMember, tooMany } from "@/lib/together/access";
 
 const MAX = 4000;
 
-type Body = { story?: unknown; dream?: unknown; name?: unknown; website?: unknown };
+type Body = { story?: unknown; dream?: unknown; concerns?: unknown; name?: unknown; website?: unknown };
 
 const clean = (v: unknown, max: number) =>
   typeof v === "string" ? v.replace(/\r\n/g, "\n").trim().slice(0, max) : "";
@@ -29,8 +29,9 @@ export async function POST(request: Request) {
 
   const story = clean(body.story, MAX);
   const dream = clean(body.dream, MAX);
+  const concerns = clean(body.concerns, MAX);
   const name = clean(body.name, 120);
-  if (!story && !dream) {
+  if (!story && !dream && !concerns) {
     return NextResponse.json({ error: "Write something in at least one box." }, { status: 400 });
   }
   if (!mailConfigured()) {
@@ -46,9 +47,12 @@ export async function POST(request: Request) {
     "",
     "What could we do better than 1,000 other churches? What could be us?",
     dream || "(left blank)",
+    "",
+    "What's on their heart or mind (concerns, questions, feedback):",
+    concerns || "(left blank)",
   ].join("\n");
 
-  const sent = await sendMail({ to, subject: `Where we're headed: a reply from ${name || "a member"}`, text });
+  const sent = await sendMail({ to, subject: `Where we're headed: ${concerns ? "feedback and concerns" : "a reply"} from ${name || "a member"}`, text });
   if (!sent) {
     return NextResponse.json({ error: "That didn’t send. Please try again in a minute." }, { status: 502 });
   }

@@ -17,10 +17,10 @@ const voices = [
   },
   {
     topic: "A spark is growing into a big fire",
-    who: "Jonathan Masters, Lake Cisco Christian Camp",
+    who: "Jonathon Masters, Lake Cisco Christian Camp",
     videoId: "apyd3f68",
     poster: "/images/together/apyd3f68.jpg",
-    alt: "Jonathan Masters speaking to the camera",
+    alt: "Jonathon Masters speaking to the camera",
   },
   {
     topic: "Time to change a few things up",
@@ -98,7 +98,7 @@ export function TogetherContent() {
               <span className="text-teal">So we’re changing how we do things.</span>
             </h1>
             <p className="mt-6 max-w-[34ch] text-[1.15rem] leading-[1.7] text-ink/80">
-              Watch this first. It’s short, and it’s the heart of everything below.
+              Grab a coffee. This is where we’re headed, and why.
             </p>
           </div>
 
@@ -107,15 +107,16 @@ export function TogetherContent() {
               <VideoCard
                 shape="wide"
                 src={null}
-                poster="/images/preaching-podium.jpg"
-                alt="Joe Cabrera preaching"
+                videoId="yqv4quef"
+                poster="/images/together/yqv4quef.jpg"
+                alt="Joe Cabrera at his desk beside a signpost reading “this new direction”"
                 label="Play Joe’s message about where we’re headed"
                 sizes="(min-width: 1024px) 700px, 100vw"
                 priority
               />
             </div>
             <figcaption className="mt-4 text-[0.98rem] text-ink/75">
-              <span className="font-bold text-ink">Joe Cabrera</span>, Minister · about 3 minutes
+              <span className="font-bold text-ink">Joe Cabrera</span>, Minister · about 5 minutes
             </figcaption>
           </figure>
         </div>
@@ -312,7 +313,7 @@ export function TogetherContent() {
             <p className="mt-6 max-w-[52ch] text-[1.1rem] leading-[1.7] text-white">
               Start with a story from our past that you treasure. Then help us picture what we
               could become: what could be uniquely us. That’s what we want to build on. If you
-              have questions or concerns, I’d like to hear them in person.
+              have questions or concerns, I’d like to hear them, in person or right here.
             </p>
             <p className="mt-6 font-display text-[1.15rem] font-bold text-white">
               Joe Cabrera, Minister
@@ -324,7 +325,7 @@ export function TogetherContent() {
               Add your voice
             </p>
             <p className="text-[1.05rem] leading-[1.6] text-white/90">
-              Two short questions, and you stay right here on the page.
+              Share a story, an idea, or what’s on your heart. You stay right here on the page.
             </p>
             <div className="pt-2">
               <IdeasModal />

@@ -9,13 +9,15 @@ type State = "idle" | "sending" | "done";
 
 export function IdeasModal() {
   const dialog = useRef<HTMLDialogElement>(null);
+  const concerns = useRef<HTMLTextAreaElement>(null);
   const [state, setState] = useState<State>("idle");
   const [error, setError] = useState("");
 
-  const open = () => {
+  const open = (focusConcerns = false) => {
     setState("idle");
     setError("");
     dialog.current?.showModal();
+    if (focusConcerns) concerns.current?.focus();
   };
 
   async function submit(e: React.FormEvent<HTMLFormElement>) {
@@ -43,9 +45,18 @@ export function IdeasModal() {
 
   return (
     <>
-      <button type="button" onClick={open} className="btn-coral focus-visible:outline-marigold">
-        Share your story and ideas
-      </button>
+      <div className="flex flex-col items-start gap-4">
+        <button type="button" onClick={() => open()} className="btn-coral focus-visible:outline-marigold">
+          Share your story and ideas
+        </button>
+        <button
+          type="button"
+          onClick={() => open(true)}
+          className="min-h-11 rounded-sm text-left text-[1.05rem] font-bold text-white underline decoration-marigold decoration-2 underline-offset-[6px] transition-opacity duration-300 hover:opacity-80 focus-visible:outline-marigold active:opacity-60"
+        >
+          Have a concern or some feedback? Tell us.
+        </button>
+      </div>
 
       <dialog
         ref={dialog}
@@ -58,7 +69,7 @@ export function IdeasModal() {
               Thank you.
             </h2>
             <p className="mt-3 text-[1.1rem] leading-[1.65] text-ink/80">
-              Your story and ideas are on their way to Joe and the church office. We read every one.
+              Your note is on its way to Joe and the church office. We read every one.
             </p>
             <button type="button" onClick={() => dialog.current?.close()} className="btn-coral mt-7">
               Back to the page
@@ -70,10 +81,11 @@ export function IdeasModal() {
               id="ideas-title"
               className="font-display text-[1.9rem] leading-tight font-extrabold tracking-[-0.02em]"
             >
-              Help us dream.
+              We’d love to hear from you.
             </h2>
             <p className="mt-3 text-[1.05rem] leading-[1.65] text-ink/80">
-              Two questions. Write as much or as little as you like.
+              Share a story, an idea, or what’s on your heart. Fill in one box or all three, and
+              write as much or as little as you like.
             </p>
 
             <div className="mt-6 space-y-6">
@@ -109,9 +121,31 @@ export function IdeasModal() {
               </div>
 
               <div>
+                <label htmlFor="i-concerns" className="text-[1.02rem] leading-snug font-bold">
+                  What’s on your heart or mind?
+                </label>
+                <p className="mt-1 text-[0.95rem] text-ink/70">
+                  Concerns, questions, worries, frustrations. If you need to vent, go ahead. We’ll
+                  listen, and nobody will think less of you for it.
+                </p>
+                <textarea
+                  id="i-concerns"
+                  name="concerns"
+                  ref={concerns}
+                  rows={5}
+                  maxLength={4000}
+                  placeholder="Tell us honestly. We want to hear it."
+                  className={field}
+                />
+              </div>
+
+              <div>
                 <label htmlFor="i-name" className="text-[1.02rem] font-bold">
                   Your name <span className="font-normal text-ink/65">(optional)</span>
                 </label>
+                <p className="mt-1 text-[0.95rem] text-ink/70">
+                  Leave it blank if you’d rather stay anonymous.
+                </p>
                 <input id="i-name" name="name" autoComplete="name" maxLength={120} className={field} />
               </div>
 
