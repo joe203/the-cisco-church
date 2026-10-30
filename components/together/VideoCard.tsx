@@ -8,6 +8,8 @@ type Props = {
   alt: string;
   /** Hosted file on this site (members-only). Null until the clip is recorded. */
   src: string | null;
+  /** ID of a video hosted at video.fivesixteen.church (see docs/video-hosting.md). Wins over `src`. */
+  videoId?: string;
   /** Aspect of the frame: phone clips are tall, Joe's is wide. */
   shape: "wide" | "tall";
   label: string;
@@ -23,7 +25,7 @@ function PlayIcon() {
   );
 }
 
-export function VideoCard({ poster, alt, src, shape, label, sizes, priority }: Props) {
+export function VideoCard({ poster, alt, src, videoId, shape, label, sizes, priority }: Props) {
   const [playing, setPlaying] = useState(false);
   const video = useRef<HTMLVideoElement>(null);
 
@@ -38,7 +40,15 @@ export function VideoCard({ poster, alt, src, shape, label, sizes, priority }: P
         shape === "wide" ? "aspect-video" : "aspect-[9/16]"
       }`}
     >
-      {playing && src ? (
+      {playing && videoId ? (
+        <iframe
+          src={`https://video.fivesixteen.church/${videoId}/embed`}
+          title={label}
+          allow="autoplay; fullscreen; picture-in-picture"
+          allowFullScreen
+          className="absolute inset-0 size-full border-0"
+        />
+      ) : playing && src ? (
         <video
           ref={video}
           src={src}

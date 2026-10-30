@@ -11,22 +11,39 @@ const voices = [
   {
     topic: "Why change now",
     who: "Church member",
-    poster: "/images/fellowship-men.jpg",
-    alt: "Men of the church talking together",
+    videoId: "qds4ea6s",
+    poster: "/images/together/qds4ea6s.jpg",
+    alt: "A church member speaking to the camera",
   },
   {
-    topic: "What I hope Sundays feel like",
-    who: "Church member",
-    poster: "/images/fellowship-ladies.jpg",
-    alt: "Ladies of the church laughing together",
+    topic: "A word from Jon",
+    who: "Jon Masters, Lake Cisco Christian Camp",
+    videoId: "apyd3f68",
+    poster: "/images/together/apyd3f68.jpg",
+    alt: "Jon Masters speaking to the camera",
   },
   {
-    topic: "Wednesday nights for families",
-    who: "Church member",
-    poster: "/images/kids-outside.jpg",
-    alt: "Children playing outside at church",
+    topic: "Time to change a few things up",
+    who: "Kevin",
+    videoId: "qncnyfev",
+    poster: "/images/together/qncnyfev.jpg",
+    alt: "Kevin speaking to the camera beside the words “change a few things up”",
   },
-];
+  {
+    topic: "A few quick words",
+    who: "Lee",
+    videoId: "eew5w788",
+    poster: "/images/together/eew5w788.jpg",
+    alt: "Lee speaking to the camera beside the words “a few quick words”",
+  },
+  // The fifth clip is still to come; cards without a videoId stay hidden.
+  {
+    topic: "Why I’m excited",
+    who: "Church member",
+    poster: "/images/youth.jpg",
+    alt: "Young people from the church",
+  },
+] as { topic: string; who: string; videoId?: string; poster: string; alt: string }[];
 
 const lead = {
   name: "Jesus at the center",
@@ -133,22 +150,20 @@ export function TogetherContent() {
           Joe isn’t the only one with something to say. Here are a few of us, in our own words.
         </p>
 
-        <ul className="-mx-5 mt-10 flex snap-x snap-mandatory gap-5 overflow-x-auto px-5 pb-6 sm:mx-0 sm:grid sm:grid-cols-3 sm:gap-6 sm:overflow-visible sm:px-0 sm:pb-0">
-          {voices.map((v, i) => (
-            <li
-              key={v.topic}
-              className={`w-[72%] shrink-0 snap-center list-none sm:w-auto ${
-                i === 1 ? "sm:mt-8" : ""
-              }`}
-            >
+        <ul className="mt-10 grid gap-x-6 gap-y-10 sm:grid-cols-2 lg:grid-cols-6">
+          {voices
+            .filter((v) => v.videoId)
+            .map((v, i, shown) => (
+            <li key={v.topic} className={`list-none ${i < 2 || shown.length < 5 ? "lg:col-span-3" : "lg:col-span-2"}`}>
               <div className="rounded-[1.1rem] bg-white p-2 shadow-[var(--shadow-card)]">
                 <VideoCard
-                  shape="tall"
+                  shape="wide"
                   src={null}
+                  videoId={v.videoId}
                   poster={v.poster}
                   alt={v.alt}
                   label={`Play: ${v.topic}`}
-                  sizes="(min-width: 640px) 360px, 72vw"
+                  sizes="(min-width: 1024px) 560px, (min-width: 640px) 50vw, 100vw"
                 />
               </div>
               <p className="font-display mt-4 text-[1.2rem] leading-snug font-bold tracking-[-0.01em] text-ink">
