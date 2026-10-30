@@ -1,3 +1,4 @@
+import Image from "next/image";
 import { IdeasModal } from "./IdeasModal";
 import { VideoCard } from "./VideoCard";
 
@@ -294,6 +295,75 @@ export function TogetherContent() {
               each other. It’s how we get to do a few things really well.
             </p>
           </article>
+        </div>
+      </section>
+
+      {/* ── The front of the room (concept mock-up) ─────────────────── */}
+      <section aria-labelledby="stage" className="mx-auto max-w-6xl px-5 pb-16 sm:px-8 lg:pb-24">
+        <div className="grid items-center gap-9 lg:grid-cols-[5fr_7fr] lg:gap-14">
+          <div>
+            <p className="inline-block rounded-full bg-teal px-3.5 py-1 text-[0.85rem] font-bold text-white">
+              Working on it in the background
+            </p>
+            <h2 id="stage" className={`${h2} mt-4`}>
+              We’re dreaming about the front of our worship area, too.
+            </h2>
+            <p className="mt-5 max-w-[46ch] text-[1.1rem] leading-[1.7] text-ink/85">
+              We’d like the front of our worship area to help us <strong>teach</strong> God’s Word
+              and <strong>worship</strong> Him well: easy to see, warm, and uncluttered, so
+              nothing gets in the way of what’s being said and sung.
+            </p>
+            <p className="mt-4 max-w-[46ch] text-[1.1rem] leading-[1.7] text-ink/85">
+              This picture is the direction we like best right now, but it’s an idea, not a
+              finished plan. We wanted you to see it early, and we’d love to hear what you think.
+            </p>
+          </div>
+
+          <figure>
+            <div className="relative rounded-[1.1rem] bg-white p-2 shadow-[var(--shadow-card-lift)] lg:rotate-[0.8deg]">
+              <Image
+                src="/images/together/stage-idea.jpg"
+                alt="An artist’s idea of the front of our auditorium: a clean dark wall with a large screen showing a mountain sunrise, soft blue lights on either side, and a simple table holding an open Bible on a carpeted stage"
+                width={1728}
+                height={910}
+                sizes="(min-width: 1024px) 700px, 100vw"
+                className="h-auto w-full rounded-xl"
+              />
+              <span className="absolute top-5 left-5 rounded-full bg-ink/85 px-3.5 py-1 text-[0.85rem] font-bold text-white backdrop-blur-sm">
+                Just an idea
+              </span>
+            </div>
+            <figcaption className="mt-4 text-[0.98rem] text-ink/75">
+              A concept picture, not a final design.
+            </figcaption>
+          </figure>
+        </div>
+
+        <div className="mt-14 grid items-center gap-8 lg:mt-20 lg:grid-cols-[5fr_7fr] lg:gap-14">
+          <div>
+            <h3 className="font-display text-[clamp(1.5rem,1.6vw+0.9rem,2.1rem)] leading-[1.1] font-extrabold tracking-[-0.03em] text-ink">
+              And we’re looking at other options.
+            </h3>
+            <p className="mt-4 max-w-[46ch] text-[1.1rem] leading-[1.7] text-ink/85">
+              Colors, lighting, even a stone-look wall. Nothing is locked in, so if you see
+              something you like better, tell us.
+            </p>
+          </div>
+          <figure>
+            <div className="rounded-[1.1rem] bg-white p-2 shadow-[var(--shadow-card)] lg:-rotate-[0.6deg]">
+              <Image
+                src="/images/together/stage-options.jpg"
+                alt="Four ideas for the front of our worship area, each with a large screen and a table holding an open Bible: a modern blue wall, a warm neutral wall with amber lights, a contemporary gray wall, and a textured stone-look accent wall"
+                width={1536}
+                height={1024}
+                sizes="(min-width: 1024px) 700px, 100vw"
+                className="h-auto w-full rounded-xl"
+              />
+            </div>
+            <figcaption className="mt-4 text-[0.98rem] text-ink/75">
+              Four concept pictures, not final designs.
+            </figcaption>
+          </figure>
         </div>
       </section>
 
