@@ -9,32 +9,32 @@ import { VideoCard } from "./VideoCard";
 
 const voices = [
   {
-    topic: "Why change now",
-    who: "Church member",
+    topic: "I can’t wait to see the future",
+    who: "Sam Scroggins, Children’s Ministry",
     videoId: "qds4ea6s",
     poster: "/images/together/qds4ea6s.jpg",
-    alt: "A church member speaking to the camera",
+    alt: "Sam Scroggins speaking to the camera",
   },
   {
-    topic: "A word from Jon",
-    who: "Jon Masters, Lake Cisco Christian Camp",
+    topic: "A spark is growing into a big fire",
+    who: "Jonathan Masters, Lake Cisco Christian Camp",
     videoId: "apyd3f68",
     poster: "/images/together/apyd3f68.jpg",
-    alt: "Jon Masters speaking to the camera",
+    alt: "Jonathan Masters speaking to the camera",
   },
   {
     topic: "Time to change a few things up",
-    who: "Kevin",
+    who: "Kevin Scroggins, Children’s Ministry",
     videoId: "qncnyfev",
     poster: "/images/together/qncnyfev.jpg",
-    alt: "Kevin speaking to the camera beside the words “change a few things up”",
+    alt: "Kevin Scroggins speaking to the camera beside the words “change a few things up”",
   },
   {
-    topic: "A few quick words",
-    who: "Lee",
+    topic: "Excited about the new changes",
+    who: "Lee Lewis",
     videoId: "eew5w788",
     poster: "/images/together/eew5w788.jpg",
-    alt: "Lee speaking to the camera beside the words “a few quick words”",
+    alt: "Lee Lewis speaking to the camera beside the words “a few quick words”",
   },
   // The fifth clip is still to come; cards without a videoId stay hidden.
   {
