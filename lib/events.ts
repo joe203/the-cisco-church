@@ -110,6 +110,13 @@ export const datedEvents: DatedEvent[] = [
     title: "Church directory forms due",
     body: "Pick up a form on the foyer table by the water fountain, fill out a new one or update yours, and give it to Cyndi or drop it in the manila envelope on the table.",
   },
+  {
+    date: "2026-11-18",
+    id: "friendsgiving",
+    title: "Friendsgiving",
+    body: "Help us fill the table! Sign up to bring a dish to share: main dishes, sides, breads, or desserts. The youth will provide ham, potato casserole, green bean casserole, mac & cheese, and 2 desserts. The sign-up sheet is on the bulletin board.",
+    big: true,
+  },
 ];
 
 export type Occurrence = {

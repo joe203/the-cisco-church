@@ -61,18 +61,27 @@ cards: stub shows the DATE; color = one-off / monthly / weekly. Headline: "New t
 are happening here. Come get in on it." Confirmed by Joe: First Sunday is the first
 Sunday of the month (next: Nov 1). Not built yet: past announcement weeks archive.
 
-## Announcements page (built 2026-10-23 — NOT yet committed/deployed)
+## Announcements page (built 2026-10-23; weekly archive added 2026-10-29)
 
-`/announcements` shows the Sunday screen slides as a page people can read at their
-own pace (jump chips, big slide, plain-text details beside each). Added at Joe's
-request; a deliberate narrow exception to the scope fence, like the bulletin.
-Weekly flow: Joe sends the announcements PDF -> `node scripts/build-announcements.mjs
-"<pdf>" --date <Sunday> --skip <pages>` (needs `pdftoppm`) -> fill `title/alt/details`
-in `lib/announcements.json` -> tsc, screenshot, commit, deploy. Prayer slide (names + health needs) is public by Joe's choice 2026-10-24; the
-welcome slide is skipped because the header card replaces it.
-Oct 25 build skipped only page 1 (welcome — now a small card in the page header); Joe chose to publish the prayer + phones slides. The QR slide for the
-looping screen is `QR_codes/announcements_qr_slide.png` (1920x1080, decodes to
-theciscochurch.org/announcements; QR never changes, so it stays in the loop).
+AUTO-SWITCH (2026-10-29): each week is dated by its Sunday and goes live at 00:00 Cisco time that
+Sunday (the moment Saturday ends) — `getWeeks()` in `lib/announcements.ts`; pages are
+`force-dynamic`. Until then the previous week stays up and the new one 404s everywhere, so a
+new week can be committed/deployed any time after Thursday with no timing worries.
+`/announcements` = the current week (jump chips, big slide, plain-text details, welcome card,
+"Earlier weeks" links). The 3 weeks before it are at `/announcements/<date>` (noindex), minus
+any slide marked `"currentOnly": true` (the prayer-request slide: names + health needs).
+Weekly flow (Joe sends the PDF on Thursday): `node scripts/build-announcements.mjs "<pdf>"
+--date <Sunday> --skip 1` (needs `pdftoppm`; page 1 "We're glad you're here" is skipped
+because the page header has its own card) -> fill `title/alt/details` in
+`lib/announcements/<date>.json` (set `currentOnly` on the prayer slide) -> add any new dated
+event to `lib/events.ts` -> tsc, screenshot, commit, deploy. The script writes
+`public/announcements/<date>/NN.webp`, keeps the newest week + 3 earlier and deletes older ones,
+and regenerates `lib/announcements/weeks.ts`. Joe's PDFs live in
+`~/web_apps/sermon-framework/sermons/<series>/<lesson>/`. Public choices by Joe: prayer
+slide and "silence phones" slide are published. QR slides for the looping screen are in
+`QR_codes/` (announcements, bulletin, website) and never change.
+Nov 1 deck (7 slides; Joe had the 9:00 AM "Sunday Morning Bible Study" slide removed — it was a mistake): Friendsgiving (Wed
+Nov 18, `big` event on `/events`).
 
 ## 2026-10-08 session — launch pass (everything below is committed + deployed)
 

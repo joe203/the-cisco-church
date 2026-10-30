@@ -74,7 +74,9 @@ slide takeover on the homepage) are deferred unless they solve a v1 problem.
   grouped Coming up / Once a month / Every week (`lib/events.ts`; dated items
   drop off by themselves; next First Sunday is computed). Not a calendar.
 - **Announcements** (`/announcements`) — the Sunday screen slides to read at one's
-  own pace (`lib/announcements.json`, `scripts/build-announcements.mjs`).
+  own pace (`lib/announcements/<date>.json`, `scripts/build-announcements.mjs`);
+  the newest week is `/announcements`, the three before it live at
+  `/announcements/<date>` (prayer slide marked `currentOnly` drops off them).
 
 - **Members-only "where we're headed" page** (`/together`, added 2026-10-28 at
   Joe's request): unlisted, noindex, behind an email-or-cell sign-in against a
