@@ -32,17 +32,17 @@ const voices = [
   },
   {
     topic: "Excited about the new changes",
-    who: "Lee Lewis",
+    who: "Lee Lewis, Elder",
     videoId: "eew5w788",
     poster: "/images/together/eew5w788.jpg",
     alt: "Lee Lewis speaking to the camera beside the words “a few quick words”",
   },
-  // The fifth clip is still to come; cards without a videoId stay hidden.
   {
-    topic: "Why I’m excited",
-    who: "Church member",
-    poster: "/images/youth.jpg",
-    alt: "Young people from the church",
+    topic: "We’re building something for our youth",
+    who: "James Dye, Song Leader",
+    videoId: "jum7uuqk",
+    poster: "/images/together/jum7uuqk.jpg",
+    alt: "James Dye speaking to the camera beside a crane building a church labeled “youth”",
   },
 ] as { topic: string; who: string; videoId?: string; poster: string; alt: string }[];
 
