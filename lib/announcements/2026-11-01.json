@@ -14,11 +14,24 @@
       ]
     },
     {
+      "id": "directory-online",
+      "file": "08.webp",
+      "title": "Update the directory online",
+      "alt": "Let's stay connected. One form per household. Send us your family's info for the church directory online. Nothing changed? About 30 seconds. Scan the code or go to theciscochurch.org/directory.",
+      "details": [
+        "One form per household, even if nothing has changed. About 30 seconds.",
+        "Go to theciscochurch.org/directory, or scan the code on the slide with your phone camera."
+      ]
+    },
+    {
       "id": "ladies-bible-study",
       "file": "02.webp",
       "title": "Ladies Bible study",
       "alt": "Ladies Bible Study. Mondays at 4:30 PM in the Fellowship Hall.",
-      "details": ["Mondays at 4:30 PM.", "Fellowship Hall."]
+      "details": [
+        "Mondays at 4:30 PM.",
+        "Fellowship Hall."
+      ]
     },
     {
       "id": "friendsgiving",
@@ -67,11 +80,23 @@
       ]
     },
     {
+      "id": "new-direction",
+      "file": "09.webp",
+      "title": "See where we’re headed",
+      "alt": "See where we're headed. A bright future for the next generation. This is the Cisco Church's new direction. Members: scan the code or go to theciscochurch.org/together and sign in with your cell number or email.",
+      "details": [
+        "For our church family: a look at the Cisco Church’s new direction.",
+        "Go to theciscochurch.org/together, or scan the code on the slide with your phone camera. Members sign in with a cell number or email."
+      ]
+    },
+    {
       "id": "silence-phones",
       "file": "07.webp",
       "title": "Silence your cell phones",
       "alt": "As we prepare for worship, please silence your cell phones. Thank you.",
-      "details": ["As we prepare for worship, please silence your cell phones. Thank you."]
+      "details": [
+        "As we prepare for worship, please silence your cell phones. Thank you."
+      ]
     }
   ]
 }
