@@ -549,7 +549,8 @@ const makeRoomForANewLife: SermonDetail = {
   ],
 };
 
-// November 2026 series on Romans 8:15. Lesson 1 is announced (slide + teaser);
+// November 2026 series on Romans 8:15. Lesson 1 is full (from Joe’s Nov 1 notes;
+// reflection questions + the third quote are drafts for Joe to review);
 // Lessons 2–5 are placeholders (title + date) until their material arrives.
 const familySeries: SeriesRef = {
   slug: "the-family-of-god",
@@ -564,10 +565,64 @@ const theFatherWhoNeverGaveUp: SermonDetail = {
   thesis: "His love never stopped reaching.",
   teaser:
     "We often call God our Father. But have we stopped to think about how remarkable that is?\n\nFrom the garden to the prodigal son’s long road home, the Bible tells the story of a God who wanted more than our worship and obedience. He wanted a family. And when His children wandered, He kept reaching.\n\nThis Sunday we begin The Family of God, a November series on being loved by God, belonging to His family, learning to love one another, and giving thanks for the place He has given us. We start where the story starts: with a Father who never gave up.\n\nHis love never stopped reaching.",
-  scripture_ref: "Romans 8:15",
+  scripture_ref: "Romans 8:15 · Luke 15:11–32",
   scripture_text: "“The Spirit you received brought about your adoption to sonship. And by him we cry, ‘Abba, Father.’”",
   artwork_url: "/sermons/the-father-who-never-gave-up/artwork.jpg",
   series: familySeries,
+  summary:
+    "We praise God “for the Son of Thy love.” Over five Sundays we’re looking at something that runs throughout the entire Bible: God’s desire to have a relationship with us, not simply as our Creator, but as our Father. The Old Testament is a story of the distance God went to show us how much He loves us, and it leads to Jesus, the fullest revelation of the Father’s love. But are we hearing what He has been saying since He walked in the garden? God didn’t simply create a world He could rule. He created people He could love. Like the father in Luke 15, He gives us space, keeps the light shining, and welcomes us home, not as hired hands but as sons and daughters who cry, “Abba, Father.” God didn’t send Jesus simply to save us from something. He sent Jesus to bring us back to Someone.",
+  nuggets: [
+    "God doesn’t simply want our obedience. He wants our hearts.",
+    "God didn’t send Jesus simply to save us from something. He sent Jesus to bring us back to Someone.",
+    "The greatest gift God offers us isn’t simply a place in heaven. It’s a place in His family.",
+  ],
+  guide_questions: [
+    "How far would you go to convince someone that you love them? Think of an Old Testament story you know well — Noah, Abraham, the Exodus, David. What does it show you about the distance God was willing to go for His people?",
+    "A firefighter rescues a child from a burning house. What changes when the child is his own son or daughter? “God doesn’t simply want to rescue us. He wants us home.” Which picture of God have you lived with most: Rescuer, or Father?",
+    "Jefferson Fisher asks, “Is what I say what people hear?” Turn that question toward God. What has He been trying to say since He walked in the garden with Adam and Eve? What are you hearing? Where might you be mishearing Him, the way Israel so often did?",
+    "Read John 3:16, Romans 5:8, and Romans 8:15: God’s motivation, His demonstration, and His invitation. Which of the three is hardest for you to believe is meant for you personally? Why?",
+    "“A lighthouse doesn’t force anyone to come home. It simply keeps shining so they can find their way back.” Is there someone you love who has wandered — from you, from God, or both? What would keeping the door open for them look like this week?",
+    "Read Luke 15:11–24 and Romans 8:15–16. The son came home looking for a place to work; the father welcomed him back as a son. Do you relate to God more like a hired servant or a child? What would change if you truly believed you could cry out, “Abba, Father”?",
+  ],
+  deck_slug: "the-father-who-never-gave-up",
+  points: [
+    {
+      position: 1,
+      title: "Not Simply Our Creator, but Our Father",
+      label: "For the Son of Thy Love",
+      body: "We praise God “for the Son of Thy love.” Over the next five Sundays we’re looking at something that runs throughout the entire Bible: God’s desire to have a relationship with us. Not simply as our Creator, but as our Father. How far would you go to convince someone that you love them? The Old Testament reveals how far God was willing to go. It is a story of the distance God went to show us how much He loves us and how much we need our Creator. Throughout it God was patient, merciful, and gracious while He worked His plan, and the lesson wasn’t just for the house of Israel. It was for humanity.",
+    },
+    {
+      position: 2,
+      title: "He Wants Us Home",
+      label: "The First Responder",
+      body: "A firefighter rescues a child from a burning home. But what if the child inside that house were his own son or daughter? God doesn’t simply want to rescue us. He wants us home. The Old Testament has its climax in the New: the Messiah arrives, only to be rejected. Jesus is God in the flesh. Humanity couldn’t get the picture through mere words, so God came to model goodness, righteousness, compassion, and the love of a Father. Jesus is the fullest revelation of the Father’s love. But have we fully taken in what God has been communicating?",
+    },
+    {
+      position: 3,
+      title: "Are We Hearing What God Is Saying?",
+      label: "Is What I Say What People Hear?",
+      body: "Jefferson Fisher, a Texas trial attorney and author of The Next Conversation, asks, “Is what I say what people hear?” It’s easy to look back and see that the Hebrews kept mishearing and misunderstanding God. But what are we hearing? What do you see when you see God creating man, or walking with Adam and Eve in the garden? From the beginning, God’s desire was not merely to have people who would worship Him, but children who would know Him, love Him, and share in His life.",
+    },
+    {
+      position: 4,
+      title: "At the Heart of the Christian Story",
+      label: "John 3:16 · Romans 5:8 · Romans 8:15",
+      body: "Humanity has developed many understandings of God. Judaism recognizes God as Father but does not accept Jesus as His divine Son. Islam rejects the idea that God has a Son. Hinduism and Buddhism understand ultimate reality very differently. But at the heart of Christianity is something extraordinary: God loves us so deeply that He gave His Son, not simply to save us, but to bring us into His family. The temple and the Ark were never God’s ultimate vision of His presence; in the new covenant God lives in us, and the distance barrier has been removed. His motivation: He loved the world (John 3:16). His demonstration: while we were still sinners (Romans 5:8). His invitation: the Spirit of adoption (Romans 8:15). God didn’t simply create a world He could rule. He created people He could love.",
+    },
+    {
+      position: 5,
+      title: "Keeping the Door Open",
+      label: "The Lighthouse and the Bridge",
+      body: "What would it take for us to truly believe that a relationship with God as His son or daughter is better than anything out there? Why is that so hard to believe? Jefferson Fisher says loving parents keep the door open. Our beliefs have deep roots, and turning someone around can take a long time. When you can’t be a bridge, be a lighthouse. He was talking about earthly parents, but it sounds like our Father. A lighthouse doesn’t force anyone to come home. It simply keeps shining so they can find their way back. God wants to close the gap between us and Him. The lighthouse helps us find our way, but the bridge allows us to come home.",
+    },
+    {
+      position: 6,
+      title: "The Father Never Gave Up",
+      label: "Luke 15 · Romans 8:15–16",
+      body: "The son took his inheritance, and the father gave him space. Love doesn’t always prevent someone from walking away. Sometimes we have to remember the goodness of the Father before we’re willing to return to Him. The father didn’t make the inheritance the issue; the relationship mattered more. The son came home looking for a place to work. The father welcomed him back as a son. The Bible is the story of a Father restoring His family: created for fellowship, broken by sin, the way prepared in the Old Testament, and the welcome home through Jesus. Paul doesn’t merely say we belong to God. He says we can cry out, “Abba, Father.” We don’t simply recognize God as our Creator. We come to know Him as our Father.",
+    },
+  ],
 };
 
 const familyPlaceholders: SermonDetail[] = [
@@ -1554,6 +1609,87 @@ const hopeForTheFamilySlides: SeedSlideInput[] = [
 ];
 
 /**
+ * The Father Who Never Gave Up (The Family of God, Lesson 1) — Joe's 12
+ * audience slides, ordered to his Nov 1 sermon notes and exported to
+ * public/sermons/the-father-who-never-gave-up/slides/NN.jpg. The hymn and the
+ * two Jefferson Fisher clips are played by Joe and are not hosted here.
+ */
+const theFatherWhoNeverGaveUpSlides: SeedSlideInput[] = [
+  {
+    position: 1,
+    html: imageSlide("the-father-who-never-gave-up", 1, "The Family of God: The Father Who Never Gave Up. His love never stopped reaching. Romans 8:15, November 1, 2026."),
+    outline_html: "<p><strong>Opening</strong></p><p><strong>[Video: We Praise Thee, O God]</strong></p><p>&bull; Did you hear the opening line? The reason we praise God&hellip; <strong>&ldquo;for the Son of Thy love.&rdquo;</strong></p>",
+    notes: null,
+  },
+  {
+    position: 2,
+    html: imageSlide("the-father-who-never-gave-up", 2, "The Family of God, a five-part series: The Father Who Never Gave Up; A Place to Belong; Learning to Love Like Family; Thankful to Be His; The Family Business."),
+    outline_html: "<p><strong>The new series</strong></p><p>Over the next five Sundays, we&rsquo;re going to look at something that runs throughout the entire Bible:</p><p><strong>God&rsquo;s desire to have a relationship with us. Not simply as our Creator, but as our Father.</strong></p>",
+    notes: null,
+  },
+  {
+    position: 3,
+    html: imageSlide("the-father-who-never-gave-up", 3, "The Old Testament is a story of the distance God went to in order to show us how much He loves us."),
+    outline_html: "<p><strong>God reaches out to us in the OT&hellip;</strong></p><p>How far would you go to show your love to someone, to convince someone that you love them?</p><p>&bull; <strong>The Old Testament reveals how far God was willing to go.</strong></p><p>&bull; What God was teaching: how much He loves His people, and how much they need their Creator.</p><p>&bull; Throughout the OT God was patient, merciful, gracious while He worked His plan.</p><p>&bull; The lessons are timeless &mdash; not just for the house of Israel, but for humanity.</p>",
+    notes: null,
+  },
+  {
+    position: 4,
+    html: imageSlide("the-father-who-never-gave-up", 4, "God doesn’t simply want to rescue us. He wants us home."),
+    outline_html: "<p><strong>The first responder</strong></p><p>&bull; A firefighter saves a child in a burning home.</p><p>&bull; But what if the child inside that burning house were his own son or daughter?</p><p>&bull; <strong>God doesn&rsquo;t simply want to rescue us. He wants us home.</strong></p><p><strong>The OT has its climax in the NT</strong></p><p>&bull; The Messiah finally arrives, only to be rejected (lessons are still being learned).</p><p>&bull; Jesus is God in the flesh &mdash; God Himself had to come to drive the point home.</p><p>&bull; Humanity couldn&rsquo;t get the picture through mere words; God came to model goodness, righteousness, compassion, and the love of a Father.</p><p>The Old Testament leads to Jesus, <strong>the fullest revelation of the Father&rsquo;s love.</strong> But have we fully taken in what God has been communicating?</p>",
+    notes: null,
+  },
+  {
+    position: 5,
+    html: imageSlide("the-father-who-never-gave-up", 5, "Meet Jefferson Fisher: trial attorney from Texas, helps people have better, more thoughtful conversations, author of The Next Conversation."),
+    outline_html: "<p><strong>Are we hearing God&hellip;</strong></p><p>&bull; Introduce Jefferson &mdash; hold up <em>The Next Conversation</em>.</p><p><strong>[Video: Jefferson Fisher &mdash; &ldquo;Is what I say what people hear?&rdquo;]</strong></p><p>&bull; What is God trying to communicate to us?</p><p>&bull; What are you hearing? How do you hear God?</p><p>&bull; It&rsquo;s easier looking back through history to notice that the Hebrews kept mishearing and misunderstanding God.</p>",
+    notes: null,
+  },
+  {
+    position: 6,
+    html: imageSlide("the-father-who-never-gave-up", 6, "What do you see when you see God creating man?"),
+    outline_html: "<p>Do we finally get what God has been trying to communicate since He walked in the garden with Adam and Eve?</p><p>&bull; What do you see when you see God creating man?</p><p>&bull; When He walks in the garden?</p><p>&bull; From the beginning, God&rsquo;s desire was not merely people who would worship Him, but <strong>children who would know Him, love Him, and share in His life.</strong></p><p><strong>Many understandings of God</strong></p><p>&bull; <strong>Judaism</strong> recognizes God as Father but does not accept Jesus as His divine Son.</p><p>&bull; <strong>Islam</strong> emphasizes submission to one God but rejects the idea that God has a Son.</p><p>&bull; <strong>Hinduism and Buddhism</strong> have very different understandings of ultimate reality and spiritual liberation.</p><p><strong>At the heart of Christianity: God loves us so deeply that He gave His Son &mdash; not simply to save us, but to bring us into His family.</strong></p><p>&bull; The temple and the Ark were not God&rsquo;s ultimate vision of His presence.</p><p>&bull; Paul: the new covenant is God living in us. The distance barrier has been removed.</p>",
+    notes: null,
+  },
+  {
+    position: 7,
+    html: imageSlide("the-father-who-never-gave-up", 7, "The Power of the Christian Story: God’s Motivation, John 3:16; God’s Demonstration, Romans 5:8; God’s Invitation, Romans 8:15."),
+    outline_html: "<p><strong>The NT has an awesome Father/son/daughter story&hellip;</strong></p><p>God wasn&rsquo;t simply trying to change Israel&rsquo;s behavior. He was working toward a relationship fulfilled through Jesus Christ.</p><p>&bull; John 3:16 &mdash; God&rsquo;s <strong>motivation</strong></p><p>&bull; Romans 5:8 &mdash; God&rsquo;s <strong>demonstration</strong></p><p>&bull; Romans 8:15 &mdash; God&rsquo;s <strong>invitation</strong></p><p><strong>&ldquo;God didn&rsquo;t simply create a world He could rule. He created people He could love.&rdquo;</strong></p>",
+    notes: null,
+  },
+  {
+    position: 8,
+    html: imageSlide("the-father-who-never-gave-up", 8, "The greatest gift God offers us isn’t simply a place in heaven. It’s a place in His family."),
+    outline_html: "<p><strong>&ldquo;The greatest gift God offers us isn&rsquo;t simply a place in heaven. It&rsquo;s a place in His family.&rdquo;</strong></p><p><strong>Keeping the door open&hellip;</strong></p><p>What would it take for us to truly believe that a relationship with God as His son/daughter is better than anything out there?</p><p>&bull; Can we be convinced?</p><p>&bull; Why is this so hard to believe and fully understand?</p><p><strong>[Video: Jefferson Fisher 002 &mdash; Loving parents keep the door open]</strong></p><p>&bull; Our beliefs have deep roots; turning someone around can take a long time.</p><p>&bull; When you can&rsquo;t be a bridge, be a lighthouse.</p>",
+    notes: null,
+  },
+  {
+    position: 9,
+    html: imageSlide("the-father-who-never-gave-up", 9, "The lighthouse helps us find our way, but the bridge allows us to come home."),
+    outline_html: "<p>Jefferson is talking about earthly parents and children. But as I listened, I couldn&rsquo;t help thinking about the Father we&rsquo;ve been talking about this morning.</p><p>&bull; God wants us to cross the bridge, move closer to Him. God wants to close the gap between us and Him.</p><p>&bull; A lighthouse doesn&rsquo;t force anyone to come home. It simply keeps shining so they can find their way back.</p><p>&bull; <strong>The lighthouse helps us find our way, but the bridge allows us to come home.</strong></p>",
+    notes: null,
+  },
+  {
+    position: 10,
+    html: imageSlide("the-father-who-never-gave-up", 10, "Luke 15, The Prodigal Son: Love doesn’t always prevent someone from walking away. Sometimes we have to remember the goodness of the Father before we’re willing to return to Him. The father didn’t make the inheritance the issue; the relationship mattered more."),
+    outline_html: "<p><strong>The father never gave up &mdash; Luke 15</strong></p><p>&bull; The son took his inheritance &mdash; the father gave him space.</p><p>&bull; Love doesn&rsquo;t always prevent someone from walking away.</p><p>&bull; The son realized what he had done &mdash; and decided to go home.</p><p>&bull; Sometimes we have to remember the goodness of the Father before we&rsquo;re willing to return to Him.</p><p>&bull; The father didn&rsquo;t make the inheritance the issue &mdash; the relationship mattered more.</p><p><strong>The son came home looking for a place to work. The father welcomed him back as a son.</strong></p><p><strong>The God who spent generations preparing the way for His Son is the same God who invites us to become His sons and daughters.</strong> Romans 8:15</p>",
+    notes: null,
+  },
+  {
+    position: 11,
+    html: imageSlide("the-father-who-never-gave-up", 11, "The Bible is the story of a Father restoring His family: Genesis 1–2, God creates humanity for fellowship with Him; Genesis 3, sin breaks that fellowship; the Old Testament, God prepares the way for restoration; the New Testament, through Jesus, God welcomes us into His family."),
+    outline_html: "<p><strong>Closing &mdash; the Bible&rsquo;s larger story</strong></p><p>&bull; Genesis 1&ndash;2: God creates humanity for fellowship with Him.</p><p>&bull; Genesis 3: Sin breaks that fellowship.</p><p>&bull; The Old Testament: God prepares the way for restoration.</p><p>&bull; The New Testament: Through Jesus, God welcomes us into His family.</p><p>The NT brings into sharper focus our adoption as God&rsquo;s children through Jesus Christ and the indwelling Holy Spirit.</p><p>&bull; Romans 8:15&ndash;16 &mdash; Paul doesn&rsquo;t merely say we belong to God. He says we can <strong>CRY</strong> out, &ldquo;Abba, Father.&rdquo;</p><p>&bull; A relationship of love, belonging, and intimacy rather than fear.</p><p>&bull; We don&rsquo;t simply recognize God as our Creator. We come to know Him as our Father.</p>",
+    notes: null,
+  },
+  {
+    position: 12,
+    html: imageSlide("the-father-who-never-gave-up", 12, "God didn’t send Jesus simply to save us from something. He sent Jesus to bring us back to Someone."),
+    outline_html: "<p><strong>God doesn&rsquo;t simply want our obedience. He wants our hearts.</strong></p><p><strong>God didn&rsquo;t send Jesus simply to save us from something. He sent Jesus to bring us back to Someone.</strong></p>",
+    notes: null,
+  },
+];
+
+/**
  * Make Room for a New Life (The New Thing, Lesson 1) — Joe's finished deck
  * (NewLife_Sermon_Deck_COMPLETE_fnl.pptx, the 31-slide version saved Sept 12;
  * its 9/11 remembrance slide is left out),
@@ -1782,6 +1918,7 @@ export const seedDecks: SeedDeckWithNotes[] = [
   buildDeck("seed-deck-6", "the-jesus-test", "The Jesus Test", "the-jesus-test", theJesusTestSlides),
   buildDeck("seed-deck-7", "ask-better-questions", "Ask Better Questions", "ask-better-questions", askBetterQuestionsSlides),
   buildDeck("seed-deck-8", "with-all-his-might", "With All His Might", "with-all-his-might", withAllHisMightSlides),
+  buildDeck("seed-deck-11", "the-father-who-never-gave-up", "The Father Who Never Gave Up", "the-father-who-never-gave-up", theFatherWhoNeverGaveUpSlides),
   buildDeck("seed-deck-10", "hope-for-the-family", "Hope For The Family", "hope-for-the-family", hopeForTheFamilySlides),
   buildDeck("seed-deck-9", "make-room-for-a-new-life", "Make Room for a New Life", "make-room-for-a-new-life", makeRoomForANewLifeSlides),
 ];

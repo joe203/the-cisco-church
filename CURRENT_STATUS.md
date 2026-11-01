@@ -1,6 +1,18 @@
 # CURRENT_STATUS — TheCiscoChurch.org
 Updated: 2026-10-28 · Read this first when starting a new session.
 
+## The Family of God, Lesson 1 — The Father Who Never Gave Up (filled in 2026-10-31 — NOT yet committed/deployed)
+
+`/sermons/the-father-who-never-gave-up` (Nov 1, 2026; Romans 8:15 + Luke 15). Built from Joe's
+`The Family of God Series lsn 1 fnl_v2.pdf` notes + 12 audience slides (sent as PNGs, put in
+preached order, `public/sermons/the-father-who-never-gave-up/slides/NN.jpg`, `seed-deck-11`).
+Each slide's presenter outline is that section of his notes; the hymn and the two Jefferson Fisher
+clips are played by Joe, not hosted. Migrations 025 (content) + 026 (deck), not applied. Handouts
+built (guide, recap, outline, quotes). Quotes 1–2 are Joe's marked picks; quote 3 and all 6
+reflection questions are MY DRAFTS — Joe to review, then rerun
+`node scripts/build-handouts.mjs the-father-who-never-gave-up`. No YouTube link yet. If he cuts
+material while preaching, trim the points to match (memory: content matches what was preached).
+
 ## Directory form (built 2026-10-28 — NOT yet committed/deployed)
 
 `/directory` — paper "Church Directory Information Update" as a web form (source photo
