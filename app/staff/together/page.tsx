@@ -3,7 +3,7 @@ import { redirect } from "next/navigation";
 import { StaffHeader } from "@/components/staff/StaffHeader";
 import { TogetherManager } from "@/components/staff/TogetherManager";
 import { getStaff } from "@/lib/supabase/auth";
-import { listMembers } from "@/lib/together/members";
+import { listMembers, mergeSameNames } from "@/lib/together/members";
 
 export const metadata: Metadata = { title: "Members page" };
 export const dynamic = "force-dynamic";
@@ -11,6 +11,7 @@ export const dynamic = "force-dynamic";
 export default async function TogetherStaffPage() {
   const staff = await getStaff();
   if (!staff) redirect("/staff/login");
+  const needsLook = await mergeSameNames();
   const members = await listMembers();
 
   return (
@@ -24,7 +25,7 @@ export default async function TogetherStaffPage() {
           Who can open <span className="font-semibold">theciscochurch.org/together</span>. They enter their
           cell number or email; numbers match however they type them.
         </p>
-        <TogetherManager members={members} />
+        <TogetherManager members={members} needsLook={needsLook} />
       </main>
     </>
   );

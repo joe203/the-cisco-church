@@ -11,7 +11,7 @@ function prettyPhone(p: string) {
   return `(${p.slice(0, 3)}) ${p.slice(3, 6)}-${p.slice(6)}`;
 }
 
-export function TogetherManager({ members }: { members: MemberRow[] }) {
+export function TogetherManager({ members, needsLook }: { members: MemberRow[]; needsLook: string[] }) {
   const router = useRouter();
   const [text, setText] = useState("");
   const [busy, setBusy] = useState(false);
@@ -27,7 +27,14 @@ export function TogetherManager({ members }: { members: MemberRow[] }) {
         body: JSON.stringify(body),
       });
       const data = (await res.json().catch(() => null)) as
-        | { error?: string; added?: number; already?: number; unreadable?: string[] }
+        | {
+            error?: string;
+            added?: number;
+            updated?: number;
+            already?: number;
+            unreadable?: string[];
+            conflicts?: string[];
+          }
         | null;
       if (res.ok) return data ?? {};
       setMessage({ kind: "error", text: data?.error ?? "That didn't work. Try again." });
@@ -44,10 +51,14 @@ export function TogetherManager({ members }: { members: MemberRow[] }) {
     const data = await call("POST", { text });
     if (!data) return;
     const bits = [`${data.added ?? 0} added`];
+    if (data.updated) bits.push(`${data.updated} already on the list — details filled in`);
     if (data.already) bits.push(`${data.already} already on the list`);
+    if (data.conflicts?.length)
+      bits.push(`already on the list with a different email or cell (remove and re-add to change): ${data.conflicts.join(" | ")}`);
     if (data.unreadable?.length) bits.push(`couldn't read: ${data.unreadable.join(" | ")}`);
-    setMessage({ kind: data.unreadable?.length ? "error" : "ok", text: bits.join(" · ") });
-    if (!data.unreadable?.length) setText("");
+    const problem = Boolean(data.unreadable?.length || data.conflicts?.length);
+    setMessage({ kind: problem ? "error" : "ok", text: bits.join(" · ") });
+    if (!problem) setText("");
     router.refresh();
   }
 
@@ -89,6 +100,13 @@ export function TogetherManager({ members }: { members: MemberRow[] }) {
 
       <section>
         <h2 className="font-display text-[1.3rem] font-bold">On the list ({members.length})</h2>
+        {needsLook.length > 0 && (
+          <p className="mt-3 rounded-xl bg-sand px-4 py-3 text-[0.92rem] text-ink">
+            <span className="font-semibold">Listed twice with different details:</span> {needsLook.join(", ")}.
+            These weren&apos;t combined in case they&apos;re two different people. If it&apos;s one person,
+            remove the entry you don&apos;t want.
+          </p>
+        )}
         {members.length === 0 ? (
           <p className="mt-3 text-ink/72">Nobody yet.</p>
         ) : (
