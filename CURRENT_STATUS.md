@@ -4,7 +4,7 @@ Updated: 2026-10-28 · Read this first when starting a new session.
 ## The Family of God, Lesson 1 — The Father Who Never Gave Up (filled in 2026-10-31 — NOT yet committed/deployed)
 
 `/sermons/the-father-who-never-gave-up` (Nov 1, 2026; Romans 8:15 + Luke 15). Built from Joe's
-`The Family of God Series lsn 1 fnl_v2.pdf` notes + 12 audience slides (sent as PNGs, put in
+`The Family of God Series lsn 1 fnl v3.pdf` notes (v3 cut the OT-climax block, the Hebrews-mishearing line and the "earthly parents" aside; site updated to match) + 12 audience slides (sent as PNGs, put in
 preached order, `public/sermons/the-father-who-never-gave-up/slides/NN.jpg`, `seed-deck-11`).
 Each slide's presenter outline is that section of his notes; the hymn and the two Jefferson Fisher
 clips are played by Joe, not hosted. Migrations 025 (content) + 026 (deck), not applied. Handouts
@@ -12,6 +12,11 @@ built (guide, recap, outline, quotes). Quotes 1–2 are Joe's marked picks; quot
 reflection questions are MY DRAFTS — Joe to review, then rerun
 `node scripts/build-handouts.mjs the-father-who-never-gave-up`. No YouTube link yet. If he cuts
 material while preaching, trim the points to match (memory: content matches what was preached).
+
+VIDEO SLIDES (2026-11-02): the two Jefferson Fisher clips failed to play on Sunday, so they are now
+slides 6 and 10 of a 14-slide deck — `videoSlide()` in `lib/seed.ts` (a `<video class="slide-video">`
+streamed from Joe's FiveSixteen host, media.fivesixteen.church, preload none). `DeckViewer` lists any
+video slide under the slides as "Watch the clips" jump buttons. Works for any future deck.
 
 ## Directory form (built 2026-10-28 — NOT yet committed/deployed)
 

@@ -49,6 +49,20 @@
   object-fit: cover;
 }
 
+/* Clip slides — a played video filling the frame, letterboxed if needed.
+   Thumbnails show only the poster (no controls on a 7rem tile). */
+.slide-frame video.slide-video {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  background-color: #000;
+}
+.slide-frame.pointer-events-none video.slide-video::-webkit-media-controls {
+  display: none;
+}
+
 /* When the viewer renders its own background layer (video loops), the
    frame goes transparent and text gets a shadow for legibility. */
 .slide-frame.on-media {
