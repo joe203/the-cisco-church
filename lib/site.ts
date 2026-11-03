@@ -14,15 +14,12 @@ export const site = {
   town: "Cisco, Texas",
   domain: "theciscochurch.org",
 
-  // Confirmed by Joe, 2026-08-14. Wednesday corrected 2026-09-28: meal at
-  // 5:30, Bible study (framed as gathering around the table) at 6:00 —
-  // replaces the old 7:00 PM value, which was wrong.
+  // New schedule approved 2026-11-03: no more Sunday evening service;
+  // Wednesday keeps its 5:30 start while the format is redesigned.
   services: [
-    { label: "Sunday Bible Class", time: "9:30 AM" },
-    { label: "Sunday Worship", time: "10:30 AM" },
-    { label: "Sunday Evening", time: "6:00 PM" },
-    { label: "Wednesday Meal", time: "5:30 PM" },
-    { label: "Wednesday Bible Study", time: "6:00 PM" },
+    { label: "Sunday coffee and conversation", time: "9:30 AM" },
+    { label: "Sunday praise and worship", time: "10:30 AM" },
+    { label: "Wednesday night", time: "5:30 PM" },
   ],
 
   /** The single line used in the hero strip and footer. */
@@ -49,9 +46,8 @@ export const site = {
     {
       day: "Sunday",
       items: [
-        { label: "Bible Study", time: "9:30 AM" },
-        { label: "Morning Service", time: "10:30 AM" },
-        { label: "Evening Service", time: "6:00 PM" },
+        { label: "Coffee and Conversation", time: "9:30 AM" },
+        { label: "Praise and Worship", time: "10:30 AM" },
       ],
     },
     { day: "Monday", items: [{ label: "Ladies Bible Study", time: "4:30 PM" }] },

@@ -1,9 +1,6 @@
 import { mapLabel, site } from "@/lib/site";
 
-/**
- * TODO(Joe): the names below are proposals. Sunday evening is gone from the
- * schedule; Wednesday keeps its time while the format is redesigned.
- */
+/** Sunday evening is gone from the schedule; Wednesday keeps its time while the format is redesigned. */
 const schedule = [
   {
     day: "Sunday",
