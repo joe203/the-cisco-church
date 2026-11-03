@@ -7,14 +7,22 @@ export function ServiceBand() {
       <div className="mx-auto grid max-w-6xl gap-8 px-5 py-12 sm:px-8 md:grid-cols-[1.2fr_1fr] lg:grid-cols-[1.2fr_1fr_auto] lg:items-center">
         <div>
           <p className="eyebrow text-marigold">When we meet</p>
-          <ul className="mt-4 max-w-[26rem] space-y-2.5">
+          <ul className="mt-4 max-w-[34rem] divide-y divide-white/15 border-y border-white/15">
             {site.services.map((s) => (
               <li
                 key={s.label}
-                className="flex items-baseline justify-between gap-6 border-b border-white/15 pb-2.5 text-[1rem]"
+                className="grid grid-cols-[6.25rem_1fr] items-baseline gap-x-5 py-4"
               >
-                <span className="text-white/75">{s.label}</span>
-                <span className="font-semibold">{s.time}</span>
+                <p className="text-[1.05rem] font-bold text-marigold">
+                  {s.day}
+                  <span className="block text-[0.95rem] font-semibold text-white">{s.time}</span>
+                </p>
+                <div>
+                  <p className="font-display text-[1.35rem] leading-tight font-bold tracking-[-0.01em]">
+                    {s.label}
+                  </p>
+                  <p className="mt-1 text-[0.98rem] leading-snug text-white/75">{s.note}</p>
+                </div>
               </li>
             ))}
           </ul>

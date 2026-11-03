@@ -17,9 +17,24 @@ export const site = {
   // New schedule approved 2026-11-03: no more Sunday evening service;
   // Wednesday keeps its 5:30 start while the format is redesigned.
   services: [
-    { label: "Sunday coffee and conversation", time: "9:30 AM" },
-    { label: "Sunday praise and worship", time: "10:30 AM" },
-    { label: "Wednesday night", time: "5:30 PM" },
+    {
+      day: "Sunday",
+      label: "Coffee and conversation",
+      time: "9:30 AM",
+      note: "Bible study over a cup, and time to just be together.",
+    },
+    {
+      day: "Sunday",
+      label: "Praise and worship",
+      time: "10:30 AM",
+      note: "The heart of our week.",
+    },
+    {
+      day: "Wednesday",
+      label: "Wednesday night",
+      time: "5:30 PM",
+      note: "Family, food, and a night built around our kids. Something new is taking shape.",
+    },
   ],
 
   /** The single line used in the hero strip and footer. */

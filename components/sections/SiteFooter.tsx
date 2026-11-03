@@ -22,7 +22,7 @@ export function SiteFooter() {
             {site.services.map((s) => (
               <li key={s.label} className="flex justify-between gap-4 border-b border-white/12 pb-2">
                 <span className="text-white/70">{s.label}</span>
-                <span>{s.time}</span>
+                <span>{s.day.slice(0, 3)} {s.time}</span>
               </li>
             ))}
             <li className="pt-1">
