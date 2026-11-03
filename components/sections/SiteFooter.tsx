@@ -4,7 +4,7 @@ import { mapLabel, site } from "@/lib/site";
 export function SiteFooter() {
   return (
     <footer className="bg-ink text-white print:hidden">
-      <div className="mx-auto grid max-w-6xl gap-10 px-5 py-14 sm:px-8 md:grid-cols-[1.4fr_1fr_1fr]">
+      <div className="mx-auto grid max-w-6xl gap-10 px-5 py-14 sm:px-8 md:grid-cols-[1fr_1.5fr_0.8fr]">
         <div>
           <p className="font-display text-[1.6rem] font-extrabold tracking-[-0.01em]">
             The Cisco Church of Christ
@@ -18,14 +18,22 @@ export function SiteFooter() {
 
         <div>
           <p className="eyebrow text-marigold">Visit</p>
-          <ul className="mt-4 space-y-2 text-[0.95rem]">
+          <ul className="mt-4 divide-y divide-white/15 border-y border-white/15 text-[0.95rem]">
             {site.services.map((s) => (
-              <li key={s.label} className="flex justify-between gap-4 border-b border-white/12 pb-2">
-                <span className="text-white/70">{s.label}</span>
-                <span>{s.day.slice(0, 3)} {s.time}</span>
+              <li key={s.label} className="grid grid-cols-[5.5rem_1fr] items-baseline gap-x-4 py-3.5">
+                <p className="font-bold text-marigold">
+                  {s.day}
+                  <span className="block text-[0.9rem] font-semibold text-white">{s.time}</span>
+                </p>
+                <div>
+                  <p className="font-display text-[1.15rem] leading-tight font-bold tracking-[-0.01em]">
+                    {s.label}
+                  </p>
+                  <p className="mt-1 text-[0.9rem] leading-snug text-white/70">{s.note}</p>
+                </div>
               </li>
             ))}
-            <li className="pt-1">
+            <li className="pt-3.5">
               <a
                 href={site.mapUrl}
                 target="_blank"
