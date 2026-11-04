@@ -625,18 +625,30 @@ const theFatherWhoNeverGaveUp: SermonDetail = {
   ],
 };
 
+// Lesson 2: announced (slide + teaser) until Joe's notes arrive.
+const aPlaceToBelong: SermonDetail = {
+  ...upcomingLesson(11, "a-place-to-belong", "A Place to Belong", "2026-11-08", 2),
+  thesis: "A place at the Father’s table.",
+  teaser:
+    "Everyone wants to belong somewhere—to be welcomed, accepted, and know that their life matters. But God offers us something greater than simply a place to fit in. Through Jesus Christ, He invites us into His own family.\n\nWhat does it really mean to be a son or daughter of God? And how should that change the way we see ourselves and one another?\n\nJoin us this Sunday as we discover what it means to have a place at the Father’s table.",
+  scripture_ref: "Ephesians 2:19",
+  scripture_text: "“You are no longer foreigners and strangers … but also members of his household.”",
+  artwork_url: "/sermons/a-place-to-belong/artwork.jpg",
+  series: familySeries,
+};
+
 const familyPlaceholders: SermonDetail[] = [
-  ["a-place-to-belong", "A Place to Belong", "2026-11-08", 2],
   ["learning-to-love-like-family", "Learning to Love Like Family", "2026-11-15", 3],
   ["thankful-to-be-his", "Thankful to Be His", "2026-11-22", 4],
   ["the-family-business", "The Family Business", "2026-11-29", 5],
 ].map(([slug, title, date, lesson], i) => ({
-  ...upcomingLesson(11 + i, slug as string, title as string, date as string, lesson as number),
+  ...upcomingLesson(12 + i, slug as string, title as string, date as string, lesson as number),
   series: familySeries,
 }));
 
 export const seedSermons: SermonDetail[] = [
   ...[...familyPlaceholders].reverse(),
+  aPlaceToBelong,
   theFatherWhoNeverGaveUp,
   hopeForTheFamily,
   withAllHisMight,
