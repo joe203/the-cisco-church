@@ -4,7 +4,7 @@ import { GuideSheet, NuggetsSheet, OutlineSheet, RecapSheet } from "@/components
 import { getSermonDetail } from "@/lib/data";
 import { canBuildPiece, isPrintPiece } from "@/lib/downloads";
 
-export const revalidate = 300;
+export const dynamic = "force-dynamic";
 
 export const metadata: Metadata = {
   robots: { index: false, follow: false },

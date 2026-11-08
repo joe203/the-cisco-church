@@ -14,8 +14,6 @@ import {
   type StandingEvent,
 } from "@/lib/events";
 
-export const revalidate = 3600;
-
 export const metadata: Metadata = {
   title: "Events",
   description:

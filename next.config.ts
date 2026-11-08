@@ -3,6 +3,10 @@ import type { NextConfig } from "next";
 const nextConfig: NextConfig = {
   output: "standalone",
   poweredByHeader: false,
+  env: {
+    // Identifies this release, so a page left open can tell when a newer one is up.
+    BUILD_STAMP: Date.now().toString(36),
+  },
   turbopack: {
     root: __dirname,
   },

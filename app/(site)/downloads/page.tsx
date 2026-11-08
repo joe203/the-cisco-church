@@ -4,8 +4,6 @@ import { SermonSheet } from "@/components/downloads/SermonSheet";
 import { getClassDownloads } from "@/lib/classes";
 import { getSermonDownloads } from "@/lib/downloads";
 
-export const revalidate = 300;
-
 export const metadata: Metadata = {
   title: "Downloads",
   description:

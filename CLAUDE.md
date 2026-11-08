@@ -27,7 +27,7 @@ placeholders, mark them `TODO` in `lib/site.ts`, and keep a running list for Joe
 
 ## What This Site Is
 
-A **temporary** site for the **Cisco Church of Christ** in Cisco, Texas, where
+The **permanent**, weekly-improving site for the **Cisco Church of Christ** in Cisco, Texas, where
 Joe is the church's minister (he began in an interim role; don't call him interim, and don't mention full-time vs part-time). Its jobs, in order:
 
 1. Make a first-time visitor feel *these are real people and I could walk in on
@@ -37,12 +37,30 @@ Joe is the church's minister (he began in an interim role; don't call him interi
    listen links, and speaker bio. Sermon cards on the homepage and archive.
 4. **Serve live HTML sermon slides** that follow the presenter in real time.
 
-It will be replaced by a full build later. Everything it does, it should do
-well; everything else it should not do at all.
+When Joe calls this site "temporary" he means individual pages and ideas change
+quickly, NOT that the site will be replaced. Never lower the quality bar on that
+basis. Everything it does, it should do well; everything else it should not do
+at all.
 
 **Priorities: Simple. Warm. Useful. Fast. Easy to maintain. Easy for a visitor
 to understand.** No complexity for its own sake — clever ideas (e.g. a live
 slide takeover on the homepage) are deferred unless they solve a v1 problem.
+
+**Always current — the standard (Joe, 2026-11-06):** at least as good as his
+Meteor apps. A visitor must never see old content or need to refresh. Do not add
+static pages or `revalidate` where this can be avoided.
+- `app/(site)/layout.tsx` and `app/together/layout.tsx` are `force-dynamic`, so
+  pages are built per visit and sent `no-store`. New pages under them inherit it.
+- `StayCurrent` (`components/sections/`) keeps an open page current: returning to
+  the tab refreshes it; every 2 min `/api/site-version` is checked for a new
+  release (reload, unless the visitor is typing, in a dialog/form, or playing
+  sound) or a new day (refresh). `BUILD_STAMP` is set per build in `next.config.ts`.
+- `BulletinLive` updates open `/bulletin` pages over Supabase Realtime (migration
+  028, applied). RLS keeps drafts from reaching the public; verified.
+- Reads give up after 3s and skip the database for 30s (`lib/supabase/anon.ts`),
+  so an outage falls back to seed data instead of hanging pages.
+- Sermons, events, and announcements are in code, not the database (see
+  CURRENT_STATUS), so they change only with a deploy.
 
 ---
 

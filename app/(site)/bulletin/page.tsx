@@ -2,8 +2,6 @@ import type { Metadata } from "next";
 import { BulletinView } from "@/components/bulletin/BulletinView";
 import { getCurrentBulletin, messageTitle } from "@/lib/bulletin/data";
 
-export const revalidate = 300;
-
 export async function generateMetadata(): Promise<Metadata> {
   const bulletin = await getCurrentBulletin();
   const message = messageTitle(bulletin);

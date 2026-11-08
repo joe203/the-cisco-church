@@ -5,8 +5,6 @@ import { Welcome } from "@/components/sections/Welcome";
 import { getSeriesLessons, getSermonSpotlight } from "@/lib/data";
 import { getSermonDownloads } from "@/lib/downloads";
 
-export const revalidate = 300;
-
 export default async function HomePage() {
   const spotlight = await getSermonSpotlight();
   const lessons = spotlight?.sermon.series ? await getSeriesLessons(spotlight.sermon.series.slug) : [];

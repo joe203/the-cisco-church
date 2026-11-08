@@ -3,7 +3,6 @@ import { isIsoDate } from "@/lib/bulletin/schema";
 import { saveSections } from "@/lib/bulletin/staff-data";
 import type { SectionKey } from "@/lib/bulletin/types";
 import { readJson, requireStaff } from "@/lib/staff-api";
-import { revalidateBulletin } from "@/lib/bulletin/revalidate";
 
 type Params = { date: string };
 
@@ -34,6 +33,5 @@ export async function PUT(request: Request, { params }: { params: Promise<Params
     return NextResponse.json({ error }, { status });
   }
 
-  if (result.bulletin.status === "published") revalidateBulletin(date);
   return NextResponse.json({ updated_at: result.bulletin.updated_at });
 }

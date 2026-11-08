@@ -4,8 +4,6 @@ import { BulletinView } from "@/components/bulletin/BulletinView";
 import { getPublishedBulletin } from "@/lib/bulletin/data";
 import { formatDate } from "@/lib/format";
 
-export const revalidate = 300;
-
 type Props = { params: Promise<{ date: string }> };
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {

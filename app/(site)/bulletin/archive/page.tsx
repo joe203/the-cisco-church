@@ -3,8 +3,6 @@ import Link from "next/link";
 import { listPublished } from "@/lib/bulletin/data";
 import { formatDate } from "@/lib/format";
 
-export const revalidate = 300;
-
 export const metadata: Metadata = {
   title: "Past bulletins",
   description: "Every weekly bulletin from the Cisco Church, newest first.",

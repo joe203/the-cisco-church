@@ -6,8 +6,6 @@ import { PrintButton } from "@/components/bulletin/PrintButton";
 import { getSermonDetail } from "@/lib/data";
 import { canBuildPiece, isPrintPiece, pieceMeta, pieceUrl } from "@/lib/downloads";
 
-export const revalidate = 300;
-
 type Params = { slug: string; piece: string };
 
 export async function generateMetadata({ params }: { params: Promise<Params> }): Promise<Metadata> {

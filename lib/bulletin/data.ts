@@ -55,6 +55,10 @@ export function upcomingSunday(now: Date = new Date()): string {
   return day.toISOString().slice(0, 10);
 }
 
+// The last good read: if the database drops out, visitors keep seeing this
+// week's bulletin rather than the bundled seed from October.
+let lastCurrent: Bulletin | undefined;
+
 /**
  * The newest published bulletin for the upcoming Sunday or earlier. Once
  * published it is current immediately (Tuesday's bulletin is up Wednesday),
@@ -73,10 +77,11 @@ export async function getCurrentBulletin(): Promise<Bulletin> {
       const cutoff = upcomingSunday();
       const rows = data as Record<string, unknown>[];
       const live = rows.find((r) => String(r.bulletin_date) <= cutoff) ?? rows[rows.length - 1];
-      return rowToBulletin(live);
+      lastCurrent = rowToBulletin(live);
+      return lastCurrent;
     }
   }
-  return seedBulletin;
+  return lastCurrent ?? seedBulletin;
 }
 
 export type PublishedEntry = { date: string; message: string };

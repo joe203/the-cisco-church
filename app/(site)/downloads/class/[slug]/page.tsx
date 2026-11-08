@@ -5,8 +5,6 @@ import { ClassGuideSheet } from "@/components/downloads/ClassHandout";
 import { PrintButton } from "@/components/bulletin/PrintButton";
 import { classGuideUrl, getClassGuide } from "@/lib/classes";
 
-export const revalidate = 300;
-
 type Params = { slug: string };
 
 export async function generateMetadata({ params }: { params: Promise<Params> }): Promise<Metadata> {

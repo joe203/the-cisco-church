@@ -10,8 +10,6 @@ import { formatDate } from "@/lib/format";
 import { isAnnounced, seriesLabel, todayInCisco } from "@/lib/series";
 import type { SermonDetail } from "@/lib/types";
 
-export const revalidate = 300;
-
 type Params = { slug: string };
 
 export async function generateMetadata({

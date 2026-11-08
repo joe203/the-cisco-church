@@ -3,8 +3,6 @@ import { SermonCard } from "@/components/sermons/SermonCard";
 import { getSermonList } from "@/lib/data";
 import { isAnnounced } from "@/lib/series";
 
-export const revalidate = 300;
-
 export const metadata: Metadata = {
   title: "Sermons",
   description:

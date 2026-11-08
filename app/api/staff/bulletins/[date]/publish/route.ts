@@ -1,6 +1,5 @@
 import { NextResponse } from "next/server";
 import { isIsoDate } from "@/lib/bulletin/schema";
-import { revalidateBulletin } from "@/lib/bulletin/revalidate";
 import { setPublished } from "@/lib/bulletin/staff-data";
 import { readJson, requireStaff } from "@/lib/staff-api";
 
@@ -23,6 +22,5 @@ export async function POST(request: Request, { params }: { params: Promise<{ dat
     );
   }
 
-  revalidateBulletin(date);
   return NextResponse.json({ status: result.bulletin.status, published_at: result.bulletin.published_at });
 }

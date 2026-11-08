@@ -1,5 +1,33 @@
 # CURRENT_STATUS — TheCiscoChurch.org
-Updated: 2026-10-28 · Read this first when starting a new session.
+Updated: 2026-11-06 · Read this first when starting a new session.
+
+## The Family of God, Lesson 2 — A Place to Belong (2026-11-08 — committed + deployed, 9e09616)
+
+`/sermons/a-place-to-belong` built from Joe's `A Place to Belong fnl v2.pdf` (Nov 6): 6 points (his 5
+sections + closing), summary, Ephesians 2:19 key verse, migration 029 (not applied). Handouts built
+(guide, recap, sermon handout, quotes). Quotes are 3 of Joe's own nugget lines, chosen by me; the 6
+reflection questions are MY DRAFTS — Joe to review, then rerun
+`node scripts/build-handouts.mjs a-place-to-belong`. No YouTube link yet. If he cut material
+while preaching, trim the points to match.
+DECK (deployed 60d1719): Joe's 21 slides in the order he sent them,
+`public/sermons/a-place-to-belong/slides/NN.jpg`, `seed-deck-12`, migration 030 (not applied; deck
+uuid c1…012, sermon_id filled in by hand — the export script always writes null). Each slide's
+presenter outline is that stretch of his fnl v2 notes.
+
+## Always-current pages (built 2026-11-06 — NOT committed/deployed as of 2026-11-08)
+
+Joe kept seeing old content until he refreshed: public pages used `revalidate` (saved
+copies served stale while rebuilding, with `stale-while-revalidate` of about a year).
+Now fresh per visit, and open pages stay current. Standard and mechanics are in
+CLAUDE.md under "Always current". Migration 028 (bulletins in the Realtime publication)
+IS applied. Verified against a local production build; check deployment state with
+`git log` on the droplet.
+
+**Still true and Joe's decision is open:** the live database holds only 6 tables
+(bulletins, directory submissions, inbound log, mail, staff, together members). Sermons,
+decks, events, and announcements live in code (`lib/seed.ts` etc.) and migrations
+001–006 and 010–021, 024–027 are unapplied, so those changes need a deploy. Moving
+sermons into the database would be its own project.
 
 ## The Family of God, Lesson 1 — The Father Who Never Gave Up (filled in 2026-10-31 — NOT yet committed/deployed)
 

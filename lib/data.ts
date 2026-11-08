@@ -1,4 +1,4 @@
-import { createClient, type SupabaseClient } from "@supabase/supabase-js";
+import { getAnonClient as db } from "./supabase/anon";
 import { findSeedDeck, seedDeckState, seedSermonList, seedSermons } from "./seed";
 import { isAnnounced, todayInCisco } from "./series";
 import type { Deck, DeckState, Sermon, SermonDetail } from "./types";
@@ -11,24 +11,6 @@ import type { Deck, DeckState, Sermon, SermonDetail } from "./types";
  * unconfigured or unreachable: the site must never render empty because
  * the database is down.
  */
-
-// eslint-disable-next-line @typescript-eslint/no-explicit-any -- untyped shared instance, schema pinned to "cisco"
-type Db = SupabaseClient<any, any, any, any, any>;
-
-let cached: Db | null | undefined;
-
-function db(): Db | null {
-  if (cached !== undefined) return cached;
-  const url = process.env.NEXT_PUBLIC_SUPABASE_URL;
-  const anonKey = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY;
-  cached = url && anonKey
-    ? createClient(url, anonKey, {
-        db: { schema: "cisco" },
-        auth: { persistSession: false },
-      })
-    : null;
-  return cached;
-}
 
 const SERMON_COLUMNS = `id, slug, title, thesis, teaser, scripture_ref, scripture_text, sermon_date, artwork_url, summary, youtube_url, podcast_url, guide_url, pdf_url, nuggets, guide_questions, is_featured, lesson_number,
    series:cisco_series(slug, title, scripture_ref, tagline, artwork_url)`;
