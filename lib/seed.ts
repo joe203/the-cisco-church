@@ -635,6 +635,7 @@ const aPlaceToBelong: SermonDetail = {
   scripture_text: "“You are no longer foreigners and strangers, but fellow citizens with God’s people and also members of his household.”",
   artwork_url: "/sermons/a-place-to-belong/artwork.jpg",
   series: familySeries,
+  deck_slug: "a-place-to-belong",
   summary:
     "Sometimes we can be exactly where we belong and still feel like we don’t belong. Paul says we are no longer foreigners and strangers, but members of God’s household. What makes us family isn’t everything we have in common with one another. It’s the Father we have in common. In Luke 15, the younger son left home believing something better was waiting somewhere else, and the older son stayed home living like a servant. Neither of them knew how to be a son, and the father went out to both of them. The Spirit we received does not make us slaves. It brought about our adoption to sonship. The Father has already come out to meet you. The door is open. There is a place for you.",
   nuggets: [
@@ -1973,6 +1974,135 @@ const makeRoomForANewLifeSlides: SeedSlideInput[] = [
 
 type SeedDeckWithNotes = Deck & { slidesWithNotes: SlideWithNotes[] };
 
+const aPlaceToBelongSlides: SeedSlideInput[] = [
+  {
+    position: 1,
+    html: imageSlide("a-place-to-belong", 1, "The Family of God: A Place to Belong. More than a place to fit in. Ephesians 2:19, November 8, 2026."),
+    outline_html: "<p><strong>A Place to Belong — The Family of God, Lesson 2</strong></p><p>Central thought: <strong>Sometimes we can be exactly where we belong and still feel like we don’t belong.</strong></p>",
+    notes: null,
+  },
+  {
+    position: 2,
+    html: imageSlide("a-place-to-belong", 2, "Romans 8:15 (NIV): The Spirit you received does not make you slaves, so that you live in fear again; rather, the Spirit you received brought about your adoption to sonship. And by him we cry, “Abba, Father.”"),
+    outline_html: "<p><strong>Series scripture — Romans 8:15</strong></p>",
+    notes: null,
+  },
+  {
+    position: 3,
+    html: imageSlide("a-place-to-belong", 3, "Ephesians 2:19 (NIV): Consequently, you are no longer foreigners and strangers, but fellow citizens with God’s people and also members of his household."),
+    outline_html: "<p><strong>1. The Question We All Ask: Do I Belong Here?</strong></p><p>There are questions that many people quietly carry through life:</p><p>&bull; Am I accepted? Am I good enough?</p><p>&bull; Do these people understand me?</p><p>&bull; Do I fit in even though I look, speak, dress, or live differently?</p><p>&bull; Is there really a place for someone like me?</p><p>We all want to be accepted, understood, and valued. We want to know that we matter and that there is somewhere we truly belong.</p><p>Notice how far Paul says we have traveled. We were foreigners. We were strangers. Now we are fellow citizens. And then he goes one step further: members of his household. Paul could have stopped at citizens. He didn’t. <strong>A citizen has rights. A member of the household has a seat at the table.</strong></p><p>God’s family is made up of people with different backgrounds, personalities, experiences, abilities, and struggles. We don’t all look alike, think alike, or even speak the same language.</p><p>But what makes us family isn’t everything we have in common with one another. <strong>It’s the Father we have in common.</strong></p><p>And here is the question this lesson is really asking: <strong>Are we seeing the Father’s house through the Father’s eyes, or through our own?</strong></p>",
+    notes: null,
+  },
+  {
+    position: 4,
+    html: imageSlide("a-place-to-belong", 4, "Belonging isn’t about how much we have in common. It’s about the Father we have in common."),
+    outline_html: "<p><strong>Belonging isn’t about how much we have in common. It’s about the Father we have in common.</strong></p>",
+    notes: null,
+  },
+  {
+    position: 5,
+    html: imageSlide("a-place-to-belong", 5, "He was in the right place, but he was looking at it through the wrong eyes."),
+    outline_html: "<p><strong>2. When We Lose Sight of Home — Luke 15:12–13</strong></p><p>The younger one said to his father, ‘Father, give me my share of the estate.’ So he divided his property between them. Not long after that, the younger son got together all he had, set off for a distant country and there squandered his wealth in wild living.</p><p>The younger son had a home, a father who loved him, and a place where he belonged. Yet somewhere along the way, he began to believe that life would be better somewhere else.</p><p>Don’t miss what he asked for. In that world, a son received his inheritance when his father died. To ask for it while the father was still living was to say, “I wish you were already gone.” <strong>Before this son ever left home, he had already left his father in his heart.</strong></p><p>Perhaps the responsibilities, expectations, and discipline of home had lost their appeal. Freedom looked more attractive than responsibility. The distant country seemed to offer something his father’s house could not.</p><p><strong>He was in the right place, but he was looking at it through the wrong eyes.</strong></p>",
+    notes: null,
+  },
+  {
+    position: 6,
+    html: imageSlide("a-place-to-belong", 6, "Genesis 3:5 (NIV): “For God knows that when you eat from it your eyes will be opened, and you will be like God, knowing good and evil.”"),
+    outline_html: "<p>This is not unlike what happened in the Garden of Eden. The serpent convinced Adam and Eve to question what God had already provided.</p><p>The serpent didn’t say, “God is evil.” He said, “God is holding something back from you. There is something better, and it is just beyond what you have been given.” <strong>That is the same voice the younger son heard. It is the same voice we hear.</strong></p><p>Sometimes the greatest danger isn’t simply making a wrong decision. <strong>It’s failing to recognize the voices influencing our decisions.</strong></p><p>When we begin questioning kingdom values, other values become more attractive. And when we abandon what is good, we often embrace things that eventually become destructive.</p>",
+    notes: null,
+  },
+  {
+    position: 7,
+    html: imageSlide("a-place-to-belong", 7, "When we abandon kingdom values, we become vulnerable to destructive values."),
+    outline_html: "<p>&bull; We can be in the right place and still see it through the wrong eyes.</p><p>&bull; <strong>When we abandon kingdom values, we become vulnerable to destructive values.</strong></p><p>&bull; The serpent doesn’t always tell us to do something evil. Sometimes he simply convinces us that something better is waiting somewhere else.</p>",
+    notes: null,
+  },
+  {
+    position: 8,
+    html: imageSlide("a-place-to-belong", 8, "The younger son eventually realized that the place he had abandoned was the very place he needed. Luke 15:20."),
+    outline_html: "<p><strong>3. The Father Never Stopped Making Room — Luke 15:20</strong></p><p>But while he was still a long way off, his father saw him and was filled with compassion for him; he ran to his son, threw his arms around him and kissed him.</p><p><strong>The younger son eventually realized that the place he had abandoned was the very place he needed.</strong></p><p>But something had changed. He no longer saw himself as worthy of being a son. He was prepared to return as a servant.</p>",
+    notes: null,
+  },
+  {
+    position: 9,
+    html: imageSlide("a-place-to-belong", 9, "All the way home, he rehearsed the speech. He had already decided who he was. Not a son anymore. Just a hired hand. Luke 15:18–19."),
+    outline_html: "<p><strong>Luke 15:18–19</strong></p><p>I will set out and go back to my father and say to him: Father, I have sinned against heaven and against you. I am no longer worthy to be called your son; make me like one of your hired servants.</p><p><strong>He rehearsed that speech all the way home. He had decided what he was. Not a son anymore. A hired hand.</strong></p><p>The father saw things differently.</p><p>Notice the first words of verse 20: “while he was still a long way off, his father saw him.” <strong>You can only see someone a long way off if you are looking.</strong> The father had been watching that road.</p>",
+    notes: null,
+  },
+  {
+    position: 10,
+    html: imageSlide("a-place-to-belong", 10, "Luke 15:21–22 (NIV): The son said to him, ‘Father, I have sinned against heaven and against you. I am no longer worthy to be called your son.’ But the father said to his servants, ‘Quick! Bring the best robe and put it on him. Put a ring on his finger and sandals on his feet.’"),
+    outline_html: "<p>The son never finished his speech. He got as far as “I am no longer worthy to be called your son,” and the father interrupted him. The line about being a hired servant never made it out of his mouth. <strong>The father would not let his son ask to be a slave.</strong></p><p>And look at what the father called for. The best robe. A ring for his finger. Sandals for his feet. Servants went barefoot. Sons wore sandals. Servants did not wear the family ring. Every item the father sent for was the answer to the question the son had been asking himself the whole way home: <strong>You are not a servant here. You are my son.</strong></p>",
+    notes: null,
+  },
+  {
+    position: 11,
+    html: imageSlide("a-place-to-belong", 11, "The son came home questioning his worth. The father welcomed him without questioning his place."),
+    outline_html: "<p><strong>The son came home carrying shame, failure, and regret. But the father welcomed him with compassion, affection, and love.</strong></p><p>Families aren’t perfect. Brothers and sisters disagree. Personalities clash. People misunderstand one another. Sometimes we hurt each other, even when we don’t intend to.</p><p>We bring our own struggles into the family: our attitudes, habits, insecurities, stubbornness, weaknesses, and disappointments.</p><p>But our Heavenly Father knows all of these things. He knows our battles, our failures, and the things that make us feel inadequate.</p><p><strong>And none of those things diminish His love for us.</strong></p><p>&bull; Our family may be imperfect, but our Father is not.</p><p>&bull; <strong>The son came home questioning his worth. The father welcomed him without questioning his place.</strong></p><p>&bull; Your struggles don’t surprise your Father.</p>",
+    notes: null,
+  },
+  {
+    position: 12,
+    html: imageSlide("a-place-to-belong", 12, "Luke 15:31 (NIV): ‘My son,’ the father said, ‘you are always with me, and everything I have is yours.’"),
+    outline_html: "<p><strong>4. Learning to See Home Through the Father’s Eyes — Luke 15:31</strong></p><p>There were two sons in this story, and both struggled to understand their place in the family.</p><p>The younger son left home because he believed something better was waiting somewhere else.</p><p>The older son stayed home, but he became resentful. He felt overlooked, unappreciated, and perhaps even less loved.</p>",
+    notes: null,
+  },
+  {
+    position: 13,
+    html: imageSlide("a-place-to-belong", 13, "Luke 15:28–29 (NIV): The older brother became angry and refused to go in. So his father went out and pleaded with him. But he answered his father, ‘Look! All these years I’ve been slaving for you and never disobeyed your orders. Yet you never gave me even a young goat so I could celebrate with my friends.’"),
+    outline_html: "<p>Listen to how the older son describes his life in his father’s house: “All these years I’ve been slaving for you.” He never left. He never squandered anything. He did everything right. <strong>And he still thought of himself as a slave.</strong></p><p>So here is what both sons had in common. The younger son came home planning to ask to be a servant. The older son had been living at home as though he already was one. <strong>Neither of them knew how to be a son.</strong></p><p>And notice what the father did. He ran to the one who was far away. He went out to the one who was standing just outside the door. <strong>The father went out to both of them.</strong></p><p>One son was far away and didn’t feel worthy of coming home. The other was already home and didn’t appreciate what he had. Both needed to see their relationship with the father differently.</p><p>And sometimes we’re not so different.</p><p>If we are honest, most of us in this room are the older brother. We never ran off to a distant country. We have been here for years. We have served, we have given, we have shown up. And it is still possible to stand outside the door with our arms folded, feeling overlooked, unappreciated, and perhaps even less loved. <strong>The older brother did everything right, and he still missed the party.</strong></p><p><strong>Belonging is not earned by years of faithful service any more than it is lost by years of failure. It is not about seniority. It is about the Father.</strong></p><p>We can be surrounded by people who love us and still feel alone. We can be part of a church family and still wonder whether we belong. We can become so focused on our differences, disappointments, and disagreements that we lose sight of what makes us family.</p><p>The father never stopped loving either son. Both had a place in his heart.</p>",
+    notes: null,
+  },
+  {
+    position: 14,
+    html: imageSlide("a-place-to-belong", 14, "You can live in the Father’s house and still misunderstand the Father’s heart."),
+    outline_html: "<p><strong>You can live in the Father’s house and still misunderstand the Father’s heart.</strong></p>",
+    notes: null,
+  },
+  {
+    position: 15,
+    html: imageSlide("a-place-to-belong", 15, "Romans 8:15 (NIV): The Spirit you received does not make you slaves, so that you live in fear again; rather, the Spirit you received brought about your adoption to sonship. And by him we cry, “Abba, Father.”"),
+    outline_html: "<p><strong>5. There’s a Place for You — Romans 8:15</strong></p><p>This is the story of the two sons in a single verse. One son was coming home to be a slave. The other son was living at home as a slave. <strong>And the Father refused to have either one of them that way.</strong> The Spirit you received does not make you slaves. It brought about your adoption to sonship.</p>",
+    notes: null,
+  },
+  {
+    position: 16,
+    html: imageSlide("a-place-to-belong", 16, "A servant asks, “Am I good enough? Have I done enough? Will I be sent away?”"),
+    outline_html: "<p>There is a difference between a servant and a son.</p><p><strong>A servant asks, “Am I good enough? Have I done enough? Will I be sent away?”</strong></p>",
+    notes: null,
+  },
+  {
+    position: 17,
+    html: imageSlide("a-place-to-belong", 17, "A son asks, “What does my Father want?” A son knows his place was never up for discussion."),
+    outline_html: "<p><strong>A son asks, “What does my Father want?”</strong></p><p>A servant lives in fear of losing his place. A son knows his place was never up for discussion.</p><p>And a hired hand would never call the master “Abba.” That is a child’s word. <strong>That is the word of someone who knows exactly whose house he is in.</strong></p>",
+    notes: null,
+  },
+  {
+    position: 18,
+    html: imageSlide("a-place-to-belong", 18, "Our belonging is rooted in our relationship with the Father."),
+    outline_html: "<p>God never intended for us to live as strangers, outsiders, or people who constantly question whether we’re good enough.</p><p>Through Jesus Christ, He invites us into His family.</p><p>We don’t have to earn our place through wealth, appearance, talent, popularity, or social standing.</p><p><strong>Our belonging is rooted in our relationship with the Father.</strong></p><p>And when we begin seeing ourselves through His eyes, something changes. We no longer have to measure our worth by our failures, our insecurities, or what other people think about us.</p><p>We can begin to see the church not simply as a place we attend, but as a family where we belong—and where we learn to make room for one another. <strong>That is what this church is meant to be: a place to belong.</strong></p><p>&bull; You don’t have to become somebody else to be welcomed into God’s family. You come to Jesus, and He begins making you into the person you were created to be.</p>",
+    notes: null,
+  },
+  {
+    position: 19,
+    html: imageSlide("a-place-to-belong", 19, "Belonging begins when we stop measuring our place by our feelings and start seeing ourselves through the Father’s eyes."),
+    outline_html: "<p><strong>Belonging begins when we stop measuring our place by our feelings and start seeing ourselves through the Father’s eyes.</strong></p>",
+    notes: null,
+  },
+  {
+    position: 20,
+    html: imageSlide("a-place-to-belong", 20, "Luke 15:32 (NIV): ‘But we had to celebrate and be glad, because this brother of yours was dead and is alive again; he was lost and is found.’"),
+    outline_html: "<p><strong>Closing Thought</strong></p><p>The younger son needed to come home.</p><p>The older son needed to recognize what he already had.</p><p>And both needed to understand the heart of their father.</p><p>That is the last line of the story. Jesus never tells us what the older brother did. We don’t know whether he went in to the celebration or stayed outside in the dark. The story ends with the father’s invitation still open and the older son standing at the door.</p><p>Jesus left it that way on purpose. <strong>The next line of the story belongs to the one listening.</strong></p>",
+    notes: null,
+  },
+  {
+    position: 21,
+    html: imageSlide("a-place-to-belong", 21, "Sometimes finding our place is more about learning to see ourselves through a Father’s eyes."),
+    outline_html: "<p>Sometimes finding our place isn’t about finding somewhere new. <strong>It’s about learning to see the Father’s house through the Father’s eyes.</strong></p><p><strong>The Father has already come out to meet you. The door is open. There is a place for you.</strong></p>",
+    notes: null,
+  },
+];
+
 function buildDeck(
   id: string,
   slug: string,
@@ -2011,6 +2141,7 @@ export const seedDecks: SeedDeckWithNotes[] = [
   buildDeck("seed-deck-6", "the-jesus-test", "The Jesus Test", "the-jesus-test", theJesusTestSlides),
   buildDeck("seed-deck-7", "ask-better-questions", "Ask Better Questions", "ask-better-questions", askBetterQuestionsSlides),
   buildDeck("seed-deck-8", "with-all-his-might", "With All His Might", "with-all-his-might", withAllHisMightSlides),
+  buildDeck("seed-deck-12", "a-place-to-belong", "A Place to Belong", "a-place-to-belong", aPlaceToBelongSlides),
   buildDeck("seed-deck-11", "the-father-who-never-gave-up", "The Father Who Never Gave Up", "the-father-who-never-gave-up", theFatherWhoNeverGaveUpSlides),
   buildDeck("seed-deck-10", "hope-for-the-family", "Hope For The Family", "hope-for-the-family", hopeForTheFamilySlides),
   buildDeck("seed-deck-9", "make-room-for-a-new-life", "Make Room for a New Life", "make-room-for-a-new-life", makeRoomForANewLifeSlides),
