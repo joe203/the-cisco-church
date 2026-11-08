@@ -14,7 +14,7 @@ DECK (deployed 60d1719): Joe's 21 slides in the order he sent them,
 uuid c1…012, sermon_id filled in by hand — the export script always writes null). Each slide's
 presenter outline is that stretch of his fnl v2 notes.
 
-## Always-current pages (built 2026-11-06 — NOT committed/deployed as of 2026-11-08)
+## Always-current pages (built 2026-11-06 — deployed 2026-11-08, 7142833, verified live)
 
 Joe kept seeing old content until he refreshed: public pages used `revalidate` (saved
 copies served stale while rebuilding, with `stale-while-revalidate` of about a year).
