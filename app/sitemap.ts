@@ -2,6 +2,9 @@ import type { MetadataRoute } from "next";
 import { getSermonList } from "@/lib/data";
 import { isAnnounced } from "@/lib/series";
 
+// Built per request so a new sermon appears as soon as it is synced.
+export const dynamic = "force-dynamic";
+
 const ORIGIN = "https://theciscochurch.org";
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {

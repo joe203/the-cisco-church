@@ -1,6 +1,22 @@
 # CURRENT_STATUS — TheCiscoChurch.org
 Updated: 2026-11-06 · Read this first when starting a new session.
 
+## Sermons into the database — PAUSED 2026-11-08 ~7 AM (finish Sunday afternoon at the earliest)
+
+Joe approved the move, then held it until after Sunday service. State:
+- Migration **031 IS applied**: sermon tables exist, RLS on, NO public policy (anon sees nothing,
+  so the site still serves lib/seed.ts). Sermons/series/speaker/points are synced in (hidden).
+- Deck rows were synced, then DELETED again: the slide state route (service role) uses the DB
+  as soon as a deck row exists, and that path had never run live. Re-run the sync to restore them.
+- Local, UNCOMMITTED: `scripts/sync-sermons.mjs` (sync + field-by-field check; `--check`,
+  `--public`), migration `032_sermons_public.sql` (THE SWITCH: public read policies + realtime;
+  undo = drop the "cisco public read" policies), `components/sections/LiveRefresh.tsx` (replaces
+  BulletinLive; site layout watches sermon tables), sitemap force-dynamic. tsc + build clean.
+- To finish: commit + deploy code (no visible change) → `node scripts/sync-sermons.mjs` →
+  apply 032 → `--public` check → diff live pages against a before-snapshot → verify an open page
+  refreshes on a sync. Test the presenter controls on the DB path (POST/GET state, realtime on
+  cisco_deck_state) before any Sunday that uses web slides.
+
 ## The Family of God, Lesson 2 — A Place to Belong (2026-11-08 — committed + deployed, 9e09616)
 
 `/sermons/a-place-to-belong` built from Joe's `A Place to Belong fnl v2.pdf` (Nov 6): 6 points (his 5

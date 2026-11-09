@@ -1,4 +1,4 @@
-import { BulletinLive } from "@/components/bulletin/BulletinLive";
+import { LiveRefresh } from "@/components/sections/LiveRefresh";
 
 export default function BulletinLayout({
   children,
@@ -7,7 +7,7 @@ export default function BulletinLayout({
 }>) {
   return (
     <>
-      <BulletinLive />
+      <LiveRefresh tables={["cisco_bulletins"]} />
       {children}
     </>
   );
