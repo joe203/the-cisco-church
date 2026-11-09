@@ -1,21 +1,20 @@
 # CURRENT_STATUS — TheCiscoChurch.org
 Updated: 2026-11-06 · Read this first when starting a new session.
 
-## Sermons into the database — PAUSED 2026-11-08 ~7 AM (finish Sunday afternoon at the earliest)
+## Sermons now come from the database — LIVE 2026-11-09 (9dfdb0b)
 
-Joe approved the move, then held it until after Sunday service. State:
-- Migration **031 IS applied**: sermon tables exist, RLS on, NO public policy (anon sees nothing,
-  so the site still serves lib/seed.ts). Sermons/series/speaker/points are synced in (hidden).
-- Deck rows were synced, then DELETED again: the slide state route (service role) uses the DB
-  as soon as a deck row exists, and that path had never run live. Re-run the sync to restore them.
-- Local, UNCOMMITTED: `scripts/sync-sermons.mjs` (sync + field-by-field check; `--check`,
-  `--public`), migration `032_sermons_public.sql` (THE SWITCH: public read policies + realtime;
-  undo = drop the "cisco public read" policies), `components/sections/LiveRefresh.tsx` (replaces
-  BulletinLive; site layout watches sermon tables), sitemap force-dynamic. tsc + build clean.
-- To finish: commit + deploy code (no visible change) → `node scripts/sync-sermons.mjs` →
-  apply 032 → `--public` check → diff live pages against a before-snapshot → verify an open page
-  refreshes on a sync. Test the presenter controls on the DB path (POST/GET state, realtime on
-  cisco_deck_state) before any Sunday that uses web slides.
+- Migrations 031 + 032 applied. Public reads 12 sermons / 3 series / 1 speaker / 12 decks;
+  anon can't write and can't read `cisco_slides.notes` (tested).
+- **Weekly routine:** edit the sermon in `lib/seed.ts` → `node scripts/sync-sermons.mjs` (syncs
+  and checks every field; `--public` re-checks as a visitor). Open pages update in ~1s, no
+  reload (tested). New PDFs/slide images in `public/` still need a deploy first — sync after.
+- All 75 public pages matched the pre-switch snapshot (only "This Sunday" → "The latest lesson",
+  which is the date rolling over).
+- Slide state now lives in `cisco_deck_state` (no more `offline:true`). Presenter live → advance
+  → end tested via the state route; the screen followed. Still do a two-device check before
+  the next Sunday that uses web slides.
+- Undo: drop the "cisco public read" policies (site falls back to seed instantly).
+- Same day: four members' sign-in emails corrected in `cisco_together_members` (DB only).
 
 ## The Family of God, Lesson 2 — A Place to Belong (2026-11-08 — committed + deployed, 9e09616)
 

@@ -59,8 +59,12 @@ static pages or `revalidate` where this can be avoided.
   028, applied). RLS keeps drafts from reaching the public; verified.
 - Reads give up after 3s and skip the database for 30s (`lib/supabase/anon.ts`),
   so an outage falls back to seed data instead of hanging pages.
-- Sermons, events, and announcements are in code, not the database (see
-  CURRENT_STATUS), so they change only with a deploy.
+- **Sermons come from the database** (since 2026-11-09, migrations 031–032).
+  `lib/seed.ts` stays the source you edit; `node scripts/sync-sermons.mjs`
+  pushes it to the database and checks every field, and `LiveRefresh` updates
+  open pages within ~1s. New files in `public/` (PDFs, slide images) still need
+  a deploy, so sync AFTER deploying them. Events and announcements are still
+  in code (deploy to change).
 
 ---
 
