@@ -697,9 +697,9 @@ const learningToLoveLikeFamily: SermonDetail = {
   thesis: "Living together as His children.",
   teaser:
     "It’s one thing to be part of a family. It’s another thing to learn how to live like one. We misunderstand one another, disagree over things that don’t really matter, and say things we wish we could take back. Even in the church, loving one another isn’t always easy.\n\nBut God doesn’t bring us into His family because we’ve already mastered loving others. He brings us together so we can learn to love as He loves: patience when others disappoint us, forgiveness when we’ve been hurt, words that build others up, and grace even when it isn’t easy.\n\nJoin us this Sunday as we discover how our relationships with one another shape us into the people our Father wants us to become. God’s family isn’t made up of perfect people. It’s made up of people learning to love one another with the love of a perfect Father.",
-  scripture_ref: "Ephesians 5:1–2",
-  scripture_text: "“Follow God’s example, therefore, as dearly loved children and walk in the way of love, just as Christ loved us.”",
-  artwork_url: "/sermons/learning-to-love-like-family/artwork.jpg",
+  scripture_ref: "1 John 4:7–12",
+  scripture_text: "“Dear friends, since God so loved us, we also ought to love one another.”",
+  artwork_url: "/sermons/learning-to-love-like-family/title-slide.jpg",
   series: familySeries,
 };
 
