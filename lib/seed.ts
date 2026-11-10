@@ -691,17 +691,29 @@ const aPlaceToBelong: SermonDetail = {
   ],
 };
 
+// Lesson 3: announced (slide + teaser from the Nov 15 bulletin article) until Joe's notes arrive.
+const learningToLoveLikeFamily: SermonDetail = {
+  ...upcomingLesson(12, "learning-to-love-like-family", "Learning to Love Like Family", "2026-11-15", 3),
+  thesis: "Living together as His children.",
+  teaser:
+    "It’s one thing to be part of a family. It’s another thing to learn how to live like one. We misunderstand one another, disagree over things that don’t really matter, and say things we wish we could take back. Even in the church, loving one another isn’t always easy.\n\nBut God doesn’t bring us into His family because we’ve already mastered loving others. He brings us together so we can learn to love as He loves: patience when others disappoint us, forgiveness when we’ve been hurt, words that build others up, and grace even when it isn’t easy.\n\nJoin us this Sunday as we discover how our relationships with one another shape us into the people our Father wants us to become. God’s family isn’t made up of perfect people. It’s made up of people learning to love one another with the love of a perfect Father.",
+  scripture_ref: "Ephesians 5:1–2",
+  scripture_text: "“Follow God’s example, therefore, as dearly loved children and walk in the way of love, just as Christ loved us.”",
+  artwork_url: "/sermons/learning-to-love-like-family/artwork.jpg",
+  series: familySeries,
+};
+
 const familyPlaceholders: SermonDetail[] = [
-  ["learning-to-love-like-family", "Learning to Love Like Family", "2026-11-15", 3],
   ["thankful-to-be-his", "Thankful to Be His", "2026-11-22", 4],
   ["the-family-business", "The Family Business", "2026-11-29", 5],
 ].map(([slug, title, date, lesson], i) => ({
-  ...upcomingLesson(12 + i, slug as string, title as string, date as string, lesson as number),
+  ...upcomingLesson(13 + i, slug as string, title as string, date as string, lesson as number),
   series: familySeries,
 }));
 
 export const seedSermons: SermonDetail[] = [
   ...[...familyPlaceholders].reverse(),
+  learningToLoveLikeFamily,
   aPlaceToBelong,
   theFatherWhoNeverGaveUp,
   hopeForTheFamily,
