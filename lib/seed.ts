@@ -1696,9 +1696,10 @@ const hopeForTheFamilySlides: SeedSlideInput[] = [
  * The Father Who Never Gave Up (The Family of God, Lesson 1) — Joe's 12
  * audience slides, ordered to his Nov 1 sermon notes and exported to
  * public/sermons/the-father-who-never-gave-up/slides/NN.jpg. The two Jefferson
- * Fisher clips (couldn't play on Sunday) are video slides after image slides 5
- * and 8, streamed from Joe's FiveSixteen video host. Positions are assigned in
- * order by the trailing map, so the deck is 14 slides.
+ * Fisher clips were video slides here for a while (they couldn't play on
+ * Sunday); they came off on 2026-11-11 once the sermon video included them.
+ * Their outline notes stay with slides 5 and 8. Positions are assigned in order
+ * by the trailing map, so the deck is 12 slides.
  */
 const theFatherWhoNeverGaveUpSlides: SeedSlideInput[] = [
   {
@@ -1728,17 +1729,7 @@ const theFatherWhoNeverGaveUpSlides: SeedSlideInput[] = [
   {
     position: 5,
     html: imageSlide("the-father-who-never-gave-up", 5, "Meet Jefferson Fisher: trial attorney from Texas, helps people have better, more thoughtful conversations, author of The Next Conversation."),
-    outline_html: "<p><strong>Are we hearing God?</strong></p><p>&bull; Introduce Jefferson. His book, <em>The Next Conversation</em>.</p>",
-    notes: null,
-  },
-  {
-    position: 0,
-    html: videoSlide(
-      "https://media.fivesixteen.church/videos/cisco/ag8wccpm/mvz8zspa.mp4",
-      "https://media.fivesixteen.church/videos/cisco/ag8wccpm/mvz8zspa-poster.jpg",
-      "Jefferson Fisher: Is what I say what people hear?",
-    ),
-    outline_html: "<p><strong>[Video: Jefferson Fisher 001 &mdash; &ldquo;Is what I say what people hear?&rdquo;]</strong></p><p>Questions following the videoclip:</p><p>&bull; What is God trying to communicate to us?</p><p>&bull; What are you hearing?</p><p>&bull; How do you hear God?</p>",
+    outline_html: "<p><strong>Are we hearing God?</strong></p><p>&bull; Introduce Jefferson. His book, <em>The Next Conversation</em>.</p><p><strong>[Video: Jefferson Fisher 001 &mdash; &ldquo;Is what I say what people hear?&rdquo;]</strong></p><p>Questions following the videoclip:</p><p>&bull; What is God trying to communicate to us?</p><p>&bull; What are you hearing?</p><p>&bull; How do you hear God?</p>",
     notes: null,
   },
   {
@@ -1756,17 +1747,7 @@ const theFatherWhoNeverGaveUpSlides: SeedSlideInput[] = [
   {
     position: 8,
     html: imageSlide("the-father-who-never-gave-up", 8, "The greatest gift God offers us isn’t simply a place in heaven. It’s a place in His family."),
-    outline_html: "<p><strong>&ldquo;The greatest gift God offers us isn&rsquo;t simply a place in heaven. It&rsquo;s a place in His family.&rdquo;</strong></p><p><strong>Keeping the door open (God&rsquo;s persistence)</strong></p><p>What would it take for us to truly believe that a relationship with God as His son/daughter is better than anything out there?</p><p>&bull; Can we be convinced?</p><p>&bull; Why is this so hard to believe and fully understand?</p><p><strong>Reality check:</strong> Many of our deeply held beliefs are rooted in our core.</p>",
-    notes: null,
-  },
-  {
-    position: 0,
-    html: videoSlide(
-      "https://media.fivesixteen.church/videos/cisco/qn569q9c/mvzaqpc3.mp4",
-      "https://media.fivesixteen.church/videos/cisco/qn569q9c/mvzaqpc3-poster.jpg",
-      "Jefferson Fisher: If you can’t be a bridge, be a lighthouse",
-    ),
-    outline_html: "<p><strong>[Video: Jefferson Fisher 002]</strong></p><p>&bull; Our beliefs have deep roots &mdash; turning someone around can take a long time.</p><p>&bull; When you <strong>can&rsquo;t be a bridge, be a lighthouse.</strong></p>",
+    outline_html: "<p><strong>&ldquo;The greatest gift God offers us isn&rsquo;t simply a place in heaven. It&rsquo;s a place in His family.&rdquo;</strong></p><p><strong>Keeping the door open (God&rsquo;s persistence)</strong></p><p>What would it take for us to truly believe that a relationship with God as His son/daughter is better than anything out there?</p><p>&bull; Can we be convinced?</p><p>&bull; Why is this so hard to believe and fully understand?</p><p><strong>Reality check:</strong> Many of our deeply held beliefs are rooted in our core.</p><p><strong>[Video: Jefferson Fisher 002]</strong></p><p>&bull; Our beliefs have deep roots &mdash; turning someone around can take a long time.</p><p>&bull; When you <strong>can&rsquo;t be a bridge, be a lighthouse.</strong></p>",
     notes: null,
   },
   {

@@ -74,6 +74,9 @@ VIDEO SLIDES (2026-11-02): the two Jefferson Fisher clips failed to play on Sund
 slides 6 and 10 of a 14-slide deck — `videoSlide()` in `lib/seed.ts` (a `<video class="slide-video">`
 streamed from Joe's FiveSixteen host, media.fivesixteen.church, preload none). `DeckViewer` lists any
 video slide under the slides as "Watch the clips" jump buttons. Works for any future deck.
+CLIPS REMOVED (2026-11-11, Joe): the sermon video now includes both clips and the originals are going
+private, so the two video slides came off — the deck is back to 12 slides; their outline notes moved
+into slides 5 and 8. Synced to the database (live). `videoSlide()` and the viewer support stay for future decks.
 
 ## Directory form (built 2026-10-28 — NOT yet committed/deployed)
 
