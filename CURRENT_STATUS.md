@@ -1,5 +1,19 @@
 # CURRENT_STATUS — TheCiscoChurch.org
-Updated: 2026-11-06 · Read this first when starting a new session.
+Updated: 2026-11-11 · Read this first when starting a new session.
+
+## Bulletin "Good news" section — LIVE 2026-11-11 (a5314fd)
+
+- Praise reports are their own section ("Good news", column `praise`, migration 033 applied).
+  On /bulletin it follows "This week"; first sentence of each report bold. Secretary can edit
+  it; it starts empty each new week.
+- PDF import rewritten to find sections by content, not position (Cyndi's layout changed for
+  Nov 15 and the old reader dropped the order of service, Bible Study notice, prayer + nursing
+  home lists, praise reports, and 4 of 5 series weeks). Effort medium → high. Not yet tested on
+  a fresh upload — check the next one closely.
+- Nov 15 draft filled in by hand from the paper copy; Joe reviews and publishes.
+- "Family of Jon Denison" is correct — Jon died Sun Nov 8. Article label: leave as is; Joe
+  will ask Cyndi to drop "A Word of Encouragement" from the paper.
+- Joe wants a **redesign of the paper bulletin** later, modeled on the online layout.
 
 ## Sermons now come from the database — LIVE 2026-11-09 (9dfdb0b)
 
