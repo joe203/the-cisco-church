@@ -19,6 +19,12 @@ function splitWhen(when: string): [string, string] {
   return i === -1 ? [when, ""] : [when.slice(0, i), when.slice(i + 2)];
 }
 
+/** A report's first sentence (shown bold, for scanners) and the rest. */
+function leadSentence(text: string): [string, string] {
+  const m = text.match(/^(.+?[.!?]["”’)]*)\s+(.+)$/);
+  return m ? [m[1], m[2]] : [text, ""];
+}
+
 function readingMinutes(body: string): number {
   return Math.max(1, Math.round(body.split(/\s+/).filter(Boolean).length / 200));
 }
@@ -49,6 +55,7 @@ export function BulletinView({
   const jumps = [
     hasOrder(bulletin) && { id: "order", label: "Order of service" },
     bulletin.announcements.length > 0 && { id: "news", label: "This week" },
+    bulletin.praise.length > 0 && { id: "good-news", label: "Good news" },
     hasPrayer(bulletin) && { id: "prayer", label: "Prayer list" },
     hasArticle(bulletin) && { id: "message", label: "From the minister" },
     { id: "info", label: "Times & contact" },
@@ -146,6 +153,29 @@ export function BulletinView({
                 {bulletin.announcements.map((a) => (
                   <AnnouncementRow key={a.id} item={a} />
                 ))}
+              </ul>
+            </section>
+          )}
+
+          {bulletin.praise.length > 0 && (
+            <section id="good-news" className="scroll-mt-6">
+              <div className="flex flex-wrap items-baseline gap-x-5 gap-y-1">
+                <h2 className="font-display text-[2rem] font-extrabold tracking-[-0.03em] text-ink">Good news</h2>
+                <p className="eyebrow text-coral">Give thanks with us</p>
+              </div>
+              <ul className="mt-6 space-y-4">
+                {bulletin.praise.map((report, i) => {
+                  const [lead, rest] = leadSentence(report);
+                  return (
+                    <li
+                      key={i}
+                      className="rounded-2xl bg-sand px-6 py-5 text-[1.05rem] leading-[1.7] text-ink/80 shadow-card print:break-inside-avoid print:bg-white print:px-0 print:shadow-none"
+                    >
+                      <span className="font-semibold text-ink">{lead}</span>
+                      {rest && ` ${rest}`}
+                    </li>
+                  );
+                })}
               </ul>
             </section>
           )}

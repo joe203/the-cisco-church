@@ -255,10 +255,10 @@ prayer list, standing times/contact. Print stylesheet included (`print:`
 variants), so it can still produce paper while the congregation transitions.
 Design signature: the dotted-leader run sheet and the big date stamp; reuses
 the Texas-morning tokens. Standing details (weekly meetings, preacher/elders/
-secretary) live in `lib/site.ts` — only the five weekly pieces are editable.
+secretary) live in `lib/site.ts` — only the six weekly pieces are editable (incl. "Good news" = praise reports, column `praise`, migration 033, applied 2026-11-11; secretary can edit it; does not carry over to the next week).
 
 **Data:** `cisco_bulletins` (one row per Sunday; order_of_service,
-announcements, prayer_groups, article, series as validated jsonb — see
+announcements, prayer_groups, praise, article, series as validated jsonb — see
 `lib/bulletin/schema.ts`) and `cisco_staff` (who may sign in + role).
 Migration `007_bulletin.sql` is self-contained and **already applied** on the
 droplet; `001–006` are still not applied. Anon can SELECT only

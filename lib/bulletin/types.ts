@@ -57,17 +57,20 @@ export type Bulletin = {
   order_of_service: OrderOfService;
   announcements: Announcement[];
   prayer_groups: PrayerGroup[];
+  /** "Good news" — praise reports, one paragraph each. */
+  praise: string[];
   article: Article;
   series: Series;
   published_at: string | null;
   updated_at: string | null;
 };
 
-/** The five editable pieces of a bulletin. */
+/** The six editable pieces of a bulletin. */
 export type SectionKey =
   | "order_of_service"
   | "announcements"
   | "prayer_groups"
+  | "praise"
   | "article"
   | "series";
 

@@ -87,6 +87,7 @@ export const seedBulletin: Bulletin = {
       names: ["Joan Penn", "Cecelia Boles", "Johnny Adams", "Barbara Brinkley", "Joy Davies"],
     },
   ],
+  praise: [],
 
   article: {
     kicker: "From the Minister’s Desk",

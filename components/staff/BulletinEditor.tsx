@@ -18,6 +18,8 @@ type Draft = {
   order_of_service: { song_leader: string; items: OrderItem[] };
   announcements: Announcement[];
   prayer: PrayerDraft[];
+  /** Good news, one report per paragraph (blank line between). */
+  praise: string;
   article: Bulletin["article"];
   series: { title: string; tagline: string; verse: string; weeks: SeriesWeek[] };
 };
@@ -26,6 +28,7 @@ const toDraft = (b: Bulletin): Draft => ({
   order_of_service: b.order_of_service,
   announcements: b.announcements,
   prayer: b.prayer_groups.map((g) => ({ label: g.label, text: g.names.join("\n") })),
+  praise: b.praise.join("\n\n"),
   article: b.article,
   series: b.series,
 });
@@ -35,6 +38,13 @@ const parseNames = (text: string) =>
   text
     .split(/[\n,]+/)
     .map((n) => n.trim())
+    .filter(Boolean);
+
+/** Good news: one report per paragraph — a blank line starts the next one. */
+const parseReports = (text: string) =>
+  text
+    .split(/\n\s*\n/)
+    .map((r) => r.replace(/\s*\n\s*/g, " ").trim())
     .filter(Boolean);
 
 const input =
@@ -89,6 +99,7 @@ export function BulletinEditor({
     if (mine("prayer_groups")) {
       out.prayer_groups = draft.prayer.map((g) => ({ label: g.label, names: parseNames(g.text) }));
     }
+    if (mine("praise")) out.praise = parseReports(draft.praise);
     if (mine("article")) out.article = draft.article;
     if (mine("series")) out.series = draft.series;
     return out;
@@ -380,6 +391,29 @@ export function BulletinEditor({
             <AddButton onClick={() => edit((d) => ({ ...d, prayer: [...d.prayer, { label: "", text: "" }] }))}>
               Add another list
             </AddButton>
+          </Card>
+        )}
+
+        {/* ------------------------------------------------ good news */}
+        {mine("praise") && (
+          <Card
+            title="Good news"
+            hint="Praise reports — answered prayers, new babies, good news. Leave a blank line between each one. Leave it empty for a week with none."
+          >
+            <Field label="Reports">
+              <textarea
+                className={`${input} min-h-48`}
+                value={draft.praise}
+                placeholder="Thank you all for your prayers for River! Her surgery was successful…"
+                onChange={(e) => edit((d) => ({ ...d, praise: e.target.value }))}
+              />
+            </Field>
+            <p className="mt-2 text-[0.85rem] text-ink/72">
+              {(() => {
+                const n = parseReports(draft.praise).length;
+                return n === 1 ? "1 report" : `${n} reports`;
+              })()}
+            </p>
           </Card>
         )}
 

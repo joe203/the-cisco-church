@@ -10,7 +10,7 @@ import type { Bulletin } from "./types";
  */
 
 export const BULLETIN_COLUMNS =
-  "bulletin_date, status, order_of_service, announcements, prayer_groups, article, series, published_at, updated_at";
+  "bulletin_date, status, order_of_service, announcements, prayer_groups, praise, article, series, published_at, updated_at";
 
 /** Normalize a database row through the same validators the editor uses. */
 export function rowToBulletin(row: Record<string, unknown>): Bulletin {

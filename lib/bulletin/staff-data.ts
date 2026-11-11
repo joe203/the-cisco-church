@@ -44,7 +44,7 @@ export async function getBulletinForStaff(date: string): Promise<Bulletin | null
 /**
  * Start a bulletin. When an earlier one exists it is the starting point —
  * the order of service, prayer list, announcements and series carry over
- * (they change a little each week), and the article starts blank.
+ * (they change a little each week); the article and good news start blank.
  */
 export async function createBulletin(date: string, staff: StaffMember): Promise<SaveResult> {
   const db = getServiceClient();
@@ -60,7 +60,7 @@ export async function createBulletin(date: string, staff: StaffMember): Promise<
 
   const base = emptyBulletin(date);
   const start: Bulletin = previous
-    ? { ...rowToBulletin(previous), bulletin_date: date, article: base.article }
+    ? { ...rowToBulletin(previous), bulletin_date: date, article: base.article, praise: base.praise }
     : base;
 
   const { data, error } = await db
@@ -71,6 +71,7 @@ export async function createBulletin(date: string, staff: StaffMember): Promise<
       order_of_service: start.order_of_service,
       announcements: start.announcements,
       prayer_groups: start.prayer_groups,
+      praise: start.praise,
       article: start.article,
       series: start.series,
       updated_by: staff.user_id,

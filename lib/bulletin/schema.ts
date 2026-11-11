@@ -14,8 +14,8 @@ import type {
  * the Route Handlers enforce it, and the editor reads it to lock sections.
  */
 export const ROLE_SECTIONS: Record<StaffRole, readonly SectionKey[]> = {
-  admin: ["order_of_service", "announcements", "prayer_groups", "article", "series"],
-  secretary: ["order_of_service", "announcements", "prayer_groups"],
+  admin: ["order_of_service", "announcements", "prayer_groups", "praise", "article", "series"],
+  secretary: ["order_of_service", "announcements", "prayer_groups", "praise"],
 };
 
 export const SECTION_KEYS: readonly SectionKey[] = ROLE_SECTIONS.admin;
@@ -93,6 +93,12 @@ function cleanPrayer(value: unknown): PrayerGroup[] {
   });
 }
 
+function cleanPraise(value: unknown): string[] {
+  return list(value, 20)
+    .map((r) => text(r, 1200).replace(/\s*\n\s*/g, " "))
+    .filter(Boolean);
+}
+
 function cleanArticle(value: unknown): Article {
   const a = obj(value);
   return {
@@ -129,6 +135,8 @@ export function cleanSection<K extends SectionKey>(key: K, value: unknown): Bull
       return cleanPrayer(value) as Bulletin[K];
     case "article":
       return cleanArticle(value) as Bulletin[K];
+    case "praise":
+      return cleanPraise(value) as Bulletin[K];
     case "series":
       return cleanSeries(value) as Bulletin[K];
     default:
@@ -142,6 +150,7 @@ export const emptyBulletin = (date: string): Bulletin => ({
   order_of_service: { song_leader: "", items: [] },
   announcements: [],
   prayer_groups: [{ label: "", names: [] }],
+  praise: [],
   article: { kicker: "From the Minister's Desk", title: "", subtitle: "", body: "" },
   series: { title: "", tagline: "", verse: "", weeks: [] },
   published_at: null,

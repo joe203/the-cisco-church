@@ -21,6 +21,7 @@ const Extracted = z.object({
     z.object({ title: z.string(), when: z.string(), body: z.string(), note: z.string() }),
   ),
   prayer_groups: z.array(z.object({ label: z.string(), names: z.array(z.string()) })),
+  praise: z.array(z.string()),
   article: z.object({
     kicker: z.string(),
     title: z.string(),
@@ -39,15 +40,20 @@ const INSTRUCTIONS = `You are reading a finished weekly church bulletin (PDF) fo
 
 Transcribe faithfully. Copy names, dates, times and wording exactly as printed — never invent, correct, or "improve" anything. If a field is not on the page, return an empty string (or an empty list).
 
+The secretary's layout changes from week to week: sections move between columns and pages, headings are worded differently or missing, and boxes sit beside unrelated text. Find each section by what it IS, not by where it sits or what it is called. Read every column and every box on every page before deciding something is absent. Almost every bulletin has an order of service, a prayer list, and at least one announcement — if you have not found one, look again. Paper line breaks are layout only: join wrapped lines into normal sentences and paragraphs.
+
 Fields:
 - bulletin_date: the Sunday this bulletin is for, as YYYY-MM-DD.
-- order_of_service: the Sunday morning worship order. song_leader is the person named as song leader. items are the list in printed order. Put a person's name in "who" when the line has one (e.g. a line "Presiding: Mike Lewis" becomes label "Presiding", who "Mike Lewis"). The sermon is its own item: label "Sermon", who = the preacher, note = the sermon title in curly quotes.
-- announcements: each announcement under the announcements/events heading. title is the heading; when is the date/time text printed beside it (e.g. "October 10, 9:30 am-3pm"); body is the paragraph; note is a short bold standalone line such as "No evening service." Keep the printed order.
-- prayer_groups: the prayer list. The main list has label "". A separate named list (such as a nursing home) gets its own group with that name as the label. One entry per person or family exactly as printed (e.g. "James & Lauren Dye and family" stays one name).
-- article: the minister's article. kicker is the "From the Minister's Desk" style label; title is its heading; subtitle only if there is a distinct italic subtitle, else "". body is the full text, verbatim, with a blank line between paragraphs. Wrap lines that are printed bold in **double asterisks** and keep a bold heading and the lines under it together in one paragraph separated by single newlines.
-- series: the sermon series box. title, tagline, and the key verse line (verse). weeks are each dated entry in order; use the bulletin's year for the date.
+- order_of_service: the Sunday morning worship order (often headed "Order of Service"). song_leader is the person named as song leader. items are the remaining lines in printed order. A role is often printed on one line and the person on the next, or joined with a dash ("Sermon- Joe Cabrera"); either way label = the role, who = the person. Lines with no person (e.g. "Congregational Singing", "Invitation Song") are items with who "". The sermon is its own item: label "Sermon", who = the preacher, note = the sermon title in curly quotes.
+- announcements: every announcement or event notice, wherever it is printed — with or without an "Announcements" heading, including recurring ones such as Sunday morning Bible study. title is the notice's heading (without a date or time); when is the date/time text in or beside the heading (e.g. "9:30 AM", "November 18"); body is the paragraph(s); note is a short bold standalone line such as "No evening service." Keep the printed order.
+- prayer_groups: the prayer list.
+  * The main list has label "". One entry per person or family exactly as printed (e.g. "James & Lauren Dye and family" stays one name). Names are usually separated by commas and may run on with no comma where a line wraps — split those into separate people.
+  * A separate named list of people (e.g. "Nursing Home: Joan Penn, ...", even when it follows the main list inside the same box) is its own group with label = its name as printed ("Nursing Home"). Do not leave its label inside a name.
+- praise: praise reports — answered prayers and good news (e.g. a successful surgery, a new baby), usually under a heading like "Praise Reports", often in or near the prayer list box. One entry per report, each the full paragraph verbatim. Empty list if there are none.
+- article: the minister's article (e.g. "A Word of Encouragement" or "From the Minister's Desk"). kicker is that label; title is the article's heading; subtitle is a distinct secondary line under the kicker or title (such as "The Family of God — Week 3"), else "". body is the full text, verbatim, with a blank line between paragraphs. Wrap lines that are printed bold in **double asterisks** and keep a bold heading and the lines under it together in one paragraph separated by single newlines.
+- series: the sermon series schedule — a boxed or listed run of dates, each with a sermon title (e.g. "November 1 / The Father Who Never Gave Up- His Love For Us"), wherever it appears. title is the series name printed with it; tagline and verse only if printed, else "". weeks = every dated entry in order, title as printed; use the bulletin's year for the date.
 
-Do NOT include the standing information that is the same every week: the "Welcome, Visitors" box, contact details, the weekly meeting times box, or the list of elders and staff. Ignore decorative images.`;
+Do NOT include the standing information that is the same every week: the "Welcome, Visitors" box, the sermon-notes lines, the QR code, contact details, the weekly meeting times, or the list of elders and staff. Ignore decorative images.`;
 
 export type ExtractResult =
   | { ok: true; date: string; sections: Pick<Bulletin, SectionKey> }
@@ -66,7 +72,7 @@ export async function extractBulletin(pdf: Buffer): Promise<ExtractResult> {
     response = await client.messages.parse({
       model: "claude-opus-5-5",
       max_tokens: 16000,
-      output_config: { format: zodOutputFormat(Extracted), effort: "medium" },
+      output_config: { format: zodOutputFormat(Extracted), effort: "high" },
       messages: [
         {
           role: "user",
@@ -102,6 +108,7 @@ export async function extractBulletin(pdf: Buffer): Promise<ExtractResult> {
       order_of_service: cleanSection("order_of_service", parsed.order_of_service),
       announcements: cleanSection("announcements", parsed.announcements),
       prayer_groups: cleanSection("prayer_groups", parsed.prayer_groups),
+      praise: cleanSection("praise", parsed.praise),
       article: cleanSection("article", parsed.article),
       series: cleanSection("series", parsed.series),
     },
