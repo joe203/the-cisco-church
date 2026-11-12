@@ -1,5 +1,28 @@
 # CURRENT_STATUS — TheCiscoChurch.org
-Updated: 2026-11-11 · Read this first when starting a new session.
+Updated: 2026-11-12 · Read this first when starting a new session.
+
+## "How's it going?" feedback page (built 2026-11-12 — NOT committed/deployed)
+
+`/together/feedback`, four steps (see CLAUDE.md scope fence). Linked from the bottom of /together.
+Files: `components/together/{FeedbackPage,FeedbackForm,FeedbackGate}.tsx`, `app/together/feedback/`
+(+ `enter/route.ts`), `app/api/together/feedback/{route,link/route}.ts`, `app/api/staff/feedback/export`,
+`lib/feedback/{schema,data,access}.ts`, `lib/together/values.ts`,
+`app/staff/feedback/page.tsx` (admins; "Feedback" in staff nav). Migration `034_feedback.sql`
+**NOT applied** — until it is, responses are only emailed to admins. Dev preview:
+`/together/feedback/preview` (never posts). Walkthrough tested in a browser at 1440 + 390.
+- `TRIES` (step 3) holds 4 placeholder ideas from /together — **Joe to send his own list.**
+  Never rename a key after responses arrive.
+- Sign-in is an emailed link (Joe, 2026-11-12). Tested locally with a hand-made link (forged
+  link refused; real link signs in; /together cookie alone does NOT open it). The email itself
+  only sends from production (needs MAILGUN_SENDING_KEY). **13 of 41 members have only a cell
+  number on file** — they can't get a link until an email is added (the gate offers "Ask to be added").
+- Age range added; "about you" answers are their own columns in migration 034 (still unapplied),
+  plus a `cisco_feedback_latest` view. /staff/feedback filters + "Compare groups" table + CSV
+  download are type-checked but not yet seen with real responses.
+- Every tap question is required and opens one at a time (Joe, 2026-11-12). Step 1 is
+  "A little about you" and includes a 1–10 tradition scale (wording in `TRADITION_LEFT/RIGHT`).
+- No "worse" option in step 2 on purpose; concerns go to the private box (suggestion required).
+- `/staff/feedback` type-checks but hasn't been viewed with real data yet.
 
 ## Bulletin "Good news" section — LIVE 2026-11-11 (a5314fd)
 

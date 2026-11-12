@@ -1,4 +1,6 @@
 import Image from "next/image";
+import Link from "next/link";
+import { LEAD_VALUE, VALUES } from "@/lib/together/values";
 import { IdeasModal } from "./IdeasModal";
 import { VideoCard } from "./VideoCard";
 
@@ -46,38 +48,8 @@ const voices = [
   },
 ] as { topic: string; who: string; videoId?: string; poster: string; alt: string }[];
 
-const lead = {
-  name: "Jesus at the center",
-  text: "Everything we do starts and ends with Jesus. We are God’s sons and daughters, and every ministry here exists to help people know Him: His love, His salvation, His way. Every program, schedule, and decision gets one question: does this lead people to Jesus?",
-};
-
-// Order matters: this is the order of priority Joe set.
-const values = [
-  {
-    name: "Relationships over programs",
-    text: "Programs and activities serve a greater purpose: relationships that connect people with God and with one another. We measure success not by what we do, but by the lives we touch.",
-  },
-  {
-    name: "Prayer before pursuit",
-    text: "Seek God’s wisdom before committing our time, energy, and resources.",
-  },
-  {
-    name: "God ideas drive ministry",
-    text: "We don’t chase every good idea. We look for big, kingdom-sized ideas with real Jesus impact: ideas that serve others, love others, and encourage others. That’s where we invest our time.",
-  },
-  {
-    name: "Vision driven",
-    text: "We keep the big picture in front of us by asking: What is God calling this congregation to be and do in His kingdom? Hence, we align ourselves to what God is doing. This helps us be decisive about what we say yes to and what we say no to.",
-  },
-  {
-    name: "Grace received, grace shared",
-    text: "We are saved by grace through faith, not by works (Ephesians 2:8–9). The more deeply we understand the grace God has shown us, the more freely we show it to the people around us. We celebrate God’s goodness. We encourage the presence of grace more and more in our fellowship, our ministries, and everything we do, and we count that as a godly step forward.",
-  },
-  {
-    name: "Mission over tradition",
-    text: "We honor our heritage, and we let our mission, not long-standing practices, set our direction.",
-  },
-];
+const lead = LEAD_VALUE;
+const values = VALUES;
 
 const h2 =
   "font-display text-[clamp(1.9rem,3.2vw+0.6rem,3rem)] leading-[1.08] font-extrabold tracking-[-0.03em] text-ink";
@@ -400,6 +372,15 @@ export function TogetherContent() {
             <div className="pt-2">
               <IdeasModal />
             </div>
+            <p className="border-t border-white/15 pt-4 text-[1.05rem] leading-[1.6] text-white/90">
+              Already seeing a difference?{" "}
+              <Link
+                href="/together/feedback"
+                className="rounded-sm font-bold text-white underline decoration-marigold decoration-2 underline-offset-[6px] transition-opacity duration-300 hover:opacity-80 focus-visible:outline-marigold active:opacity-60"
+              >
+                Tell us how it’s going
+              </Link>
+            </p>
           </div>
         </div>
       </section>

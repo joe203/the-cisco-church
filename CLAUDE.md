@@ -115,6 +115,27 @@ static pages or `revalidate` where this can be avoided.
   `lib/directory/guard.ts`: per-IP limit, honeypot, and a global trip (40 attempts
   in 10 min) that pauses the form for 1 hour and texts the operator once.
 
+- **"How's it going?" member feedback** (`/together/feedback`, added 2026-11-12 at
+  Joe's request): members on the `cisco_together_members` list sign in with an
+  **emailed link** (`lib/feedback/access.ts`: signed 24-hour link, signed
+  180-day `cisco_feedback` cookie, nothing stored; it also sets the /together
+  cookie). The plain /together email-or-cell entry does NOT open it. Members
+  with no email on file use "Ask to be added". Every response has a name. Four steps: (1) "A little about you" (never "where you're coming
+  from" — Joe: it feels like exposing yourself) — read the vision? (button opens
+  /together in a new tab), each core value (All in…Not really), stance on change,
+  a 1–10 tradition scale (keep to traditional Church of Christ ways ↔ try new
+  ideas), growth, age range, tenure, attendance — so feedback is read in context; (2) changes
+  already made, Better/Same/Too soon + optional note each, what you've seen
+  (required), keep doing; (3) ideas not yet started, Let's try it…Rather not. Every
+  tap question is required and opens in order (later ones dimmed + inert until
+  their turn) — Joe: no skipping (`TRIES` in `lib/feedback/schema.ts` — Joe's list);
+  (4) private concern that requires a suggestion + share consent. Saved to
+  `cisco_feedback` (migration 034, service-role only) + emailed to admins ONLY;
+  "about you" answers are real columns so results can be sliced; read at
+  `/staff/feedback` (admins: filter by age/tradition/stance/tenure/attendance,
+  "Compare groups" table, CSV download at `/api/staff/feedback/export`). Core values live in
+  `lib/together/values.ts` (shared with /together). ONE form — not a survey system.
+
 **Explicitly out of scope — do not build, do not suggest:**
 - About / staff / leadership / ministries / calendar pages (an **events page**
   is now in scope — see below — but never a calendar)

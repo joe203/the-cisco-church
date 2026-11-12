@@ -17,6 +17,7 @@ export function staffNavItems({ inbox, people, unread }: { inbox: boolean; peopl
     ...(inbox ? [{ href: "/staff/mail", label: "Inbox", badge: unread, matches: under("/staff/mail") }] : []),
     ...(people ? [{ href: "/staff/people", label: "People", matches: under("/staff/people") }] : []),
     { href: "/staff/together", label: "Members page", matches: under("/staff/together") },
+    ...(people ? [{ href: "/staff/feedback", label: "Feedback", matches: under("/staff/feedback") }] : []),
     { href: "/staff/help", label: "Help", matches: under("/staff/help") },
   ];
 }
