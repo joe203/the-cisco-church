@@ -38,9 +38,13 @@ export async function generateMetadata({
   };
 }
 
+function watchDetail(url: string | null): string {
+  return url && /youtu\.?be/.test(url) ? "On YouTube" : "The full lesson";
+}
+
 function buildResources(sermon: SermonDetail, pieces: Piece[]) {
   return [
-    { url: sermon.youtube_url, action: "Watch", detail: "On YouTube" },
+    { url: sermon.youtube_url, action: "Watch", detail: watchDetail(sermon.youtube_url) },
     { url: sermon.podcast_url, action: "Listen", detail: "Audio of this lesson" },
     ...pieces.map((piece) => ({ url: piece.url, action: pieceMeta[piece.kind].label, detail: "PDF · print or save" })),
     { url: sermon.pdf_url, action: "Slides", detail: "Slides as PDF" },

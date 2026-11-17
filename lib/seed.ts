@@ -568,6 +568,7 @@ const theFatherWhoNeverGaveUp: SermonDetail = {
   scripture_ref: "Romans 8:15 · Luke 15:11–32",
   scripture_text: "“The Spirit you received brought about your adoption to sonship. And by him we cry, ‘Abba, Father.’”",
   artwork_url: "/sermons/the-father-who-never-gave-up/artwork.jpg",
+  youtube_url: "https://video.fivesixteen.church/2nn8p7rz",
   series: familySeries,
   summary:
     "We praise God “for the Son of Thy love.” Over five Sundays we’re looking at something that runs throughout the entire Bible: God’s desire to have a relationship with us, not simply as our Creator, but as our Father. The Old Testament is a story of the distance God went to show us how much He loves us. But are we hearing what He has been saying since He walked in the garden? God didn’t simply create a world He could rule. He created people He could love. Like the father in Luke 15, He gives us space, keeps the light shining, and welcomes us home, not as hired hands but as sons and daughters who cry, “Abba, Father.” God didn’t send Jesus simply to save us from something. He sent Jesus to bring us back to Someone.",
