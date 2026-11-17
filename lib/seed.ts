@@ -691,7 +691,7 @@ const aPlaceToBelong: SermonDetail = {
   ],
 };
 
-// Lesson 3: announced (slide + teaser from the Nov 15 bulletin article) until Joe's notes arrive.
+// Lesson 3 — built from Joe's sermon notes (Sermon-Notes-Print, Nov 15) + his 23 slides.
 const learningToLoveLikeFamily: SermonDetail = {
   ...upcomingLesson(12, "learning-to-love-like-family", "Learning to Love Like Family", "2026-11-15", 3),
   thesis: "Living together as His children.",
@@ -701,6 +701,60 @@ const learningToLoveLikeFamily: SermonDetail = {
   scripture_text: "“Dear friends, since God so loved us, we also ought to love one another.”",
   artwork_url: "/sermons/learning-to-love-like-family/title-slide.jpg",
   series: familySeries,
+  deck_slug: "learning-to-love-like-family",
+  summary:
+    "Last Sunday we asked whether we belong. This week we discovered that belonging carries a responsibility. We don’t choose our family, but we choose how we love them. John says, “Dear friends, let us love one another, for love comes from God.” Children resemble their parents, and people notice the resemblance. The greatest family resemblance we can have is to love people the way our Father loves us. Programs don’t make us a family; relationships do. It’s easy to love the idea of family and harder to love actual people, especially when we’re the difficult one. But when we’re secure in God’s love, we don’t have to win the argument or get our way. We can make room for others. Love is not a learned technique, but by building good life techniques, we extend our ability to love. Adoption makes us family. Love teaches us how to live like family.",
+  nuggets: [
+    "We don’t become family because we’re all alike. We become family because we belong to the same Father.",
+    "The greatest family resemblance we can have is to love people the way our Father loves us.",
+    "Adoption makes us family. Love teaches us how to live like family.",
+  ],
+  guide_questions: [
+    "“We don’t choose our family, but we choose how we love them.” Think of your own family and your church family. Who is easy for you to love? Who takes more effort? Read Romans 12:4–5. What does it mean that each member “belongs to all the others”?",
+    "Read 1 John 4:1–6 and Matthew 16:13–17. Jesus asked, “Who do you say I am?” What voices shape the way you see God, yourself, and other people? How can you tell which ones are speaking truth?",
+    "Read Ephesians 5:1–2 and John 13:34–35. Children often resemble their parents. If someone watched how you treat people this week, what would they learn about your Father?",
+    "“A church can have a full calendar and still have people with empty hearts.” Of the four tips (listen to understand, speak to build up, learn how to help, be a lighthouse and build bridges), which one comes hardest for you? Name one person you could practice it with this week.",
+    "“Sometimes we’re the difficult person.” What baggage do you bring into the family? How does being secure in God’s love free you from needing to win the argument or get your way?",
+    "Read 1 John 4:11–12. No one has ever seen God, but people can see His love in us. “Adoption makes us family. Love teaches us how to live like family.” What is one way you can let the love you believe in shape the way you live this week?",
+  ],
+  points: [
+    {
+      position: 1,
+      title: "Whose Voice Is Shaping Your Life?",
+      label: "1 John 4:1–6 · Matthew 16:13–17",
+      body: "We don’t choose our family, but we choose how we love them. God brings together people with different backgrounds, personalities, opinions, experiences, and even different ideas about how things ought to be done. We don’t become family because we’re all alike. We become family because we belong to the same Father. Before John says “let us love one another,” he begins by exposing a problem: voices. Two competing voices, truth and falsehood, and influence can persuade us to dislike something we once held dear. Jesus asked His disciples, “Who do you say I am?” and Peter’s answer came from the Father in heaven. We may come from different backgrounds, but we belong to the same Father, confess the same Savior, and are called to listen to the same Spirit.",
+    },
+    {
+      position: 2,
+      title: "Something Isn’t Lining Up",
+      label: "Ephesians 5:1–2 · John 13:34–35",
+      body: "We often say that children resemble their parents. Sometimes it’s physical appearance. Sometimes it’s the way they speak, laugh, walk, or respond to situations. And people notice the resemblance. Paul tells us to follow God’s example as dearly loved children and walk in the way of love, just as Christ loved us. Jesus says people will recognize His disciples by their love for one another. When our love and our lives don’t line up, there isn’t a family resemblance. The greatest family resemblance we can have is to love people the way our Father loves us. If God is love, what should people recognize in His children?",
+    },
+    {
+      position: 3,
+      title: "Relationships Matter",
+      label: "Four Quick Tips for Relationships",
+      body: "Churches can become so focused on activities, programs, schedules, and traditions that they lose sight of the people those things are supposed to serve. Programs aren’t bad, but programs don’t make us a family. Relationships do. A church can have a full calendar and still have people with empty hearts. Patience, forgiveness, kindness, and grace become real as we learn to live together as imperfect brothers and sisters. Four quick tips: listen to understand, not to prepare your response. Speak to build up, not to wound. Learn how to help instead of assuming there’s nothing you can do. And be a lighthouse and build bridges. Love isn’t just something we need more of. It’s something we need to become better at expressing.",
+    },
+    {
+      position: 4,
+      title: "It Isn’t About Trying Harder",
+      label: "1 John 4:9–11",
+      body: "It’s easy to love the idea of family. It’s harder to love actual people. People come with baggage: opinions, habits, insecurities, wounds, and expectations. And we bring our own baggage into the family, too. Sometimes we’re the difficult person. It’s easy to love people when they fit into our world; the real challenge begins when love asks us to step into theirs. My value begins with the reality that I am loved by God. When I’m secure in His love, I don’t have to win an argument to establish my worth or insist on getting my way. I can make room for other people. A loving heart gives us the desire to care. A teachable heart helps us learn how.",
+    },
+    {
+      position: 5,
+      title: "What Do People Experience When They Encounter Us?",
+      label: "1 John 4:11–12",
+      body: "No one has ever seen God, but if we love one another, God lives in us and His love is made complete in us. Our struggle is often to show that we care. Love is not a learned technique, but by building good life techniques, we extend our ability to love. The love in our hearts may be genuine, but the skills we develop help that love reach other people. God’s love conquers our human spirit, the way we do things, so His Spirit is no longer caged in us and is free to work through us. Listening to the heart of God shows in caring for the hearts of His people. Adoption makes us family. Love teaches us how to live like family.",
+    },
+    {
+      position: 6,
+      title: "Let Love Shape the Way We Live",
+      label: "Closing",
+      body: "When our relationships don’t reflect the love of our Father, something in our spiritual lives needs attention. We belong to the same Father, share the same faith, and have received the same extraordinary love. So why do misunderstandings become arguments, and differences become divisions? Perhaps part of the answer is that we haven’t fully learned to let the love we believe in shape the way we live. We cannot claim to be listening to the heart of our Father while continually ignoring the hearts of His people. The more we learn to listen to our Father, the better we can learn to love His family. Whose voice has captured your heart?",
+    },
+  ],
 };
 
 const familyPlaceholders: SermonDetail[] = [
@@ -2096,6 +2150,155 @@ const aPlaceToBelongSlides: SeedSlideInput[] = [
   },
 ];
 
+// Lesson 3 deck — Joe's 23 slides (Nov 15) after the title slide, in the order of his
+// sermon notes. Each slide's presenter outline is that stretch of the notes.
+const learningToLoveLikeFamilySlides: SeedSlideInput[] = [
+  {
+    position: 1,
+    html: imageSlide("learning-to-love-like-family", 1, "The Family of God: Learning to Love Like Family. Living together as His children. 1 John 4:7–12, November 15, 2026."),
+    outline_html: "<p><strong>Learning to Love Like Family — The Family of God, Lesson 3</strong></p><p>We spent last Sunday talking about whether we belong. Now we’re discovering that <strong>belonging carries a responsibility.</strong></p>",
+    notes: null,
+  },
+  {
+    position: 2,
+    html: imageSlide("learning-to-love-like-family", 2, "Romans 8:15: The Spirit you received does not make you slaves, so that you live in fear again; rather, the Spirit you received brought about your adoption to sonship. And by him we cry, “Abba, Father.”"),
+    outline_html: "<p><strong>Series scripture — Romans 8:15</strong></p><p>&bull; Positive comments about being family</p><p><strong>Struggles of being family</strong></p><p>&bull; We don’t choose our family, but <strong>we choose how we love them.</strong></p><p>&bull; <strong>Biological family:</strong> We don’t choose our parents, siblings, or relatives. And sometimes, if we’re being truthful, there are family members we might not have chosen!</p><p>&bull; <strong>Church family:</strong> God brings together people with different backgrounds, personalities, opinions, experiences, and even different ideas about how things ought to be done.</p><p>&bull; <strong>Romans 12:4–5</strong> — Though we are many, we form <strong>one body,</strong> and each member <strong>belongs to all the others.</strong></p><p><strong>We don’t become family because we’re all alike. We become family because we belong to the same Father.</strong></p>",
+    notes: null,
+  },
+  {
+    position: 3,
+    html: imageSlide("learning-to-love-like-family", 3, "1 John 4:7–8: Dear friends, let us love one another, for love comes from God. Everyone who loves has been born of God and knows God. Whoever does not love does not know God, because God is love."),
+    outline_html: "<p><strong>1 John 4:7–12</strong></p><p>Dear friends, <strong>let us love one another,</strong> for love comes from God. Everyone who loves has been born of God and knows God. Whoever does not love does not know God, because <strong>God is love.</strong></p>",
+    notes: null,
+  },
+  {
+    position: 4,
+    html: imageSlide("learning-to-love-like-family", 4, "1 John 4:9–10: This is how God showed his love among us: He sent his one and only Son into the world that we might live through him. This is love: not that we loved God, but that he loved us and sent his Son as an atoning sacrifice for our sins."),
+    outline_html: "<p>This is how God showed his love among us: He sent his one and only Son into the world that we might live through him. This is love: not that we loved God, but that <strong>he loved us</strong> and sent his Son as an atoning sacrifice for our sins.</p>",
+    notes: null,
+  },
+  {
+    position: 5,
+    html: imageSlide("learning-to-love-like-family", 5, "1 John 4:11–12: Dear friends, since God so loved us, we also ought to love one another. No one has ever seen God; but if we love one another, God lives in us and his love is made complete in us."),
+    outline_html: "<p>Dear friends, since God so loved us, <strong>we also ought to love one another.</strong> No one has ever seen God; but if we love one another, God lives in us and his love is made complete in us.</p><p>&bull; However, John begins in <strong>verse 1</strong> by exposing a problem (<strong>voices</strong>).</p><p>&bull; Influence can persuade us to dislike something that at one time we held dear (<strong>we can be swayed</strong>).</p>",
+    notes: null,
+  },
+  {
+    position: 6,
+    html: imageSlide("learning-to-love-like-family", 6, "Matthew 16:13–14: When Jesus came to the region of Caesarea Philippi, he asked his disciples, “Who do people say the Son of Man is?” They replied, “Some say John the Baptist; others say Elijah; and still others, Jeremiah or one of the prophets.”"),
+    outline_html: "<p><strong>1. Whose voice is shaping your life?</strong></p><p>&bull; <strong>1 John 4:1–6</strong></p><p>&bull; The struggle to <strong>hear God’s voice</strong></p><p>&bull; Two competing voices — <strong>truth</strong> and <strong>falsehood.</strong></p><p>&bull; The world listens to its own. <strong>Whose voice are we listening to?</strong></p><p>&bull; Jesus asks, “Who do <strong>YOU</strong> say I am?”</p><p><strong>Peter’s proclamation — Matthew 16:13–17</strong></p>",
+    notes: null,
+  },
+  {
+    position: 7,
+    html: imageSlide("learning-to-love-like-family", 7, "Matthew 16:15–16: “But what about you?” he asked. “Who do you say I am?” Simon Peter answered, “You are the Messiah, the Son of the living God.”"),
+    outline_html: "<p>“But what about you?” he asked. <strong>“Who do you say I am?”</strong> Simon Peter answered, <strong>“You are the Messiah, the Son of the living God.”</strong></p>",
+    notes: null,
+  },
+  {
+    position: 8,
+    html: imageSlide("learning-to-love-like-family", 8, "Matthew 16:17: Jesus replied, “Blessed are you, Simon son of Jonah, for this was not revealed to you by flesh and blood, but by my Father in heaven.”"),
+    outline_html: "<p>Jesus replied, “Blessed are you, Simon son of Jonah, for this was not revealed to you by flesh and blood, but <strong>by my Father in heaven.</strong>”</p>",
+    notes: null,
+  },
+  {
+    position: 9,
+    html: imageSlide("learning-to-love-like-family", 9, "We may come from different backgrounds, but we belong to the same Father, confess the same Savior, and are called to listen to the same Spirit."),
+    outline_html: "<p><strong>We may come from different backgrounds, but we belong to the same Father, confess the same Savior, and are called to listen to the same Spirit.</strong></p>",
+    notes: null,
+  },
+  {
+    position: 10,
+    html: imageSlide("learning-to-love-like-family", 10, "Ephesians 5:1–2: Follow God’s example, therefore, as dearly loved children and walk in the way of love, just as Christ loved us and gave himself up for us as a fragrant offering and sacrifice to God."),
+    outline_html: "<p><strong>2. Something isn’t lining up (love vs life)</strong></p><p>&bull; <strong>1 John 4:7–8</strong></p><p>&bull; There isn’t a <strong>family resemblance.</strong></p><p>&bull; We often say that children <strong>resemble their parents.</strong></p><p>&bull; Sometimes it’s physical appearance. Sometimes it’s the way they speak, laugh, walk, or respond to situations.</p><p>&bull; <strong>People notice</strong> the resemblance.</p><p><strong>Ephesians 5:1–2</strong> — Follow God’s example as dearly loved children and walk in the way of love, just as Christ loved us.</p><p>&bull; As His children, we begin learning to <strong>resemble Him.</strong></p>",
+    notes: null,
+  },
+  {
+    position: 11,
+    html: imageSlide("learning-to-love-like-family", 11, "John 13:34–35: “A new command I give you: Love one another. As I have loved you, so you must love one another. By this everyone will know that you are my disciples, if you love one another.”"),
+    outline_html: "<p><strong>John 13:34–35</strong> — Jesus says that people will recognize His disciples by their love for one another.</p><p>“A new command I give you: <strong>Love one another.</strong> As I have loved you, so you must love one another. By this everyone will know that you are my disciples, <strong>if you love one another.</strong>”</p>",
+    notes: null,
+  },
+  {
+    position: 12,
+    html: imageSlide("learning-to-love-like-family", 12, "The greatest family resemblance we can have is to love people the way our Father loves us."),
+    outline_html: "<p><strong>The greatest family resemblance we can have is to love people the way our Father loves us.</strong></p><p>If God is love, what should people <strong>recognize in His children?</strong></p>",
+    notes: null,
+  },
+  {
+    position: 13,
+    html: imageSlide("learning-to-love-like-family", 13, "A church can have a full calendar and still have people with empty hearts."),
+    outline_html: "<p><strong>3. Relationships matter</strong></p><p>&bull; Churches can become so focused on activities, programs, schedules, and traditions that they unintentionally <strong>lose sight of the people</strong> those things are supposed to serve.</p><p>&bull; Programs aren’t bad. They can be wonderful tools.</p><p>&bull; But programs don’t make us a family. <strong>Relationships do.</strong></p><p><strong>A church can have a full calendar and still have people with empty hearts.</strong></p><p>&bull; God’s family thrives when <strong>relationships are valued over programs.</strong></p><p>&bull; Love is <strong>learned through relationships.</strong> Patience, forgiveness, kindness, and grace <strong>become real</strong> as we learn to live together as imperfect brothers and sisters.</p>",
+    notes: null,
+  },
+  {
+    position: 14,
+    html: imageSlide("learning-to-love-like-family", 14, "Four quick tips for relationships: 1. Listen to understand. 2. Speak to build up. 3. Learn how to help. 4. Be a lighthouse and build bridges."),
+    outline_html: "<p><strong>Four quick tips for relationships</strong></p><p><strong>1. Listen to understand.</strong> Instead of preparing our response while someone is talking, try to understand what they’re experiencing.</p><p><strong>2. Speak to build up.</strong> Before responding, consider whether our words will encourage, clarify, help, or unnecessarily wound someone.</p><p><strong>3. Learn how to help.</strong> When we encounter someone struggling, don’t assume there’s nothing we can do. Learn about their situation, pray with them when appropriate, and discover what assistance might be available.</p><p><strong>4. Be a lighthouse and build bridges.</strong> (Jefferson Fisher)</p><p>The important thing is that love becomes something we <strong>intentionally practice.</strong></p>",
+    notes: null,
+  },
+  {
+    position: 15,
+    html: imageSlide("learning-to-love-like-family", 15, "Love isn’t just something we need more of. It’s something we need to become better at expressing."),
+    outline_html: "<p><strong>Love isn’t just something we need more of. It’s something we need to become better at expressing.</strong></p>",
+    notes: null,
+  },
+  {
+    position: 16,
+    html: imageSlide("learning-to-love-like-family", 16, "We bring our own baggage into the family, too."),
+    outline_html: "<p><strong>4. It isn’t about trying harder.</strong></p><p>&bull; <strong>1 John 4:9–11</strong></p><p>&bull; It’s easy to love the <em>idea</em> of family. It’s harder to love <strong>actual people.</strong></p><p>&bull; People come with <strong>baggage.</strong> They have opinions, habits, insecurities, wounds, and expectations.</p><p>&bull; Some people are difficult to <strong>understand.</strong> Some are difficult to <strong>get along with.</strong></p><p>&bull; And sometimes the person we’re struggling to love is someone who has <strong>genuinely hurt us.</strong></p><p>Then there’s <strong>another problem.</strong></p><p><strong>We bring our own baggage into the family, too.</strong></p>",
+    notes: null,
+  },
+  {
+    position: 17,
+    html: imageSlide("learning-to-love-like-family", 17, "Sometimes we’re the difficult person."),
+    outline_html: "<p><strong>Sometimes <em>we’re</em> the difficult person.</strong></p><p>&bull; We want things <strong>our way.</strong> We want to be understood, appreciated, and respected. We want others to accommodate our preferences.</p><p>&bull; And when they don’t, <strong>love becomes difficult.</strong></p>",
+    notes: null,
+  },
+  {
+    position: 18,
+    html: imageSlide("learning-to-love-like-family", 18, "It’s easy to love people when they fit into our world. The real challenge begins when love asks us to step into theirs."),
+    outline_html: "<p><strong>It’s easy to love people when they fit into our world. The real challenge begins when love asks us to step into theirs.</strong></p><p>&bull; <strong>My value begins with the reality that I am loved by God.</strong> That realization can change everything.</p><p>&bull; When I’m <strong>secure in God’s love,</strong> I don’t have to approach every relationship wondering whether someone approves of me.</p><p>&bull; I don’t have to <strong>win an argument</strong> to establish my worth.</p><p>&bull; I don’t have to insist on <strong>getting my way.</strong></p><p>&bull; I can begin to <strong>make room</strong> for other people.</p><p>When we know how deeply we are loved, we become <strong>freer to love others</strong> without making everything about ourselves.</p>",
+    notes: null,
+  },
+  {
+    position: 19,
+    html: imageSlide("learning-to-love-like-family", 19, "A loving heart gives us the desire to care. A teachable heart helps us learn how."),
+    outline_html: "<p><strong>A loving heart gives us the desire to care. A teachable heart helps us learn how.</strong></p><p>If loving people matters to us, then <strong>learning how to love them</strong> should also matter to us, too.</p>",
+    notes: null,
+  },
+  {
+    position: 20,
+    html: imageSlide("learning-to-love-like-family", 20, "1 John 4:11–12: Dear friends, since God so loved us, we also ought to love one another. No one has ever seen God; but if we love one another, God lives in us and his love is made complete in us."),
+    outline_html: "<p><strong>5. What do people experience when they encounter us?</strong></p><p><strong>1 John 4:11–12</strong></p><p>&bull; Our struggle to <strong>show we care</strong></p><p>&bull; Living with God’s spirit <strong>in a cage,</strong> the wrong spirit is free</p><p>&bull; <strong>Piano illustration</strong> (music that can be heard)</p><p>&bull; The difference is using the <strong>right conduit</strong> (life techniques that deliver love).</p>",
+    notes: null,
+  },
+  {
+    position: 21,
+    html: imageSlide("learning-to-love-like-family", 21, "Love is not a learned technique, but by building good life techniques, we extend our ability to love."),
+    outline_html: "<p><strong>Love is not a learned technique, but by building good life techniques, we extend our ability to love.</strong></p><p>The love in our hearts may be genuine, but the <strong>skills we develop</strong> help that love reach other people.</p><p>&bull; God’s love <strong>conquers our human spirit</strong> (the way we do things) so that God can then set His Spirit free to work through us.</p><p>&bull; God’s Spirit is <strong>no longer caged</strong> in us.</p><p>&bull; Listening to the heart of God is evident by <strong>caring for the hearts of His people.</strong></p>",
+    notes: null,
+  },
+  {
+    position: 22,
+    html: imageSlide("learning-to-love-like-family", 22, "Adoption makes us family. Love teaches us how to live like family."),
+    outline_html: "<p><strong>Adoption makes us family. Love teaches us how to live like family.</strong></p><p>Our claim to know God must be <strong>consistent with the way we live.</strong></p>",
+    notes: null,
+  },
+  {
+    position: 23,
+    html: imageSlide("learning-to-love-like-family", 23, "When our relationships don’t reflect the love of our Father, something in our spiritual lives needs attention."),
+    outline_html: "<p><strong>Closing</strong></p><p><strong>When our relationships don’t reflect the love of our Father, something in our spiritual lives needs attention.</strong></p><p>&bull; We belong to <strong>the same Father.</strong> We share <strong>the same faith.</strong> We have received <strong>the same extraordinary love.</strong></p><p>&bull; So why do we sometimes have such difficulty <strong>loving one another?</strong></p><p>&bull; Why do <strong>misunderstandings</strong> become <strong>arguments?</strong></p><p>&bull; Why do <strong>differences</strong> become <strong>divisions?</strong></p><p>&bull; Why do people who genuinely care about one another often struggle to <strong>communicate that they care?</strong></p><p>Perhaps part of the answer is that <strong>we haven’t fully learned to let the love we believe in SHAPE the way we live.</strong></p>",
+    notes: null,
+  },
+  {
+    position: 24,
+    html: imageSlide("learning-to-love-like-family", 24, "We cannot claim to be listening to the heart of our Father while continually ignoring the hearts of His people."),
+    outline_html: "<p><strong>We cannot claim to be listening to the heart of our Father while continually ignoring the hearts of His people.</strong></p><p>The more we learn to <strong>listen to our Father,</strong> the better we can learn to <strong>love His family.</strong></p><p>Are you a good listener? <strong>Whose voice has captured your heart?</strong></p>",
+    notes: null,
+  },
+];
+
 function buildDeck(
   id: string,
   slug: string,
@@ -2134,6 +2337,7 @@ export const seedDecks: SeedDeckWithNotes[] = [
   buildDeck("seed-deck-6", "the-jesus-test", "The Jesus Test", "the-jesus-test", theJesusTestSlides),
   buildDeck("seed-deck-7", "ask-better-questions", "Ask Better Questions", "ask-better-questions", askBetterQuestionsSlides),
   buildDeck("seed-deck-8", "with-all-his-might", "With All His Might", "with-all-his-might", withAllHisMightSlides),
+  buildDeck("seed-deck-13", "learning-to-love-like-family", "Learning to Love Like Family", "learning-to-love-like-family", learningToLoveLikeFamilySlides),
   buildDeck("seed-deck-12", "a-place-to-belong", "A Place to Belong", "a-place-to-belong", aPlaceToBelongSlides),
   buildDeck("seed-deck-11", "the-father-who-never-gave-up", "The Father Who Never Gave Up", "the-father-who-never-gave-up", theFatherWhoNeverGaveUpSlides),
   buildDeck("seed-deck-10", "hope-for-the-family", "Hope For The Family", "hope-for-the-family", hopeForTheFamilySlides),
