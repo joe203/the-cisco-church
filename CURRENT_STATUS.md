@@ -1,5 +1,18 @@
 # CURRENT_STATUS — TheCiscoChurch.org
-Updated: 2026-11-12 · Read this first when starting a new session.
+Updated: 2026-11-17 · Read this first when starting a new session.
+
+## The Family of God, Lesson 3 — Learning to Love Like Family — LIVE 2026-11-17 (9d37a21, 95fb04f)
+
+Built from Joe's `Sermon-Notes-Print-Learning-to-Love-Like-Family.pdf` + his 23 slides.
+Deck `learning-to-love-like-family` (`seed-deck-13`): existing title slide as 01, then his 23 in
+notes order (`public/sermons/learning-to-love-like-family/slides/NN.jpg`); each presenter outline
+is that stretch of the notes. Sermon page: 6 points (his 5 + closing), summary, quotes (his marked
+one + 2 chosen by me), 6 reflection questions that are MY DRAFTS (Joe to review). Synced to the DB
+and checked. Handouts were rendered from production (`HANDOUT_BASE=https://theciscochurch.org`)
+because the local dev server crashed. Left out: "Positive comments about being family – ?" (blank
+in notes). Piano and "spirit in a cage" illustrations only mentioned briefly. No YouTube link yet.
+- A stale local `next dev` (PID 40240, port 3000) was crashing ("Jest worker ... exceptions");
+  restart it before the next local session.
 
 ## "How's it going?" feedback page — LIVE 2026-11-12 (3eafcbd)
 
