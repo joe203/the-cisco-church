@@ -29,8 +29,10 @@ export type Sermon = {
   slug: string;
   title: string;
   thesis: string | null;
-  /** Optional short hook for the homepage spotlight. Shown only when set. */
+  /** One or two short sentences under the homepage headline (and the lesson page until the summary is written). */
   teaser: string | null;
+  /** The homepage spotlight's big headline: the question the lesson answers. Falls back to the title. */
+  hook?: string | null;
   scripture_ref: string | null;
   scripture_text: string | null;
   sermon_date: string; // ISO date

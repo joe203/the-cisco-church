@@ -72,6 +72,7 @@ async function sync() {
       title: s.title,
       thesis: s.thesis ?? null,
       teaser: s.teaser ?? null,
+      hook: s.hook ?? null,
       scripture_ref: s.scripture_ref ?? null,
       scripture_text: s.scripture_text ?? null,
       sermon_date: s.sermon_date,
@@ -135,9 +136,9 @@ async function sync() {
 
 // ---- check: read back with the same queries lib/data.ts uses and compare to seed.ts
 
-const SERMON_COLUMNS = `slug, title, thesis, teaser, scripture_ref, scripture_text, sermon_date, artwork_url, summary, youtube_url, podcast_url, guide_url, pdf_url, nuggets, guide_questions, is_featured, lesson_number,
+const SERMON_COLUMNS = `slug, title, thesis, teaser, hook, scripture_ref, scripture_text, sermon_date, artwork_url, summary, youtube_url, podcast_url, guide_url, pdf_url, nuggets, guide_questions, is_featured, lesson_number,
    series:cisco_series(slug, title, scripture_ref, tagline, artwork_url)`;
-const FIELDS = ["slug", "title", "thesis", "teaser", "scripture_ref", "scripture_text", "sermon_date", "artwork_url", "summary", "youtube_url", "podcast_url", "guide_url", "pdf_url", "is_featured", "lesson_number"];
+const FIELDS = ["slug", "title", "thesis", "teaser", "hook", "scripture_ref", "scripture_text", "sermon_date", "artwork_url", "summary", "youtube_url", "podcast_url", "guide_url", "pdf_url", "is_featured", "lesson_number"];
 
 const one = (v) => (Array.isArray(v) ? v[0] : v) ?? null;
 // Key order doesn't matter (jsonb and embedded rows come back in their own order).

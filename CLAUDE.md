@@ -172,8 +172,13 @@ If a request seems to need one of these, **stop and ask Joe**.
 
 1. **Hero** — energy-forward headline over Joe's video (see CURRENT_STATUS).
 2. **Service times + location** — day, time, street address, map link.
-3. **Sermon spotlight** — ONE lesson, big: artwork, title, scripture, thesis,
-   who's preaching, Read / Watch / "To print" links. It is the next upcoming
+3. **Sermon spotlight** (redesigned 2026-11-17 at Joe's request) — ONE lesson,
+   led by its **`hook`** (the question the lesson answers, huge) and a SHORT
+   `teaser` (one sentence, italic) — Joe wants the homepage brief, not the
+   whole bulletin article. Title slide as a small tilted snapshot; a deep-teal
+   card with title, preacher, Read / Watch / All sermons, and the key verse;
+   then the series as a numbered track. No hook = the title is the headline.
+   Each week write the hook + one-line teaser from Joe's bulletin article. It is the next upcoming
    sermon (`sermon_date` today or later, nearest first); if none is scheduled,
    the most recent one (`getSermonSpotlight()` in `lib/data.ts`; `is_featured`
    is no longer used). The archive lives at `/sermons`.

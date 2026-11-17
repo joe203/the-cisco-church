@@ -12,7 +12,7 @@ import type { Deck, DeckState, Sermon, SermonDetail } from "./types";
  * the database is down.
  */
 
-const SERMON_COLUMNS = `id, slug, title, thesis, teaser, scripture_ref, scripture_text, sermon_date, artwork_url, summary, youtube_url, podcast_url, guide_url, pdf_url, nuggets, guide_questions, is_featured, lesson_number,
+const SERMON_COLUMNS = `id, slug, title, thesis, teaser, hook, scripture_ref, scripture_text, sermon_date, artwork_url, summary, youtube_url, podcast_url, guide_url, pdf_url, nuggets, guide_questions, is_featured, lesson_number,
    series:cisco_series(slug, title, scripture_ref, tagline, artwork_url)`;
 
 /**

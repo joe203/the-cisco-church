@@ -1,6 +1,18 @@
 # CURRENT_STATUS — TheCiscoChurch.org
 Updated: 2026-11-17 · Read this first when starting a new session.
 
+## Lesson 4 — Thankful to Be His + new homepage sermon section (2026-11-17)
+
+- Lesson 4 announced: title slide `public/sermons/thankful-to-be-his/artwork.jpg` (deployed e85f0eb).
+  Joe's copies (1920×1080) in sermon-framework `.../lsn 04 Nov 22/`: the title slide AND
+  `Family of God - blank title background.png` (the series background with the title area
+  cleaned, for future title slides; render text over it with Playfair Display + Montserrat).
+- Homepage spotlight redesigned from Joe-approved mockup (https://claude.ai/artifact/8h7vUmfeXcCc7vS35TmFaj):
+  `components/sections/SermonSpotlight.tsx` + `components/sermons/SeriesTrack.tsx`. New column
+  `hook` (migration 035, APPLIED 2026-11-17). Teasers are now ONE short sentence (Joe: "we don't
+  really need a long teaser"); the lesson page's "About" shows it until the summary is written.
+- No Lesson 4 notes yet — when they come, build the deck/points like Lesson 3.
+
 ## The Family of God, Lesson 3 — Learning to Love Like Family — LIVE 2026-11-17 (9d37a21, 95fb04f)
 
 Built from Joe's `Sermon-Notes-Print-Learning-to-Love-Like-Family.pdf` + his 23 slides.
