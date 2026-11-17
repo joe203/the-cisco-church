@@ -757,16 +757,28 @@ const learningToLoveLikeFamily: SermonDetail = {
   ],
 };
 
+// Lesson 4: announced (slide + teaser from the Nov 22 bulletin article) until Joe's notes arrive.
+const thankfulToBeHis: SermonDetail = {
+  ...upcomingLesson(13, "thankful-to-be-his", "Thankful to Be His", "2026-11-22", 4),
+  thesis: "Our gratitude for His blessings.",
+  teaser:
+    "Thanksgiving is a wonderful time to count our blessings: our families, our friends, our health, and the many ways God has provided for us. But what happens when some of those blessings are missing? Can we still find reasons to be thankful?\n\nPerhaps the greatest reason for thanksgiving isn’t found in what we have, but in who we belong to. The Creator of the universe doesn’t simply know our names or hear our prayers. He loves us so deeply that He welcomes us as His own children.\n\nJoin us this Sunday as we explore a gratitude that goes beyond our circumstances. The greatest blessing isn’t something God has given us. It’s that He has given us a place in His family.",
+  scripture_ref: "1 John 3:1",
+  scripture_text: "“See what great love the Father has lavished on us, that we should be called children of God!”",
+  artwork_url: "/sermons/thankful-to-be-his/artwork.jpg",
+  series: familySeries,
+};
+
 const familyPlaceholders: SermonDetail[] = [
-  ["thankful-to-be-his", "Thankful to Be His", "2026-11-22", 4],
   ["the-family-business", "The Family Business", "2026-11-29", 5],
 ].map(([slug, title, date, lesson], i) => ({
-  ...upcomingLesson(13 + i, slug as string, title as string, date as string, lesson as number),
+  ...upcomingLesson(14 + i, slug as string, title as string, date as string, lesson as number),
   series: familySeries,
 }));
 
 export const seedSermons: SermonDetail[] = [
   ...[...familyPlaceholders].reverse(),
+  thankfulToBeHis,
   learningToLoveLikeFamily,
   aPlaceToBelong,
   theFatherWhoNeverGaveUp,
