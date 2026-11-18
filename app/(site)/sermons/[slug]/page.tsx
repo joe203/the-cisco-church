@@ -9,6 +9,7 @@ import { getSermonPieces, pieceMeta, type Piece } from "@/lib/downloads";
 import { formatDate } from "@/lib/format";
 import { isAnnounced, seriesLabel, todayInCisco } from "@/lib/series";
 import type { SermonDetail } from "@/lib/types";
+import { watchLink } from "@/lib/video";
 
 type Params = { slug: string };
 
@@ -38,17 +39,19 @@ export async function generateMetadata({
   };
 }
 
-function watchDetail(url: string | null): string {
-  return url && /youtu\.?be/.test(url) ? "On YouTube" : "The full lesson";
-}
-
 function buildResources(sermon: SermonDetail, pieces: Piece[]) {
+  const watch = watchLink(sermon);
   return [
-    { url: sermon.youtube_url, action: "Watch", detail: watchDetail(sermon.youtube_url) },
-    { url: sermon.podcast_url, action: "Listen", detail: "Audio of this lesson" },
-    ...pieces.map((piece) => ({ url: piece.url, action: pieceMeta[piece.kind].label, detail: "PDF · print or save" })),
-    { url: sermon.pdf_url, action: "Slides", detail: "Slides as PDF" },
-  ].filter((r): r is { url: string; action: string; detail: string } => Boolean(r.url));
+    {
+      url: watch?.href ?? null,
+      action: "Watch",
+      detail: watch?.external ? "On YouTube" : "The full lesson",
+      external: watch?.external ?? true,
+    },
+    { url: sermon.podcast_url, action: "Listen", detail: "Audio of this lesson", external: true },
+    ...pieces.map((piece) => ({ url: piece.url, action: pieceMeta[piece.kind].label, detail: "PDF · print or save", external: true })),
+    { url: sermon.pdf_url, action: "Slides", detail: "Slides as PDF", external: true },
+  ].filter((r): r is { url: string; action: string; detail: string; external: boolean } => Boolean(r.url));
 }
 
 export default async function SermonPage({ params }: { params: Promise<Params> }) {
@@ -62,6 +65,7 @@ export default async function SermonPage({ params }: { params: Promise<Params> }
   const upcoming = sermon.sermon_date > todayInCisco();
   const resources = buildResources(sermon, await getSermonPieces(sermon));
   const speaker = sermon.speaker;
+  const watch = watchLink(sermon);
 
   return (
     <article>
@@ -100,6 +104,11 @@ export default async function SermonPage({ params }: { params: Promise<Params> }
             <p className="font-serif mt-6 text-[1.5rem] italic text-deepsea sm:text-[1.75rem]">
               {tagline}
             </p>
+          )}
+          {watch && !watch.external && (
+            <Link href={watch.href} className="btn-coral mt-8">
+              Watch the lesson
+            </Link>
           )}
         </div>
       </header>
@@ -176,8 +185,7 @@ export default async function SermonPage({ params }: { params: Promise<Params> }
                 <a
                   key={r.action}
                   href={r.url}
-                  target="_blank"
-                  rel="noopener noreferrer"
+                  {...(r.external ? { target: "_blank", rel: "noopener noreferrer" } : {})}
                   className="card-lift flex min-h-[8.5rem] flex-col justify-between rounded-xl border border-white/25 p-6"
                 >
                   <p className="font-display text-[1.5rem] font-bold">{r.action}</p>

@@ -6,6 +6,7 @@ import { pieceMeta, type Piece } from "@/lib/downloads";
 import { formatDate, formatDateShort } from "@/lib/format";
 import { site } from "@/lib/site";
 import type { Sermon } from "@/lib/types";
+import { watchLink } from "@/lib/video";
 
 /** "This Sunday" only when the lesson really is within the next week. */
 function whenLabel({ sermon, upcoming }: Spotlight): string {
@@ -39,6 +40,7 @@ export function SermonSpotlight({
 }) {
   const { sermon, upcoming } = spotlight;
   const speaker = sermon.speaker;
+  const watch = watchLink(sermon);
   const series = sermon.series;
   const headline = sermon.hook ?? sermon.title;
   // The italic line under the headline: the teaser when it's short (older
@@ -116,15 +118,14 @@ export function SermonSpotlight({
               <Link href={href} className="btn-coral">
                 {upcoming ? "Read about this lesson" : "Read the lesson"}
               </Link>
-              {sermon.youtube_url && (
-                <a
-                  href={sermon.youtube_url}
-                  target="_blank"
-                  rel="noopener noreferrer"
+              {watch && (
+                <Link
+                  href={watch.href}
+                  {...(watch.external ? { target: "_blank", rel: "noopener noreferrer" } : {})}
                   className="border-b-2 border-marigold/60 py-2 font-bold text-cloud transition-transform duration-300 ease-(--ease-spring) hover:-translate-y-px focus-visible:outline-marigold active:opacity-75"
                 >
                   Watch it
-                </a>
+                </Link>
               )}
               <Link
                 href="/sermons"
