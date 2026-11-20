@@ -5,6 +5,7 @@ import { GuideSheet, NuggetsSheet, OutlineSheet, RecapSheet } from "@/components
 import { PrintButton } from "@/components/bulletin/PrintButton";
 import { getSermonDetail } from "@/lib/data";
 import { canBuildPiece, isPrintPiece, pieceMeta, pieceUrl } from "@/lib/downloads";
+import { isReleased } from "@/lib/series";
 
 type Params = { slug: string; piece: string };
 
@@ -23,6 +24,8 @@ export default async function HandoutPage({ params }: { params: Promise<Params> 
   if (!isPrintPiece(piece)) notFound();
   const sermon = await getSermonDetail(slug);
   if (!sermon || !canBuildPiece(sermon, piece)) notFound();
+  // Held until Sunday on the live site; open locally so build-handouts can render it.
+  if (process.env.NODE_ENV === "production" && !isReleased(sermon)) notFound();
 
   return (
     <div className="bg-sand py-8 print:bg-white print:py-0">

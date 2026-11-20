@@ -1,6 +1,7 @@
 import { stat } from "node:fs/promises";
 import path from "node:path";
 import { getSermonDetail, getSermonList } from "./data";
+import { isReleased } from "./series";
 import type { SermonDetail } from "./types";
 
 /**
@@ -91,6 +92,7 @@ async function fileSize(url: string): Promise<number | null> {
 }
 
 async function piecesFor(sermon: SermonDetail): Promise<Piece[]> {
+  if (!isReleased(sermon)) return [];
   const candidates: { kind: PieceKind; url: string | null }[] = [
     { kind: "guide", url: sermon.guide_url ?? pieceUrl(sermon.slug, "guide") },
     ...printPieces

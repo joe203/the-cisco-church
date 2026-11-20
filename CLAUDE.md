@@ -65,6 +65,9 @@ static pages or `revalidate` where this can be avoided.
   open pages within ~1s. New files in `public/` (PDFs, slide images) still need
   a deploy, so sync AFTER deploying them. Events and announcements are still
   in code (deploy to change).
+- **Held until Sunday** (Joe, 2026-11-20): a lesson's slides, points, and handouts
+  appear only once its `sermon_date` begins in Cisco (`isReleased` in `lib/series.ts`).
+  Before that: title slide, hook, teaser, key verse. Keep points short.
 
 ---
 

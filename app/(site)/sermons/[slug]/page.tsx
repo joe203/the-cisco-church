@@ -7,7 +7,7 @@ import { SermonArtwork } from "@/components/sermons/SermonArtwork";
 import { getDeck, getSeriesLessons, getSermonDetail } from "@/lib/data";
 import { getSermonPieces, pieceMeta, type Piece } from "@/lib/downloads";
 import { formatDate } from "@/lib/format";
-import { isAnnounced, seriesLabel, todayInCisco } from "@/lib/series";
+import { isAnnounced, isReleased, seriesLabel, todayInCisco } from "@/lib/series";
 import type { SermonDetail } from "@/lib/types";
 import { watchLink } from "@/lib/video";
 
@@ -61,7 +61,8 @@ export default async function SermonPage({ params }: { params: Promise<Params> }
 
   const lessons = sermon.series ? await getSeriesLessons(sermon.series.slug) : [];
   const tagline = sermon.thesis ?? sermon.series?.tagline ?? null;
-  const deck = sermon.deck_slug ? await getDeck(sermon.deck_slug) : null;
+  const released = isReleased(sermon);
+  const deck = released && sermon.deck_slug ? await getDeck(sermon.deck_slug) : null;
   const upcoming = sermon.sermon_date > todayInCisco();
   const resources = buildResources(sermon, await getSermonPieces(sermon));
   const speaker = sermon.speaker;
@@ -128,7 +129,7 @@ export default async function SermonPage({ params }: { params: Promise<Params> }
       )}
 
       {/* 4 — The points (a sermon actually has an order — numbering earned) */}
-      {sermon.points.length > 0 && (
+      {released && sermon.points.length > 0 && (
         <section className="bg-sand text-ink">
           <div className="mx-auto max-w-6xl px-5 py-16 sm:px-8 lg:py-24">
             <p className="eyebrow reveal text-teal">The movements of this lesson</p>
@@ -164,7 +165,7 @@ export default async function SermonPage({ params }: { params: Promise<Params> }
         <section className="bg-sand text-ink">
           <div className="mx-auto max-w-4xl border-t border-ink/10 px-5 py-14 sm:px-8 lg:py-16">
             <p className="eyebrow reveal text-teal">
-              {sermon.summary ? "About this lesson" : "Coming up"}
+              {sermon.summary || released ? "About this lesson" : "Coming up"}
             </p>
             <div className="reveal mt-6 space-y-4 text-[1.08rem] leading-[1.8]">
               {(sermon.summary ?? sermon.teaser ?? "").split("\n\n").map((paragraph) => (
@@ -196,7 +197,7 @@ export default async function SermonPage({ params }: { params: Promise<Params> }
           ) : (
             <p className="reveal mt-6 max-w-[50ch] text-[1rem] text-white/65">
               {upcoming
-                ? "The guide and handouts will be posted here after Sunday."
+                ? "The slides, reflection guide, and sermon handout go up here Sunday morning."
                 : "The guide, handouts, and recording will be posted here as soon as they are ready."}
             </p>
           )}

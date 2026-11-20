@@ -1,5 +1,22 @@
 # CURRENT_STATUS — TheCiscoChurch.org
-Updated: 2026-11-17 · Read this first when starting a new session.
+Updated: 2026-11-20 · Read this first when starting a new session.
+
+## Lesson 4 — Thankful to Be His: deck + handouts, held until Sunday (2026-11-20)
+
+- Built from Joe's `The Family of God series - lsn 4` notes + his 15 slides. Deck
+  `thankful-to-be-his` (`seed-deck-14`): existing title slide as 01, his 15 as 02–16
+  (`public/sermons/thankful-to-be-his/slides/`); each presenter outline = that stretch of notes.
+- Joe asked for ONLY: slides, reflection guide, sermon handout (follow-along). No recap, no
+  quotes, no summary. Points are deliberately short ("don't give away the whole sermon").
+  The 6 reflection questions are MY DRAFTS.
+- **New rule (Joe, 2026-11-20): a lesson's slides, points, and handouts appear only once its
+  Sunday begins in Cisco (midnight).** `isReleased()` in `lib/series.ts`; gates the sermon page
+  (deck + points), handout listings, `/downloads/[slug]/[piece]` (production only, so
+  build-handouts still works locally), and the public `/slides/[deck]` screen. Presenter
+  controls are NOT gated. Before Sunday the page shows the title slide, hook, teaser, verse.
+  The PDF/JPG files themselves are reachable by exact URL — it hides, it doesn't lock.
+- Handouts must be rendered locally against seed data before the DB sync:
+  `NEXT_PUBLIC_SUPABASE_URL=http://127.0.0.1:9 npm run dev`, then build-handouts.
 
 ## Lesson 4 — Thankful to Be His + new homepage sermon section (2026-11-17)
 

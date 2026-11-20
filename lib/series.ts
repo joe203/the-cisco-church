@@ -23,3 +23,12 @@ export function seriesLabel(sermon: Pick<Sermon, "series" | "lesson_number">, to
   const lesson = sermon.lesson_number ? ` · Lesson ${sermon.lesson_number}${total && total > 1 ? ` of ${total}` : ""}` : "";
   return `${sermon.series.title}${lesson}`;
 }
+
+/**
+ * A lesson's materials (slides, points, handouts) stay off the site until its
+ * Sunday begins in Cisco — Joe doesn't want the sermon given away beforehand.
+ * Until then only the title slide, hook, teaser, and key verse show.
+ */
+export function isReleased(sermon: Pick<Sermon, "sermon_date">, today: string = todayInCisco()): boolean {
+  return sermon.sermon_date <= today;
+}

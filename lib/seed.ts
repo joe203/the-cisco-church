@@ -758,7 +758,9 @@ const learningToLoveLikeFamily: SermonDetail = {
   ],
 };
 
-// Lesson 4: announced (slide + teaser from the Nov 22 bulletin article) until Joe's notes arrive.
+// Lesson 4 — built from Joe’s notes (The Family of God series - lsn 4) + his 15 slides.
+// Points are kept short on purpose: Joe doesn’t want the whole sermon online, and the
+// deck, points, and handouts stay hidden until Sunday begins (isReleased in lib/series.ts).
 const thankfulToBeHis: SermonDetail = {
   ...upcomingLesson(13, "thankful-to-be-his", "Thankful to Be His", "2026-11-22", 4),
   thesis: "Our gratitude for His blessings.",
@@ -768,6 +770,53 @@ const thankfulToBeHis: SermonDetail = {
   scripture_text: "“See what great love the Father has lavished on us, that we should be called children of God!”",
   artwork_url: "/sermons/thankful-to-be-his/artwork.jpg",
   series: familySeries,
+  deck_slug: "thankful-to-be-his",
+  guide_questions: [
+    "Think of someone whose presence makes a day better just by walking in the door. What is it about them? Read 1 John 3:1. What does John want us to see?",
+    "Read Romans 8:15. “There’s a difference between having something and being someone.” When you list what you’re thankful for, how much of it is something you have, and how much is someone you are?",
+    "Think about a season when your list of blessings got shorter. What did you hold on to? What would it mean for your gratitude to be rooted in who you belong to, not in your circumstances?",
+    "“You’re always welcome at our house” is hospitality. “This is your home” is identity. When has someone made you feel like family? How could you do that for someone this week?",
+    "Read 1 John 3:16. Think of a gift that meant more once you learned what it cost the giver. How does the cross change the way you see the Father’s love?",
+    "Read Luke 15:11–32. Both sons lived in the same house; only one came to see what home was worth. Where do you need contentment, joy, or peace without everything being perfect? Take a moment this week just to look at how deeply you are loved.",
+  ],
+  points: [
+    {
+      position: 1,
+      title: "Having Something or Being Someone",
+      label: "Romans 8:15",
+      body: "Adoption changes more than an address. Somewhere along the way, having a new family becomes being a member of one.",
+    },
+    {
+      position: 2,
+      title: "See What Kind of Love",
+      label: "1 John 3:1",
+      body: "Lavished: generosity, abundance, extravagance. John is almost amazed by what he’s describing. “And that is what we are!”",
+    },
+    {
+      position: 3,
+      title: "The Gift Becomes Greater When We Understand the Giver",
+      label: "1 John 3:16",
+      body: "There’s a difference between the price of a gift and the love behind it.",
+    },
+    {
+      position: 4,
+      title: "Gratitude Changes the Way We Experience Ordinary Life",
+      label: "Luke 15",
+      body: "Gratitude doesn’t always change what is happening around us. But it changes what is happening within us.",
+    },
+    {
+      position: 5,
+      title: "The Extraordinary Privilege of Calling God Father",
+      label: "Belonging",
+      body: "The One who created the universe invites us into a relationship so personal that we can call Him Father.",
+    },
+    {
+      position: 6,
+      title: "An Invitation to Look",
+      label: "Closing",
+      body: "1 John 3:1 doesn’t begin with a command to be grateful. It begins with an invitation to look.",
+    },
+  ],
 };
 
 const familyPlaceholders: SermonDetail[] = [
@@ -2312,6 +2361,107 @@ const learningToLoveLikeFamilySlides: SeedSlideInput[] = [
   },
 ];
 
+// Lesson 4 deck — the existing title slide as 01, then Joe’s 15 slides (Nov 22) in the
+// order of his notes. Each slide’s presenter outline is that stretch of the notes.
+const thankfulToBeHisSlides: SeedSlideInput[] = [
+  {
+    position: 1,
+    html: imageSlide("thankful-to-be-his", 1, "The Family of God: Thankful to Be His. 1 John 3:1, November 22, 2026."),
+    outline_html: "<p><strong>Thankful to Be His — The Family of God, Lesson 4</strong></p><p><strong>Story intro: the power of people’s presence</strong></p><p>&bull; So glad to have my daughters in town.</p><p>&bull; The mere presence of people we love makes the day so much better.<br>&ndash; Happy wife: Tessa has worked so hard to prepare for their arrival.<br>&ndash; She “completes me” — that would be a good line for a movie.<br>&ndash; The anticipation of our kids coming home was staggering.<br>&ndash; <strong>Christmas with the Kranks.</strong><br>&ndash; I love the energy: we ate more and couldn’t stop talking about the things we had to do.<br>&ndash; We may have been sick, but no time for that, we just ignored it.</p><p>&bull; <strong>It’s like going to the doctor’s office.</strong><br>&ndash; You feel horrible; if you didn’t, you wouldn’t have gone there.<br>&ndash; The nurse takes your vitals and now you feel even worse.<br>&ndash; You sit in the room waiting for the doctor, you feel really crummy.<br>&ndash; But when the doctor walks in — ah, finally, you start feeling better. Just the presence of the doctor screams, <strong>help has arrived.</strong><br>&ndash; A good doctor gets to the root of the problem (<strong>thankfulness lies in the root of our identity</strong>).</p><p>Today we look at: <strong>generosity, abundance, extravagance.</strong></p><p>&bull; We’ve been given something much greater than what we might have imagined.<br>&bull; The difference made when someone says to us: <strong>This is your home. This is your family.</strong></p>",
+    notes: null,
+  },
+  {
+    position: 2,
+    html: imageSlide("thankful-to-be-his", 2, "1 John 3:1: See what great love the Father has lavished on us, that we should be called children of God! And that is what we are!"),
+    outline_html: "<p><strong>Primary text: 1 John 3:1</strong></p><p>“See what great love the Father has lavished on us, that we should be called children of God! And that is what we are!” — NIV</p><p>Thanksgiving is usually about recognizing <strong>what we’ve received.</strong></p><p>&bull; But John invites us to marvel at <strong>who we’ve become</strong> because of the Father’s love.<br>&bull; John spotlights a unique quality of God to move our thankfulness to a completely new level.</p>",
+    notes: null,
+  },
+  {
+    position: 3,
+    html: imageSlide("thankful-to-be-his", 3, "There’s a difference between having something and being someone."),
+    outline_html: "<p><strong>Getting adopted (Romans 8:15),</strong> taking on the family name. Finally being part of a family that cares for you, where you matter, where you have a place.</p><p>&bull; The paperwork is filled out, the forms are signed, a judge declares you a family.<br>&bull; Things are different now&hellip;<br>&ndash; You get a new last name.<br>&ndash; You eat the <strong>food</strong> this family eats, take on expressions and language that resemble this family.<br>&ndash; Take <strong>pictures</strong> with the family; you’re in the Christmas cards that go out&hellip;<br>&ndash; <strong>Reunions</strong>: more family, more pictures.</p><p>Somewhere in this whole process it moves from <strong>having</strong> a new family to <strong>being</strong> a member of a new family.</p><p><strong>There’s a difference between having something and being someone.</strong></p>",
+    notes: null,
+  },
+  {
+    position: 4,
+    html: imageSlide("thankful-to-be-his", 4, "What if our deepest gratitude comes from something life cannot take away?"),
+    outline_html: "<p>Most of our Thanksgiving conversations revolve around <strong>things we have</strong>: family, health, homes, food, friendships, opportunities.</p><p>&bull; <strong>Hard truth:</strong> a person can lose a job, experience financial hardship, lose someone they love, or face a serious illness. Suddenly, the list of things they’re thankful for becomes shorter.<br>&ndash; No more Taco Tuesday.<br>&ndash; If it’s right before Christmas, trim your 10 items to the 1 “maybe,” not guaranteed.</p><p><strong>What if our deepest gratitude comes from something life cannot take away?</strong></p><p>What if our gratitude was anchored in something that actually got stronger when life’s blessings get shorter?</p><p>That’s the remarkable difference between gratitude rooted in <strong>circumstances</strong> and gratitude rooted in <strong>identity.</strong></p>",
+    notes: null,
+  },
+  {
+    position: 5,
+    html: imageSlide("thankful-to-be-his", 5, "Lavished: generosity, abundance, extravagance. 1 John 3:1: See what great love the Father has lavished on us, that we should be called children of God! And that is what we are!"),
+    outline_html: "<p><strong>There is some astonishing language in 1 John 3:1</strong></p><p>That word <em>lavished</em> suggests <strong>generosity, abundance, extravagance.</strong> Something given beyond what we might have imagined.</p><p>&bull; The cup is overflowing.</p>",
+    notes: null,
+  },
+  {
+    position: 6,
+    html: imageSlide("thankful-to-be-his", 6, "See what kind of love. The Greek language is attempting to convey wonder at the extraordinary nature of God’s love."),
+    outline_html: "<p>The underlying Greek expression is closer to <strong>“See what kind of love,”</strong> conveying <strong>wonder</strong> at the extraordinary nature of that love.</p><p>&bull; This is not ordinary love; it’s love to the utmost degree.</p><p>John seems almost amazed by what he’s describing.</p><p>&bull; Have you ever shared good news with someone and knew that what you were saying was bigger than your words?<br>&bull; It’s like telling someone about the girl you want to propose to — “she completes me.”</p>",
+    notes: null,
+  },
+  {
+    position: 7,
+    html: imageSlide("thankful-to-be-his", 7, "1 John 3:1: See what great love the Father has lavished on us, that we should be called children of God! And that is what we are!"),
+    outline_html: "<p>And then comes the statement:</p><p><strong>“And that is what we are!”</strong></p><p>John doesn’t leave us wondering whether being God’s children is merely a nice religious expression.</p><p>There’s a difference between someone telling you, <strong>“You’re always welcome at our house,”</strong> and someone saying, <strong>“This is your home. You’re family.”</strong></p><p>&bull; You don’t have to ring the doorbell.</p><p><strong>One is hospitality. The other is identity.</strong></p>",
+    notes: null,
+  },
+  {
+    position: 8,
+    html: imageSlide("thankful-to-be-his", 8, "God hasn’t simply given us something to be thankful for. He’s given us someone to belong to."),
+    outline_html: "<p><strong>God hasn’t simply given us something to be thankful for. He’s given us someone to belong to.</strong></p>",
+    notes: null,
+  },
+  {
+    position: 9,
+    html: imageSlide("thankful-to-be-his", 9, "The gift becomes greater when we understand the giver."),
+    outline_html: "<p><strong>The gift becomes greater when we understand the giver</strong></p><p>There’s a difference between the <em>price</em> of a gift and the <em>love behind it.</em></p><p><strong>The Christmas gift to Nife, Paul, and Joe.</strong></p><p><strong>Gift illustration</strong><br>&bull; Imagine a father who has very little money but saves for months to buy something meaningful for his child.<br>&bull; The child may enjoy the gift without knowing anything about the sacrifice.<br>&bull; Years later, the child discovers what the father went through to provide it.<br>&bull; The gift hasn’t changed.<br>&bull; <strong>But its meaning has.</strong></p>",
+    notes: null,
+  },
+  {
+    position: 10,
+    html: imageSlide("thankful-to-be-his", 10, "1 John 3:1: John marvels at the Father’s love."),
+    outline_html: "<p>That’s the message: in 1 John 3:1, <strong>John marvels at the Father’s love.</strong></p><p>&bull; John gets it and he wants you to get it.</p><p>Earlier, in 1 John 3:16, he explains how we recognize that love:</p><p><strong>“This is how we know what love is: Jesus Christ laid down his life for us.”</strong></p><p>The cross tells us <strong>how far the Father’s love was willing to go</strong> to bring us into His family.</p>",
+    notes: null,
+  },
+  {
+    position: 11,
+    html: imageSlide("thankful-to-be-his", 11, "Sometimes we don’t fully appreciate a gift until we discover the love that went into giving it."),
+    outline_html: "<p><strong>Sometimes we don’t fully appreciate a gift until we discover the love that went into giving it.</strong></p><p>&bull; As a child we love getting gifts, but as an adult — better yet, as a parent — we come to understand what goes into giving those gifts.<br>&bull; As a child, love is appreciated at a simpler level. As we mature in our understanding of God’s love, we begin to see it from a <strong>giver’s</strong> perspective: a Father’s sacrifice.</p>",
+    notes: null,
+  },
+  {
+    position: 12,
+    html: imageSlide("thankful-to-be-his", 12, "It can produce contentment without everything being perfect, joy without everything going our way, peace without having all the answers."),
+    outline_html: "<p><strong>Gratitude changes the way we experience ordinary life</strong></p><p>The two brothers in the story of the prodigal son, Luke 15, play out in two different ways.</p><p>&bull; Two people experience the exact same thing.<br>&bull; They wake up in similar circumstances, face similar problems, and receive similar blessings.<br>&bull; As adults, one chose to stay at home; the younger son chose to take his inheritance and squander it.<br>&bull; At the end of the story, one son felt as if staying home was meaningless, but the younger son, after a series of bad decisions, came to realize the true blessing of home in his father’s house.</p><p>What changed? <strong>Their awareness of what they possess in the father’s home.</strong></p><p>“Knowing” we are God’s children makes all the difference.</p><p>&bull; It doesn’t eliminate difficulties. But it can change the way we carry them.<br>&bull; It can produce <strong>contentment</strong> without everything being perfect.<br>&bull; <strong>Joy</strong> without everything going our way.<br>&bull; <strong>Peace</strong> without having all the answers.</p>",
+    notes: null,
+  },
+  {
+    position: 13,
+    html: imageSlide("thankful-to-be-his", 13, "Gratitude doesn’t always change what is happening around us. But it changes what is happening within us."),
+    outline_html: "<p><strong>Gratitude doesn’t always change what is happening around us. But it changes what is happening within us.</strong></p>",
+    notes: null,
+  },
+  {
+    position: 14,
+    html: imageSlide("thankful-to-be-his", 14, "The One who created the universe invites us into a relationship so personal that we can call Him Father."),
+    outline_html: "<p><strong>The extraordinary privilege of calling God Father</strong></p><p>We often use the words <em>God, Lord, Creator,</em> and <em>Almighty.</em> Those words communicate power, authority, majesty, and greatness.</p><p>And then Jesus teaches us to address this same God as <strong>Father.</strong></p><p>Think about that contrast.</p><p><strong>The One who created the universe invites us into a relationship so personal that we can call Him Father.</strong></p><p>That’s not a small privilege. It’s extraordinary.</p>",
+    notes: null,
+  },
+  {
+    position: 15,
+    html: imageSlide("thankful-to-be-his", 15, "The One who holds the universe in His hands has made room for us in His heart."),
+    outline_html: "<p>Imagine a child whose father holds a position of tremendous responsibility or authority.</p><p>&bull; To everyone else, that man may be addressed with formal titles.<br>&bull; But when the child comes running into the room, the child doesn’t call out those titles.<br>&bull; The child says, <strong>“Dad!”</strong></p><p>The relationship changes everything.</p><p>&bull; <strong>The child has access that isn’t based on position, wealth, or achievement.</strong><br>&bull; <strong>It’s based on belonging.</strong></p><p>And that brings us back to John’s declaration: <strong>“And that is what we are!”</strong></p><p><strong>The One who holds the universe in His hands has made room for us in His heart.</strong></p>",
+    notes: null,
+  },
+  {
+    position: 16,
+    html: imageSlide("thankful-to-be-his", 16, "Perhaps the secret to a thankful heart isn’t trying harder to be grateful. Perhaps it’s seeing more clearly how deeply we are loved. 1 John 3:1."),
+    outline_html: "<p><strong>Closing</strong></p><p>There’s something about Thanksgiving that can make it almost become an obligation. We tell people to be thankful. We remind them to count their blessings. We encourage them to express appreciation. Those are all good things.</p><p>But notice that <strong>1 John 3:1 doesn’t begin with a command to be grateful.</strong> It begins with an invitation to look.</p><p><strong>“See what great love&hellip;”</strong></p><p>John draws our attention to something so wonderful that gratitude becomes the natural response.</p><p>It’s the difference between telling someone to appreciate a beautiful sunset and inviting them outside to see one. You don’t have to persuade someone to admire something beautiful once they truly see it.</p><p><strong>Perhaps the secret to a thankful heart isn’t trying harder to be grateful. Perhaps it’s seeing more clearly how deeply we are loved.</strong> 1 John 3:1</p>",
+    notes: null,
+  },
+];
+
 function buildDeck(
   id: string,
   slug: string,
@@ -2350,6 +2500,7 @@ export const seedDecks: SeedDeckWithNotes[] = [
   buildDeck("seed-deck-6", "the-jesus-test", "The Jesus Test", "the-jesus-test", theJesusTestSlides),
   buildDeck("seed-deck-7", "ask-better-questions", "Ask Better Questions", "ask-better-questions", askBetterQuestionsSlides),
   buildDeck("seed-deck-8", "with-all-his-might", "With All His Might", "with-all-his-might", withAllHisMightSlides),
+  buildDeck("seed-deck-14", "thankful-to-be-his", "Thankful to Be His", "thankful-to-be-his", thankfulToBeHisSlides),
   buildDeck("seed-deck-13", "learning-to-love-like-family", "Learning to Love Like Family", "learning-to-love-like-family", learningToLoveLikeFamilySlides),
   buildDeck("seed-deck-12", "a-place-to-belong", "A Place to Belong", "a-place-to-belong", aPlaceToBelongSlides),
   buildDeck("seed-deck-11", "the-father-who-never-gave-up", "The Father Who Never Gave Up", "the-father-who-never-gave-up", theFatherWhoNeverGaveUpSlides),
