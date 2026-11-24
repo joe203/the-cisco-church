@@ -771,6 +771,11 @@ const thankfulToBeHis: SermonDetail = {
   artwork_url: "/sermons/thankful-to-be-his/artwork.jpg",
   series: familySeries,
   deck_slug: "thankful-to-be-his",
+  nuggets: [
+    "God hasn’t simply given us something to be thankful for. He’s given us someone to belong to.",
+    "Gratitude doesn’t always change what is happening around us. But it changes what is happening within us.",
+    "Perhaps the secret to a thankful heart isn’t trying harder to be grateful. Perhaps it’s seeing more clearly how deeply we are loved.",
+  ],
   guide_questions: [
     "Think of someone whose presence makes a day better just by walking in the door. What is it about them? Read 1 John 3:1. What does John want us to see?",
     "Read Romans 8:15. “There’s a difference between having something and being someone.” When you list what you’re thankful for, how much of it is something you have, and how much is someone you are?",

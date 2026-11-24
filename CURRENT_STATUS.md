@@ -1,5 +1,12 @@
 # CURRENT_STATUS — TheCiscoChurch.org
-Updated: 2026-11-20 · Read this first when starting a new session.
+Updated: 2026-11-24 · Read this first when starting a new session.
+
+## Lesson 4 — quotes added; lesson CLOSED, no video (2026-11-24)
+
+- Joe asked for the Quotes handout after Sunday: 3 lines he highlighted in his notes, word for word
+  (`nuggets` in seed, `public/downloads/thankful-to-be-his/nuggets.pdf`).
+- The lesson was NOT recorded, so there will never be a video. Leave `youtube_url` empty.
+- Still no recap or summary, per his earlier request.
 
 ## Lesson 4 — Thankful to Be His: deck + handouts, held until Sunday (2026-11-20)
 
