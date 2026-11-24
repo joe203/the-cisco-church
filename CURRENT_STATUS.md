@@ -4,7 +4,7 @@ Updated: 2026-11-24 · Read this first when starting a new session.
 ## Lesson 5 — The Family Business announced (2026-11-24)
 
 - Title slide `public/sermons/the-family-business/artwork.jpg`, hook, one-sentence teaser, Luke 2:49
-  (KJV, per Joe's recap), from the Nov 29 bulletin article + series recap. No notes yet: when they
+  (NIV, changed from KJV at Joe's request 2026-11-24), from the Nov 29 bulletin article + series recap. No notes yet: when they
   come, build the deck/points like Lesson 4. Joe's 1920x1080 copy: sermon-framework
   `.../lsn 05 Nov 29/slides_worship/The-Family-Business-01.png`.
 
