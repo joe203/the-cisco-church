@@ -830,8 +830,8 @@ const theFamilyBusiness: SermonDetail = {
   thesis: "Our participation in His purpose.",
   hook: "What if being part of a family means more than sharing a name?",
   teaser: "Being part of God’s family isn’t just about what we receive from our Father, but what we can accomplish together with Him.",
-  scripture_ref: "Luke 2:49",
-  scripture_text: "“Didn’t you know I had to be in my Father’s house?”",
+  scripture_ref: "Luke 2:49 (NKJV)",
+  scripture_text: "“Did you not know that I must be about My Father’s business?”",
   artwork_url: "/sermons/the-family-business/artwork.jpg",
   series: familySeries,
 };
