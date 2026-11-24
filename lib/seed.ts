@@ -824,15 +824,20 @@ const thankfulToBeHis: SermonDetail = {
   ],
 };
 
-const familyPlaceholders: SermonDetail[] = [
-  ["the-family-business", "The Family Business", "2026-11-29", 5],
-].map(([slug, title, date, lesson], i) => ({
-  ...upcomingLesson(14 + i, slug as string, title as string, date as string, lesson as number),
+// Lesson 5: announced (slide + teaser from the Nov 29 bulletin article) until Joe's notes arrive.
+const theFamilyBusiness: SermonDetail = {
+  ...upcomingLesson(14, "the-family-business", "The Family Business", "2026-11-29", 5),
+  thesis: "Our participation in His purpose.",
+  hook: "What if being part of a family means more than sharing a name?",
+  teaser: "Being part of God’s family isn’t just about what we receive from our Father, but what we can accomplish together with Him.",
+  scripture_ref: "Luke 2:49 (KJV)",
+  scripture_text: "“Wist ye not that I must be about my Father’s business?”",
+  artwork_url: "/sermons/the-family-business/artwork.jpg",
   series: familySeries,
-}));
+};
 
 export const seedSermons: SermonDetail[] = [
-  ...[...familyPlaceholders].reverse(),
+  theFamilyBusiness,
   thankfulToBeHis,
   learningToLoveLikeFamily,
   aPlaceToBelong,
