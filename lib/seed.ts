@@ -832,7 +832,7 @@ const theFamilyBusiness: SermonDetail = {
   teaser: "Being part of God’s family isn’t just about what we receive from our Father, but what we can accomplish together with Him.",
   scripture_ref: "Luke 2:49 (NKJV)",
   scripture_text: "“Did you not know that I must be about My Father’s business?”",
-  artwork_url: "/sermons/the-family-business/artwork.jpg",
+  artwork_url: "/sermons/the-family-business/title-slide.jpg",
   series: familySeries,
 };
 

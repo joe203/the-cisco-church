@@ -1,9 +1,9 @@
 # CURRENT_STATUS — TheCiscoChurch.org
-Updated: 2026-11-24 · Read this first when starting a new session.
+Updated: 2026-11-26 · Read this first when starting a new session.
 
 ## Lesson 5 — The Family Business announced (2026-11-24)
 
-- Title slide `public/sermons/the-family-business/artwork.jpg`, hook, one-sentence teaser, Luke 2:49
+- Title slide `public/sermons/the-family-business/title-slide.jpg` (Joe's redesign with blue accents, replaced artwork.jpg 2026-11-26), hook, one-sentence teaser, Luke 2:49
   (NKJV, Joe chose it 2026-11-24 because it keeps "business"), from the Nov 29 bulletin article + series recap. No notes yet: when they
   come, build the deck/points like Lesson 4. Joe's 1920x1080 copy: sermon-framework
   `.../lsn 05 Nov 29/slides_worship/The-Family-Business-01.png`.
