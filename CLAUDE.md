@@ -109,6 +109,10 @@ static pages or `revalidate` where this can be avoided.
   One narrow form lives there (`/api/together/ideas`: a member's story + ideas,
   emailed to admins + the office, nothing stored). Not a general forms system.
 
+- **Members' meeting prep** (`/together/meeting`, added 2026-11-26 at Joe's request): read-only
+  page behind the /together sign-in that prepares members for the vision meeting. Content in
+  `lib/together/meeting.ts`. No new forms.
+
 - **Church directory update form** (`/directory`, added 2026-10-28 at Joe's
   request): public, unlisted (noindex, not in nav/sitemap), shared with members by
   hand. ONE purpose-built form — not a general forms system. `POST /api/directory`

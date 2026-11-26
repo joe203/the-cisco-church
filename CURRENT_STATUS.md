@@ -1,6 +1,17 @@
 # CURRENT_STATUS — TheCiscoChurch.org
 Updated: 2026-11-26 · Read this first when starting a new session.
 
+## Members' meeting prep page — /together/meeting (built 2026-11-26, NOT deployed)
+
+- For the Sun Nov 29 vision meeting. Same sign-in as /together; banner + "Get ready for Sunday"
+  button added under the /together opening. Dev preview: `/together/meeting/preview`.
+- All content in `lib/together/meeting.ts`: the 7 core values turned into questions ("the filter"),
+  six conversations (Lord's Supper, singing, worship room/pews→chairs, Wednesday nights, how we choose events/VBS, how we plan/recruit/train — Dec–Jan planning season), an
+  event "bar", ground rules. Wording is MY DRAFT from Joe's notes. **Meeting time/room is TODO**
+  (`MEETING.when`, hidden while null). "Send an idea" reuses the existing IdeasModal.
+- "Still taking shape" note at the top while `MEETING.draft` is true (Joe may add ideas for a few days); set false when he stops.
+- After the meeting: take the banner off /together (or point it at results).
+
 ## Lesson 5 — The Family Business announced (2026-11-24)
 
 - Title slide `public/sermons/the-family-business/title-slide.jpg` (Joe's redesign with blue accents, replaced artwork.jpg 2026-11-26), hook, one-sentence teaser, Luke 2:49

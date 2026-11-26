@@ -1,5 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
+import { MEETING } from "@/lib/together/meeting";
 import { LEAD_VALUE, VALUES } from "@/lib/together/values";
 import { IdeasModal } from "./IdeasModal";
 import { VideoCard } from "./VideoCard";
@@ -95,6 +96,19 @@ export function TogetherContent() {
         </div>
       </section>
 
+      {/* ── Members' meeting ────────────────────────────────────────── */}
+      <section aria-label="Members’ meeting" className="bg-ink text-white">
+        <div className="mx-auto flex max-w-6xl flex-col gap-4 px-5 py-7 sm:flex-row sm:items-center sm:justify-between sm:px-8">
+          <p className="text-[1.1rem] leading-[1.5]">
+            <strong className="font-display text-[1.25rem]">Members’ meeting, {MEETING.day}.</strong>{" "}
+            <span className="text-white/85">Here’s what we’ll talk about.</span>
+          </p>
+          <Link href="/together/meeting" className="btn-coral shrink-0 self-start sm:self-auto">
+            Get ready for Sunday
+          </Link>
+        </div>
+      </section>
+
       {/* ── The honest reason ───────────────────────────────────────── */}
       <section className="bg-deepsea text-cloud">
         <div className="mx-auto max-w-4xl px-5 py-16 sm:px-8 lg:py-24">
@@ -152,7 +166,7 @@ export function TogetherContent() {
       {/* ── What guides us ──────────────────────────────────────────── */}
       <section aria-labelledby="values" className="bg-sand">
         <div className="mx-auto max-w-6xl px-5 py-16 sm:px-8 lg:py-24">
-          <h2 id="values" className={h2}>
+          <h2 id="values" className={`${h2} scroll-mt-24`}>
             What guides every decision
           </h2>
           <p className="mt-4 max-w-[52ch] text-[1.1rem] leading-[1.7] text-ink/80">
